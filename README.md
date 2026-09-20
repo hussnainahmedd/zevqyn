@@ -8,6 +8,10 @@
 
 📦 **This Repository:** Frontend source archive for ZEVQYN V1
 
+<p align="center">
+  <img src="assets/images/zevqyn-overview.jpg" alt="ZEVQYN — AI Research + Career Workspace Overview" width="100%">
+</p>
+
 ---
 
 ## What is ZEVQYN?
