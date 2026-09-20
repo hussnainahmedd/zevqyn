@@ -1,0 +1,2248 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+/* Hide default Blocksy page title */
+.hero-section {
+    display: none !important;
+}
+
+.entry-header {
+    display: none !important;
+}
+
+.hero-section,
+.entry-header {
+    display: none !important;
+}
+
+#zev-genz-features,
+#zev-genz-features * {
+    box-sizing: border-box;
+}
+
+#zev-genz-features {
+    --green: #35d875;
+    --green2: #62f69a;
+    --bg: #020504;
+    --panel: #07100d;
+    --panel2: #091411;
+    --border: #173128;
+    --text: #f6faf8;
+    --muted: #8ba099;
+
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+
+    font-family: Inter, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+}
+
+.zgf-container {
+    width: min(1180px, calc(100% - 44px));
+    margin: 0 auto;
+}
+
+.zgf-hero {
+    position: relative;
+    padding: 95px 0 110px;
+    background:
+        radial-gradient(circle at 75% 40%, rgba(31, 168, 86, .16), transparent 30%),
+        radial-gradient(circle at 25% 0%, rgba(35, 103, 76, .08), transparent 30%);
+}
+
+.zgf-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .2;
+    pointer-events: none;
+
+    background-image:
+        linear-gradient(rgba(75, 125, 102, .08) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(75, 125, 102, .08) 1px, transparent 1px);
+
+    background-size: 70px 70px;
+    mask-image: linear-gradient(to bottom, #000, transparent);
+}
+
+.zgf-hero-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: .92fr 1.08fr;
+    gap: 70px;
+    align-items: center;
+}
+
+.zgf-hand-note {
+    margin-bottom: 15px;
+    color: #c8d8d1;
+    font-size: 17px;
+    font-style: italic;
+    transform: rotate(-2deg);
+}
+
+.zgf-hero h1 {
+    margin: 0 0 22px;
+
+    font-size: clamp(52px, 6vw, 82px);
+    line-height: .96;
+    letter-spacing: -.055em;
+    font-weight: 850;
+}
+
+.zgf-hero h1 span,
+.zgf-heading h2 span,
+.zgf-workflow-copy h2 span,
+.zgf-genz-copy h2 span,
+.zgf-ai-copy h2 span,
+.zgf-final-copy h2 span {
+    color: var(--green);
+}
+
+.zgf-hero-copy > p {
+    max-width: 580px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.zgf-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-top: 30px;
+}
+
+.zgf-btn {
+    min-height: 48px;
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    border-radius: 8px;
+
+    text-decoration: none !important;
+    font-size: 12px;
+    font-weight: 800;
+
+    transition: .2s ease;
+}
+
+.zgf-btn:hover {
+    transform: translateY(-2px);
+}
+
+.zgf-primary {
+    background: var(--green);
+    border: 1px solid var(--green);
+    color: #03190b !important;
+}
+
+.zgf-secondary {
+    background: #07100d;
+    border: 1px solid #294038;
+    color: #dbe6e1 !important;
+}
+
+.zgf-mini-proof {
+    margin-top: 34px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.zgf-avatar-stack {
+    display: flex;
+}
+
+.zgf-avatar-stack span {
+    width: 30px;
+    height: 30px;
+    margin-left: -6px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 2px solid #030706;
+    border-radius: 50%;
+
+    background: #10231b;
+    color: var(--green);
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.zgf-avatar-stack span:first-child {
+    margin-left: 0;
+}
+
+.zgf-mini-proof p {
+    margin: 0;
+    color: #758b82;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+
+/* HERO VISUAL */
+
+.zgf-hero-visual {
+    position: relative;
+    min-height: 500px;
+}
+
+.zgf-laptop {
+    position: absolute;
+    width: 480px;
+    max-width: 82%;
+    left: 48%;
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+
+    overflow: hidden;
+
+    border: 2px solid #1e4032;
+    border-radius: 18px;
+
+    background: #050b09;
+
+    box-shadow:
+        0 40px 90px rgba(0, 0, 0, .55),
+        0 0 60px rgba(43, 211, 112, .08);
+}
+
+.zgf-laptop-top {
+    height: 43px;
+    padding: 0 15px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border-bottom: 1px solid #163026;
+}
+
+.zgf-logo-dot {
+    width: 22px;
+    height: 22px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+    background: var(--green);
+    color: #06160c;
+
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.zgf-laptop-top > span {
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.zgf-laptop-top i {
+    width: 6px;
+    height: 6px;
+    margin-left: auto;
+
+    border-radius: 50%;
+    background: var(--green);
+}
+
+.zgf-laptop-content {
+    padding: 32px;
+}
+
+.zgf-laptop-content > small {
+    color: #537066;
+    font-size: 8px;
+    letter-spacing: .14em;
+}
+
+.zgf-laptop-content h3 {
+    margin: 12px 0 25px;
+    font-size: 28px;
+    line-height: 1.08;
+}
+
+.zgf-laptop-content h3 span {
+    color: var(--green);
+}
+
+.zgf-dashboard-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.zgf-dashboard-row div {
+    padding: 14px;
+    border: 1px solid #173128;
+    border-radius: 8px;
+    background: #08110e;
+}
+
+.zgf-dashboard-row strong,
+.zgf-dashboard-row span {
+    display: block;
+}
+
+.zgf-dashboard-row strong {
+    color: var(--green);
+    font-size: 18px;
+}
+
+.zgf-dashboard-row span {
+    margin-top: 3px;
+    color: #71877e;
+    font-size: 8px;
+}
+
+.zgf-screen-card {
+    margin-top: 10px;
+    padding: 15px;
+
+    display: flex;
+    gap: 11px;
+    align-items: center;
+
+    border: 1px solid rgba(53, 216, 117, .3);
+    border-radius: 8px;
+
+    background: rgba(53, 216, 117, .06);
+}
+
+.zgf-screen-card > span {
+    color: var(--green);
+}
+
+.zgf-screen-card div {
+    display: flex;
+    flex-direction: column;
+}
+
+.zgf-screen-card strong {
+    font-size: 10px;
+}
+
+.zgf-screen-card small {
+    color: #70867d;
+    font-size: 8px;
+}
+
+.zgf-floating-card {
+    position: absolute;
+    z-index: 3;
+
+    padding: 9px 12px;
+
+    border: 1px solid #234538;
+    border-radius: 8px;
+
+    background: rgba(5, 14, 10, .94);
+
+    color: #bdcec7;
+    font-size: 9px;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.35);
+}
+
+.zgf-floating-card span {
+    color: var(--green);
+    margin-right: 5px;
+}
+
+.zgf-float-one {
+    top: 100px;
+    left: 0;
+}
+
+.zgf-float-two {
+    right: 0;
+    bottom: 95px;
+}
+
+.zgf-doodle {
+    position: absolute;
+    z-index: 4;
+
+    color: #d9e3df;
+
+    font-size: 15px;
+    font-style: italic;
+    line-height: 1.25;
+}
+
+.zgf-doodle strong {
+    color: var(--green);
+}
+
+.zgf-doodle-top {
+    right: 5px;
+    top: 10px;
+    transform: rotate(4deg);
+}
+
+.zgf-doodle-bottom {
+    left: 10px;
+    bottom: 20px;
+    transform: rotate(-5deg);
+    color: #8ca198;
+}
+
+
+/* GENERAL */
+
+.zgf-section {
+    padding: 105px 0;
+    border-top: 1px solid rgba(74, 115, 97, .11);
+}
+
+.zgf-heading {
+    max-width: 700px;
+    margin-bottom: 48px;
+}
+
+.zgf-center {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.zgf-eyebrow {
+    margin-bottom: 10px;
+
+    color: var(--green);
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .17em;
+}
+
+.zgf-heading h2,
+.zgf-workflow-copy h2,
+.zgf-genz-copy h2,
+.zgf-ai-copy h2,
+.zgf-final-copy h2 {
+    margin: 0 0 15px;
+
+    font-size: clamp(34px, 4vw, 51px);
+    line-height: 1.06;
+    letter-spacing: -.04em;
+}
+
+.zgf-heading p,
+.zgf-workflow-copy > p,
+.zgf-genz-copy > p,
+.zgf-ai-copy > p,
+.zgf-final-copy > p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.75;
+}
+
+
+/* FEATURE GRID */
+
+.zgf-feature-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 13px;
+}
+
+.zgf-feature-card {
+    position: relative;
+    min-height: 260px;
+    padding: 25px;
+    overflow: hidden;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background:
+        linear-gradient(145deg, #08120f, #050b09);
+
+    transition: .25s ease;
+}
+
+.zgf-feature-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(53, 216, 117, .4);
+}
+
+.zgf-feature-icon {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(53, 216, 117, .3);
+    border-radius: 8px;
+
+    background: rgba(53, 216, 117, .08);
+    color: var(--green);
+
+    font-weight: 800;
+}
+
+.zgf-feature-card h3 {
+    margin: 0 0 10px;
+    color: #fff;
+    font-size: 17px;
+}
+
+.zgf-feature-card p {
+    margin: 0;
+    color: #83978f;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.zgf-tags {
+    position: absolute;
+    left: 25px;
+    bottom: 23px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.zgf-tags span {
+    padding: 5px 7px;
+
+    border-radius: 5px;
+    background: #0c1a15;
+    color: #7ea08f;
+
+    font-size: 7px;
+    font-weight: 800;
+}
+
+.zgf-feature-glow {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    color: #654cff;
+    font-size: 23px;
+}
+
+.zgf-card-note {
+    position: absolute;
+    right: 19px;
+    bottom: 20px;
+
+    color: var(--green);
+    font-size: 11px;
+    font-style: italic;
+
+    transform: rotate(-3deg);
+}
+
+.zgf-ai-card {
+    background:
+        radial-gradient(circle at 100% 0, rgba(65, 48, 220, .13), transparent 35%),
+        linear-gradient(145deg, #08120f, #050b09);
+}
+
+.zgf-quote-card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.zgf-big-quote {
+    font-size: 27px;
+    line-height: 1.25;
+    font-style: italic;
+}
+
+.zgf-big-quote span {
+    color: var(--green);
+}
+
+.zgf-crown {
+    position: absolute;
+    top: 28px;
+    right: 30px;
+
+    color: var(--green);
+    font-size: 27px;
+
+    transform: rotate(10deg);
+}
+
+
+/* WORKFLOW */
+
+.zgf-workflow-section {
+    background:
+        radial-gradient(circle at 20% 50%, rgba(53,216,117,.09), transparent 30%);
+}
+
+.zgf-workflow-grid,
+.zgf-genz-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.zgf-workflow-visual {
+    position: relative;
+    min-height: 500px;
+}
+
+.zgf-phone {
+    position: absolute;
+
+    border: 1px solid #29483c;
+    border-radius: 20px;
+
+    background: #08110e;
+
+    box-shadow: 0 25px 60px rgba(0,0,0,.45);
+}
+
+.zgf-phone-main {
+    width: 270px;
+    height: 410px;
+
+    left: 47%;
+    top: 40px;
+
+    transform: translateX(-50%) rotate(3deg);
+
+    padding: 28px 20px;
+}
+
+.zgf-phone-left {
+    width: 190px;
+    height: 340px;
+
+    left: 10px;
+    top: 100px;
+
+    z-index: 2;
+
+    padding: 25px 15px;
+
+    transform: rotate(-8deg);
+}
+
+.zgf-phone-bar {
+    width: 40px;
+    height: 4px;
+
+    margin: -14px auto 28px;
+
+    border-radius: 20px;
+
+    background: #253b32;
+}
+
+.zgf-phone small {
+    color: var(--green);
+    font-size: 7px;
+    letter-spacing: .14em;
+}
+
+.zgf-phone h4 {
+    margin: 20px 0 10px;
+    font-size: 20px;
+}
+
+.zgf-phone p {
+    color: #71867d;
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.zgf-phone-item {
+    margin-top: 10px;
+    padding: 10px;
+
+    border: 1px solid #173128;
+    border-radius: 7px;
+
+    color: #91a39b;
+    font-size: 8px;
+}
+
+.zgf-phone-item span {
+    color: var(--green);
+    margin-right: 5px;
+}
+
+.zgf-progress {
+    height: 5px;
+    margin-top: 25px;
+
+    overflow: hidden;
+
+    border-radius: 20px;
+
+    background: #102019;
+}
+
+.zgf-progress span {
+    display: block;
+    width: 72%;
+    height: 100%;
+    background: var(--green);
+}
+
+.zgf-phone-button {
+    margin-top: 17px;
+    padding: 11px;
+
+    border-radius: 7px;
+
+    background: var(--green);
+    color: #04180b;
+
+    text-align: center;
+    font-size: 9px;
+    font-weight: 900;
+}
+
+.zgf-paper-note {
+    position: absolute;
+
+    left: 0;
+    bottom: 15px;
+    z-index: 5;
+
+    padding: 12px 14px;
+
+    background: #f2f4e9;
+    color: #101713;
+
+    font-size: 16px;
+    line-height: 1.02;
+    font-weight: 900;
+
+    transform: rotate(-5deg);
+}
+
+.zgf-paper-note strong {
+    color: #15964d;
+}
+
+.zgf-smile {
+    position: absolute;
+    right: 60px;
+    bottom: 55px;
+
+    color: #f2cb3d;
+    font-size: 34px;
+
+    transform: rotate(9deg);
+}
+
+.zgf-steps {
+    margin-top: 30px;
+}
+
+.zgf-step {
+    position: relative;
+
+    display: flex;
+    gap: 14px;
+
+    padding-bottom: 23px;
+}
+
+.zgf-step:not(:last-child)::after {
+    content: "";
+
+    position: absolute;
+    left: 15px;
+    top: 32px;
+
+    width: 1px;
+    height: calc(100% - 28px);
+
+    background: #205a3a;
+}
+
+.zgf-step b {
+    width: 31px;
+    height: 31px;
+
+    flex: 0 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid var(--green);
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 9px;
+}
+
+.zgf-step div {
+    padding-top: 3px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.zgf-step strong {
+    font-size: 12px;
+}
+
+.zgf-step span {
+    margin-top: 4px;
+
+    color: #73877f;
+    font-size: 10px;
+}
+
+
+/* GEN Z */
+
+.zgf-audience {
+    margin-top: 35px;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.zgf-audience div {
+    display: flex;
+    flex-direction: column;
+}
+
+.zgf-audience i {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(53,216,117,.3);
+    border-radius: 8px;
+
+    background: rgba(53,216,117,.07);
+    color: var(--green);
+
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 900;
+}
+
+.zgf-audience strong {
+    font-size: 10px;
+}
+
+.zgf-audience span {
+    margin-top: 3px;
+    color: #63776f;
+    font-size: 8px;
+}
+
+.zgf-desk-scene {
+    position: relative;
+    min-height: 430px;
+
+    overflow: hidden;
+
+    border: 1px solid #1b342a;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at 60% 35%, rgba(93, 49, 150, .2), transparent 35%),
+        linear-gradient(145deg, #11120e, #07100d);
+}
+
+.zgf-neon-note {
+    position: absolute;
+    right: 60px;
+    top: 40px;
+
+    color: #c38dff;
+    font-size: 19px;
+    font-style: italic;
+
+    transform: rotate(-4deg);
+}
+
+.zgf-neon-note strong {
+    color: var(--green);
+}
+
+.zgf-desk-board {
+    position: absolute;
+    left: 50px;
+    top: 70px;
+
+    width: 190px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.zgf-desk-board span {
+    padding: 14px 8px;
+
+    background: #151b17;
+    border: 1px solid #29362f;
+
+    color: #7f918a;
+    font-size: 8px;
+    text-align: center;
+
+    transform: rotate(-3deg);
+}
+
+.zgf-desk-laptop {
+    position: absolute;
+
+    width: 310px;
+    height: 185px;
+
+    left: 50%;
+    bottom: 40px;
+
+    transform: translateX(-50%);
+
+    padding: 8px;
+
+    border-radius: 12px 12px 5px 5px;
+
+    background: #1a211d;
+}
+
+.zgf-desk-screen {
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        radial-gradient(circle, rgba(53,216,117,.13), transparent 50%),
+        #050a08;
+}
+
+.zgf-desk-screen strong {
+    font-size: 24px;
+}
+
+.zgf-desk-screen small {
+    margin-top: 5px;
+    color: var(--green);
+}
+
+.zgf-coffee {
+    position: absolute;
+    right: 35px;
+    bottom: 25px;
+
+    font-size: 35px;
+}
+
+.zgf-desk-doodle {
+    position: absolute;
+    right: 20px;
+    top: 160px;
+
+    color: #cbd5d1;
+    font-size: 11px;
+    font-style: italic;
+
+    transform: rotate(5deg);
+}
+
+
+/* CAREER AI */
+
+.zgf-career-ai {
+    padding: 55px;
+
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 60px;
+
+    border: 1px solid rgba(53,216,117,.25);
+    border-radius: 17px;
+
+    background:
+        radial-gradient(circle at 0 50%, rgba(53,216,117,.1), transparent 35%),
+        #07100d;
+}
+
+.zgf-ai-tool-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.zgf-ai-tool-grid div {
+    padding: 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border: 1px solid #173128;
+    border-radius: 8px;
+
+    background: #08120f;
+}
+
+.zgf-ai-tool-grid span {
+    color: var(--green);
+    font-size: 8px;
+}
+
+.zgf-ai-tool-grid strong {
+    font-size: 10px;
+}
+
+
+/* FINAL */
+
+.zgf-final {
+    padding: 25px 0 110px;
+}
+
+.zgf-final-box {
+    min-height: 390px;
+    padding: 60px;
+
+    display: grid;
+    grid-template-columns: 1.1fr .9fr;
+    align-items: center;
+
+    overflow: hidden;
+
+    border: 1px solid #224437;
+    border-radius: 18px;
+
+    background:
+        radial-gradient(circle at 80% 30%, rgba(38,117,95,.3), transparent 35%),
+        linear-gradient(130deg, #07100d, #0a1317);
+}
+
+.zgf-final-copy {
+    position: relative;
+    z-index: 3;
+}
+
+.zgf-final-art {
+    position: relative;
+    height: 300px;
+}
+
+.zgf-person-head {
+    position: absolute;
+
+    width: 90px;
+    height: 90px;
+
+    left: 50%;
+    top: 15px;
+
+    transform: translateX(-50%);
+
+    border-radius: 48% 48% 42% 42%;
+
+    background:
+        radial-gradient(circle at 35% 30%, #313f38, #080d0b 65%);
+}
+
+.zgf-person-body {
+    position: absolute;
+
+    width: 230px;
+    height: 210px;
+
+    left: 50%;
+    bottom: -20px;
+
+    transform: translateX(-50%);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 90px 90px 20px 20px;
+
+    background:
+        linear-gradient(150deg, #121b18, #050908);
+
+    color: #758b82;
+    font-size: 17px;
+    font-weight: 900;
+    letter-spacing: .08em;
+}
+
+.zgf-final-doodle {
+    position: absolute;
+
+    right: 0;
+    top: 45px;
+
+    color: #e4ebe7;
+    font-size: 15px;
+    font-style: italic;
+
+    transform: rotate(5deg);
+}
+
+.zgf-final-doodle strong {
+    color: var(--green);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 950px) {
+
+    .zgf-hero-grid,
+    .zgf-workflow-grid,
+    .zgf-genz-grid,
+    .zgf-career-ai,
+    .zgf-final-box {
+        grid-template-columns: 1fr;
+    }
+
+    .zgf-hero-copy {
+        text-align: center;
+    }
+
+    .zgf-hero-copy > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .zgf-actions,
+    .zgf-mini-proof {
+        justify-content: center;
+    }
+
+    .zgf-feature-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zgf-hero-visual {
+        margin-top: 20px;
+    }
+
+    .zgf-workflow-grid,
+    .zgf-genz-grid {
+        gap: 45px;
+    }
+
+    .zgf-career-ai {
+        padding: 38px;
+    }
+}
+
+@media (max-width: 650px) {
+
+    .zgf-container {
+        width: min(100% - 28px, 1180px);
+    }
+
+    .zgf-hero {
+        padding: 70px 0;
+    }
+
+    .zgf-section {
+        padding: 75px 0;
+    }
+
+    .zgf-feature-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zgf-feature-card {
+        min-height: 240px;
+    }
+
+    .zgf-hero-visual {
+        min-height: 420px;
+    }
+
+    .zgf-laptop {
+        max-width: 95%;
+    }
+
+    .zgf-floating-card {
+        display: none;
+    }
+
+    .zgf-audience {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zgf-ai-tool-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zgf-career-ai,
+    .zgf-final-box {
+        padding: 28px;
+    }
+
+    .zgf-workflow-visual {
+        transform: scale(.86);
+        margin: -30px;
+    }
+
+    .zgf-final-art {
+        display: none;
+    }
+}
+
+/* ZEVQYN circulating green border */
+
+.zgf-desk-scene {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    border: 1px solid rgba(53, 216, 117, 0.18);
+}
+
+.zgf-desk-scene::before {
+    content: "";
+    position: absolute;
+    z-index: -2;
+
+    width: 180%;
+    height: 180%;
+
+    left: -40%;
+    top: -40%;
+
+    background: conic-gradient(
+        from 0deg,
+        transparent 0deg,
+        transparent 300deg,
+        rgba(53, 216, 117, 0.15) 320deg,
+        #35d875 345deg,
+        #8affb3 355deg,
+        transparent 360deg
+    );
+
+    animation: zevqynBorderSpin 4s linear infinite;
+}
+
+.zgf-desk-scene::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+
+    inset: 2px;
+
+    border-radius: 16px;
+    background: #07100d;
+}
+
+@keyframes zevqynBorderSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =====================================================
+   ZEVQYN — RUNNING GREEN LIGHT AROUND VISUALS
+   ===================================================== */
+
+/* Apply the effect to all major visual/image containers */
+.zgf-laptop,
+.zgf-desk-scene,
+.zgf-phone,
+.zgf-career-ai,
+.zgf-final-box {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    /* Remove normal border so animated border can show */
+    border: 1px solid transparent !important;
+
+    background:
+        linear-gradient(#07100d, #07100d) padding-box,
+        conic-gradient(
+            from var(--zev-angle),
+            transparent 0deg,
+            transparent 300deg,
+            rgba(53, 216, 117, 0.10) 315deg,
+            rgba(53, 216, 117, 0.55) 330deg,
+            #35d875 344deg,
+            #9dffc0 351deg,
+            #35d875 357deg,
+            transparent 360deg
+        ) border-box;
+
+    animation: zev-running-border 4s linear infinite;
+}
+
+
+/* Allows the conic gradient angle to animate smoothly */
+@property --zev-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+
+/* Rotate ONLY the border light */
+@keyframes zev-running-border {
+    from {
+        --zev-angle: 0deg;
+    }
+
+    to {
+        --zev-angle: 360deg;
+    }
+}
+
+
+/* Extra glow when the bright part passes */
+.zgf-laptop,
+.zgf-desk-scene,
+.zgf-phone,
+.zgf-career-ai,
+.zgf-final-box {
+    box-shadow:
+        0 0 0 1px rgba(53, 216, 117, 0.05),
+        0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+
+/* Keep original rounded corners */
+.zgf-laptop {
+    border-radius: 18px;
+}
+
+.zgf-desk-scene {
+    border-radius: 18px;
+}
+
+.zgf-phone {
+    border-radius: 20px;
+}
+
+.zgf-career-ai {
+    border-radius: 17px;
+}
+
+.zgf-final-box {
+    border-radius: 18px;
+}
+
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .zgf-laptop,
+    .zgf-desk-scene,
+    .zgf-phone,
+    .zgf-career-ai,
+    .zgf-final-box {
+        animation: none;
+    }
+}
+
+/* =====================================================
+   FIX — FEATURES HERO POSITIONING
+   ===================================================== */
+
+#zev-genz-features .zgf-hero {
+    width: 100%;
+    overflow: hidden;
+}
+
+#zev-genz-features .zgf-hero-grid {
+    width: min(1180px, calc(100% - 44px)) !important;
+    max-width: 1180px !important;
+
+    margin-left: auto !important;
+    margin-right: auto !important;
+
+    display: grid !important;
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr) !important;
+
+    gap: 60px !important;
+    align-items: center !important;
+}
+
+
+/* LEFT HERO CONTENT */
+
+#zev-genz-features .zgf-hero-copy {
+    position: relative !important;
+    left: auto !important;
+    right: auto !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+
+    transform: none !important;
+}
+
+
+/* RIGHT HERO VISUAL */
+
+#zev-genz-features .zgf-hero-visual {
+    position: relative !important;
+
+    width: 100% !important;
+    min-width: 0 !important;
+    min-height: 500px !important;
+
+    left: auto !important;
+    right: auto !important;
+
+    transform: none !important;
+}
+
+
+/* MAIN "GOOD IDEAS" CARD */
+
+#zev-genz-features .zgf-laptop {
+    position: absolute !important;
+
+    width: 500px !important;
+    max-width: calc(100% - 50px) !important;
+
+    left: 50% !important;
+    top: 50% !important;
+
+    right: auto !important;
+    bottom: auto !important;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(-2deg) !important;
+
+    transform-origin: center center !important;
+}
+
+
+/* Keep floating elements attached to visual */
+
+#zev-genz-features .zgf-float-one {
+    left: 0 !important;
+    right: auto !important;
+    top: 100px !important;
+}
+
+#zev-genz-features .zgf-float-two {
+    right: 0 !important;
+    left: auto !important;
+    bottom: 95px !important;
+}
+
+#zev-genz-features .zgf-doodle-top {
+    right: 5px !important;
+    left: auto !important;
+    top: 10px !important;
+}
+
+
+/* TABLET */
+
+@media (max-width: 950px) {
+
+    #zev-genz-features .zgf-hero-grid {
+        grid-template-columns: 1fr !important;
+        gap: 35px !important;
+    }
+
+    #zev-genz-features .zgf-hero-copy {
+        text-align: center !important;
+    }
+
+    #zev-genz-features .zgf-hero-visual {
+        min-height: 480px !important;
+    }
+
+    #zev-genz-features .zgf-laptop {
+        width: 500px !important;
+        max-width: 85% !important;
+    }
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    #zev-genz-features .zgf-hero-grid {
+        width: calc(100% - 28px) !important;
+    }
+
+    #zev-genz-features .zgf-hero-visual {
+        min-height: 410px !important;
+    }
+
+    #zev-genz-features .zgf-laptop {
+        width: 100% !important;
+        max-width: 94% !important;
+
+        transform:
+            translate(-50%, -50%)
+            rotate(0deg) !important;
+    }
+
+    #zev-genz-features .zgf-doodle-top {
+        right: 10px !important;
+    }
+}
+</style>
+
+<script data-wp-block-html="js">
+function zevFeaturesInitialize() {
+
+    var featureLinks =
+        document.querySelectorAll(
+            '#zev-genz-features a[href^="#"]'
+        );
+
+    featureLinks.forEach(
+        function (link) {
+
+            link.addEventListener(
+                "click",
+                function (event) {
+
+                    var targetId =
+                        link.getAttribute("href");
+
+                    var target =
+                        document.querySelector(targetId);
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+                }
+            );
+        }
+    );
+
+
+    var revealItems =
+        document.querySelectorAll(
+            "#zev-genz-features .zgf-feature-card, " +
+            "#zev-genz-features .zgf-step, " +
+            "#zev-genz-features .zgf-ai-tool-grid > div"
+        );
+
+
+    revealItems.forEach(
+        function (item) {
+            item.classList.add("zgf-reveal");
+        }
+    );
+
+
+    if ("IntersectionObserver" in window) {
+
+        var observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (entry.isIntersecting) {
+
+                                entry.target.classList.add(
+                                    "zgf-visible"
+                                );
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+                            }
+                        }
+                    );
+                },
+                {
+                    threshold: 0.08
+                }
+            );
+
+
+        revealItems.forEach(
+            function (item) {
+                observer.observe(item);
+            }
+        );
+
+    } else {
+
+        revealItems.forEach(
+            function (item) {
+                item.classList.add("zgf-visible");
+            }
+        );
+    }
+}
+
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+            zevFeaturesInitialize();
+        }
+    );
+
+} else {
+
+    zevFeaturesInitialize();
+}
+</script>
+
+<div id="zev-genz-features" class="zgf-page">
+
+    <!-- HERO -->
+    <section class="zgf-hero">
+        <div class="zgf-container zgf-hero-grid">
+
+            <div class="zgf-hero-copy">
+                <div class="zgf-hand-note">For curious minds ✦</div>
+
+                <h1>
+                    Learn. Build.<br>
+                    Showcase. <span>Grow.</span>
+                </h1>
+
+                <p>
+                    ZEVQYN turns what you're learning into real work you can
+                    actually show — with AI helping you along the way.
+                </p>
+
+                <div class="zgf-actions">
+                    <a href="/register/" class="zgf-btn zgf-primary">
+                        Get Started Free <span>→</span>
+                    </a>
+
+                    <a href="#zev-tools" class="zgf-btn zgf-secondary">
+                        Explore Features
+                    </a>
+                </div>
+
+                <div class="zgf-mini-proof">
+                    <div class="zgf-avatar-stack">
+                        <span>H</span>
+                        <span>A</span>
+                        <span>Z</span>
+                    </div>
+
+                    <p>
+                        Built for students, developers<br>
+                        &amp; self-learners.
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="zgf-hero-visual">
+
+                <div class="zgf-doodle zgf-doodle-top">
+                    Same student.<br>
+                    <strong>Bigger dreams.</strong>
+                    <span>↘</span>
+                </div>
+
+                <div class="zgf-laptop">
+
+                    <div class="zgf-laptop-top">
+                        <div class="zgf-logo-dot">Z</div>
+                        <span>ZEVQYN</span>
+                        <i></i>
+                    </div>
+
+                    <div class="zgf-laptop-content">
+
+                        <small>YOUR WORKSPACE</small>
+
+                        <h3>
+                            Good ideas<br>
+                            <span>build better futures.</span>
+                        </h3>
+
+                        <div class="zgf-dashboard-row">
+                            <div>
+                                <strong>2</strong>
+                                <span>Research</span>
+                            </div>
+
+                            <div>
+                                <strong>4</strong>
+                                <span>Projects</span>
+                            </div>
+
+                            <div>
+                                <strong>85%</strong>
+                                <span>Profile</span>
+                            </div>
+                        </div>
+
+                        <div class="zgf-screen-card">
+                            <span>✦</span>
+                            <div>
+                                <strong>Career AI</strong>
+                                <small>Your next move starts here.</small>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="zgf-floating-card zgf-float-one">
+                    <span>◆</span>
+                    Project ready
+                </div>
+
+                <div class="zgf-floating-card zgf-float-two">
+                    <span>✓</span>
+                    Resume updated
+                </div>
+
+                <div class="zgf-doodle zgf-doodle-bottom">
+                    Ideas today.<br>
+                    Opportunities tomorrow.
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FEATURES -->
+    <section id="zev-tools" class="zgf-section">
+        <div class="zgf-container">
+
+            <div class="zgf-heading zgf-center">
+                <div class="zgf-eyebrow">EVERYTHING YOU NEED</div>
+
+                <h2>
+                    All the tools. One
+                    <span>workspace.</span>
+                </h2>
+
+                <p>
+                    Research, build, organize and grow without jumping
+                    between a million apps.
+                </p>
+            </div>
+
+
+            <div class="zgf-feature-grid">
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">▣</div>
+
+                    <h3>Research Workspace</h3>
+
+                    <p>
+                        Organize topics, upload documents and keep everything
+                        you're learning in one place.
+                    </p>
+
+                    <div class="zgf-tags">
+                        <span>PDF</span>
+                        <span>DOCX</span>
+                        <span>TXT</span>
+                        <span>MD</span>
+                    </div>
+                </article>
+
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">✦</div>
+
+                    <h3>AI Research Assistant</h3>
+
+                    <p>
+                        Ask questions and get grounded answers from your own
+                        documents instead of random AI guesses.
+                    </p>
+
+                    <div class="zgf-feature-glow">✧</div>
+                </article>
+
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">◫</div>
+
+                    <h3>Research AI Tools</h3>
+
+                    <p>
+                        Summaries, key points, questions and flashcards —
+                        turn long content into useful insights.
+                    </p>
+
+                    <div class="zgf-tags">
+                        <span>Summarize</span>
+                        <span>Flashcards</span>
+                    </div>
+                </article>
+
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">◆</div>
+
+                    <h3>Projects</h3>
+
+                    <p>
+                        Turn what you're learning into real projects.
+                        Save ideas, tech stacks, links and skills.
+                    </p>
+
+                    <div class="zgf-card-note">
+                        learn → build
+                    </div>
+                </article>
+
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">↗</div>
+
+                    <h3>Career Hub</h3>
+
+                    <p>
+                        Keep your skills, education, certificates and
+                        professional profile organized.
+                    </p>
+                </article>
+
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">▤</div>
+
+                    <h3>Resume Builder</h3>
+
+                    <p>
+                        Turn your ZEVQYN data into an ATS-friendly resume
+                        and export it as a clean PDF.
+                    </p>
+
+                    <div class="zgf-tags">
+                        <span>ATS</span>
+                        <span>PDF</span>
+                    </div>
+                </article>
+
+
+                <article class="zgf-feature-card">
+                    <div class="zgf-feature-icon">◎</div>
+
+                    <h3>Portfolio Builder</h3>
+
+                    <p>
+                        Showcase your work with a public portfolio built
+                        directly from what you've already created.
+                    </p>
+
+                    <div class="zgf-card-note">
+                        your work deserves to be seen ✦
+                    </div>
+                </article>
+
+
+                <article class="zgf-feature-card zgf-ai-card">
+                    <div class="zgf-feature-icon">✦</div>
+
+                    <h3>Career AI</h3>
+
+                    <p>
+                        Get guidance based on your real projects, skills,
+                        education, resume and portfolio.
+                    </p>
+
+                    <div class="zgf-tags">
+                        <span>Skill Gap</span>
+                        <span>Career Plan</span>
+                    </div>
+                </article>
+
+
+                <article class="zgf-feature-card zgf-quote-card">
+                    <div class="zgf-big-quote">
+                        “Same tools.<br>
+                        <span>Different you.</span>”
+                    </div>
+
+                    <div class="zgf-crown">♕</div>
+                </article>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- RESEARCH TO REAL LIFE -->
+    <section class="zgf-section zgf-workflow-section">
+        <div class="zgf-container zgf-workflow-grid">
+
+            <div class="zgf-workflow-visual">
+
+                <div class="zgf-phone zgf-phone-left">
+                    <div class="zgf-phone-bar"></div>
+
+                    <small>RESEARCH</small>
+
+                    <div class="zgf-phone-item">
+                        <span>▣</span> Operating Systems
+                    </div>
+
+                    <div class="zgf-phone-item">
+                        <span>▣</span> AI Research
+                    </div>
+
+                    <div class="zgf-phone-item">
+                        <span>▣</span> Web Development
+                    </div>
+                </div>
+
+
+                <div class="zgf-phone zgf-phone-main">
+                    <div class="zgf-phone-bar"></div>
+
+                    <small>PROJECT</small>
+
+                    <h4>Smart Study Assistant</h4>
+
+                    <p>
+                        Turn research into something worth showing.
+                    </p>
+
+                    <div class="zgf-progress">
+                        <span></span>
+                    </div>
+
+                    <div class="zgf-phone-button">
+                        Build Project →
+                    </div>
+                </div>
+
+
+                <div class="zgf-paper-note">
+                    TURN<br>
+                    KNOWLEDGE<br>
+                    INTO<br>
+                    <strong>OPPORTUNITIES</strong>
+                </div>
+
+                <div class="zgf-smile">☺</div>
+
+            </div>
+
+
+            <div class="zgf-workflow-copy">
+
+                <div class="zgf-eyebrow">
+                    FROM RESEARCH TO REAL-WORLD IMPACT
+                </div>
+
+                <h2>
+                    More than just studying.<br>
+                    It's a <span>workflow for your future.</span>
+                </h2>
+
+                <p>
+                    Go from reading and learning to building real projects,
+                    creating your resume and portfolio, and getting
+                    AI-powered career guidance — all in one place.
+                </p>
+
+
+                <div class="zgf-steps">
+
+                    <div class="zgf-step">
+                        <b>1</b>
+
+                        <div>
+                            <strong>Learn &amp; Research</strong>
+                            <span>
+                                Gather knowledge from your own sources.
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="zgf-step">
+                        <b>2</b>
+
+                        <div>
+                            <strong>Build &amp; Create</strong>
+                            <span>
+                                Turn ideas into projects worth showing.
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="zgf-step">
+                        <b>3</b>
+
+                        <div>
+                            <strong>Showcase &amp; Share</strong>
+                            <span>
+                                Build your resume and public portfolio.
+                            </span>
+                        </div>
+                    </div>
+
+
+                    <div class="zgf-step">
+                        <b>4</b>
+
+                        <div>
+                            <strong>Grow Smarter</strong>
+                            <span>
+                                Use Career AI to plan what comes next.
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- GEN Z -->
+    <section class="zgf-section">
+        <div class="zgf-container zgf-genz-grid">
+
+            <div class="zgf-genz-copy">
+
+                <div class="zgf-eyebrow">MADE FOR GEN Z</div>
+
+                <h2>
+                    Because your goals<br>
+                    are different <span>now.</span>
+                </h2>
+
+                <p>
+                    Whether you're figuring things out, learning on your own,
+                    building your first serious project or preparing for
+                    opportunities — ZEVQYN grows with you.
+                </p>
+
+
+                <div class="zgf-audience">
+
+                    <div>
+                        <i>▰</i>
+                        <strong>Students</strong>
+                        <span>Learn smarter</span>
+                    </div>
+
+                    <div>
+                        <i>&lt;/&gt;</i>
+                        <strong>Developers</strong>
+                        <span>Build &amp; show</span>
+                    </div>
+
+                    <div>
+                        <i>ϟ</i>
+                        <strong>Self-Learners</strong>
+                        <span>Turn curiosity into skills</span>
+                    </div>
+
+                    <div>
+                        <i>▣</i>
+                        <strong>Job Seekers</strong>
+                        <span>Get career ready</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zgf-desk-scene">
+
+                <div class="zgf-neon-note">
+                    Good ideas.<br>
+                    <strong>Better future.</strong>
+                </div>
+
+                <div class="zgf-desk-board">
+                    <span>PROJECT</span>
+                    <span>LEARN</span>
+                    <span>BUILD</span>
+                    <span>GROW</span>
+                </div>
+
+                <div class="zgf-desk-laptop">
+                    <div class="zgf-desk-screen">
+                        <strong>ZEVQYN</strong>
+                        <small>Build what's next.</small>
+                    </div>
+                </div>
+
+                <div class="zgf-coffee">☕</div>
+
+                <div class="zgf-desk-doodle">
+                    Discipline today<br>
+                    ↓<br>
+                    Dream career tomorrow
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CAREER AI -->
+    <section class="zgf-section">
+        <div class="zgf-container">
+
+            <div class="zgf-career-ai">
+
+                <div class="zgf-ai-copy">
+                    <div class="zgf-eyebrow">YOUR AI CAREER COPILOT</div>
+
+                    <h2>
+                        Advice that actually knows
+                        <span>what you've built.</span>
+                    </h2>
+
+                    <p>
+                        Career AI uses your real ZEVQYN profile instead of
+                        treating you like a blank page.
+                    </p>
+                </div>
+
+
+                <div class="zgf-ai-tool-grid">
+
+                    <div>
+                        <span>01</span>
+                        <strong>Profile Analysis</strong>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+                        <strong>Skill Gap</strong>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+                        <strong>Project Ideas</strong>
+                    </div>
+
+                    <div>
+                        <span>04</span>
+                        <strong>Resume Review</strong>
+                    </div>
+
+                    <div>
+                        <span>05</span>
+                        <strong>Portfolio Review</strong>
+                    </div>
+
+                    <div>
+                        <span>06</span>
+                        <strong>30 / 60 / 90 Plan</strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="zgf-final">
+        <div class="zgf-container">
+
+            <div class="zgf-final-box">
+
+                <div class="zgf-final-copy">
+
+                    <div class="zgf-hand-note">
+                        Your next era starts here ↘
+                    </div>
+
+                    <h2>
+                        Your future is a project.<br>
+                        Start building it with
+                        <span>ZEVQYN.</span>
+                    </h2>
+
+                    <p>
+                        Turn your ideas into real opportunities.
+                    </p>
+
+                    <a href="/register/" class="zgf-btn zgf-primary">
+                        Get Started Free <span>→</span>
+                    </a>
+
+                </div>
+
+
+                <div class="zgf-final-art">
+                    <div class="zgf-person-head"></div>
+                    <div class="zgf-person-body">ZEVQYN</div>
+
+                    <div class="zgf-final-doodle">
+                        Same student.<br>
+                        <strong>Bigger tomorrow.</strong>
+                        ♡
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+<!-- /wp:html -->

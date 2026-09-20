@@ -1,0 +1,3003 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+/* =========================================================
+   ZEVQYN CAREER AI
+   ========================================================= */
+
+#zev-career-ai,
+#zev-career-ai * {
+    box-sizing: border-box;
+}
+
+#zev-career-ai {
+    --bg: #07090d;
+    --panel: #0c1016;
+    --panel-2: #10151d;
+    --panel-3: #141a23;
+    --border: rgba(255, 255, 255, 0.08);
+    --border-hover: rgba(255, 255, 255, 0.15);
+    --text: #f4f7fb;
+    --muted: #8d97a8;
+    --muted-2: #697384;
+    --green: #79f2a6;
+    --green-soft: rgba(121, 242, 166, 0.11);
+    --cyan: #6ee7f5;
+    --violet: #9d7cff;
+
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background:
+        radial-gradient(circle at 76% 5%, rgba(78, 91, 255, 0.09), transparent 28%),
+        radial-gradient(circle at 45% 100%, rgba(56, 214, 151, 0.05), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.5;
+}
+
+/* Remove theme spacing around app where possible */
+.entry-content:has(#zev-career-ai),
+.wp-block-post-content:has(#zev-career-ai) {
+    margin: 0 !important;
+    padding: 0 !important;
+    max-width: none !important;
+}
+
+#zev-career-ai button,
+#zev-career-ai textarea,
+#zev-career-ai input,
+#zev-career-ai select {
+    font: inherit;
+}
+
+#zev-career-ai button {
+    color: inherit;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.zev-cai-sidebar {
+    width: 270px;
+    min-width: 270px;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 26px 18px 20px;
+    background: rgba(8, 11, 16, 0.94);
+    border-right: 1px solid var(--border);
+    backdrop-filter: blur(18px);
+    z-index: 10;
+}
+
+.zev-cai-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 7px;
+    margin-bottom: 28px;
+}
+
+.zev-cai-brand-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 auto;
+    font-weight: 800;
+    font-size: 16px;
+    color: #07100b;
+    background: linear-gradient(135deg, #8af5ae, #62dfbd);
+    box-shadow: 0 0 28px rgba(121, 242, 166, 0.12);
+}
+
+.zev-cai-brand strong,
+.zev-cai-brand span {
+    display: block;
+}
+
+.zev-cai-brand strong {
+    font-size: 15px;
+    letter-spacing: 0.08em;
+}
+
+.zev-cai-brand span {
+    margin-top: 1px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.zev-cai-new-chat {
+    width: 100%;
+    min-height: 45px;
+    border: 1px solid rgba(121, 242, 166, 0.2);
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    background: var(--green-soft);
+    color: #a5f7c2 !important;
+    font-size: 13px !important;
+    font-weight: 650;
+    transition: 0.2s ease;
+}
+
+.zev-cai-new-chat:hover {
+    transform: translateY(-1px);
+    background: rgba(121, 242, 166, 0.16);
+    border-color: rgba(121, 242, 166, 0.32);
+}
+
+.zev-cai-new-chat span {
+    font-size: 18px;
+    line-height: 1;
+}
+
+.zev-cai-sidebar-label {
+    margin: 27px 8px 11px;
+    color: var(--muted-2);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.zev-cai-conversations {
+    flex: 1;
+    overflow-y: auto;
+    min-height: 100px;
+}
+
+.zev-cai-history-placeholder {
+    padding: 15px 10px;
+    color: var(--muted-2);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.zev-cai-conversations::-webkit-scrollbar,
+.zev-cai-chat-messages::-webkit-scrollbar {
+    width: 5px;
+}
+
+.zev-cai-conversations::-webkit-scrollbar-thumb,
+.zev-cai-chat-messages::-webkit-scrollbar-thumb {
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.zev-cai-sidebar-bottom {
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+}
+
+.zev-cai-back {
+    min-height: 42px;
+    padding: 0 10px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--muted) !important;
+    text-decoration: none !important;
+    font-size: 12px;
+    transition: 0.2s ease;
+}
+
+.zev-cai-back:hover {
+    color: var(--text) !important;
+    background: rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================================
+   MAIN
+   ========================================================= */
+
+.zev-cai-main {
+    width: calc(100% - 270px);
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 38px 44px 60px;
+}
+
+.zev-cai-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 35px;
+}
+
+.zev-cai-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 9px;
+    color: #9aa5b6;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.zev-cai-status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--green);
+    box-shadow: 0 0 10px rgba(121, 242, 166, 0.7);
+}
+
+.zev-cai-header h1 {
+    margin: 0;
+    color: var(--text);
+    font-size: clamp(31px, 4vw, 45px);
+    line-height: 1.08;
+    letter-spacing: -0.04em;
+}
+
+.zev-cai-header p {
+    margin: 9px 0 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.zev-cai-profile-link {
+    min-height: 42px;
+    padding: 0 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: #dce2eb !important;
+    background: rgba(255, 255, 255, 0.025);
+    text-decoration: none !important;
+    font-size: 12px;
+    font-weight: 600;
+    transition: 0.2s ease;
+}
+
+.zev-cai-profile-link:hover {
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+/* =========================================================
+   TOOLKIT
+   ========================================================= */
+
+.zev-cai-toolkit {
+    margin-bottom: 28px;
+}
+
+.zev-cai-section-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 16px;
+}
+
+.zev-cai-section-kicker {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--muted-2);
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: 0.14em;
+}
+
+.zev-cai-section-heading h2 {
+    margin: 0;
+    color: #e9edf4;
+    font-size: 18px;
+    letter-spacing: -0.02em;
+}
+
+.zev-cai-grounded {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.zev-cai-grounded > span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+}
+
+.zev-cai-tools {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.zev-cai-tool-card {
+    min-height: 112px;
+    padding: 17px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: 37px 1fr 20px;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    cursor: pointer;
+    background:
+        linear-gradient(135deg, rgba(255, 255, 255, 0.025), transparent 55%),
+        var(--panel);
+    transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.zev-cai-tool-card:hover {
+    transform: translateY(-2px);
+    border-color: rgba(121, 242, 166, 0.2);
+    background:
+        linear-gradient(135deg, rgba(121, 242, 166, 0.05), transparent 55%),
+        var(--panel-2);
+}
+
+.zev-cai-tool-icon {
+    width: 37px;
+    height: 37px;
+    border: 1px solid rgba(121, 242, 166, 0.13);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    background: rgba(121, 242, 166, 0.07);
+    color: var(--green);
+    font-size: 16px;
+}
+
+.zev-cai-tool-card h3 {
+    margin: 1px 0 4px;
+    color: #eef2f7;
+    font-size: 13px;
+    font-weight: 650;
+}
+
+.zev-cai-tool-card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.55;
+}
+
+.zev-cai-tool-arrow {
+    align-self: center;
+    color: #586373;
+    font-size: 16px;
+    transition: 0.2s ease;
+}
+
+.zev-cai-tool-card:hover .zev-cai-tool-arrow {
+    color: var(--green);
+    transform: translateX(2px);
+}
+
+/* =========================================================
+   CHAT
+   ========================================================= */
+
+.zev-cai-chat-shell {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 17px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(102, 115, 255, 0.05), transparent 35%),
+        rgba(10, 14, 20, 0.92);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+}
+
+.zev-cai-chat-topbar {
+    min-height: 67px;
+    padding: 0 19px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.zev-cai-ai-identity {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.zev-cai-ai-logo {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    color: #09110c;
+    background: linear-gradient(135deg, #89f6ad, #66e0bd);
+    font-size: 15px;
+}
+
+.zev-cai-ai-identity strong,
+.zev-cai-ai-identity span {
+    display: block;
+}
+
+.zev-cai-ai-identity strong {
+    color: #edf2f8;
+    font-size: 13px;
+}
+
+.zev-cai-ai-identity span {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.zev-cai-icon-button {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.025);
+    color: #cbd3df !important;
+    font-size: 17px !important;
+    transition: 0.2s ease;
+}
+
+.zev-cai-icon-button:hover {
+    border-color: var(--border-hover);
+    background: rgba(255, 255, 255, 0.055);
+}
+
+.zev-cai-chat-messages {
+    height: 440px;
+    overflow-y: auto;
+    padding: 24px;
+    scroll-behavior: smooth;
+}
+
+.zev-cai-welcome {
+    max-width: 670px;
+    min-height: 380px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.zev-cai-welcome-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(121, 242, 166, 0.16);
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    color: var(--green);
+    background: var(--green-soft);
+    box-shadow: 0 0 35px rgba(121, 242, 166, 0.06);
+    font-size: 20px;
+}
+
+.zev-cai-welcome h2 {
+    margin: 0 0 8px;
+    color: #f1f4f8;
+    font-size: 23px;
+    letter-spacing: -0.03em;
+}
+
+.zev-cai-welcome > p {
+    max-width: 560px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.zev-cai-prompts {
+    width: 100%;
+    max-width: 610px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.zev-cai-prompt {
+    min-height: 45px;
+    padding: 10px 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    background: rgba(255, 255, 255, 0.02);
+    color: #b9c2cf !important;
+    font-size: 11px !important;
+    transition: 0.2s ease;
+}
+
+.zev-cai-prompt:hover {
+    border-color: rgba(121, 242, 166, 0.2);
+    color: #eaf5ee !important;
+    background: rgba(121, 242, 166, 0.045);
+}
+
+/* Future JS chat message styling */
+.zev-cai-message {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+}
+
+.zev-cai-message-user {
+    justify-content: flex-end;
+}
+
+.zev-cai-message-avatar {
+    width: 30px;
+    height: 30px;
+    flex: 0 0 30px;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 11px;
+}
+
+.zev-cai-message-content {
+    max-width: min(720px, 78%);
+    padding: 12px 14px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: var(--panel-2);
+    color: #cdd5df;
+    font-size: 12px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.zev-cai-message-user .zev-cai-message-content {
+    border-color: rgba(121, 242, 166, 0.14);
+    background: rgba(121, 242, 166, 0.075);
+    color: #e5ece8;
+}
+
+/* =========================================================
+   TYPING
+   ========================================================= */
+
+.zev-cai-typing {
+    padding: 0 24px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.zev-cai-typing[hidden] {
+    display: none !important;
+}
+
+.zev-cai-typing-bubble {
+    height: 34px;
+    padding: 0 13px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    background: var(--panel-2);
+}
+
+.zev-cai-typing-bubble span {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: #8d98a7;
+    animation: zevCaiTyping 1.1s infinite ease-in-out;
+}
+
+.zev-cai-typing-bubble span:nth-child(2) {
+    animation-delay: 0.15s;
+}
+
+.zev-cai-typing-bubble span:nth-child(3) {
+    animation-delay: 0.3s;
+}
+
+@keyframes zevCaiTyping {
+    0%,
+    60%,
+    100% {
+        opacity: 0.35;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+/* =========================================================
+   COMPOSER
+   ========================================================= */
+
+.zev-cai-composer-wrap {
+    padding: 15px 18px 14px;
+    border-top: 1px solid var(--border);
+    background: rgba(6, 9, 13, 0.58);
+}
+
+.zev-cai-composer {
+    min-height: 52px;
+    padding: 7px 7px 7px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 13px;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    background: #0d1219;
+    transition: 0.2s ease;
+}
+
+.zev-cai-composer:focus-within {
+    border-color: rgba(121, 242, 166, 0.3);
+    box-shadow: 0 0 0 3px rgba(121, 242, 166, 0.04);
+}
+
+#zev-cai-input {
+    width: 100%;
+    min-height: 35px;
+    max-height: 130px;
+    padding: 8px 0;
+    border: 0 !important;
+    outline: 0 !important;
+    resize: none;
+    overflow-y: auto;
+    background: transparent !important;
+    box-shadow: none !important;
+    color: #e9eef5 !important;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+#zev-cai-input::placeholder {
+    color: #626d7c;
+}
+
+#zev-cai-send {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+    padding: 0;
+    border: 0;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: var(--green);
+    color: #07100b !important;
+    font-size: 19px !important;
+    font-weight: 800;
+    transition: 0.2s ease;
+}
+
+#zev-cai-send:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+}
+
+#zev-cai-send:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.zev-cai-composer-meta {
+    margin-top: 7px;
+    padding: 0 3px;
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    color: #626d7c;
+    font-size: 9px;
+}
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.zev-cai-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: grid;
+    place-items: center;
+    padding: 22px;
+}
+
+.zev-cai-modal[hidden] {
+    display: none !important;
+}
+
+.zev-cai-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(2, 4, 7, 0.78);
+    backdrop-filter: blur(8px);
+}
+
+.zev-cai-modal-card {
+    position: relative;
+    z-index: 1;
+    width: min(760px, 100%);
+    max-height: 86vh;
+    overflow-y: auto;
+    padding: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    background:
+        radial-gradient(circle at 100% 0%, rgba(105, 83, 255, 0.08), transparent 35%),
+        #0c1118;
+    box-shadow: 0 30px 100px rgba(0, 0, 0, 0.5);
+}
+
+.zev-cai-modal-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--border);
+}
+
+#zev-cai-modal-kicker {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--green);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+}
+
+.zev-cai-modal-header h2 {
+    margin: 0;
+    color: #f1f4f8;
+    font-size: 21px;
+}
+
+.zev-cai-modal-close {
+    width: 34px;
+    height: 34px;
+    padding: 0;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.025);
+    color: #aab4c2 !important;
+    font-size: 19px !important;
+}
+
+.zev-cai-modal-form,
+.zev-cai-modal-result {
+    padding-top: 20px;
+}
+
+.zev-cai-modal-result:empty {
+    display: none;
+}
+
+.zev-cai-modal-loading {
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.zev-cai-modal-loading[hidden] {
+    display: none !important;
+}
+
+.zev-cai-modal-loading strong {
+    margin-top: 15px;
+    color: #e6ebf2;
+    font-size: 13px;
+}
+
+.zev-cai-modal-loading span {
+    margin-top: 4px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.zev-cai-loader {
+    width: 35px;
+    height: 35px;
+    border: 3px solid rgba(255, 255, 255, 0.08);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: zevCaiSpin 0.75s linear infinite;
+}
+
+@keyframes zevCaiSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Fields/results used by upcoming JS */
+.zev-cai-field {
+    margin-bottom: 15px;
+}
+
+.zev-cai-field label {
+    display: block;
+    margin-bottom: 6px;
+    color: #cbd3dd;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.zev-cai-field input,
+.zev-cai-field select {
+    width: 100%;
+    min-height: 43px;
+    padding: 0 12px;
+    border: 1px solid var(--border) !important;
+    border-radius: 10px;
+    outline: none;
+    background: #0a0f15 !important;
+    color: #e4e9f0 !important;
+    font-size: 12px;
+}
+
+.zev-cai-field input:focus,
+.zev-cai-field select:focus {
+    border-color: rgba(121, 242, 166, 0.3) !important;
+}
+
+.zev-cai-modal-action {
+    min-height: 43px;
+    padding: 0 16px;
+    border: 0;
+    border-radius: 10px;
+    cursor: pointer;
+    background: var(--green);
+    color: #07100b !important;
+    font-size: 11px !important;
+    font-weight: 750;
+}
+
+.zev-cai-result-card {
+    margin-bottom: 10px;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: rgba(255, 255, 255, 0.022);
+}
+
+.zev-cai-result-card h3 {
+    margin: 0 0 7px;
+    color: #edf1f6;
+    font-size: 13px;
+}
+
+.zev-cai-result-card p,
+.zev-cai-result-card li {
+    color: #a8b2c0;
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+.zev-cai-result-card ul {
+    margin: 7px 0 0;
+    padding-left: 18px;
+}
+
+.zev-cai-score {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(121, 242, 166, 0.18);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--green-soft);
+    color: var(--green);
+    font-size: 19px;
+    font-weight: 750;
+}
+
+/* =========================================================
+   TOAST
+   ========================================================= */
+
+.zev-cai-toast {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+    z-index: 1000000;
+    max-width: 340px;
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: #121821;
+    color: #dfe5ed;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.35);
+    font-size: 11px;
+}
+
+.zev-cai-toast[hidden] {
+    display: none !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+    .zev-cai-sidebar {
+        width: 225px;
+        min-width: 225px;
+    }
+
+    .zev-cai-main {
+        width: calc(100% - 225px);
+        padding: 32px 25px 50px;
+    }
+
+    .zev-cai-tools {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 760px) {
+    #zev-career-ai {
+        display: block;
+    }
+
+    .zev-cai-sidebar {
+        position: relative;
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+        padding: 15px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .zev-cai-brand {
+        margin-bottom: 14px;
+    }
+
+    .zev-cai-sidebar-label,
+    .zev-cai-conversations,
+    .zev-cai-sidebar-bottom {
+        display: none;
+    }
+
+    .zev-cai-new-chat {
+        min-height: 41px;
+    }
+
+    .zev-cai-main {
+        width: 100%;
+        padding: 25px 15px 40px;
+    }
+
+    .zev-cai-header {
+        align-items: flex-start;
+        margin-bottom: 27px;
+    }
+
+    .zev-cai-profile-link {
+        padding: 0 11px;
+    }
+
+    .zev-cai-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .zev-cai-tools {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-cai-tool-card {
+        min-height: 100px;
+    }
+
+    .zev-cai-chat-messages {
+        height: 500px;
+        padding: 18px 13px;
+    }
+
+    .zev-cai-prompts {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-cai-message-content {
+        max-width: 88%;
+    }
+
+    .zev-cai-composer-wrap {
+        padding: 12px;
+    }
+
+    .zev-cai-composer-meta span:first-child {
+        display: none;
+    }
+
+    .zev-cai-composer-meta {
+        justify-content: flex-end;
+    }
+}
+
+@media (max-width: 480px) {
+    .zev-cai-header {
+        display: block;
+    }
+
+    .zev-cai-profile-link {
+        margin-top: 15px;
+    }
+
+    .zev-cai-header h1 {
+        font-size: 32px;
+    }
+
+    .zev-cai-modal {
+        padding: 10px;
+    }
+
+    .zev-cai-modal-card {
+        padding: 18px;
+        border-radius: 14px;
+    }
+}
+
+.zev-cai-conversation-item {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 28px;
+    gap: 4px;
+    margin-bottom: 4px;
+    border-radius: 9px;
+}
+
+.zev-cai-conversation-item.is-active {
+    background: rgba(121, 242, 166, 0.07);
+}
+
+.zev-cai-conversation-open,
+.zev-cai-conversation-delete {
+    border: 0;
+    cursor: pointer;
+    background: transparent;
+}
+
+.zev-cai-conversation-open {
+    overflow: hidden;
+    min-height: 39px;
+    padding: 0 9px;
+    color: #98a3b2 !important;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 11px !important;
+}
+
+.zev-cai-conversation-item:hover {
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.zev-cai-conversation-item.is-active .zev-cai-conversation-open {
+    color: #dff8e8 !important;
+}
+
+.zev-cai-conversation-delete {
+    color: #606b79 !important;
+    font-size: 15px !important;
+}
+
+.zev-cai-conversation-delete:hover {
+    color: #ff8c96 !important;
+}
+/* ===== CAREER AI FINAL RESULT + MARKDOWN STYLES ===== */
+
+.zev-cai-message-content strong {
+    color: #f0f5f8;
+    font-weight: 700;
+}
+
+.zev-cai-ai-heading {
+    margin: 10px 0 5px;
+    color: #f1f5f8;
+    font-weight: 700;
+}
+
+.zev-cai-ai-list-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin: 5px 0;
+}
+
+.zev-cai-ai-list-number {
+    min-width: 18px;
+    color: var(--green);
+    font-weight: 700;
+}
+
+.zev-cai-score-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+}
+
+.zev-cai-score-wrap .zev-cai-score {
+    margin: 0;
+}
+
+.zev-cai-score-wrap > div:last-child strong,
+.zev-cai-score-wrap > div:last-child span {
+    display: block;
+}
+
+.zev-cai-score-wrap > div:last-child strong {
+    color: #edf3f7;
+    font-size: 14px;
+}
+
+.zev-cai-score-wrap > div:last-child span {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 10px;
+}
+
+.zev-cai-result-title-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.zev-cai-result-title-row h3 {
+    margin-right: auto;
+}
+
+.zev-cai-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 23px;
+    padding: 3px 8px;
+    border: 1px solid rgba(121, 242, 166, 0.14);
+    border-radius: 20px;
+    background: rgba(121, 242, 166, 0.07);
+    color: #9cf2bb;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.zev-cai-mini-list {
+    margin-top: 12px;
+}
+
+.zev-cai-mini-list > strong {
+    display: block;
+    margin-bottom: 7px;
+    color: #cdd5df;
+    font-size: 10px;
+}
+
+.zev-cai-mini-list > div {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.zev-cai-chip {
+    padding: 4px 7px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.025);
+    color: #9da8b6;
+    font-size: 9px;
+}
+
+.zev-cai-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 7px;
+    margin-top: 10px;
+}
+
+.zev-cai-stat-item {
+    padding: 10px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.zev-cai-stat-item strong,
+.zev-cai-stat-item span {
+    display: block;
+}
+
+.zev-cai-stat-item strong {
+    color: var(--green);
+    font-size: 16px;
+}
+
+.zev-cai-stat-item span {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 9px;
+}
+
+.zev-cai-plan-item {
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+}
+
+.zev-cai-plan-item:first-of-type {
+    margin-top: 7px;
+}
+
+.zev-cai-plan-item strong {
+    color: #e4eaf0;
+    font-size: 11px;
+}
+
+.zev-cai-plan-item p {
+    margin: 6px 0 8px;
+}
+
+.zev-cai-error-card {
+    border-color: rgba(255, 113, 125, 0.18);
+    background: rgba(255, 113, 125, 0.035);
+}
+
+.zev-cai-error-card h3 {
+    color: #ff9ba4;
+}
+
+.zev-cai-action-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none !important;
+}
+
+@media (max-width: 520px) {
+    .zev-cai-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+</style>
+
+<script data-wp-block-html="js">
+(function () {
+    "use strict";
+
+    var API_BASE = "https://zevqyn-backend.onrender.com/api/v1";
+    var SUPABASE_URL = "https://phjizxajnigiiawitkyx.supabase.co";
+    var SUPABASE_KEY = "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+    var supabaseClient = null;
+    var accessToken = "";
+    var activeConversationId = null;
+    var isSending = false;
+    var activeTool = null;
+
+    var TOOL_CONFIG = {
+        analyze: {
+            title: "Profile Analysis",
+            kicker: "CAREER READINESS"
+        },
+        "skill-gap": {
+            title: "Skill Gap Analysis",
+            kicker: "TARGET ROLE"
+        },
+        projects: {
+            title: "Personalized Project Ideas",
+            kicker: "PROJECT STRATEGY"
+        },
+        resume: {
+            title: "Resume Review",
+            kicker: "RESUME AI"
+        },
+        portfolio: {
+            title: "Portfolio Review",
+            kicker: "PORTFOLIO AI"
+        },
+        plan: {
+            title: "30 / 60 / 90 Career Plan",
+            kicker: "CAREER ROADMAP"
+        }
+    };
+
+    function zevCaiInitialize() {
+        loadSupabaseLibrary()
+            .then(function () {
+                supabaseClient = window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_KEY
+                );
+
+                return supabaseClient.auth.getSession();
+            })
+            .then(function (result) {
+                var session = null;
+
+                if (result.data) {
+                    session = result.data.session;
+                }
+
+                if (!session) {
+                    window.location.href = "/login/";
+                    return;
+                }
+
+                accessToken = session.access_token;
+
+                bindEvents();
+                updateComposer();
+                loadConversations();
+            })
+            .catch(function (error) {
+                console.error("Career AI initialization error:", error);
+                showToast("Could not initialize Career AI.");
+            });
+    }
+
+    function loadSupabaseLibrary() {
+        return new Promise(function (resolve, reject) {
+            if (window.supabase) {
+                resolve();
+                return;
+            }
+
+            var existing = document.querySelector(
+                'script[src*="supabase-js"]'
+            );
+
+            if (existing) {
+                existing.addEventListener("load", resolve);
+                existing.addEventListener("error", reject);
+                return;
+            }
+
+            var script = document.createElement("script");
+            script.src =
+                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+            script.onload = resolve;
+            script.onerror = reject;
+
+            document.head.appendChild(script);
+        });
+    }
+
+    function bindEvents() {
+        var sendButton = document.getElementById("zev-cai-send");
+        var input = document.getElementById("zev-cai-input");
+        var newChat = document.getElementById("zev-cai-new-chat");
+        var clearChat = document.getElementById("zev-cai-clear-chat");
+        var modalClose = document.getElementById("zev-cai-modal-close");
+        var backdrop = document.querySelector("[data-close-modal]");
+        var toolCards = document.querySelectorAll(".zev-cai-tool-card");
+        var prompts = document.querySelectorAll(".zev-cai-prompt");
+
+        if (sendButton) {
+            sendButton.addEventListener("click", sendMessage);
+        }
+
+        if (input) {
+            input.addEventListener("input", updateComposer);
+
+            input.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" && !event.shiftKey) {
+                    event.preventDefault();
+                    sendMessage();
+                }
+            });
+        }
+
+        if (newChat) {
+            newChat.addEventListener("click", startNewConversation);
+        }
+
+        if (clearChat) {
+            clearChat.addEventListener("click", startNewConversation);
+        }
+
+        if (modalClose) {
+            modalClose.addEventListener("click", closeModal);
+        }
+
+        if (backdrop) {
+            backdrop.addEventListener("click", closeModal);
+        }
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape") {
+                closeModal();
+            }
+        });
+
+        prompts.forEach(function (button) {
+            bindPrompt(button);
+        });
+
+        toolCards.forEach(function (card) {
+            card.addEventListener("click", function () {
+                openTool(card.getAttribute("data-tool"));
+            });
+        });
+    }
+
+    function bindPrompt(button) {
+        button.addEventListener("click", function () {
+            var input = document.getElementById("zev-cai-input");
+
+            if (!input) {
+                return;
+            }
+
+            input.value = button.textContent.trim();
+            updateComposer();
+            sendMessage();
+        });
+    }
+
+    function apiRequest(path, options) {
+        var requestOptions = options || {};
+        var headers = requestOptions.headers || {};
+
+        headers.Authorization = "Bearer " + accessToken;
+        headers.Accept = "application/json";
+
+        if (requestOptions.body) {
+            headers["Content-Type"] = "application/json";
+        }
+
+        requestOptions.headers = headers;
+
+        return fetch(API_BASE + path, requestOptions)
+            .then(function (response) {
+                if (response.status === 401) {
+                    window.location.href = "/login/";
+                    throw new Error("Authentication expired.");
+                }
+
+                return response.text().then(function (text) {
+                    var data = null;
+
+                    if (text) {
+                        try {
+                            data = JSON.parse(text);
+                        } catch (error) {
+                            data = null;
+                        }
+                    }
+
+                    if (!response.ok) {
+                        throw new Error(extractErrorMessage(data));
+                    }
+
+                    return data;
+                });
+            });
+    }
+
+    function extractErrorMessage(data) {
+        if (!data) {
+            return "Request failed. Please try again.";
+        }
+
+        if (typeof data.detail === "string") {
+            return data.detail;
+        }
+
+        if (Array.isArray(data.detail)) {
+            return data.detail
+                .map(function (item) {
+                    if (item.msg) {
+                        return item.msg;
+                    }
+
+                    return "Invalid input.";
+                })
+                .join(" ");
+        }
+
+        return "Request failed. Please try again.";
+    }
+
+    /* =====================================================
+       CHAT + CONVERSATIONS
+       ===================================================== */
+
+    function loadConversations() {
+        return apiRequest("/career/ai/conversations", {
+            method: "GET"
+        })
+            .then(function (conversations) {
+                renderConversations(conversations || []);
+            })
+            .catch(function (error) {
+                console.error("Conversation loading error:", error);
+                showToast("Could not load previous conversations.");
+            });
+    }
+
+    function renderConversations(conversations) {
+        var container = document.getElementById(
+            "zev-cai-conversations"
+        );
+
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = "";
+
+        if (!conversations.length) {
+            container.innerHTML =
+                '<div class="zev-cai-history-placeholder">' +
+                "No conversations yet. Start your first chat." +
+                "</div>";
+            return;
+        }
+
+        conversations.forEach(function (conversation) {
+            var row = document.createElement("div");
+            row.className = "zev-cai-conversation-item";
+
+            if (conversation.id === activeConversationId) {
+                row.classList.add("is-active");
+            }
+
+            var openButton = document.createElement("button");
+            openButton.type = "button";
+            openButton.className = "zev-cai-conversation-open";
+            openButton.textContent =
+                conversation.title || "Career conversation";
+
+            openButton.addEventListener("click", function () {
+                openConversation(conversation.id);
+            });
+
+            var deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "zev-cai-conversation-delete";
+            deleteButton.textContent = "×";
+            deleteButton.title = "Delete conversation";
+
+            deleteButton.addEventListener("click", function (event) {
+                event.stopPropagation();
+                deleteConversation(conversation.id);
+            });
+
+            row.appendChild(openButton);
+            row.appendChild(deleteButton);
+            container.appendChild(row);
+        });
+    }
+
+    function openConversation(conversationId) {
+        apiRequest(
+            "/career/ai/conversations/" +
+                encodeURIComponent(conversationId),
+            {
+                method: "GET"
+            }
+        )
+            .then(function (conversation) {
+                activeConversationId = conversation.id;
+
+                renderConversationMessages(
+                    conversation.messages || []
+                );
+
+                return loadConversations();
+            })
+            .catch(function (error) {
+                console.error("Conversation error:", error);
+                showToast(error.message);
+            });
+    }
+
+    function renderConversationMessages(messages) {
+        var container = document.getElementById(
+            "zev-cai-chat-messages"
+        );
+
+        if (!container) {
+            return;
+        }
+
+        container.innerHTML = "";
+
+        messages.forEach(function (message) {
+            appendMessage(message.role, message.content);
+        });
+
+        if (!messages.length) {
+            restoreWelcome();
+        }
+
+        scrollChatToBottom();
+    }
+
+    function sendMessage() {
+        if (isSending) {
+            return;
+        }
+
+        var input = document.getElementById("zev-cai-input");
+
+        if (!input) {
+            return;
+        }
+
+        var message = input.value.trim();
+
+        if (!message) {
+            return;
+        }
+
+        if (message.length > 2000) {
+            showToast("Message must be 2000 characters or less.");
+            return;
+        }
+
+        isSending = true;
+        setSendingState(true);
+
+        removeWelcome();
+        appendMessage("user", message);
+
+        input.value = "";
+        updateComposer();
+        showTyping(true);
+
+        var body = {
+            message: message
+        };
+
+        if (activeConversationId) {
+            body.conversation_id = activeConversationId;
+        }
+
+        apiRequest("/career/ai/chat", {
+            method: "POST",
+            body: JSON.stringify(body)
+        })
+            .then(function (response) {
+                activeConversationId = response.conversation_id;
+
+                showTyping(false);
+                appendMessage("assistant", response.answer);
+
+                return loadConversations();
+            })
+            .catch(function (error) {
+                console.error("Career AI chat error:", error);
+
+                showTyping(false);
+
+                appendMessage(
+                    "assistant",
+                    "I couldn't complete that request. " +
+                        error.message
+                );
+            })
+            .finally(function () {
+                isSending = false;
+                setSendingState(false);
+            });
+    }
+
+    function appendMessage(role, content) {
+        var container = document.getElementById(
+            "zev-cai-chat-messages"
+        );
+
+        if (!container) {
+            return;
+        }
+
+        removeWelcome();
+
+        var wrapper = document.createElement("div");
+        wrapper.className = "zev-cai-message";
+
+        if (role === "user") {
+            wrapper.classList.add("zev-cai-message-user");
+        } else {
+            wrapper.classList.add("zev-cai-message-assistant");
+        }
+
+        if (role !== "user") {
+            var avatar = document.createElement("div");
+            avatar.className = "zev-cai-message-avatar";
+            avatar.textContent = "✦";
+            wrapper.appendChild(avatar);
+        }
+
+        var bubble = document.createElement("div");
+        bubble.className = "zev-cai-message-content";
+
+        if (role === "user") {
+            bubble.textContent = content || "";
+        } else {
+            bubble.innerHTML = formatAiText(content || "");
+        }
+
+        wrapper.appendChild(bubble);
+        container.appendChild(wrapper);
+
+        scrollChatToBottom();
+    }
+
+    function startNewConversation() {
+        activeConversationId = null;
+
+        var container = document.getElementById(
+            "zev-cai-chat-messages"
+        );
+
+        if (container) {
+            container.innerHTML = "";
+        }
+
+        restoreWelcome();
+        loadConversations();
+
+        var input = document.getElementById("zev-cai-input");
+
+        if (input) {
+            input.value = "";
+            updateComposer();
+            input.focus();
+        }
+    }
+
+    function deleteConversation(conversationId) {
+        var confirmed = window.confirm(
+            "Delete this Career AI conversation?"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        apiRequest(
+            "/career/ai/conversations/" +
+                encodeURIComponent(conversationId),
+            {
+                method: "DELETE"
+            }
+        )
+            .then(function () {
+                if (activeConversationId === conversationId) {
+                    activeConversationId = null;
+
+                    var container = document.getElementById(
+                        "zev-cai-chat-messages"
+                    );
+
+                    if (container) {
+                        container.innerHTML = "";
+                    }
+
+                    restoreWelcome();
+                }
+
+                showToast("Conversation deleted.");
+                return loadConversations();
+            })
+            .catch(function (error) {
+                console.error("Delete conversation error:", error);
+                showToast(error.message);
+            });
+    }
+
+    function removeWelcome() {
+        var welcome = document.getElementById("zev-cai-welcome");
+
+        if (welcome) {
+            welcome.remove();
+        }
+    }
+
+    function restoreWelcome() {
+        var container = document.getElementById(
+            "zev-cai-chat-messages"
+        );
+
+        if (!container) {
+            return;
+        }
+
+        if (document.getElementById("zev-cai-welcome")) {
+            return;
+        }
+
+        var welcome = document.createElement("div");
+        welcome.id = "zev-cai-welcome";
+        welcome.className = "zev-cai-welcome";
+
+        welcome.innerHTML =
+            '<div class="zev-cai-welcome-icon">✦</div>' +
+            "<h2>Where do you want your career to go?</h2>" +
+            "<p>I can use your projects, skills, education, " +
+            "certificates, resumes and portfolio to give you " +
+            "personalized guidance.</p>" +
+            '<div class="zev-cai-prompts">' +
+            '<button type="button" class="zev-cai-prompt">' +
+            "What should I learn next?" +
+            "</button>" +
+            '<button type="button" class="zev-cai-prompt">' +
+            "How can I become a backend developer?" +
+            "</button>" +
+            '<button type="button" class="zev-cai-prompt">' +
+            "Which project should I build next?" +
+            "</button>" +
+            '<button type="button" class="zev-cai-prompt">' +
+            "What are the biggest gaps in my profile?" +
+            "</button>" +
+            "</div>";
+
+        container.appendChild(welcome);
+
+        welcome.querySelectorAll(".zev-cai-prompt")
+            .forEach(function (button) {
+                bindPrompt(button);
+            });
+    }
+
+    /* =====================================================
+       TOOLKIT
+       ===================================================== */
+
+    function openTool(tool) {
+        if (!TOOL_CONFIG[tool]) {
+            return;
+        }
+
+        activeTool = tool;
+
+        var modal = document.getElementById("zev-cai-modal");
+        var title = document.getElementById("zev-cai-modal-title");
+        var kicker = document.getElementById(
+            "zev-cai-modal-kicker"
+        );
+        var form = document.getElementById("zev-cai-modal-form");
+        var result = document.getElementById(
+            "zev-cai-modal-result"
+        );
+
+        title.textContent = TOOL_CONFIG[tool].title;
+        kicker.textContent = TOOL_CONFIG[tool].kicker;
+        form.innerHTML = "";
+result.innerHTML = "";
+
+/* Always restore the form when opening a tool */
+form.style.display = "";
+
+setModalLoading(false);
+modal.hidden = false;
+
+        if (tool === "analyze") {
+            renderAnalyzeForm();
+            return;
+        }
+
+        if (tool === "skill-gap") {
+            renderRoleForm(
+                "Target role",
+                "e.g. Backend Engineer",
+                "Analyze Skill Gap"
+            );
+            return;
+        }
+
+        if (tool === "projects") {
+            renderProjectForm();
+            return;
+        }
+
+        if (tool === "resume") {
+            renderResumeSelector();
+            return;
+        }
+
+        if (tool === "portfolio") {
+            renderPortfolioSelector();
+            return;
+        }
+
+        if (tool === "plan") {
+            renderRoleForm(
+                "Target role",
+                "e.g. AI Engineer",
+                "Generate Career Plan"
+            );
+        }
+    }
+
+    function closeModal() {
+        var modal = document.getElementById("zev-cai-modal");
+
+        if (modal) {
+            modal.hidden = true;
+        }
+
+        activeTool = null;
+    }
+
+    function renderAnalyzeForm() {
+        var form = getModalForm();
+
+        form.innerHTML =
+            '<div class="zev-cai-result-card">' +
+            "<h3>Career readiness analysis</h3>" +
+            "<p>Career AI will analyze your saved profile, " +
+            "projects, skills, education, certificates, resumes " +
+            "and portfolios.</p>" +
+            "</div>" +
+            '<button type="button" class="zev-cai-modal-action" ' +
+            'id="zev-cai-run-tool">Analyze My Profile</button>';
+
+        bindRunTool();
+    }
+
+    function renderRoleForm(label, placeholder, buttonText) {
+        var form = getModalForm();
+
+        form.innerHTML =
+            '<div class="zev-cai-field">' +
+            "<label>" + escapeHtml(label) + "</label>" +
+            '<input id="zev-cai-target-role" type="text" ' +
+            'maxlength="150" placeholder="' +
+            escapeHtml(placeholder) + '">' +
+            "</div>" +
+            '<button type="button" class="zev-cai-modal-action" ' +
+            'id="zev-cai-run-tool">' +
+            escapeHtml(buttonText) +
+            "</button>";
+
+        bindRunTool();
+    }
+
+    function renderProjectForm() {
+        var form = getModalForm();
+
+        form.innerHTML =
+            '<div class="zev-cai-field">' +
+            "<label>Target role (optional)</label>" +
+            '<input id="zev-cai-target-role" type="text" ' +
+            'maxlength="150" placeholder="e.g. Full Stack Developer">' +
+            "</div>" +
+            '<div class="zev-cai-field">' +
+            "<label>Number of ideas</label>" +
+            '<select id="zev-cai-project-count">' +
+            '<option value="1">1 project</option>' +
+            '<option value="2">2 projects</option>' +
+            '<option value="3" selected>3 projects</option>' +
+            '<option value="4">4 projects</option>' +
+            '<option value="5">5 projects</option>' +
+            "</select>" +
+            "</div>" +
+            '<button type="button" class="zev-cai-modal-action" ' +
+            'id="zev-cai-run-tool">Generate Project Ideas</button>';
+
+        bindRunTool();
+    }
+
+    function renderResumeSelector() {
+        var form = getModalForm();
+
+        form.innerHTML =
+            '<div class="zev-cai-result-card">' +
+            "<p>Loading your resumes...</p>" +
+            "</div>";
+
+        apiRequest("/resumes", {
+            method: "GET"
+        })
+            .then(function (resumes) {
+                if (!resumes.length) {
+                    form.innerHTML =
+                        emptySelectorMessage(
+                            "No resumes found.",
+                            "/resume/",
+                            "Open Resume Builder"
+                        );
+                    return;
+                }
+
+                var options = resumes.map(function (resume) {
+                    var label = resume.name;
+
+                    if (resume.professional_title) {
+                        label += " — " + resume.professional_title;
+                    }
+
+                    return (
+                        '<option value="' +
+                        escapeAttribute(resume.id) +
+                        '">' +
+                        escapeHtml(label) +
+                        "</option>"
+                    );
+                }).join("");
+
+                form.innerHTML =
+                    '<div class="zev-cai-field">' +
+                    "<label>Select resume</label>" +
+                    '<select id="zev-cai-resume-id">' +
+                    options +
+                    "</select>" +
+                    "</div>" +
+                    '<button type="button" ' +
+                    'class="zev-cai-modal-action" ' +
+                    'id="zev-cai-run-tool">Review Resume</button>';
+
+                bindRunTool();
+            })
+            .catch(function (error) {
+                form.innerHTML = errorCard(error.message);
+            });
+    }
+
+    function renderPortfolioSelector() {
+        var form = getModalForm();
+
+        form.innerHTML =
+            '<div class="zev-cai-result-card">' +
+            "<p>Loading your portfolios...</p>" +
+            "</div>";
+
+        apiRequest("/portfolios", {
+            method: "GET"
+        })
+            .then(function (portfolios) {
+                if (!portfolios.length) {
+                    form.innerHTML =
+                        emptySelectorMessage(
+                            "No portfolios found.",
+                            "/portfolio/",
+                            "Open Portfolio Builder"
+                        );
+                    return;
+                }
+
+                var options = portfolios.map(function (portfolio) {
+                    var label = portfolio.display_name;
+
+                    if (portfolio.headline) {
+                        label += " — " + portfolio.headline;
+                    }
+
+                    return (
+                        '<option value="' +
+                        escapeAttribute(portfolio.id) +
+                        '">' +
+                        escapeHtml(label) +
+                        "</option>"
+                    );
+                }).join("");
+
+                form.innerHTML =
+                    '<div class="zev-cai-field">' +
+                    "<label>Select portfolio</label>" +
+                    '<select id="zev-cai-portfolio-id">' +
+                    options +
+                    "</select>" +
+                    "</div>" +
+                    '<button type="button" ' +
+                    'class="zev-cai-modal-action" ' +
+                    'id="zev-cai-run-tool">Review Portfolio</button>';
+
+                bindRunTool();
+            })
+            .catch(function (error) {
+                form.innerHTML = errorCard(error.message);
+            });
+    }
+
+    function bindRunTool() {
+        var button = document.getElementById("zev-cai-run-tool");
+
+        if (button) {
+            button.addEventListener("click", runActiveTool);
+        }
+    }
+
+    function runActiveTool() {
+        if (activeTool === "analyze") {
+            runToolRequest(
+                "/career/ai/analyze",
+                null,
+                renderAnalysis
+            );
+            return;
+        }
+
+        if (activeTool === "skill-gap") {
+            var skillRole = getTargetRole(true);
+
+            if (!skillRole) {
+                return;
+            }
+
+            runToolRequest(
+                "/career/ai/skill-gap",
+                {
+                    target_role: skillRole
+                },
+                renderSkillGap
+            );
+            return;
+        }
+
+        if (activeTool === "projects") {
+            var projectRole = getTargetRole(false);
+            var countElement = document.getElementById(
+                "zev-cai-project-count"
+            );
+
+            var projectBody = {
+                count: Number(countElement.value)
+            };
+
+            if (projectRole) {
+                projectBody.target_role = projectRole;
+            }
+
+            runToolRequest(
+                "/career/ai/suggest-projects",
+                projectBody,
+                renderProjects
+            );
+            return;
+        }
+
+        if (activeTool === "resume") {
+            var resume = document.getElementById(
+                "zev-cai-resume-id"
+            );
+
+            if (!resume) {
+                return;
+            }
+
+            runToolRequest(
+                "/career/ai/review-resume",
+                {
+                    resume_id: resume.value
+                },
+                renderResumeReview
+            );
+            return;
+        }
+
+        if (activeTool === "portfolio") {
+            var portfolio = document.getElementById(
+                "zev-cai-portfolio-id"
+            );
+
+            if (!portfolio) {
+                return;
+            }
+
+            runToolRequest(
+                "/career/ai/review-portfolio",
+                {
+                    portfolio_id: portfolio.value
+                },
+                renderPortfolioReview
+            );
+            return;
+        }
+
+        if (activeTool === "plan") {
+            var planRole = getTargetRole(true);
+
+            if (!planRole) {
+                return;
+            }
+
+            runToolRequest(
+                "/career/ai/action-plan",
+                {
+                    target_role: planRole
+                },
+                renderActionPlan
+            );
+        }
+    }
+
+    function getTargetRole(required) {
+        var element = document.getElementById(
+            "zev-cai-target-role"
+        );
+
+        if (!element) {
+            return "";
+        }
+
+        var value = element.value.trim();
+
+        if (required && value.length < 2) {
+            showToast("Enter a target role first.");
+            element.focus();
+            return "";
+        }
+
+        return value;
+    }
+
+    function runToolRequest(path, body, renderer) {
+        var form = getModalForm();
+        var result = getModalResult();
+
+        form.style.display = "none";
+        result.innerHTML = "";
+        setModalLoading(true);
+
+        var options = {
+            method: "POST"
+        };
+
+        if (body !== null) {
+            options.body = JSON.stringify(body);
+        }
+
+        apiRequest(path, options)
+            .then(function (data) {
+                setModalLoading(false);
+                renderer(data);
+            })
+            .catch(function (error) {
+                console.error("Career AI tool error:", error);
+                setModalLoading(false);
+
+                result.innerHTML =
+                    errorCard(error.message) +
+                    '<button type="button" ' +
+                    'class="zev-cai-modal-action" ' +
+                    'id="zev-cai-try-again">Try Again</button>';
+
+                var retry = document.getElementById(
+                    "zev-cai-try-again"
+                );
+
+                if (retry) {
+                    retry.addEventListener("click", function () {
+                        result.innerHTML = "";
+                        form.style.display = "";
+                    });
+                }
+            });
+    }
+
+    /* =====================================================
+       STRUCTURED RESULTS
+       ===================================================== */
+
+    function renderAnalysis(data) {
+        var stats = data.profile_stats || {};
+
+        getModalResult().innerHTML =
+            scoreBlock(data.readiness_score, "Readiness") +
+            summaryCard(data.summary) +
+            listCard("Strengths", data.strengths) +
+            listCard("Improvement Areas", data.improvement_areas) +
+            listCard("Next Actions", data.next_actions) +
+            '<div class="zev-cai-result-card">' +
+            "<h3>Profile used</h3>" +
+            '<div class="zev-cai-stat-grid">' +
+            statItem("Projects", stats.projects) +
+            statItem("Skills", stats.skills) +
+            statItem("Education", stats.education) +
+            statItem("Certificates", stats.certificates) +
+            statItem("Resumes", stats.resumes) +
+            statItem("Portfolios", stats.portfolios) +
+            "</div></div>";
+    }
+
+    function renderSkillGap(data) {
+        var gaps = "";
+
+        (data.skill_gaps || []).forEach(function (gap) {
+            gaps +=
+                '<div class="zev-cai-result-card">' +
+                '<div class="zev-cai-result-title-row">' +
+                "<h3>" + escapeHtml(gap.skill) + "</h3>" +
+                priorityBadge(gap.priority) +
+                "</div>" +
+                "<p>" + escapeHtml(gap.reason) + "</p>" +
+                "<p><strong>Next step:</strong> " +
+                escapeHtml(gap.suggested_action) +
+                "</p></div>";
+        });
+
+        getModalResult().innerHTML =
+            '<div class="zev-cai-result-card">' +
+            "<h3>Target Role</h3>" +
+            "<p>" + escapeHtml(data.target_role) + "</p>" +
+            "</div>" +
+            listCard("Current Strengths", data.current_strengths) +
+            gaps +
+            listCard(
+                "Recommended Learning",
+                data.recommended_learning
+            ) +
+            listCard(
+                "Recommended Projects",
+                data.recommended_projects
+            );
+    }
+
+    function renderProjects(data) {
+        var html = "";
+
+        if (data.target_role) {
+            html +=
+                '<div class="zev-cai-result-card">' +
+                "<h3>Target Role</h3>" +
+                "<p>" + escapeHtml(data.target_role) + "</p>" +
+                "</div>";
+        }
+
+        (data.suggestions || []).forEach(function (project, index) {
+            html +=
+                '<div class="zev-cai-result-card">' +
+                '<div class="zev-cai-result-title-row">' +
+                "<h3>" +
+                (index + 1) +
+                ". " +
+                escapeHtml(project.title) +
+                "</h3>" +
+                '<span class="zev-cai-badge">' +
+                escapeHtml(project.difficulty) +
+                "</span>" +
+                "</div>" +
+                "<p>" + escapeHtml(project.description) + "</p>" +
+                "<p><strong>Why it fits:</strong> " +
+                escapeHtml(project.why_it_fits) +
+                "</p>" +
+                miniList("Features", project.suggested_features) +
+                miniList("Technologies", project.technologies) +
+                miniList(
+                    "Skills developed",
+                    project.skills_developed
+                ) +
+                "</div>";
+        });
+
+        getModalResult().innerHTML = html;
+    }
+
+    function renderResumeReview(data) {
+        getModalResult().innerHTML =
+            scoreBlock(data.score, "Resume Score") +
+            summaryCard(data.summary) +
+            listCard("Strengths", data.strengths) +
+            listCard("Improvements", data.improvements) +
+            listCard("ATS Suggestions", data.ats_suggestions) +
+            listCard(
+                "Content Suggestions",
+                data.content_suggestions
+            ) +
+            listCard("Missing Elements", data.missing_elements);
+    }
+
+    function renderPortfolioReview(data) {
+        getModalResult().innerHTML =
+            scoreBlock(data.score, "Portfolio Score") +
+            summaryCard(data.summary) +
+            listCard("Strengths", data.strengths) +
+            listCard("Improvements", data.improvements) +
+            listCard(
+                "Presentation Suggestions",
+                data.presentation_suggestions
+            ) +
+            listCard("Missing Elements", data.missing_elements);
+    }
+
+    function renderActionPlan(data) {
+        getModalResult().innerHTML =
+            '<div class="zev-cai-result-card">' +
+            "<h3>" + escapeHtml(data.target_role) + "</h3>" +
+            "<p>" + escapeHtml(data.summary) + "</p>" +
+            "</div>" +
+            planSection("First 30 Days", data.days_30) +
+            planSection("Days 31–60", data.days_60) +
+            planSection("Days 61–90", data.days_90);
+    }
+
+    function scoreBlock(score, label) {
+        return (
+            '<div class="zev-cai-score-wrap">' +
+            '<div class="zev-cai-score">' +
+            escapeHtml(String(score)) +
+            "</div>" +
+            "<div><strong>" +
+            escapeHtml(label) +
+            "</strong><span>out of 100</span></div>" +
+            "</div>"
+        );
+    }
+
+    function summaryCard(summary) {
+        return (
+            '<div class="zev-cai-result-card">' +
+            "<h3>AI Summary</h3>" +
+            "<p>" + escapeHtml(summary || "") + "</p>" +
+            "</div>"
+        );
+    }
+
+    function listCard(title, items) {
+        var list = items || [];
+
+        if (!list.length) {
+            return "";
+        }
+
+        return (
+            '<div class="zev-cai-result-card">' +
+            "<h3>" + escapeHtml(title) + "</h3>" +
+            "<ul>" +
+            list.map(function (item) {
+                return "<li>" + escapeHtml(item) + "</li>";
+            }).join("") +
+            "</ul></div>"
+        );
+    }
+
+    function miniList(title, items) {
+        var list = items || [];
+
+        if (!list.length) {
+            return "";
+        }
+
+        return (
+            '<div class="zev-cai-mini-list">' +
+            "<strong>" + escapeHtml(title) + "</strong>" +
+            "<div>" +
+            list.map(function (item) {
+                return (
+                    '<span class="zev-cai-chip">' +
+                    escapeHtml(item) +
+                    "</span>"
+                );
+            }).join("") +
+            "</div></div>"
+        );
+    }
+
+    function planSection(title, items) {
+        var html =
+            '<div class="zev-cai-result-card">' +
+            "<h3>" + escapeHtml(title) + "</h3>";
+
+        (items || []).forEach(function (item) {
+            html +=
+                '<div class="zev-cai-plan-item">' +
+                '<div class="zev-cai-result-title-row">' +
+                "<strong>" + escapeHtml(item.title) + "</strong>" +
+                priorityBadge(item.priority) +
+                "</div>" +
+                "<p>" + escapeHtml(item.description) + "</p>" +
+                '<span class="zev-cai-badge">' +
+                escapeHtml(item.category) +
+                "</span>" +
+                "</div>";
+        });
+
+        html += "</div>";
+        return html;
+    }
+
+    function priorityBadge(priority) {
+        return (
+            '<span class="zev-cai-badge">' +
+            escapeHtml(priority || "") +
+            "</span>"
+        );
+    }
+
+    function statItem(label, value) {
+        return (
+            '<div class="zev-cai-stat-item">' +
+            "<strong>" +
+            escapeHtml(String(value || 0)) +
+            "</strong>" +
+            "<span>" +
+            escapeHtml(label) +
+            "</span></div>"
+        );
+    }
+
+    /* =====================================================
+       AI TEXT FORMATTING
+       ===================================================== */
+
+    function formatAiText(text) {
+        var safe = escapeHtml(text);
+
+        safe = safe.replace(
+            /\*\*(.+?)\*\*/g,
+            "<strong>$1</strong>"
+        );
+
+        safe = safe.replace(
+            /^### (.+)$/gm,
+            '<div class="zev-cai-ai-heading">$1</div>'
+        );
+
+        safe = safe.replace(
+            /^## (.+)$/gm,
+            '<div class="zev-cai-ai-heading">$1</div>'
+        );
+
+        safe = safe.replace(
+            /^# (.+)$/gm,
+            '<div class="zev-cai-ai-heading">$1</div>'
+        );
+
+        safe = safe.replace(
+            /^(\d+)\.\s+(.+)$/gm,
+            '<div class="zev-cai-ai-list-item">' +
+            '<span class="zev-cai-ai-list-number">$1.</span>' +
+            "<span>$2</span></div>"
+        );
+
+        safe = safe.replace(
+            /^[*-]\s+(.+)$/gm,
+            '<div class="zev-cai-ai-list-item">' +
+            '<span class="zev-cai-ai-list-number">•</span>' +
+            "<span>$1</span></div>"
+        );
+
+        safe = safe.replace(/\n\n+/g, "<br><br>");
+        safe = safe.replace(/\n/g, "<br>");
+
+        return safe;
+    }
+
+    /* =====================================================
+       UI HELPERS
+       ===================================================== */
+
+    function getModalForm() {
+        return document.getElementById("zev-cai-modal-form");
+    }
+
+    function getModalResult() {
+        return document.getElementById("zev-cai-modal-result");
+    }
+
+    function setModalLoading(show) {
+        var loading = document.getElementById(
+            "zev-cai-modal-loading"
+        );
+
+        if (loading) {
+            loading.hidden = !show;
+        }
+    }
+
+    function showTyping(show) {
+        var typing = document.getElementById("zev-cai-typing");
+
+        if (!typing) {
+            return;
+        }
+
+        typing.hidden = !show;
+
+        if (show) {
+            scrollChatToBottom();
+        }
+    }
+
+    function setSendingState(sending) {
+        var sendButton = document.getElementById("zev-cai-send");
+        var input = document.getElementById("zev-cai-input");
+
+        if (sendButton) {
+            sendButton.disabled = sending;
+        }
+
+        if (input) {
+            input.disabled = sending;
+        }
+    }
+
+    function updateComposer() {
+        var input = document.getElementById("zev-cai-input");
+        var counter = document.getElementById(
+            "zev-cai-char-count"
+        );
+
+        if (!input) {
+            return;
+        }
+
+        input.style.height = "auto";
+        input.style.height =
+            Math.min(input.scrollHeight, 130) + "px";
+
+        if (counter) {
+            counter.textContent =
+                input.value.length + " / 2000";
+        }
+    }
+
+    function scrollChatToBottom() {
+        var container = document.getElementById(
+            "zev-cai-chat-messages"
+        );
+
+        if (container) {
+            container.scrollTop = container.scrollHeight;
+        }
+    }
+
+    function showToast(message) {
+        var toast = document.getElementById("zev-cai-toast");
+
+        if (!toast) {
+            return;
+        }
+
+        toast.textContent = message;
+        toast.hidden = false;
+
+        window.clearTimeout(showToast.timer);
+
+        showToast.timer = window.setTimeout(function () {
+            toast.hidden = true;
+        }, 3500);
+    }
+
+    function errorCard(message) {
+        return (
+            '<div class="zev-cai-result-card zev-cai-error-card">' +
+            "<h3>Something went wrong</h3>" +
+            "<p>" + escapeHtml(message) + "</p>" +
+            "</div>"
+        );
+    }
+
+    function emptySelectorMessage(message, url, label) {
+        return (
+            '<div class="zev-cai-result-card">' +
+            "<h3>" + escapeHtml(message) + "</h3>" +
+            "<p>Create one first, then return here for an AI review.</p>" +
+            "</div>" +
+            '<a class="zev-cai-modal-action zev-cai-action-link" href="' +
+            escapeAttribute(url) +
+            '">' +
+            escapeHtml(label) +
+            "</a>"
+        );
+    }
+
+    function escapeHtml(value) {
+        return String(value === null || value === undefined ? "" : value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function escapeAttribute(value) {
+        return escapeHtml(value);
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener(
+            "DOMContentLoaded",
+            zevCaiInitialize
+        );
+    } else {
+        zevCaiInitialize();
+    }
+})();
+</script>
+
+<div id="zev-career-ai" class="zev-cai-app">
+
+    <!-- SIDEBAR -->
+    <aside class="zev-cai-sidebar">
+
+        <div class="zev-cai-brand">
+            <div class="zev-cai-brand-icon">Z</div>
+            <div>
+                <strong>ZEVQYN</strong>
+                <span>Career AI</span>
+            </div>
+        </div>
+
+        <button id="zev-cai-new-chat" class="zev-cai-new-chat" type="button">
+            <span>＋</span>
+            New conversation
+        </button>
+
+        <div class="zev-cai-sidebar-label">CONVERSATIONS</div>
+
+        <div id="zev-cai-conversations" class="zev-cai-conversations">
+            <div class="zev-cai-history-placeholder">
+                Your conversations will appear here.
+            </div>
+        </div>
+
+        <div class="zev-cai-sidebar-bottom">
+            <a href="/dashboard/" class="zev-cai-back">
+                <span>←</span>
+                Back to Dashboard
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="zev-cai-main">
+
+        <!-- HEADER -->
+        <header class="zev-cai-header">
+            <div>
+                <div class="zev-cai-eyebrow">
+                    <span class="zev-cai-status-dot"></span>
+                    PERSONALIZED CAREER COPILOT
+                </div>
+
+                <h1>Career AI</h1>
+
+                <p>
+                    Turn your ZEVQYN profile into smarter career decisions.
+                </p>
+            </div>
+
+            <a href="/career/" class="zev-cai-profile-link">
+                Career Hub
+                <span>↗</span>
+            </a>
+        </header>
+
+        <!-- AI TOOLKIT -->
+        <section class="zev-cai-toolkit">
+
+            <div class="zev-cai-section-heading">
+                <div>
+                    <span class="zev-cai-section-kicker">AI TOOLKIT</span>
+                    <h2>What do you want to improve?</h2>
+                </div>
+
+                <span class="zev-cai-grounded">
+                    <span></span>
+                    Grounded in your ZEVQYN data
+                </span>
+            </div>
+
+            <div class="zev-cai-tools">
+
+                <button class="zev-cai-tool-card" data-tool="analyze" type="button">
+                    <div class="zev-cai-tool-icon">✦</div>
+                    <div>
+                        <h3>Analyze Profile</h3>
+                        <p>Discover strengths, gaps and your next career moves.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="skill-gap" type="button">
+                    <div class="zev-cai-tool-icon">⌁</div>
+                    <div>
+                        <h3>Skill Gap</h3>
+                        <p>Compare your skills with the role you want next.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="projects" type="button">
+                    <div class="zev-cai-tool-icon">◇</div>
+                    <div>
+                        <h3>Project Ideas</h3>
+                        <p>Generate projects that strengthen your profile.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="resume" type="button">
+                    <div class="zev-cai-tool-icon">▤</div>
+                    <div>
+                        <h3>Resume Review</h3>
+                        <p>Improve impact, content quality and ATS readiness.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="portfolio" type="button">
+                    <div class="zev-cai-tool-icon">◎</div>
+                    <div>
+                        <h3>Portfolio Review</h3>
+                        <p>Strengthen your portfolio story and presentation.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="plan" type="button">
+                    <div class="zev-cai-tool-icon">↗</div>
+                    <div>
+                        <h3>Career Plan</h3>
+                        <p>Build a personalized 30 / 60 / 90-day roadmap.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- COPILOT -->
+        <section class="zev-cai-chat-shell">
+
+            <div class="zev-cai-chat-topbar">
+                <div class="zev-cai-ai-identity">
+                    <div class="zev-cai-ai-logo">✦</div>
+
+                    <div>
+                        <strong>Career Copilot</strong>
+                        <span>Powered by your career profile</span>
+                    </div>
+                </div>
+
+                <button id="zev-cai-clear-chat" class="zev-cai-icon-button" type="button" title="New conversation">
+                    ＋
+                </button>
+            </div>
+
+            <div id="zev-cai-chat-messages" class="zev-cai-chat-messages">
+
+                <div id="zev-cai-welcome" class="zev-cai-welcome">
+
+                    <div class="zev-cai-welcome-icon">✦</div>
+
+                    <h2>Where do you want your career to go?</h2>
+
+                    <p>
+                        I can use your projects, skills, education, certificates,
+                        resumes and portfolio to give you personalized guidance.
+                    </p>
+
+                    <div class="zev-cai-prompts">
+
+                        <button type="button" class="zev-cai-prompt">
+                            What should I learn next?
+                        </button>
+
+                        <button type="button" class="zev-cai-prompt">
+                            How can I become a backend developer?
+                        </button>
+
+                        <button type="button" class="zev-cai-prompt">
+                            Which project should I build next?
+                        </button>
+
+                        <button type="button" class="zev-cai-prompt">
+                            What are the biggest gaps in my profile?
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- TYPING -->
+            <div id="zev-cai-typing" class="zev-cai-typing" hidden="">
+                <div class="zev-cai-message-avatar">✦</div>
+
+                <div class="zev-cai-typing-bubble">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- COMPOSER -->
+            <div class="zev-cai-composer-wrap">
+
+                <div class="zev-cai-composer">
+
+                    <textarea id="zev-cai-input" rows="1" maxlength="2000" placeholder="Ask Career AI anything about your career..."></textarea>
+
+                    <button id="zev-cai-send" type="button" aria-label="Send message">
+                        ↑
+                    </button>
+
+                </div>
+
+                <div class="zev-cai-composer-meta">
+                    <span>
+                        Career AI uses your saved ZEVQYN career data.
+                    </span>
+
+                    <span id="zev-cai-char-count">0 / 2000</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- TOOL MODAL -->
+    <div id="zev-cai-modal" class="zev-cai-modal" hidden="">
+
+        <div class="zev-cai-modal-backdrop" data-close-modal=""></div>
+
+        <div class="zev-cai-modal-card">
+
+            <div class="zev-cai-modal-header">
+                <div>
+                    <span id="zev-cai-modal-kicker">CAREER AI</span>
+                    <h2 id="zev-cai-modal-title">Career Analysis</h2>
+                </div>
+
+                <button id="zev-cai-modal-close" class="zev-cai-modal-close" type="button" aria-label="Close">
+                    ×
+                </button>
+            </div>
+
+            <div id="zev-cai-modal-form" class="zev-cai-modal-form"></div>
+
+            <div id="zev-cai-modal-loading" class="zev-cai-modal-loading" hidden="">
+                <div class="zev-cai-loader"></div>
+                <strong>Career AI is analyzing your profile...</strong>
+                <span>This may take a few seconds.</span>
+            </div>
+
+            <div id="zev-cai-modal-result" class="zev-cai-modal-result"></div>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST -->
+    <div id="zev-cai-toast" class="zev-cai-toast" hidden=""></div>
+
+</div>
+<!-- /wp:html -->

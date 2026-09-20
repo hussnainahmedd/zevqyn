@@ -1,0 +1,596 @@
+﻿<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:greenshift-blocks/row {"id":"gsbp-270d6a5","rowLayout":"2","displayStyles":false,"spacing":{"margin":{"values":{"bottom":["0px"]},"locked":false},"padding":{"values":[],"locked":false}},"isVariation":""} -->
+<div class="wp-block-greenshift-blocks-row gspb_row gspb_row-id-gsbp-270d6a5" id="gspb_row-id-gsbp-270d6a5"><div class="gspb_row__content"> <!-- wp:greenshift-blocks/row-column {"id":"gsbp-1e43fc0","flexbox":{"type":"flexbox","flexDirection":["column"],"alignItems":["flex-start"],"justifyContent":["center"]},"columnSize":"6"} -->
+<div class="wp-block-greenshift-blocks-row-column gspb_row__col--6 gspb_col-id-gsbp-1e43fc0" id="gspb_col-id-gsbp-1e43fc0"><!-- wp:image {"id":1182,"width":"268px","height":"auto","aspectRatio":"3.003275271698675","sizeSlug":"large","linkDestination":"none"} -->
+<figure class="wp-block-image size-large is-resized"><img src="https://zevqyn.free.je/wp-content/uploads/2026/09/logo-1024x341.png" alt="ZEVQYN" class="wp-image-1182" style="aspect-ratio:3.003275271698675;width:268px;height:auto"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:greenshift-blocks/heading {"id":"gsbp-4fe35cc","headingTag":"h3","headingContent":"Research Smarter. Build Your Future.","spacing":{"margin":{"values":{"top":["0px"],"bottom":["0px"]},"locked":false},"padding":{"values":[],"locked":false}}} -->
+<h3 id="gspb_heading-id-gsbp-4fe35cc" class="gspb_heading gspb_heading-id-gsbp-4fe35cc ">Research Smarter. Build Your Future.</h3>
+<!-- /wp:greenshift-blocks/heading -->
+
+<!-- wp:greenshift-blocks/text {"id":"gsbp-d83f12d","textContent":"Your research, projects, resume, and portfolio — connected in one intelligent workspace."} -->
+<div id="gspb_text-id-gsbp-d83f12d" class="gspb_text gspb_text-id-gsbp-d83f12d ">Your research, projects, resume, and portfolio — connected in one intelligent workspace.</div>
+<!-- /wp:greenshift-blocks/text --></div>
+<!-- /wp:greenshift-blocks/row-column -->
+
+<!-- wp:greenshift-blocks/row-column {"id":"gsbp-d6f1345","columnSize":"6"} -->
+<div class="wp-block-greenshift-blocks-row-column gspb_row__col--6 gspb_col-id-gsbp-d6f1345" id="gspb_col-id-gsbp-d6f1345"><!-- wp:greenshift-blocks/container {"id":"gsbp-a701b26"} -->
+<div class="wp-block-greenshift-blocks-container gspb_container gspb_container-gsbp-a701b26" id="gspb_container-id-gsbp-a701b26"><!-- wp:greenshift-blocks/heading {"id":"gsbp-020010b","headingContent":"Welcome back"} -->
+<h2 id="gspb_heading-id-gsbp-020010b" class="gspb_heading gspb_heading-id-gsbp-020010b ">Welcome back</h2>
+<!-- /wp:greenshift-blocks/heading -->
+
+<!-- wp:greenshift-blocks/text {"id":"gsbp-1138764","textContent":"Sign in to continue to your ZEVQYN workspace.","spacing":{"margin":{"values":{"bottom":["0px"]},"locked":false},"padding":{"values":[],"locked":false}},"typography":{"textShadow":[],"size":["20px"],"line_height":["40px"]}} -->
+<div id="gspb_text-id-gsbp-1138764" class="gspb_text gspb_text-id-gsbp-1138764 ">Sign in to continue to your ZEVQYN workspace.</div>
+<!-- /wp:greenshift-blocks/text -->
+
+<!-- wp:html -->
+<script data-wp-block-html="js">
+(function () {
+
+    const SUPABASE_URL = "https://phjizxajnigiiawitkyx.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+    function showMessage(text, type) {
+
+        let message =
+            document.getElementById("zevqyn-login-message");
+
+        if (!message) {
+            message = document.createElement("div");
+            message.id = "zevqyn-login-message";
+
+            const button =
+                document.getElementById("zevqyn-login-btn");
+
+            button.insertAdjacentElement(
+                "afterend",
+                message
+            );
+        }
+
+        message.textContent = text;
+
+        message.style.display = "block";
+        message.style.marginTop = "16px";
+        message.style.padding = "12px 14px";
+        message.style.borderRadius = "10px";
+        message.style.textAlign = "center";
+        message.style.fontSize = "14px";
+
+        if (type === "success") {
+
+            message.style.color = "#63df83";
+            message.style.background =
+                "rgba(54,180,90,0.10)";
+            message.style.border =
+                "1px solid rgba(54,180,90,0.25)";
+
+        } else {
+
+            message.style.color = "#ff7b7b";
+            message.style.background =
+                "rgba(255,80,80,0.08)";
+            message.style.border =
+                "1px solid rgba(255,80,80,0.20)";
+        }
+    }
+
+
+    function loadSupabase() {
+
+        return new Promise(function (resolve, reject) {
+
+            if (window.supabase) {
+                resolve();
+                return;
+            }
+
+            const script =
+                document.createElement("script");
+
+            script.src =
+                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
+
+            script.onload = function () {
+                resolve();
+            };
+
+            script.onerror = function () {
+                reject(
+                    new Error("Could not load Supabase.")
+                );
+            };
+
+            document.head.appendChild(script);
+        });
+    }
+
+
+    async function startLogin() {
+
+        console.log("ZEVQYN: Login starting");
+
+        const button =
+            document.getElementById("zevqyn-login-btn");
+
+        const emailInput =
+            document.getElementById("zevqyn-email");
+
+        const passwordInput =
+            document.getElementById("zevqyn-password");
+
+        if (!button) {
+            console.error(
+                "ZEVQYN: Login button not found"
+            );
+            return;
+        }
+
+
+        try {
+
+            await loadSupabase();
+
+        } catch (error) {
+
+            showMessage(
+                "Login service could not be loaded.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        const client =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        console.log("ZEVQYN: LOGIN READY");
+
+
+        button.onclick = async function (event) {
+
+            event.preventDefault();
+
+            const email =
+                emailInput.value.trim();
+
+            const password =
+                passwordInput.value;
+
+
+            if (!email) {
+
+                showMessage(
+                    "Please enter your email address.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!password) {
+
+                showMessage(
+                    "Please enter your password.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            button.disabled = true;
+            button.textContent = "Signing In...";
+
+
+            try {
+
+                console.log(
+                    "ZEVQYN: Signing in..."
+                );
+
+
+                const result =
+                    await client.auth.signInWithPassword({
+                        email: email,
+                        password: password
+                    });
+
+
+                if (result.error) {
+                    throw result.error;
+                }
+
+
+                console.log(
+                    "ZEVQYN: Login successful",
+                    result.data.user
+                );
+
+
+                showMessage(
+                    "Login successful! Redirecting...",
+                    "success"
+                );
+
+
+                setTimeout(function () {
+
+                    window.location.href =
+                        "https://zevqyn.free.je/dashboard/";
+
+                }, 700);
+
+
+            } catch (error) {
+
+                console.error(
+                    "ZEVQYN LOGIN ERROR:",
+                    error
+                );
+
+
+                let errorMessage =
+                    "Unable to sign in.";
+
+                if (error) {
+                    errorMessage = error.message;
+                }
+
+
+                showMessage(
+                    errorMessage,
+                    "error"
+                );
+
+
+            } finally {
+
+                button.disabled = false;
+                button.textContent = "Sign In";
+            }
+        };
+
+
+        passwordInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    button.click();
+                }
+            }
+        );
+
+
+        const sessionResult =
+            await client.auth.getSession();
+
+        if (sessionResult.data.session) {
+
+            console.log(
+                "ZEVQYN: Existing session found"
+            );
+        }
+    }
+
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            startLogin
+        );
+
+    } else {
+
+        startLogin();
+    }
+
+})();
+</script>
+
+<style>
+/* =========================
+   ZEVQYN LOGIN CARD
+   ========================= */
+
+.zevqyn-login-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 32px 0 0 0;
+    padding: 46px 48px;
+    box-sizing: border-box;
+
+    /* DARK CARD */
+    background: rgba(8, 12, 18, 0.94);
+
+    border: 1px solid rgba(53, 180, 90, 0.22);
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.50),
+        0 0 35px rgba(53, 180, 90, 0.05);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    color: #ffffff;
+    font-family: inherit;
+}
+
+
+/* =========================
+   FORM FIELDS
+   ========================= */
+
+.zevqyn-field {
+    margin-bottom: 24px;
+}
+
+.zevqyn-field label {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #f2f2f2;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.zevqyn-field input {
+    width: 100%;
+    height: 58px;
+
+    padding: 0 16px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.045);
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.zevqyn-field input::placeholder {
+    color: #777f8c;
+}
+
+
+/* INPUT FOCUS */
+
+.zevqyn-field input:focus {
+    border-color: #35b45a;
+
+    background: rgba(255, 255, 255, 0.065);
+
+    box-shadow:
+        0 0 0 3px rgba(53, 180, 90, 0.10),
+        0 0 20px rgba(53, 180, 90, 0.08);
+}
+
+
+/* =========================
+   REMEMBER + FORGOT PASSWORD
+   ========================= */
+
+.zevqyn-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin: 4px 0 26px;
+
+    color: #aeb4bd;
+    font-size: 13px;
+}
+
+.zevqyn-remember {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+}
+
+.zevqyn-remember input {
+    accent-color: #35b45a;
+}
+
+.zevqyn-options a {
+    color: #35b45a;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.zevqyn-options a:hover {
+    color: #55ca73;
+}
+
+
+/* =========================
+   SIGN IN BUTTON
+   ========================= */
+
+#zevqyn-login-btn {
+    width: 100%;
+    height: 58px;
+
+    border: none;
+    border-radius: 12px;
+
+    /* TEMPLATE GREEN */
+    background: #35b45a;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(53, 180, 90, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#zevqyn-login-btn:hover {
+    background: #2fa750;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(53, 180, 90, 0.30);
+}
+
+#zevqyn-login-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   CREATE ACCOUNT
+   ========================= */
+
+.zevqyn-register {
+    margin: 26px 0 0;
+
+    text-align: center;
+
+    color: #969da8;
+
+    font-size: 14px;
+}
+
+.zevqyn-register a {
+    color: #35b45a;
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.zevqyn-register a:hover {
+    color: #55ca73;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .zevqyn-login-card {
+        max-width: 100%;
+        padding: 32px 24px;
+        border-radius: 18px;
+    }
+
+    .zevqyn-options {
+        flex-wrap: wrap;
+    }
+
+    .zevqyn-field input,
+    #zevqyn-login-btn {
+        height: 54px;
+    }
+}
+</style>
+
+
+<div class="zevqyn-login-card">
+
+    <!-- EMAIL -->
+    <div class="zevqyn-field">
+
+        <label for="zevqyn-email">
+            Email address
+        </label>
+
+        <input type="email" id="zevqyn-email" name="email" placeholder="you@example.com" autocomplete="email" required="">
+
+    </div>
+
+
+    <!-- PASSWORD -->
+    <div class="zevqyn-field">
+
+        <label for="zevqyn-password">
+            Password
+        </label>
+
+        <input type="password" id="zevqyn-password" name="password" placeholder="Enter your password" autocomplete="current-password" required="">
+
+    </div>
+
+
+    <!-- OPTIONS -->
+    <div class="zevqyn-options">
+
+        <label class="zevqyn-remember">
+
+            <input type="checkbox" id="zevqyn-remember">
+
+            Remember me
+
+        </label>
+
+        <a href="#">
+            Forgot password?
+        </a>
+
+    </div>
+
+
+    <!-- SIGN IN -->
+    <button type="button" id="zevqyn-login-btn">
+        Sign In
+    </button>
+
+
+    <!-- REGISTER -->
+    <p class="zevqyn-register">
+
+        Don't have an account?
+
+        <a href="/register/">
+            Create account
+        </a>
+
+    </p>
+
+</div>
+<!-- /wp:html --></div>
+<!-- /wp:greenshift-blocks/container --></div>
+<!-- /wp:greenshift-blocks/row-column --> </div></div>
+<!-- /wp:greenshift-blocks/row -->

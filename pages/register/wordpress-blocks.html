@@ -1,0 +1,580 @@
+﻿<!-- wp:greenshift-blocks/row {"id":"gsbp-09483ed","rowLayout":"2","displayStyles":false,"isVariation":""} -->
+<div class="wp-block-greenshift-blocks-row gspb_row gspb_row-id-gsbp-09483ed" id="gspb_row-id-gsbp-09483ed"><div class="gspb_row__content"> <!-- wp:greenshift-blocks/row-column {"id":"gsbp-301702b","flexbox":{"type":"flexbox","flexDirection":["column"],"justifyContent":["center"],"alignItems":["flex-start"]},"columnSize":"6"} -->
+<div class="wp-block-greenshift-blocks-row-column gspb_row__col--6 gspb_col-id-gsbp-301702b" id="gspb_col-id-gsbp-301702b"><!-- wp:image {"id":1182,"width":"330px","sizeSlug":"large","linkDestination":"none","style":{"border":{"radius":{"topLeft":"0px","topRight":"0px","bottomLeft":"0px","bottomRight":"0px"}},"spacing":{"margin":{"top":"0px","bottom":"0px","left":"10px","right":"10px"}}}} -->
+<figure class="wp-block-image size-large is-resized has-custom-border" style="margin-top:0px;margin-right:10px;margin-bottom:0px;margin-left:10px"><img src="https://zevqyn.free.je/wp-content/uploads/2026/09/logo-1024x341.png" alt="ZEVQYN" class="wp-image-1182" style="border-top-left-radius:0px;border-top-right-radius:0px;border-bottom-left-radius:0px;border-bottom-right-radius:0px;width:330px"/></figure>
+<!-- /wp:image -->
+
+<!-- wp:paragraph {"style":{"typography":{"textAlign":"left","fontSize":"20px"},"spacing":{"margin":{"top":"0px","bottom":"0px","left":"18px","right":"18px"}}}} -->
+<p class="has-text-align-left" style="margin-top:0px;margin-right:18px;margin-bottom:0px;margin-left:18px;font-size:20px"><strong>Research Smarter. Build Your Future.</strong></p>
+<!-- /wp:paragraph -->
+
+<!-- wp:greenshift-blocks/text {"id":"gsbp-19a9e90","textContent":"Turn your research into projects, resumes, portfolios, and career opportunities — all in one intelligent workspace.","spacing":{"margin":{"values":{"bottom":["0px"]},"locked":false},"padding":{"values":[],"locked":false}},"typography":{"textShadow":[],"size":["18px"],"customweight":[0],"line_height":["30px"]},"position":{"positionType":[0,"","",""],"positions":{"values":[]}}} -->
+<div id="gspb_text-id-gsbp-19a9e90" class="gspb_text gspb_text-id-gsbp-19a9e90 ">Turn your research into projects, resumes, portfolios, and career opportunities — all in one intelligent workspace.</div>
+<!-- /wp:greenshift-blocks/text --></div>
+<!-- /wp:greenshift-blocks/row-column -->
+
+<!-- wp:greenshift-blocks/row-column {"id":"gsbp-b3f613e","columnSize":"6","spacing":{"margin":{"values":{"top":["45px"]},"locked":false},"padding":{"values":[],"locked":false}}} -->
+<div class="wp-block-greenshift-blocks-row-column gspb_row__col--6 gspb_col-id-gsbp-b3f613e" id="gspb_col-id-gsbp-b3f613e"><!-- wp:greenshift-blocks/heading {"id":"gsbp-186a8cf","headingContent":"Create your account","spacing":{"margin":{"values":{"bottom":["18px"]},"locked":false},"padding":{"values":[],"locked":false}},"typography":{"textShadow":[],"size":["42px"],"line_height":["50px"]}} -->
+<h2 id="gspb_heading-id-gsbp-186a8cf" class="gspb_heading gspb_heading-id-gsbp-186a8cf ">Create your account</h2>
+<!-- /wp:greenshift-blocks/heading -->
+
+<!-- wp:greenshift-blocks/text {"id":"gsbp-0c484d5","textContent":"Join ZEVQYN and build your intelligent workspace.","spacing":{"margin":{"values":{"bottom":["30px"]},"locked":false},"padding":{"values":[],"locked":false}},"typography":{"textShadow":[],"customweight":[0],"size":["18px"],"line_height":["28px"]}} -->
+<div id="gspb_text-id-gsbp-0c484d5" class="gspb_text gspb_text-id-gsbp-0c484d5 ">Join ZEVQYN and build your intelligent workspace.</div>
+<!-- /wp:greenshift-blocks/text -->
+
+<!-- wp:html -->
+<script data-wp-block-html="js">
+(function () {
+
+    const SUPABASE_URL = "https://phjizxajnigiiawitkyx.supabase.co";
+    const SUPABASE_KEY = "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+    function showMessage(text, type) {
+        const message = document.getElementById("zevqyn-register-message");
+
+        if (!message) {
+            alert(text);
+            return;
+        }
+
+        message.textContent = text;
+        message.className = type;
+        message.style.display = "block";
+    }
+
+    function loadSupabase() {
+        return new Promise(function (resolve, reject) {
+
+            if (window.supabase) {
+                resolve();
+                return;
+            }
+
+            const script = document.createElement("script");
+
+            script.src =
+                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
+
+            script.onload = function () {
+                resolve();
+            };
+
+            script.onerror = function () {
+                reject(new Error("Could not load Supabase."));
+            };
+
+            document.head.appendChild(script);
+        });
+    }
+
+    async function startRegister() {
+
+        console.log("ZEVQYN: Register starting");
+
+        const form = document.getElementById("zevqyn-register-form");
+        const button = document.getElementById("zevqyn-register-btn");
+
+        if (!form || !button) {
+            console.error("ZEVQYN: Register form not found");
+            return;
+        }
+
+        try {
+            await loadSupabase();
+        } catch (error) {
+            showMessage("Registration service could not be loaded.", "error");
+            return;
+        }
+
+        const client = window.supabase.createClient(
+            SUPABASE_URL,
+            SUPABASE_KEY
+        );
+
+        console.log("ZEVQYN: REGISTER READY");
+
+        form.onsubmit = async function (event) {
+
+            event.preventDefault();
+
+            const name =
+                document.getElementById("zevqyn-name").value.trim();
+
+            const email =
+                document.getElementById("zevqyn-email").value.trim();
+
+            const password =
+                document.getElementById("zevqyn-password").value;
+
+            const confirmPassword =
+                document.getElementById("zevqyn-confirm-password").value;
+
+            if (!name) {
+                showMessage("Please enter your full name.", "error");
+                return false;
+            }
+
+            if (!email) {
+                showMessage("Please enter your email address.", "error");
+                return false;
+            }
+
+            if (password.length < 6) {
+                showMessage(
+                    "Password must be at least 6 characters.",
+                    "error"
+                );
+                return false;
+            }
+
+            if (password !== confirmPassword) {
+                showMessage("Passwords do not match.", "error");
+                return false;
+            }
+
+            button.disabled = true;
+            button.textContent = "Creating Account...";
+
+            const message =
+                document.getElementById("zevqyn-register-message");
+
+            if (message) {
+                message.style.display = "none";
+            }
+
+            try {
+
+                console.log("ZEVQYN: Sending ONE signup request");
+
+                const result = await client.auth.signUp({
+                    email: email,
+                    password: password,
+                    options: {
+                        data: {
+                            full_name: name
+                        },
+                        emailRedirectTo:
+                            "https://zevqyn.free.je/login/"
+                    }
+                });
+
+                if (result.error) {
+                    throw result.error;
+                }
+
+                console.log(
+                    "ZEVQYN: Signup successful",
+                    result.data.user
+                );
+
+                if (!result.data.session) {
+
+                    showMessage(
+                        "Account created successfully! Check your email to verify your account.",
+                        "success"
+                    );
+
+                    form.reset();
+                    return false;
+                }
+
+                showMessage(
+                    "Account created successfully! Redirecting...",
+                    "success"
+                );
+
+                setTimeout(function () {
+                    window.location.href =
+                        "https://zevqyn.free.je/dashboard/";
+                }, 1000);
+
+            } catch (error) {
+
+                console.error("ZEVQYN SIGNUP ERROR:", error);
+
+                let errorMessage =
+                    "Unable to create your account.";
+
+                if (error) {
+                    errorMessage = error.message;
+                }
+
+                showMessage(errorMessage, "error");
+
+            } finally {
+
+                button.disabled = false;
+                button.textContent = "Create Account";
+            }
+
+            return false;
+        };
+    }
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            startRegister
+        );
+
+    } else {
+
+        startRegister();
+    }
+
+})();
+</script>
+
+<style>
+/* ================================
+   ZEVQYN REGISTER FORM
+================================ */
+
+.zevqyn-register-card {
+    width: 100%;
+    max-width: 620px;
+    box-sizing: border-box;
+    background: #080d13;
+    border: 1px solid rgba(70, 95, 200, 0.45);
+    border-radius: 24px;
+    padding: 40px 42px;
+    margin: 25px 0 0 0;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        0 0 30px rgba(40,80,255,0.04);
+}
+
+.zevqyn-register-card * {
+    box-sizing: border-box;
+}
+
+.zevqyn-register-card .zevqyn-field {
+    margin-bottom: 20px;
+}
+
+.zevqyn-register-card label {
+    display: block;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 9px;
+}
+
+.zevqyn-register-card input {
+    width: 100%;
+    height: 58px;
+    display: block;
+
+    background: #14181d;
+    color: #ffffff;
+
+    border: 1px solid #343a40;
+    border-radius: 13px;
+
+    padding: 0 17px;
+
+    font-family: inherit;
+    font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.zevqyn-register-card input::placeholder {
+    color: #7d8591;
+}
+
+.zevqyn-register-card input:focus {
+    background: #161b20;
+    border-color: #36b45a;
+    box-shadow: 0 0 0 3px rgba(54,180,90,0.12);
+}
+
+
+/* ================================
+   CREATE ACCOUNT BUTTON
+================================ */
+
+.zevqyn-register-btn {
+    display: block;
+    width: 100%;
+
+    margin-top: 8px;
+
+    padding: 16px 20px;
+
+    background: #36b45a;
+    color: #ffffff;
+
+    border: none;
+    border-radius: 13px;
+
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 25px rgba(54,180,90,0.16);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.zevqyn-register-btn:hover {
+    background: #2fa64f;
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(54,180,90,0.24);
+}
+
+.zevqyn-register-btn:active {
+    transform: translateY(0);
+}
+
+.zevqyn-register-btn:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* ================================
+   SUCCESS / ERROR MESSAGE
+================================ */
+
+#zevqyn-register-message {
+    display: none;
+
+    margin-top: 16px;
+    padding: 12px 14px;
+
+    border-radius: 10px;
+
+    text-align: center;
+
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#zevqyn-register-message.success {
+    display: block;
+
+    color: #63df83;
+
+    background: rgba(54,180,90,0.10);
+
+    border:
+        1px solid rgba(54,180,90,0.25);
+}
+
+#zevqyn-register-message.error {
+    display: block;
+
+    color: #ff7b7b;
+
+    background: rgba(255,80,80,0.08);
+
+    border:
+        1px solid rgba(255,80,80,0.20);
+}
+
+
+/* ================================
+   LOGIN TEXT
+================================ */
+
+.zevqyn-register-login {
+    margin-top: 25px;
+
+    color: #a7adb7;
+
+    text-align: center;
+    font-size: 15px;
+}
+
+.zevqyn-register-login a {
+    color: #36b45a;
+
+    font-weight: 600;
+
+    text-decoration: none;
+
+    margin-left: 3px;
+}
+
+.zevqyn-register-login a:hover {
+    text-decoration: underline;
+}
+
+
+/* ================================
+   MOBILE
+================================ */
+
+@media (max-width: 768px) {
+
+    .zevqyn-register-card {
+        max-width: 100%;
+
+        padding: 28px 22px;
+
+        border-radius: 20px;
+    }
+
+    .zevqyn-register-card input {
+        height: 54px;
+    }
+
+    .zevqyn-register-btn {
+        padding: 15px 18px;
+    }
+}
+</style>
+
+
+<!-- ================================
+     ZEVQYN REGISTER CARD
+================================ -->
+
+<div class="zevqyn-register-card">
+
+    <form
+        id="zevqyn-register-form"
+        action="javascript:void(0);"
+        method="post"
+    >
+
+        <!-- FULL NAME -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-name">
+                Full name
+            </label>
+
+            <input
+                id="zevqyn-name"
+                name="full_name"
+                type="text"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+            >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-email">
+                Email address
+            </label>
+
+            <input
+                id="zevqyn-email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-password">
+                Password
+            </label>
+
+            <input
+                id="zevqyn-password"
+                name="password"
+                type="password"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
+
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-confirm-password">
+                Confirm password
+            </label>
+
+            <input
+                id="zevqyn-confirm-password"
+                name="confirm_password"
+                type="password"
+                placeholder="Confirm your password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
+
+        </div>
+
+
+        <!-- CREATE ACCOUNT -->
+
+        <button
+            id="zevqyn-register-btn"
+            class="zevqyn-register-btn"
+            type="submit"
+        >
+            Create Account
+        </button>
+
+
+        <!-- SUCCESS / ERROR -->
+
+        <div
+            id="zevqyn-register-message"
+            aria-live="polite"
+        ></div>
+
+    </form>
+
+
+    <!-- LOGIN -->
+
+    <div class="zevqyn-register-login">
+
+        Already have an account?
+
+        <a href="/login/">
+            Sign in
+        </a>
+
+    </div>
+
+</div>
+<!-- /wp:html --></div>
+<!-- /wp:greenshift-blocks/row-column --> </div></div>
+<!-- /wp:greenshift-blocks/row -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

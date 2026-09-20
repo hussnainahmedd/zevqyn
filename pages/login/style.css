@@ -1,0 +1,224 @@
+﻿
+/* =========================
+   ZEVQYN LOGIN CARD
+   ========================= */
+
+.zevqyn-login-card {
+    width: 100%;
+    max-width: 600px;
+    margin: 32px 0 0 0;
+    padding: 46px 48px;
+    box-sizing: border-box;
+
+    /* DARK CARD */
+    background: rgba(8, 12, 18, 0.94);
+
+    border: 1px solid rgba(53, 180, 90, 0.22);
+    border-radius: 24px;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.50),
+        0 0 35px rgba(53, 180, 90, 0.05);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    color: #ffffff;
+    font-family: inherit;
+}
+
+
+/* =========================
+   FORM FIELDS
+   ========================= */
+
+.zevqyn-field {
+    margin-bottom: 24px;
+}
+
+.zevqyn-field label {
+    display: block;
+    margin-bottom: 10px;
+
+    color: #f2f2f2;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.zevqyn-field input {
+    width: 100%;
+    height: 58px;
+
+    padding: 0 16px;
+    box-sizing: border-box;
+
+    background: rgba(255, 255, 255, 0.045);
+    color: #ffffff;
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+
+    outline: none;
+
+    font-family: inherit;
+    font-size: 15px;
+
+    transition:
+        border-color 0.2s ease,
+        background 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.zevqyn-field input::placeholder {
+    color: #777f8c;
+}
+
+
+/* INPUT FOCUS */
+
+.zevqyn-field input:focus {
+    border-color: #35b45a;
+
+    background: rgba(255, 255, 255, 0.065);
+
+    box-shadow:
+        0 0 0 3px rgba(53, 180, 90, 0.10),
+        0 0 20px rgba(53, 180, 90, 0.08);
+}
+
+
+/* =========================
+   REMEMBER + FORGOT PASSWORD
+   ========================= */
+
+.zevqyn-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 16px;
+
+    margin: 4px 0 26px;
+
+    color: #aeb4bd;
+    font-size: 13px;
+}
+
+.zevqyn-remember {
+    display: flex;
+    align-items: center;
+
+    gap: 8px;
+
+    cursor: pointer;
+}
+
+.zevqyn-remember input {
+    accent-color: #35b45a;
+}
+
+.zevqyn-options a {
+    color: #35b45a;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.zevqyn-options a:hover {
+    color: #55ca73;
+}
+
+
+/* =========================
+   SIGN IN BUTTON
+   ========================= */
+
+#zevqyn-login-btn {
+    width: 100%;
+    height: 58px;
+
+    border: none;
+    border-radius: 12px;
+
+    /* TEMPLATE GREEN */
+    background: #35b45a;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 16px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 30px rgba(53, 180, 90, 0.20);
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#zevqyn-login-btn:hover {
+    background: #2fa750;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 14px 35px rgba(53, 180, 90, 0.30);
+}
+
+#zevqyn-login-btn:active {
+    transform: translateY(0);
+}
+
+
+/* =========================
+   CREATE ACCOUNT
+   ========================= */
+
+.zevqyn-register {
+    margin: 26px 0 0;
+
+    text-align: center;
+
+    color: #969da8;
+
+    font-size: 14px;
+}
+
+.zevqyn-register a {
+    color: #35b45a;
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: color 0.2s ease;
+}
+
+.zevqyn-register a:hover {
+    color: #55ca73;
+}
+
+
+/* =========================
+   MOBILE
+   ========================= */
+
+@media (max-width: 768px) {
+
+    .zevqyn-login-card {
+        max-width: 100%;
+        padding: 32px 24px;
+        border-radius: 18px;
+    }
+
+    .zevqyn-options {
+        flex-wrap: wrap;
+    }
+
+    .zevqyn-field input,
+    #zevqyn-login-btn {
+        height: 54px;
+    }
+}

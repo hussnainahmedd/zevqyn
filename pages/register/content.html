@@ -1,0 +1,128 @@
+﻿<!-- ================================
+     ZEVQYN REGISTER CARD
+================================ -->
+
+<div class="zevqyn-register-card">
+
+    <form
+        id="zevqyn-register-form"
+        action="javascript:void(0);"
+        method="post"
+    >
+
+        <!-- FULL NAME -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-name">
+                Full name
+            </label>
+
+            <input
+                id="zevqyn-name"
+                name="full_name"
+                type="text"
+                placeholder="Enter your full name"
+                autocomplete="name"
+                required
+            >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-email">
+                Email address
+            </label>
+
+            <input
+                id="zevqyn-email"
+                name="email"
+                type="email"
+                placeholder="you@example.com"
+                autocomplete="email"
+                required
+            >
+
+        </div>
+
+
+        <!-- PASSWORD -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-password">
+                Password
+            </label>
+
+            <input
+                id="zevqyn-password"
+                name="password"
+                type="password"
+                placeholder="Create a password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
+
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+
+        <div class="zevqyn-field">
+
+            <label for="zevqyn-confirm-password">
+                Confirm password
+            </label>
+
+            <input
+                id="zevqyn-confirm-password"
+                name="confirm_password"
+                type="password"
+                placeholder="Confirm your password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+            >
+
+        </div>
+
+
+        <!-- CREATE ACCOUNT -->
+
+        <button
+            id="zevqyn-register-btn"
+            class="zevqyn-register-btn"
+            type="submit"
+        >
+            Create Account
+        </button>
+
+
+        <!-- SUCCESS / ERROR -->
+
+        <div
+            id="zevqyn-register-message"
+            aria-live="polite"
+        ></div>
+
+    </form>
+
+
+    <!-- LOGIN -->
+
+    <div class="zevqyn-register-login">
+
+        Already have an account?
+
+        <a href="/login/">
+            Sign in
+        </a>
+
+    </div>
+
+</div>

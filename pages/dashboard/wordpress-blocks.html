@@ -1,0 +1,1934 @@
+﻿<!-- wp:html -->
+<script data-wp-block-html="js">
+(function () {
+
+    const SUPABASE_URL =
+        "https://phjizxajnigiiawitkyx.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+    const API_BASE =
+        "https://zevqyn-backend.onrender.com/api/v1";
+
+
+    /* =========================
+       LOAD SUPABASE
+    ========================= */
+
+    function loadSupabase() {
+
+        return new Promise(function (resolve, reject) {
+
+            if (window.supabase) {
+                resolve();
+                return;
+            }
+
+            const script =
+                document.createElement("script");
+
+            script.src =
+                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
+
+            script.onload = function () {
+                resolve();
+            };
+
+            script.onerror = function () {
+                reject(
+                    new Error(
+                        "Could not load Supabase."
+                    )
+                );
+            };
+
+            document.head.appendChild(script);
+        });
+    }
+
+
+    /* =========================
+       SAFE TEXT
+    ========================= */
+
+    function escapeHtml(value) {
+
+        const div =
+            document.createElement("div");
+
+        div.textContent =
+            value === null ||
+            value === undefined
+                ? ""
+                : String(value);
+
+        return div.innerHTML;
+    }
+
+
+    /* =========================
+       DATE FORMAT
+    ========================= */
+
+    function formatDate(value) {
+
+        if (!value) {
+            return "";
+        }
+
+        const date =
+            new Date(value);
+
+        if (Number.isNaN(date.getTime())) {
+            return "";
+        }
+
+        return date.toLocaleDateString(
+            undefined,
+            {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            }
+        );
+    }
+
+
+    /* =========================
+       START DASHBOARD
+    ========================= */
+
+    async function startDashboard() {
+
+        console.log(
+            "ZEVQYN: Dashboard starting"
+        );
+
+        try {
+
+            await loadSupabase();
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN: Supabase failed to load",
+                error
+            );
+
+            return;
+        }
+
+
+        const client =
+            window.supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_KEY
+            );
+
+
+        /* =========================
+           CHECK LOGIN
+        ========================= */
+
+        const sessionResult =
+            await client.auth.getSession();
+
+        const session =
+            sessionResult.data.session;
+
+
+        if (!session) {
+
+            window.location.href =
+                "/login/";
+
+            return;
+        }
+
+
+        const user =
+            session.user;
+
+
+        /* =========================
+           API HELPER
+        ========================= */
+
+        async function apiRequest(endpoint) {
+
+            const response =
+                await fetch(
+                    API_BASE + endpoint,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization":
+                                "Bearer " +
+                                session.access_token,
+                            "Content-Type":
+                                "application/json"
+                        }
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                const message =
+                    await response.text();
+
+                throw new Error(
+                    "API " +
+                    response.status +
+                    ": " +
+                    message
+                );
+            }
+
+
+            return await response.json();
+        }
+
+
+        /* =========================
+           USER HEADER
+        ========================= */
+
+        let fullName =
+            "ZEVQYN User";
+
+
+        if (user.user_metadata) {
+
+            if (user.user_metadata.full_name) {
+
+                fullName =
+                    user.user_metadata.full_name;
+            }
+        }
+
+
+        const email =
+            user.email || "";
+
+
+        const nameElement =
+            document.getElementById(
+                "zevqyn-user-name"
+            );
+
+        const emailElement =
+            document.getElementById(
+                "zevqyn-user-email"
+            );
+
+        const avatarElement =
+            document.getElementById(
+                "zevqyn-user-avatar"
+            );
+
+        const welcomeElement =
+            document.getElementById(
+                "zevqyn-welcome"
+            );
+
+
+        if (nameElement) {
+
+            nameElement.textContent =
+                fullName;
+        }
+
+
+        if (emailElement) {
+
+            emailElement.textContent =
+                email;
+        }
+
+
+        if (avatarElement) {
+
+            let firstLetter =
+                fullName.charAt(0);
+
+            if (!firstLetter) {
+                firstLetter = "Z";
+            }
+
+            avatarElement.textContent =
+                firstLetter.toUpperCase();
+        }
+
+
+        if (welcomeElement) {
+
+            let firstName =
+                fullName.split(" ")[0];
+
+            welcomeElement.textContent =
+                "Welcome back, " +
+                firstName +
+                " 👋";
+        }
+
+
+        /* =========================
+           GET DASHBOARD ELEMENTS
+        ========================= */
+
+        const researchCountElement =
+            document.getElementById(
+                "zevqyn-research-count"
+            );
+
+        const documentCountElement =
+            document.getElementById(
+                "zevqyn-document-count"
+            );
+
+        const projectCountElement =
+            document.getElementById(
+                "zevqyn-project-count"
+            );
+
+        const profileCompletionElement =
+            document.getElementById(
+                "zevqyn-profile-completion"
+            );
+
+        const recentResearchElement =
+            document.getElementById(
+                "zevqyn-recent-research"
+            );
+
+
+        /* =========================
+           DEFAULT LOADING VALUES
+        ========================= */
+
+        if (researchCountElement) {
+            researchCountElement.textContent = "—";
+        }
+
+        if (documentCountElement) {
+            documentCountElement.textContent = "—";
+        }
+
+        if (projectCountElement) {
+            projectCountElement.textContent = "—";
+        }
+
+        if (profileCompletionElement) {
+            profileCompletionElement.textContent = "—";
+        }
+
+
+        /* =========================
+           LOAD WORKSPACES
+        ========================= */
+
+        let workspaces = [];
+
+
+        try {
+
+            const result =
+                await apiRequest(
+                    "/workspaces"
+                );
+
+
+            if (Array.isArray(result)) {
+
+                workspaces =
+                    result;
+            }
+
+
+            if (researchCountElement) {
+
+                researchCountElement.textContent =
+                    workspaces.length;
+            }
+
+
+            console.log(
+                "ZEVQYN: Workspaces loaded",
+                workspaces
+            );
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN: Workspace load failed",
+                error
+            );
+
+            if (researchCountElement) {
+                researchCountElement.textContent = "0";
+            }
+        }
+
+
+        /* =========================
+           LOAD DOCUMENT COUNT
+        ========================= */
+
+        let documentCount = 0;
+
+
+        if (workspaces.length > 0) {
+
+            const documentRequests =
+                workspaces.map(
+                    async function (workspace) {
+
+                        try {
+
+                            const documents =
+                                await apiRequest(
+                                    "/workspaces/" +
+                                    encodeURIComponent(
+                                        workspace.id
+                                    ) +
+                                    "/documents"
+                                );
+
+
+                            if (Array.isArray(documents)) {
+
+                                return documents.length;
+                            }
+
+                            return 0;
+
+                        } catch (error) {
+
+                            console.error(
+                                "ZEVQYN: Documents failed for workspace",
+                                workspace.id,
+                                error
+                            );
+
+                            return 0;
+                        }
+                    }
+                );
+
+
+            const documentCounts =
+                await Promise.all(
+                    documentRequests
+                );
+
+
+            documentCounts.forEach(
+                function (count) {
+
+                    documentCount += count;
+                }
+            );
+        }
+
+
+        if (documentCountElement) {
+
+            documentCountElement.textContent =
+                documentCount;
+        }
+
+
+        console.log(
+            "ZEVQYN: Total documents",
+            documentCount
+        );
+
+
+        /* =========================
+           LOAD PROJECTS
+        ========================= */
+
+        let projects = [];
+
+
+        try {
+
+            const result =
+                await apiRequest(
+                    "/projects"
+                );
+
+
+            if (Array.isArray(result)) {
+
+                projects =
+                    result;
+            }
+
+
+            if (projectCountElement) {
+
+                projectCountElement.textContent =
+                    projects.length;
+            }
+
+
+            console.log(
+                "ZEVQYN: Projects loaded",
+                projects
+            );
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN: Projects load failed",
+                error
+            );
+
+            if (projectCountElement) {
+                projectCountElement.textContent = "0";
+            }
+        }
+
+
+        /* =========================
+           LOAD PROFILE
+        ========================= */
+
+        let profile = null;
+
+
+        try {
+
+            profile =
+                await apiRequest(
+                    "/profile"
+                );
+
+
+            const fields = [
+                "username",
+                "full_name",
+                "bio",
+                "avatar_url",
+                "location",
+                "website",
+                "github_url",
+                "linkedin_url",
+                "phone"
+            ];
+
+
+            let completedFields = 0;
+
+
+            fields.forEach(
+                function (field) {
+
+                    const value =
+                        profile[field];
+
+                    if (value !== null) {
+
+                        if (value !== undefined) {
+
+                            if (
+                                String(value).trim() !== ""
+                            ) {
+
+                                completedFields += 1;
+                            }
+                        }
+                    }
+                }
+            );
+
+
+            const completion =
+                Math.round(
+                    (
+                        completedFields /
+                        fields.length
+                    ) *
+                    100
+                );
+
+
+            if (profileCompletionElement) {
+
+                profileCompletionElement.textContent =
+                    completion + "%";
+            }
+
+
+            /*
+             * Prefer Career Profile name/avatar
+             * over Auth metadata when available.
+             */
+
+            if (profile.full_name) {
+
+                fullName =
+                    profile.full_name;
+
+                if (nameElement) {
+
+                    nameElement.textContent =
+                        fullName;
+                }
+
+
+                if (welcomeElement) {
+
+                    welcomeElement.textContent =
+                        "Welcome back, " +
+                        fullName.split(" ")[0] +
+                        " 👋";
+                }
+
+
+                if (avatarElement) {
+
+                    avatarElement.textContent =
+                        fullName
+                            .charAt(0)
+                            .toUpperCase();
+                }
+            }
+
+
+            console.log(
+                "ZEVQYN: Profile loaded",
+                profile
+            );
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN: Profile load failed",
+                error
+            );
+
+            if (profileCompletionElement) {
+
+                profileCompletionElement.textContent =
+                    "0%";
+            }
+        }
+
+
+        /* =========================
+           LOAD RESUMES
+        ========================= */
+
+        let resumes = [];
+
+
+        try {
+
+            const result =
+                await apiRequest(
+                    "/resumes"
+                );
+
+
+            if (Array.isArray(result)) {
+
+                resumes =
+                    result;
+            }
+
+
+            console.log(
+                "ZEVQYN: Resumes loaded",
+                resumes
+            );
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN: Resumes load failed",
+                error
+            );
+        }
+
+
+        /* =========================
+           LOAD PORTFOLIOS
+        ========================= */
+
+        let portfolios = [];
+
+
+        try {
+
+            const result =
+                await apiRequest(
+                    "/portfolios"
+                );
+
+
+            if (Array.isArray(result)) {
+
+                portfolios =
+                    result;
+            }
+
+
+            console.log(
+                "ZEVQYN: Portfolios loaded",
+                portfolios
+            );
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN: Portfolios load failed",
+                error
+            );
+        }
+
+
+        /* =========================
+           RECENT RESEARCH
+        ========================= */
+
+        if (recentResearchElement) {
+
+            recentResearchElement.innerHTML =
+                "";
+
+
+            if (workspaces.length === 0) {
+
+                recentResearchElement.innerHTML =
+                    '<div class="zev-research">' +
+                        '<div class="zev-file-icon">＋</div>' +
+                        '<div class="zev-research-info">' +
+                            '<div class="zev-research-name">' +
+                                'Start your first research workspace' +
+                            '</div>' +
+                            '<div class="zev-research-meta">' +
+                                'Upload PDF, DOCX, TXT or Markdown' +
+                            '</div>' +
+                        '</div>' +
+                        '<a class="zev-status" href="/research/">' +
+                            'Get started' +
+                        '</a>' +
+                    '</div>';
+
+            } else {
+
+                const sortedWorkspaces =
+                    workspaces.slice();
+
+
+                sortedWorkspaces.sort(
+                    function (a, b) {
+
+                        const aValue =
+                            a.updated_at ||
+                            a.created_at ||
+                            "";
+
+                        const bValue =
+                            b.updated_at ||
+                            b.created_at ||
+                            "";
+
+                        return (
+                            new Date(bValue).getTime() -
+                            new Date(aValue).getTime()
+                        );
+                    }
+                );
+
+
+                const recentWorkspaces =
+                    sortedWorkspaces.slice(
+                        0,
+                        3
+                    );
+
+
+                recentWorkspaces.forEach(
+                    function (workspace) {
+
+                        const item =
+                            document.createElement(
+                                "a"
+                            );
+
+                        item.className =
+                            "zev-research";
+
+                        item.href =
+                            "/research-workspace/?id=" +
+                            encodeURIComponent(
+                                workspace.id
+                            );
+
+
+                        const displayDate =
+                            formatDate(
+                                workspace.updated_at ||
+                                workspace.created_at
+                            );
+
+
+                        const description =
+                            workspace.description
+                                ? workspace.description
+                                : "Research workspace";
+
+
+                        item.innerHTML =
+                            '<div class="zev-file-icon">▣</div>' +
+                            '<div class="zev-research-info">' +
+                                '<div class="zev-research-name">' +
+                                    escapeHtml(
+                                        workspace.name
+                                    ) +
+                                '</div>' +
+                                '<div class="zev-research-meta">' +
+                                    escapeHtml(
+                                        description
+                                    ) +
+                                    (
+                                        displayDate
+                                            ? " · " +
+                                              escapeHtml(
+                                                  displayDate
+                                              )
+                                            : ""
+                                    ) +
+                                '</div>' +
+                            '</div>' +
+                            '<span class="zev-status">' +
+                                'Open' +
+                            '</span>';
+
+
+                        recentResearchElement.appendChild(
+                            item
+                        );
+                    }
+                );
+            }
+        }
+
+
+        /* =========================
+           CAREER WORKFLOW PROGRESS
+        ========================= */
+
+        let workflowSteps = 0;
+
+
+        if (workspaces.length > 0) {
+            workflowSteps += 1;
+        }
+
+
+        if (projects.length > 0) {
+            workflowSteps += 1;
+        }
+
+
+        if (resumes.length > 0) {
+            workflowSteps += 1;
+        }
+
+
+        if (portfolios.length > 0) {
+            workflowSteps += 1;
+        }
+
+
+        const workflowProgress =
+            document.querySelector(
+                ".zev-progress span"
+            );
+
+
+        if (workflowProgress) {
+
+            workflowProgress.style.width =
+                (
+                    workflowSteps *
+                    25
+                ) +
+                "%";
+        }
+
+
+        /* =========================
+           SIGN OUT
+        ========================= */
+
+        const signOutButton =
+            document.getElementById(
+                "zevqyn-signout"
+            );
+
+
+        if (signOutButton) {
+
+            signOutButton.onclick =
+                async function (event) {
+
+                    event.preventDefault();
+
+
+                    const result =
+                        await client.auth.signOut();
+
+
+                    if (result.error) {
+
+                        console.error(
+                            "ZEVQYN: Sign out failed",
+                            result.error
+                        );
+
+                        alert(
+                            "Unable to sign out. Please try again."
+                        );
+
+                        return;
+                    }
+
+
+                    window.location.href =
+                        "/login/";
+                };
+        }
+
+
+        console.log(
+            "ZEVQYN: DASHBOARD READY",
+            {
+                workspaces:
+                    workspaces.length,
+                documents:
+                    documentCount,
+                projects:
+                    projects.length,
+                resumes:
+                    resumes.length,
+                portfolios:
+                    portfolios.length
+            }
+        );
+    }
+
+
+    /* =========================
+       INITIALIZE
+    ========================= */
+
+    if (document.readyState === "loading") {
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                startDashboard();
+            }
+        );
+
+    } else {
+
+        startDashboard();
+    }
+
+})();
+</script>
+
+<style>
+/* ==============================
+   ZEVQYN DASHBOARD
+================================= */
+
+.zev-dashboard,
+.zev-dashboard * {
+    box-sizing: border-box;
+}
+
+.zev-dashboard {
+    --bg: #030504;
+    --panel: #090e12;
+    --panel2: #0d1318;
+    --border: #1c2935;
+    --text: #f5f7fa;
+    --muted: #8f9aa7;
+    --green: #35b85b;
+    --green2: #269747;
+
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: #030504;
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* ==============================
+   SIDEBAR
+================================= */
+
+.zev-sidebar {
+    width: 245px;
+    min-height: 100vh;
+    padding: 28px 18px;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(53,184,91,.08), transparent 30%),
+        #050807;
+    border-right: 1px solid #172019;
+    display: flex;
+    flex-direction: column;
+}
+
+.zev-nav-title {
+    color: #65706d;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    padding: 0 12px;
+    margin-bottom: 10px;
+}
+
+.zev-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.zev-nav a {
+    color: #aeb7bf !important;
+    text-decoration: none !important;
+    padding: 12px 14px;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    transition: .2s ease;
+}
+
+.zev-nav a:hover {
+    color: white !important;
+    background: #0c1510;
+}
+
+.zev-nav a.active {
+    color: #fff !important;
+    background: rgba(53,184,91,.13);
+    border: 1px solid rgba(53,184,91,.22);
+}
+
+.zev-nav-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.zev-sidebar-bottom {
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+
+/* ==============================
+   MAIN AREA
+================================= */
+
+.zev-main {
+    flex: 1;
+    min-width: 0;
+    padding: 34px 40px 60px;
+    background:
+        radial-gradient(circle at 75% 0%, rgba(53,184,91,.055), transparent 25%),
+        #030504;
+}
+
+.zev-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 34px;
+}
+
+.zev-welcome h1 {
+    margin: 0 0 7px;
+    color: white;
+    font-size: 30px;
+    line-height: 1.2;
+}
+
+.zev-welcome p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.zev-user {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    background: #090d10;
+    border: 1px solid #18232a;
+    border-radius: 10px;
+    padding: 8px 12px;
+}
+
+.zev-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg,#35b85b,#1d7c3b);
+    font-weight: 800;
+    color: white;
+}
+
+.zev-user-name {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.zev-user-email {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+
+/* ==============================
+   QUICK ACTIONS
+================================= */
+
+.zev-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-bottom: 28px;
+}
+
+.zev-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 17px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.zev-btn-primary {
+    background: var(--green);
+    color: white !important;
+}
+
+.zev-btn-primary:hover {
+    background: var(--green2);
+    transform: translateY(-1px);
+}
+
+.zev-btn-dark {
+    background: #0c1115;
+    border: 1px solid #202a32;
+    color: #d9e0e5 !important;
+}
+
+.zev-btn-dark:hover {
+    border-color: #35b85b;
+}
+
+
+/* ==============================
+   STAT CARDS
+================================= */
+
+.zev-stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 15px;
+    margin-bottom: 28px;
+}
+
+.zev-stat {
+    padding: 20px;
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg,#0b1014,#070b0e);
+    border-radius: 13px;
+}
+
+.zev-stat-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.zev-stat-label {
+    color: #919ca5;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.zev-stat-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: rgba(53,184,91,.11);
+    color: #4ed36f;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.zev-stat-number {
+    font-size: 27px;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.zev-stat-sub {
+    font-size: 11px;
+    color: #68747d;
+}
+
+
+/* ==============================
+   DASHBOARD GRID
+================================= */
+
+.zev-grid {
+    display: grid;
+    grid-template-columns: 1.55fr .85fr;
+    gap: 18px;
+}
+
+.zev-card {
+    border: 1px solid var(--border);
+    background: linear-gradient(145deg,#090e12,#060a0d);
+    border-radius: 14px;
+    padding: 22px;
+}
+
+.zev-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.zev-card-title {
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.zev-card-link {
+    color: #47c86a !important;
+    text-decoration: none !important;
+    font-size: 12px;
+}
+
+
+/* ==============================
+   RESEARCH ITEMS
+================================= */
+
+.zev-research-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.zev-research {
+    padding: 14px;
+    background: #0b1014;
+    border: 1px solid #172128;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.zev-file-icon {
+    width: 39px;
+    height: 39px;
+    min-width: 39px;
+    border-radius: 8px;
+    background: rgba(53,184,91,.1);
+    color: #4bd46d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zev-research-info {
+    flex: 1;
+}
+
+.zev-research-name {
+    color: #edf2f5;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.zev-research-meta {
+    color: #707b84;
+    font-size: 11px;
+}
+
+.zev-status {
+    padding: 5px 9px;
+    border-radius: 20px;
+    font-size: 10px;
+    color: #54d875;
+    background: rgba(53,184,91,.1);
+}
+
+
+/* ==============================
+   CAREER WORKFLOW
+================================= */
+
+.zev-workflow {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.zev-workflow-item {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.zev-step {
+    width: 33px;
+    height: 33px;
+    min-width: 33px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #285237;
+    background: rgba(53,184,91,.09);
+    color: #4bd26b;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.zev-workflow-name {
+    color: #e8edf0;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.zev-workflow-sub {
+    color: #707a82;
+    font-size: 11px;
+    margin-top: 2px;
+}
+
+.zev-progress {
+    height: 6px;
+    background: #151c20;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 22px;
+}
+
+.zev-progress span {
+    display: block;
+    width: 25%;
+    height: 100%;
+    background: #35b85b;
+}
+
+
+/* ==============================
+   BOTTOM CARDS
+================================= */
+
+.zev-bottom {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 15px;
+    margin-top: 18px;
+}
+
+.zev-feature {
+    padding: 20px;
+    min-height: 145px;
+    border-radius: 13px;
+    background: #080d10;
+    border: 1px solid #19242b;
+}
+
+.zev-feature-icon {
+    font-size: 22px;
+    margin-bottom: 14px;
+}
+
+.zev-feature h3 {
+    color: white;
+    font-size: 14px;
+    margin: 0 0 8px;
+}
+
+.zev-feature p {
+    color: #7e8992;
+    font-size: 12px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+
+/* ==============================
+   MOBILE
+================================= */
+
+@media(max-width:1000px) {
+
+    .zev-sidebar {
+        width: 200px;
+    }
+
+    .zev-stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .zev-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:760px) {
+
+    .zev-dashboard {
+        display: block;
+    }
+
+    .zev-sidebar {
+        width: 100%;
+        min-height: auto;
+        padding: 18px;
+    }
+
+    .zev-nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .zev-nav a {
+        white-space: nowrap;
+    }
+
+    .zev-nav-title,
+    .zev-sidebar-bottom {
+        display: none;
+    }
+
+    .zev-main {
+        padding: 25px 17px 50px;
+    }
+
+    .zev-topbar {
+        align-items: flex-start;
+    }
+
+    .zev-user {
+        display: none;
+    }
+
+    .zev-stats,
+    .zev-bottom {
+        grid-template-columns: 1fr;
+    }
+}
+
+</style>
+
+
+<div class="zev-dashboard">
+
+    <!-- SIDEBAR -->
+    <aside class="zev-sidebar">
+
+        <div class="zev-nav-title">
+            Workspace
+        </div>
+
+        <nav class="zev-nav">
+
+            <a href="/dashboard/" class="active">
+                <span class="zev-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+  <a href="/research/">
+    <span class="zev-nav-icon">▣</span>
+    Research
+</a>
+
+            <a href="/projects/">
+    <span class="zev-nav-icon">◆</span>
+    Projects
+</a>
+
+<a href="/resume/">
+    <span class="zev-nav-icon">▤</span>
+    Resume
+</a>
+
+<a href="/portfolio/">
+    <span class="zev-nav-icon">◎</span>
+    Portfolio
+</a>
+
+<a href="/career/">
+    <span class="zev-nav-icon">✦</span>
+    Career Hub
+</a>
+<a href="/career-ai/" class="zev-nav-item">
+    <span class="zev-nav-icon">↗</span>
+    <span>Career AI</span>
+</a>
+        </nav>
+
+
+        <div class="zev-sidebar-bottom">
+
+            <div class="zev-nav-title">
+                Account
+            </div>
+
+            <nav class="zev-nav">
+
+                <a href="/settings/">
+                    <span class="zev-nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" id="zevqyn-signout">
+                    <span class="zev-nav-icon">↪</span>
+                    Sign Out
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="zev-main">
+
+        <!-- TOP -->
+        <div class="zev-topbar">
+
+            <div class="zev-welcome">
+
+                <h1 id="zevqyn-welcome">
+                    Welcome back 👋
+                </h1>
+
+                <p>
+                    Continue your research and turn your work into career-ready outcomes.
+                </p>
+
+            </div>
+
+
+            <!-- USER ACCOUNT -->
+            <div class="zev-user">
+
+                <div class="zev-avatar" id="zevqyn-user-avatar">
+                    Z
+                </div>
+
+                <div>
+
+                    <div class="zev-user-name" id="zevqyn-user-name">
+                        Loading...
+                    </div>
+
+                    <div class="zev-user-email" id="zevqyn-user-email">
+                        Loading account...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+ <!-- QUICK ACTIONS -->
+<div class="zev-actions">
+
+    <a href="/research/" class="zev-btn zev-btn-primary">
+        + New Research
+    </a>
+
+    <a href="/projects/" class="zev-btn zev-btn-dark">
+        + New Project
+    </a>
+
+    <a href="/resume/" class="zev-btn zev-btn-dark">
+        Build Resume
+    </a>
+
+    <a href="/portfolio/" class="zev-btn zev-btn-dark">
+        Build Portfolio
+    </a>
+
+</div>
+
+        <!-- STATS -->
+        <section class="zev-stats">
+
+            <div class="zev-stat">
+
+                <div class="zev-stat-top">
+                    <span class="zev-stat-label">
+                        Research
+                    </span>
+
+                    <span class="zev-stat-icon">
+                        ▣
+                    </span>
+                </div>
+
+               <div class="zev-stat-number" id="zevqyn-research-count">
+                    0
+                </div>
+
+                <div class="zev-stat-sub">
+                    Research workspaces
+                </div>
+
+            </div>
+
+
+            <div class="zev-stat">
+
+                <div class="zev-stat-top">
+
+                    <span class="zev-stat-label">
+                        Documents
+                    </span>
+
+                    <span class="zev-stat-icon">
+                        ▤
+                    </span>
+
+                </div>
+
+               <div class="zev-stat-number" id="zevqyn-document-count">
+                    0
+                </div>
+
+                <div class="zev-stat-sub">
+                    Uploaded sources
+                </div>
+
+            </div>
+
+
+            <div class="zev-stat">
+
+                <div class="zev-stat-top">
+
+                    <span class="zev-stat-label">
+                        Projects
+                    </span>
+
+                    <span class="zev-stat-icon">
+                        ◆
+                    </span>
+
+                </div>
+
+               <div class="zev-stat-number" id="zevqyn-project-count">
+                    0
+                </div>
+
+                <div class="zev-stat-sub">
+                    Career projects
+                </div>
+
+            </div>
+
+
+            <div class="zev-stat">
+
+                <div class="zev-stat-top">
+
+                    <span class="zev-stat-label">
+                        Career Profile
+                    </span>
+
+                    <span class="zev-stat-icon">
+                        ◎
+                    </span>
+
+                </div>
+
+              <div class="zev-stat-number" id="zevqyn-profile-completion">
+    0%
+</div>
+
+<div class="zev-stat-sub">
+    Profile completion
+</div>
+
+        </div></section>
+
+
+        <!-- MAIN GRID -->
+        <section class="zev-grid">
+
+
+            <!-- RECENT RESEARCH -->
+            <div class="zev-card">
+
+                <div class="zev-card-header">
+
+                    <div class="zev-card-title">
+                        Recent Research
+                    </div>
+
+                    <a href="#" class="zev-card-link">
+                        View all →
+                    </a>
+
+                </div>
+
+
+               <div class="zev-research-list" id="zevqyn-recent-research">
+
+                    <div class="zev-research">
+
+                        <div class="zev-file-icon">
+                            ＋
+                        </div>
+
+                        <div class="zev-research-info">
+
+                            <div class="zev-research-name">
+                                Start your first research workspace
+                            </div>
+
+                            <div class="zev-research-meta">
+                                Upload PDF, DOCX, TXT or Markdown
+                            </div>
+
+                        </div>
+
+                        <span class="zev-status">
+                            Get started
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CAREER WORKFLOW -->
+            <div class="zev-card">
+
+                <div class="zev-card-header">
+
+                    <div class="zev-card-title">
+                        Career Workflow
+                    </div>
+
+                </div>
+
+
+                <div class="zev-workflow">
+
+                    <div class="zev-workflow-item">
+
+                        <div class="zev-step">
+                            1
+                        </div>
+
+                        <div>
+
+                            <div class="zev-workflow-name">
+                                Research
+                            </div>
+
+                            <div class="zev-workflow-sub">
+                                Learn &amp; discover
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="zev-workflow-item">
+
+                        <div class="zev-step">
+                            2
+                        </div>
+
+                        <div>
+
+                            <div class="zev-workflow-name">
+                                Project
+                            </div>
+
+                            <div class="zev-workflow-sub">
+                                Turn knowledge into work
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="zev-workflow-item">
+
+                        <div class="zev-step">
+                            3
+                        </div>
+
+                        <div>
+
+                            <div class="zev-workflow-name">
+                                Resume
+                            </div>
+
+                            <div class="zev-workflow-sub">
+                                Present your experience
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="zev-workflow-item">
+
+                        <div class="zev-step">
+                            4
+                        </div>
+
+                        <div>
+
+                            <div class="zev-workflow-name">
+                                Portfolio
+                            </div>
+
+                            <div class="zev-workflow-sub">
+                                Showcase your work
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="zev-progress">
+                    <span></span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- BOTTOM FEATURES -->
+        <section class="zev-bottom">
+
+            <div class="zev-feature">
+
+                <div class="zev-feature-icon">
+                    ✦
+                </div>
+
+                <h3>
+                    Research Assistant
+                </h3>
+
+                <p>
+                    Chat with your documents and receive
+                    source-backed answers and insights.
+                </p>
+
+            </div>
+
+
+            <div class="zev-feature">
+
+                <div class="zev-feature-icon">
+                    ◆
+                </div>
+
+                <h3>
+                    Build Projects
+                </h3>
+
+                <p>
+                    Transform research insights into structured
+                    projects ready for your career.
+                </p>
+
+            </div>
+
+
+            <div class="zev-feature">
+
+                <div class="zev-feature-icon">
+                    ↗
+                </div>
+
+                <h3>
+                    Career AI
+                </h3>
+
+                <p>
+                    Get career guidance based on your real
+                    projects, skills and education.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+<!-- /wp:html -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->

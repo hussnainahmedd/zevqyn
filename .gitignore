@@ -1,0 +1,50 @@
+# Environment files
+.env
+.env.*
+.env.local
+.env.production
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependencies
+node_modules/
+vendor/
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Secret files
+secrets/
+*.key
+*.pem
+*.cert
+
+# WordPress
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+wp-content/upgrade/
+
+# Build artifacts
+dist/
+build/
+.cache/

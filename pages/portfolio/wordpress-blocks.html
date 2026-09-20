@@ -1,0 +1,3091 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+#zevqyn-portfolio-app {
+    --pf-bg: #070b12;
+    --pf-panel: #0d131d;
+    --pf-panel-2: #111925;
+    --pf-border: rgba(255,255,255,0.09);
+    --pf-text: #f5f7fa;
+    --pf-muted: #8e9aaa;
+    --pf-green: #67f5a2;
+    --pf-green-dark: #34d77a;
+    --pf-blue: #63a8ff;
+    --pf-violet: #9c82ff;
+    --pf-danger: #ff6b75;
+
+    width: 100%;
+    background:
+        radial-gradient(
+            circle at 15% 0%,
+            rgba(70, 111, 255, 0.10),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 85% 10%,
+            rgba(103, 245, 162, 0.07),
+            transparent 26%
+        ),
+        var(--pf-bg);
+
+    color: var(--pf-text);
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    padding: 50px 20px 80px;
+    box-sizing: border-box;
+}
+
+#zevqyn-portfolio-app * {
+    box-sizing: border-box;
+}
+
+.zev-pf-shell {
+    width: 100%;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+.zev-pf-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.zev-pf-eyebrow {
+    color: var(--pf-green);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    margin-bottom: 8px;
+}
+
+.zev-pf-header h1 {
+    margin: 0;
+    color: #fff;
+    font-size: clamp(30px, 4vw, 48px);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+}
+
+.zev-pf-header p {
+    max-width: 650px;
+    margin: 12px 0 0;
+    color: var(--pf-muted);
+    font-size: 15px;
+    line-height: 1.65;
+}
+
+.zev-pf-header-actions {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.zev-pf-btn {
+    min-height: 44px;
+    border-radius: 10px;
+    padding: 0 18px;
+    border: 1px solid transparent;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 750;
+    transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        background 0.18s ease;
+}
+
+.zev-pf-btn:hover {
+    transform: translateY(-1px);
+}
+
+.zev-pf-btn-primary {
+    color: #04110a;
+    background: linear-gradient(
+        135deg,
+        var(--pf-green),
+        var(--pf-green-dark)
+    );
+}
+
+.zev-pf-btn-secondary {
+    color: #fff;
+    background: rgba(255,255,255,0.045);
+    border-color: var(--pf-border);
+}
+
+.zev-pf-btn-full {
+    width: 100%;
+    margin-top: 8px;
+}
+
+.zev-pf-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.zev-pf-status {
+    margin-bottom: 18px;
+    padding: 12px 15px;
+    border: 1px solid var(--pf-border);
+    border-radius: 10px;
+    background: var(--pf-panel);
+    color: var(--pf-text);
+    font-size: 13px;
+}
+
+.zev-pf-status.success {
+    border-color: rgba(103,245,162,0.35);
+    color: var(--pf-green);
+}
+
+.zev-pf-status.error {
+    border-color: rgba(255,107,117,0.35);
+    color: #ff8991;
+}
+
+.zev-pf-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin-bottom: 24px;
+    padding: 16px 18px;
+    border: 1px solid var(--pf-border);
+    border-radius: 14px;
+    background: rgba(13,19,29,0.82);
+    backdrop-filter: blur(16px);
+}
+
+.zev-pf-toolbar-field {
+    width: min(420px, 100%);
+}
+
+.zev-pf-toolbar-meta {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.zev-pf-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 28px;
+    padding: 0 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.zev-pf-badge-draft {
+    color: #c2cad5;
+    background: rgba(255,255,255,0.07);
+}
+
+.zev-pf-badge-live {
+    color: var(--pf-green);
+    background: rgba(103,245,162,0.10);
+    border: 1px solid rgba(103,245,162,0.20);
+}
+
+.zev-pf-text-btn {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--pf-blue);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.zev-pf-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.05fr)
+        minmax(380px, 0.95fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.zev-pf-editor {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.zev-pf-card {
+    border: 1px solid var(--pf-border);
+    border-radius: 16px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.025),
+            transparent
+        ),
+        var(--pf-panel);
+    padding: 22px;
+}
+
+.zev-pf-card-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--pf-border);
+}
+
+.zev-pf-card-heading > div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.zev-pf-card-heading h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 750;
+}
+
+.zev-pf-card-heading p {
+    margin: 0;
+    color: var(--pf-muted);
+    font-size: 12px;
+    text-align: right;
+}
+
+.zev-pf-step {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    color: var(--pf-green);
+    background: rgba(103,245,162,0.08);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.zev-pf-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.zev-pf-field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.zev-pf-field-full {
+    grid-column: 1 / -1;
+}
+
+.zev-pf-field label {
+    color: #d9e0e8;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.zev-pf-field small {
+    color: #697586;
+    font-size: 10px;
+}
+
+.zev-pf-field input,
+.zev-pf-field textarea,
+.zev-pf-field select,
+.zev-pf-toolbar select {
+    width: 100%;
+    border: 1px solid var(--pf-border);
+    border-radius: 10px;
+    outline: none;
+    background: #090f17;
+    color: #fff;
+    font-family: inherit;
+    font-size: 13px;
+    transition:
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
+}
+
+.zev-pf-field input,
+.zev-pf-field select,
+.zev-pf-toolbar select {
+    height: 44px;
+    padding: 0 12px;
+}
+
+.zev-pf-field textarea {
+    min-height: 120px;
+    padding: 12px;
+    resize: vertical;
+    line-height: 1.55;
+}
+
+.zev-pf-field input:focus,
+.zev-pf-field textarea:focus,
+.zev-pf-field select:focus,
+.zev-pf-toolbar select:focus {
+    border-color: rgba(103,245,162,0.45);
+    box-shadow: 0 0 0 3px rgba(103,245,162,0.07);
+}
+
+.zev-pf-slug-row {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--pf-border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: #090f17;
+}
+
+.zev-pf-slug-row span {
+    padding-left: 12px;
+    color: #687587;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.zev-pf-slug-row input {
+    border: 0;
+    background: transparent;
+    box-shadow: none !important;
+}
+
+.zev-pf-tabs {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    margin-bottom: 16px;
+    padding-bottom: 2px;
+}
+
+.zev-pf-tab {
+    min-height: 36px;
+    padding: 0 13px;
+    border: 1px solid var(--pf-border);
+    border-radius: 9px;
+    background: transparent;
+    color: var(--pf-muted);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.zev-pf-tab.active {
+    color: #06130b;
+    border-color: var(--pf-green);
+    background: var(--pf-green);
+}
+
+.zev-pf-items {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+}
+
+.zev-pf-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    padding: 13px 14px;
+    border: 1px solid var(--pf-border);
+    border-radius: 11px;
+    background: rgba(255,255,255,0.018);
+}
+
+.zev-pf-item-info {
+    min-width: 0;
+}
+
+.zev-pf-item-info strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #f3f6f9;
+    font-size: 12px;
+}
+
+.zev-pf-item-info span {
+    display: block;
+    color: var(--pf-muted);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.zev-pf-item-action {
+    min-width: 74px;
+    height: 32px;
+    border: 1px solid var(--pf-border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.035);
+    color: #dce4ed;
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.zev-pf-item-action.attached {
+    color: #ff9299;
+    border-color: rgba(255,107,117,0.25);
+    background: rgba(255,107,117,0.06);
+}
+
+.zev-pf-empty {
+    padding: 24px;
+    border: 1px dashed rgba(255,255,255,0.10);
+    border-radius: 10px;
+    color: #707c8d;
+    text-align: center;
+    font-size: 12px;
+}
+
+.zev-pf-toggle-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.zev-pf-toggle-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+    padding: 15px 0;
+    border-bottom: 1px solid var(--pf-border);
+    cursor: pointer;
+}
+
+.zev-pf-toggle-row:first-child {
+    padding-top: 0;
+}
+
+.zev-pf-toggle-row:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.zev-pf-toggle-row strong {
+    display: block;
+    margin-bottom: 3px;
+    color: #f3f6f9;
+    font-size: 12px;
+}
+
+.zev-pf-toggle-row span {
+    display: block;
+    color: var(--pf-muted);
+    font-size: 10px;
+}
+
+.zev-pf-toggle-row input {
+    width: 38px;
+    height: 20px;
+    accent-color: var(--pf-green);
+    cursor: pointer;
+}
+
+.zev-pf-preview-column {
+    position: sticky;
+    top: 24px;
+}
+
+.zev-pf-preview-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.zev-pf-preview-top h3 {
+    margin: 3px 0 0;
+    color: #fff;
+    font-size: 14px;
+}
+
+.zev-pf-preview-label {
+    color: var(--pf-green);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+}
+
+.zev-pf-preview {
+    min-height: 720px;
+    overflow: hidden;
+    border: 1px solid var(--pf-border);
+    border-radius: 18px;
+    background:
+        radial-gradient(
+            circle at 50% -10%,
+            rgba(99,168,255,0.16),
+            transparent 32%
+        ),
+        #090e16;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.30);
+}
+
+.zev-pf-preview-hero {
+    padding: 45px 34px 30px;
+    text-align: center;
+    border-bottom: 1px solid var(--pf-border);
+}
+
+.zev-pf-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 17px;
+    overflow: hidden;
+    border: 1px solid rgba(103,245,162,0.30);
+    border-radius: 50%;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(103,245,162,0.16),
+            rgba(99,168,255,0.12)
+        );
+    color: var(--pf-green);
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.zev-pf-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zev-pf-preview-hero h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 26px;
+    letter-spacing: -0.025em;
+}
+
+.zev-pf-preview-headline {
+    margin: 7px 0 0;
+    color: #aab5c2;
+    font-size: 13px;
+}
+
+.zev-pf-preview-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.zev-pf-preview-links a {
+    padding: 6px 9px;
+    border: 1px solid var(--pf-border);
+    border-radius: 7px;
+    color: #cbd5df;
+    text-decoration: none;
+    font-size: 9px;
+}
+
+.zev-pf-preview-section {
+    padding: 25px 30px;
+    border-bottom: 1px solid var(--pf-border);
+}
+
+.zev-pf-preview-kicker {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--pf-green);
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.13em;
+}
+
+.zev-pf-preview-section p {
+    margin: 0;
+    color: #a4afbc;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.zev-pf-preview-record {
+    margin-bottom: 13px;
+}
+
+.zev-pf-preview-record:last-child {
+    margin-bottom: 0;
+}
+
+.zev-pf-preview-record strong {
+    display: block;
+    color: #eef2f6;
+    font-size: 11px;
+}
+
+.zev-pf-preview-record span {
+    display: block;
+    margin-top: 3px;
+    color: #788596;
+    font-size: 9px;
+    line-height: 1.5;
+}
+
+.zev-pf-preview-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.zev-pf-preview-tag {
+    padding: 5px 7px;
+    border-radius: 6px;
+    background: rgba(103,245,162,0.07);
+    color: #aaf8ca;
+    font-size: 9px;
+}
+
+.zev-pf-modal[hidden] {
+    display: none;
+}
+
+.zev-pf-modal {
+    position: fixed;
+    z-index: 999999;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.zev-pf-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.72);
+    backdrop-filter: blur(8px);
+}
+
+.zev-pf-modal-card {
+    position: relative;
+    z-index: 2;
+    width: min(460px, 100%);
+    padding: 24px;
+    border: 1px solid var(--pf-border);
+    border-radius: 17px;
+    background: #0d131d;
+    box-shadow: 0 30px 100px rgba(0,0,0,0.55);
+}
+
+.zev-pf-modal-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 22px;
+}
+
+.zev-pf-modal-heading h2 {
+    margin: 0;
+    color: #fff;
+    font-size: 22px;
+}
+
+.zev-pf-modal-close {
+    width: 34px;
+    height: 34px;
+    border: 1px solid var(--pf-border);
+    border-radius: 8px;
+    background: transparent;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.zev-pf-modal-card .zev-pf-field {
+    margin-bottom: 15px;
+}
+
+@media (max-width: 1050px) {
+    .zev-pf-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-pf-preview-column {
+        position: static;
+    }
+}
+
+@media (max-width: 720px) {
+    #zevqyn-portfolio-app {
+        padding: 30px 12px 60px;
+    }
+
+    .zev-pf-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .zev-pf-header-actions {
+        width: 100%;
+    }
+
+    .zev-pf-header-actions .zev-pf-btn {
+        flex: 1;
+    }
+
+    .zev-pf-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .zev-pf-toolbar-meta {
+        justify-content: space-between;
+    }
+
+    .zev-pf-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-pf-field-full {
+        grid-column: auto;
+    }
+
+    .zev-pf-card-heading {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .zev-pf-card-heading p {
+        text-align: left;
+    }
+
+    .zev-pf-preview {
+        min-height: 600px;
+    }
+}
+
+@media (max-width: 480px) {
+    .zev-pf-header-actions {
+        flex-direction: column;
+    }
+
+    .zev-pf-slug-row span {
+        display: none;
+    }
+
+    .zev-pf-card {
+        padding: 17px;
+    }
+
+    .zev-pf-preview-hero {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .zev-pf-preview-section {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
+
+.zev-pf-btn-danger {
+    background: rgba(239, 68, 68, 0.08);
+    color: #ff6b6b;
+    border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+.zev-pf-btn-danger:hover {
+    background: rgba(239, 68, 68, 0.16);
+    border-color: rgba(239, 68, 68, 0.65);
+    color: #ff8585;
+}
+
+.zev-pf-btn-danger:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+</style>
+
+<script data-wp-block-html="js">
+const ZEV_PF_API =
+    "https://zevqyn-backend.onrender.com/api/v1";
+
+const ZEV_PF_SUPABASE_URL =
+    "https://phjizxajnigiiawitkyx.supabase.co";
+
+const ZEV_PF_SUPABASE_KEY =
+    "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+let zevPfSupabase = null;
+let zevPfSession = null;
+
+let zevPfPortfolios = [];
+let zevPfCurrentPortfolio = null;
+let zevPfCurrentTab = "projects";
+
+let zevPfSources = {
+    projects: [],
+    skills: [],
+    education: [],
+    certificates: []
+};
+
+let zevPfAttached = {
+    projects: [],
+    skills: [],
+    education: [],
+    certificates: []
+};
+
+
+function zevPfEl(id) {
+    return document.getElementById(id);
+}
+
+
+async function zevPfRequireSession() {
+
+    if (!window.supabase) {
+        throw new Error(
+            "Supabase client is not available."
+        );
+    }
+
+    zevPfSupabase =
+        window.supabase.createClient(
+            ZEV_PF_SUPABASE_URL,
+            ZEV_PF_SUPABASE_KEY
+        );
+
+    const result =
+        await zevPfSupabase.auth
+            .getSession();
+
+    zevPfSession =
+        result.data.session;
+
+    if (!zevPfSession) {
+        window.location.assign(
+            "/login/"
+        );
+
+        throw new Error(
+            "Authentication required."
+        );
+    }
+}
+
+async function zevPfRequest(
+    path,
+    options
+) {
+    const requestOptions =
+        options || {};
+
+   if (!zevPfSession) {
+    await zevPfRequireSession();
+}
+
+const token =
+    zevPfSession.access_token;
+
+    if (!requestOptions.headers) {
+        requestOptions.headers = {};
+    }
+
+    requestOptions.headers[
+        "Content-Type"
+    ] = "application/json";
+
+    if (token) {
+        requestOptions.headers[
+            "Authorization"
+        ] = "Bearer " + token;
+    }
+
+    const response =
+        await fetch(
+            ZEV_PF_API + path,
+            requestOptions
+        );
+
+    let data = null;
+
+    try {
+        data = await response.json();
+    } catch (error) {
+        data = null;
+    }
+
+    if (!response.ok) {
+        let message =
+            "Request failed.";
+
+        if (data) {
+            if (data.detail) {
+                if (
+                    typeof data.detail ===
+                    "string"
+                ) {
+                    message = data.detail;
+                } else {
+                    message =
+                        JSON.stringify(
+                            data.detail
+                        );
+                }
+            }
+        }
+
+        throw new Error(message);
+    }
+
+    return data;
+}
+
+
+function zevPfStatus(
+    message,
+    type
+) {
+    const status =
+        zevPfEl("zevqyn-pf-status");
+
+    status.textContent = message;
+    status.className =
+        "zev-pf-status " +
+        (type || "");
+
+    status.hidden = false;
+
+    window.setTimeout(
+        function () {
+            status.hidden = true;
+        },
+        3500
+    );
+}
+
+
+function zevPfValue(id) {
+    const element = zevPfEl(id);
+
+    if (!element) {
+        return "";
+    }
+
+    return element.value.trim();
+}
+
+
+function zevPfSetValue(
+    id,
+    value
+) {
+    const element = zevPfEl(id);
+
+    if (!element) {
+        return;
+    }
+
+    element.value =
+        value || "";
+}
+
+
+function zevPfSlugify(value) {
+    return value
+        .toLowerCase()
+        .trim()
+        .replace(/\s+/g, "-")
+        .replace(/[^a-z0-9_-]/g, "")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+}
+
+
+function zevPfEscape(value) {
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        value || "";
+
+    return div.innerHTML;
+}
+
+
+async function zevPfLoadPortfolios() {
+    try {
+        zevPfPortfolios =
+            await zevPfRequest(
+                "/portfolios",
+                {
+                    method: "GET"
+                }
+            );
+
+        zevPfRenderSelector();
+
+        if (zevPfPortfolios.length > 0) {
+            await zevPfSelectPortfolio(
+                zevPfPortfolios[0].id
+            );
+        } else {
+            zevPfCurrentPortfolio = null;
+            zevPfResetForm();
+            zevPfUpdatePreview();
+            zevPfRenderItems();
+        }
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+
+        zevPfEl(
+            "zevqyn-pf-selector"
+        ).innerHTML =
+            '<option value="">' +
+            "Unable to load portfolios" +
+            "</option>";
+    }
+}
+
+
+function zevPfRenderSelector() {
+    const selector =
+        zevPfEl(
+            "zevqyn-pf-selector"
+        );
+
+    selector.innerHTML = "";
+
+    if (zevPfPortfolios.length === 0) {
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value = "";
+        option.textContent =
+            "No portfolios yet";
+
+        selector.appendChild(option);
+        return;
+    }
+
+    zevPfPortfolios.forEach(
+        function (portfolio) {
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                portfolio.id;
+
+            option.textContent =
+                portfolio.display_name +
+                " — " +
+                portfolio.slug;
+
+            selector.appendChild(
+                option
+            );
+        }
+    );
+
+    if (zevPfCurrentPortfolio) {
+        selector.value =
+            zevPfCurrentPortfolio.id;
+    }
+}
+
+
+async function zevPfSelectPortfolio(
+    portfolioId
+) {
+    if (!portfolioId) {
+        return;
+    }
+
+    try {
+        zevPfCurrentPortfolio =
+            await zevPfRequest(
+                "/portfolios/" +
+                portfolioId,
+                {
+                    method: "GET"
+                }
+            );
+
+        zevPfPopulateForm();
+        zevPfRenderSelector();
+
+        await zevPfLoadAllContent();
+
+        zevPfUpdatePreview();
+        zevPfRenderItems();
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+    }
+}
+
+
+function zevPfPopulateForm() {
+    const p =
+        zevPfCurrentPortfolio;
+
+    if (!p) {
+        return;
+    }
+
+    zevPfSetValue(
+        "zevqyn-pf-name",
+        p.display_name
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-headline",
+        p.headline
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-slug",
+        p.slug
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-about",
+        p.about
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-image",
+        p.profile_image_url
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-github",
+        p.github_url
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-linkedin",
+        p.linkedin_url
+    );
+
+    zevPfSetValue(
+        "zevqyn-pf-website",
+        p.website_url
+    );
+
+    zevPfEl(
+        "zevqyn-pf-published"
+    ).checked =
+        Boolean(p.is_published);
+
+    zevPfEl(
+        "zevqyn-pf-contact"
+    ).checked =
+        Boolean(p.show_contact);
+
+    zevPfEl(
+        "zevqyn-pf-certificates-toggle"
+    ).checked =
+        Boolean(p.show_certificates);
+
+    zevPfUpdatePublishState();
+}
+
+
+function zevPfResetForm() {
+    const fields = [
+        "zevqyn-pf-name",
+        "zevqyn-pf-headline",
+        "zevqyn-pf-slug",
+        "zevqyn-pf-about",
+        "zevqyn-pf-image",
+        "zevqyn-pf-github",
+        "zevqyn-pf-linkedin",
+        "zevqyn-pf-website"
+    ];
+
+    fields.forEach(
+        function (id) {
+            zevPfSetValue(id, "");
+        }
+    );
+
+    zevPfEl(
+        "zevqyn-pf-published"
+    ).checked = false;
+
+    zevPfEl(
+        "zevqyn-pf-contact"
+    ).checked = false;
+
+    zevPfEl(
+        "zevqyn-pf-certificates-toggle"
+    ).checked = false;
+
+    zevPfUpdatePublishState();
+}
+
+
+function zevPfUpdatePublishState() {
+    const badge =
+        zevPfEl(
+            "zevqyn-pf-publish-badge"
+        );
+
+    const publicButton =
+        zevPfEl(
+            "zevqyn-pf-open-public"
+        );
+
+    const published =
+        zevPfEl(
+            "zevqyn-pf-published"
+        ).checked;
+
+    if (published) {
+        badge.textContent = "Published";
+        badge.className =
+            "zev-pf-badge " +
+            "zev-pf-badge-live";
+
+        if (zevPfCurrentPortfolio) {
+            publicButton.hidden = false;
+        }
+    } else {
+        badge.textContent = "Draft";
+        badge.className =
+            "zev-pf-badge " +
+            "zev-pf-badge-draft";
+
+        publicButton.hidden = true;
+    }
+}
+
+
+async function zevPfLoadAllContent() {
+    if (!zevPfCurrentPortfolio) {
+        return;
+    }
+
+    const id =
+        zevPfCurrentPortfolio.id;
+
+    try {
+        const results =
+            await Promise.all([
+                zevPfRequest(
+                    "/projects",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/career/skills",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/career/education",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/career/certificates",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/portfolios/" +
+                    id +
+                    "/projects",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/portfolios/" +
+                    id +
+                    "/skills",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/portfolios/" +
+                    id +
+                    "/education",
+                    {method: "GET"}
+                ),
+                zevPfRequest(
+                    "/portfolios/" +
+                    id +
+                    "/certificates",
+                    {method: "GET"}
+                )
+            ]);
+
+        zevPfSources.projects =
+            results[0] || [];
+
+        zevPfSources.skills =
+            results[1] || [];
+
+        zevPfSources.education =
+            results[2] || [];
+
+        zevPfSources.certificates =
+            results[3] || [];
+
+        zevPfAttached.projects =
+            results[4] || [];
+
+        zevPfAttached.skills =
+            results[5] || [];
+
+        zevPfAttached.education =
+            results[6] || [];
+
+        zevPfAttached.certificates =
+            results[7] || [];
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+    }
+}
+
+
+function zevPfSourceId(
+    type,
+    item
+) {
+    if (type === "projects") {
+        return item.id;
+    }
+
+    if (type === "skills") {
+        return item.id;
+    }
+
+    if (type === "education") {
+        return item.id;
+    }
+
+    return item.id;
+}
+
+
+function zevPfAttachedSourceId(
+    type,
+    item
+) {
+    if (type === "projects") {
+        return item.project_id;
+    }
+
+    if (type === "skills") {
+        return item.skill_id;
+    }
+
+    if (type === "education") {
+        return item.education_id;
+    }
+
+    return item.certificate_id;
+}
+
+
+function zevPfIsAttached(
+    type,
+    sourceId
+) {
+    const list =
+        zevPfAttached[type] || [];
+
+    for (
+        let i = 0;
+        i < list.length;
+        i += 1
+    ) {
+        if (
+            zevPfAttachedSourceId(
+                type,
+                list[i]
+            ) === sourceId
+        ) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+
+function zevPfItemTitle(
+    type,
+    item
+) {
+    if (type === "projects") {
+        return item.title ||
+            "Untitled Project";
+    }
+
+    if (type === "skills") {
+        return item.name ||
+            "Unnamed Skill";
+    }
+
+    if (type === "education") {
+        return item.institution ||
+            "Education";
+    }
+
+    return item.title ||
+        "Certificate";
+}
+
+
+function zevPfItemSubtitle(
+    type,
+    item
+) {
+    if (type === "projects") {
+        return item.short_description ||
+            item.description ||
+            "Project";
+    }
+
+    if (type === "skills") {
+        return item.category ||
+            "Skill";
+    }
+
+    if (type === "education") {
+        let text =
+            item.degree || "";
+
+        if (item.field_of_study) {
+            if (text) {
+                text +=
+                    " · " +
+                    item.field_of_study;
+            } else {
+                text =
+                    item.field_of_study;
+            }
+        }
+
+        return text ||
+            "Education";
+    }
+
+    return item.issuer ||
+        "Certificate";
+}
+
+
+function zevPfRenderItems() {
+    const container =
+        zevPfEl(
+            "zevqyn-pf-items"
+        );
+
+    container.innerHTML = "";
+
+    if (!zevPfCurrentPortfolio) {
+        container.innerHTML =
+            '<div class="zev-pf-empty">' +
+            "Create or select a portfolio first." +
+            "</div>";
+
+        return;
+    }
+
+    const source =
+        zevPfSources[
+            zevPfCurrentTab
+        ] || [];
+
+    if (source.length === 0) {
+        container.innerHTML =
+            '<div class="zev-pf-empty">' +
+            "No saved " +
+            zevPfCurrentTab +
+            " found in your ZEVQYN account." +
+            "</div>";
+
+        return;
+    }
+
+    source.forEach(
+        function (item) {
+            const sourceId =
+                zevPfSourceId(
+                    zevPfCurrentTab,
+                    item
+                );
+
+            const attached =
+                zevPfIsAttached(
+                    zevPfCurrentTab,
+                    sourceId
+                );
+
+            const row =
+                document.createElement(
+                    "div"
+                );
+
+            row.className =
+                "zev-pf-item";
+
+            const info =
+                document.createElement(
+                    "div"
+                );
+
+            info.className =
+                "zev-pf-item-info";
+
+            const title =
+                document.createElement(
+                    "strong"
+                );
+
+            title.textContent =
+                zevPfItemTitle(
+                    zevPfCurrentTab,
+                    item
+                );
+
+            const subtitle =
+                document.createElement(
+                    "span"
+                );
+
+            subtitle.textContent =
+                zevPfItemSubtitle(
+                    zevPfCurrentTab,
+                    item
+                );
+
+            info.appendChild(title);
+            info.appendChild(subtitle);
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.type = "button";
+
+            button.className =
+                "zev-pf-item-action";
+
+            if (attached) {
+                button.className +=
+                    " attached";
+
+                button.textContent =
+                    "Remove";
+            } else {
+                button.textContent =
+                    "Add";
+            }
+
+            button.addEventListener(
+                "click",
+                function () {
+                    zevPfToggleAttachment(
+                        zevPfCurrentTab,
+                        sourceId,
+                        attached,
+                        button
+                    );
+                }
+            );
+
+            row.appendChild(info);
+            row.appendChild(button);
+
+            container.appendChild(row);
+        }
+    );
+}
+
+
+function zevPfEndpointName(type) {
+    if (type === "projects") {
+        return "projects";
+    }
+
+    if (type === "skills") {
+        return "skills";
+    }
+
+    if (type === "education") {
+        return "education";
+    }
+
+    return "certificates";
+}
+
+
+function zevPfRequestKey(type) {
+    if (type === "projects") {
+        return "project_id";
+    }
+
+    if (type === "skills") {
+        return "skill_id";
+    }
+
+    if (type === "education") {
+        return "education_id";
+    }
+
+    return "certificate_id";
+}
+
+
+async function zevPfToggleAttachment(
+    type,
+    sourceId,
+    attached,
+    button
+) {
+    if (!zevPfCurrentPortfolio) {
+        return;
+    }
+
+    button.disabled = true;
+
+    const endpoint =
+        zevPfEndpointName(type);
+
+    const portfolioId =
+        zevPfCurrentPortfolio.id;
+
+    try {
+        if (attached) {
+            await zevPfRequest(
+                "/portfolios/" +
+                portfolioId +
+                "/" +
+                endpoint +
+                "/" +
+                sourceId,
+                {
+                    method: "DELETE"
+                }
+            );
+
+            zevPfStatus(
+                "Removed from portfolio.",
+                "success"
+            );
+        } else {
+            const payload = {
+                sort_order: 0
+            };
+
+            payload[
+                zevPfRequestKey(type)
+            ] = sourceId;
+
+            await zevPfRequest(
+                "/portfolios/" +
+                portfolioId +
+                "/" +
+                endpoint,
+                {
+                    method: "POST",
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+                }
+            );
+
+            zevPfStatus(
+                "Added to portfolio.",
+                "success"
+            );
+        }
+
+     zevPfAttached[type] =
+    await zevPfRequest(
+        "/portfolios/" +
+        portfolioId +
+        "/" +
+        endpoint,
+        {
+            method: "GET"
+        }
+    );
+
+zevPfRenderItems();
+zevPfUpdatePreview();
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+
+        button.disabled = false;
+    }
+}
+
+
+function zevPfGetAttachedSources(
+    type
+) {
+    const source =
+        zevPfSources[type] || [];
+
+    return source.filter(
+        function (item) {
+            return zevPfIsAttached(
+                type,
+                item.id
+            );
+        }
+    );
+}
+
+
+function zevPfPreviewSection(
+    title
+) {
+    const section =
+        document.createElement(
+            "div"
+        );
+
+    section.className =
+        "zev-pf-preview-section";
+
+    const kicker =
+        document.createElement(
+            "span"
+        );
+
+    kicker.className =
+        "zev-pf-preview-kicker";
+
+    kicker.textContent =
+        title.toUpperCase();
+
+    section.appendChild(kicker);
+
+    return section;
+}
+
+
+function zevPfUpdatePreview() {
+    const name =
+        zevPfValue(
+            "zevqyn-pf-name"
+        ) || "Your Name";
+
+    const headline =
+        zevPfValue(
+            "zevqyn-pf-headline"
+        ) ||
+        "Your professional headline";
+
+    const about =
+        zevPfValue(
+            "zevqyn-pf-about"
+        ) ||
+        "Tell visitors about yourself, your experience and what you are building.";
+
+    zevPfEl(
+        "zevqyn-pf-preview-name"
+    ).textContent = name;
+
+    zevPfEl(
+        "zevqyn-pf-preview-headline"
+    ).textContent = headline;
+
+    zevPfEl(
+        "zevqyn-pf-preview-about"
+    ).textContent = about;
+
+    zevPfUpdateAvatar();
+    zevPfUpdatePreviewLinks();
+    zevPfUpdatePreviewContent();
+    zevPfUpdatePublishState();
+}
+
+
+function zevPfUpdateAvatar() {
+    const avatar =
+        zevPfEl(
+            "zevqyn-pf-preview-avatar"
+        );
+
+    const image =
+        zevPfValue(
+            "zevqyn-pf-image"
+        );
+
+    const name =
+        zevPfValue(
+            "zevqyn-pf-name"
+        );
+
+    avatar.innerHTML = "";
+
+    if (image) {
+        const img =
+            document.createElement(
+                "img"
+            );
+
+        img.src = image;
+        img.alt =
+            name || "Profile";
+
+        avatar.appendChild(img);
+        return;
+    }
+
+    avatar.textContent =
+        name
+            ? name.charAt(0).toUpperCase()
+            : "Z";
+}
+
+
+function zevPfUpdatePreviewLinks() {
+    const container =
+        zevPfEl(
+            "zevqyn-pf-preview-links"
+        );
+
+    container.innerHTML = "";
+
+    if (
+        !zevPfEl(
+            "zevqyn-pf-contact"
+        ).checked
+    ) {
+        return;
+    }
+
+    const links = [
+        {
+            label: "GitHub",
+            url:
+                zevPfValue(
+                    "zevqyn-pf-github"
+                )
+        },
+        {
+            label: "LinkedIn",
+            url:
+                zevPfValue(
+                    "zevqyn-pf-linkedin"
+                )
+        },
+        {
+            label: "Website",
+            url:
+                zevPfValue(
+                    "zevqyn-pf-website"
+                )
+        }
+    ];
+
+    links.forEach(
+        function (link) {
+            if (!link.url) {
+                return;
+            }
+
+            const anchor =
+                document.createElement(
+                    "a"
+                );
+
+            anchor.href = link.url;
+            anchor.target = "_blank";
+            anchor.rel =
+                "noopener noreferrer";
+
+            anchor.textContent =
+                link.label;
+
+            container.appendChild(
+                anchor
+            );
+        }
+    );
+}
+
+
+function zevPfUpdatePreviewContent() {
+    const container =
+        zevPfEl(
+            "zevqyn-pf-preview-content"
+        );
+
+    container.innerHTML = "";
+
+    const projects =
+        zevPfGetAttachedSources(
+            "projects"
+        );
+
+    const skills =
+        zevPfGetAttachedSources(
+            "skills"
+        );
+
+    const education =
+        zevPfGetAttachedSources(
+            "education"
+        );
+
+    let certificates = [];
+
+    if (
+        zevPfEl(
+            "zevqyn-pf-certificates-toggle"
+        ).checked
+    ) {
+        certificates =
+            zevPfGetAttachedSources(
+                "certificates"
+            );
+    }
+
+    if (projects.length > 0) {
+        const section =
+            zevPfPreviewSection(
+                "Projects"
+            );
+
+        projects.forEach(
+            function (project) {
+                const record =
+                    document.createElement(
+                        "div"
+                    );
+
+                record.className =
+                    "zev-pf-preview-record";
+
+                const title =
+                    document.createElement(
+                        "strong"
+                    );
+
+                title.textContent =
+                    project.title ||
+                    "Project";
+
+                record.appendChild(title);
+
+                const description =
+                    document.createElement(
+                        "span"
+                    );
+
+                description.textContent =
+                    project.short_description ||
+                    project.description ||
+                    "";
+
+                record.appendChild(
+                    description
+                );
+
+                section.appendChild(
+                    record
+                );
+            }
+        );
+
+        container.appendChild(section);
+    }
+
+    if (skills.length > 0) {
+        const section =
+            zevPfPreviewSection(
+                "Skills"
+            );
+
+        const tags =
+            document.createElement(
+                "div"
+            );
+
+        tags.className =
+            "zev-pf-preview-tags";
+
+        skills.forEach(
+            function (skill) {
+                const tag =
+                    document.createElement(
+                        "span"
+                    );
+
+                tag.className =
+                    "zev-pf-preview-tag";
+
+                tag.textContent =
+                    skill.name ||
+                    "Skill";
+
+                tags.appendChild(tag);
+            }
+        );
+
+        section.appendChild(tags);
+        container.appendChild(section);
+    }
+
+    if (education.length > 0) {
+        const section =
+            zevPfPreviewSection(
+                "Education"
+            );
+
+        education.forEach(
+            function (item) {
+                const record =
+                    document.createElement(
+                        "div"
+                    );
+
+                record.className =
+                    "zev-pf-preview-record";
+
+                const title =
+                    document.createElement(
+                        "strong"
+                    );
+
+                title.textContent =
+                    item.institution ||
+                    "Education";
+
+                const subtitle =
+                    document.createElement(
+                        "span"
+                    );
+
+                let text =
+                    item.degree || "";
+
+                if (item.field_of_study) {
+                    if (text) {
+                        text +=
+                            " · " +
+                            item.field_of_study;
+                    } else {
+                        text =
+                            item.field_of_study;
+                    }
+                }
+
+                subtitle.textContent =
+                    text;
+
+                record.appendChild(title);
+                record.appendChild(
+                    subtitle
+                );
+
+                section.appendChild(
+                    record
+                );
+            }
+        );
+
+        container.appendChild(section);
+    }
+
+    if (certificates.length > 0) {
+        const section =
+            zevPfPreviewSection(
+                "Certificates"
+            );
+
+        certificates.forEach(
+            function (item) {
+                const record =
+                    document.createElement(
+                        "div"
+                    );
+
+                record.className =
+                    "zev-pf-preview-record";
+
+                const title =
+                    document.createElement(
+                        "strong"
+                    );
+
+                title.textContent =
+                    item.title ||
+                    "Certificate";
+
+                const subtitle =
+                    document.createElement(
+                        "span"
+                    );
+
+                subtitle.textContent =
+                    item.issuer || "";
+
+                record.appendChild(title);
+                record.appendChild(
+                    subtitle
+                );
+
+                section.appendChild(
+                    record
+                );
+            }
+        );
+
+        container.appendChild(section);
+    }
+}
+
+
+async function zevPfSavePortfolio() {
+    if (!zevPfCurrentPortfolio) {
+        zevPfStatus(
+            "Create a portfolio first.",
+            "error"
+        );
+        return;
+    }
+
+    const slug =
+        zevPfSlugify(
+            zevPfValue(
+                "zevqyn-pf-slug"
+            )
+        );
+
+    const displayName =
+        zevPfValue(
+            "zevqyn-pf-name"
+        );
+
+    if (!displayName) {
+        zevPfStatus(
+            "Display name is required.",
+            "error"
+        );
+        return;
+    }
+
+    if (slug.length < 3) {
+        zevPfStatus(
+            "Portfolio slug must be at least 3 characters.",
+            "error"
+        );
+        return;
+    }
+
+    const payload = {
+        display_name:
+            displayName,
+
+        slug:
+            slug,
+
+        headline:
+            zevPfValue(
+                "zevqyn-pf-headline"
+            ) || null,
+
+        about:
+            zevPfValue(
+                "zevqyn-pf-about"
+            ) || null,
+
+        profile_image_url:
+            zevPfValue(
+                "zevqyn-pf-image"
+            ) || null,
+
+        github_url:
+            zevPfValue(
+                "zevqyn-pf-github"
+            ) || null,
+
+        linkedin_url:
+            zevPfValue(
+                "zevqyn-pf-linkedin"
+            ) || null,
+
+        website_url:
+            zevPfValue(
+                "zevqyn-pf-website"
+            ) || null,
+
+        is_published:
+            zevPfEl(
+                "zevqyn-pf-published"
+            ).checked,
+
+        show_contact:
+            zevPfEl(
+                "zevqyn-pf-contact"
+            ).checked,
+
+        show_certificates:
+            zevPfEl(
+                "zevqyn-pf-certificates-toggle"
+            ).checked
+    };
+
+    const button =
+        zevPfEl(
+            "zevqyn-pf-save"
+        );
+
+    button.disabled = true;
+    button.textContent = "Saving...";
+
+    try {
+        zevPfCurrentPortfolio =
+            await zevPfRequest(
+                "/portfolios/" +
+                zevPfCurrentPortfolio.id,
+                {
+                    method: "PATCH",
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+                }
+            );
+
+        const index =
+            zevPfPortfolios.findIndex(
+                function (portfolio) {
+                    return (
+                        portfolio.id ===
+                        zevPfCurrentPortfolio.id
+                    );
+                }
+            );
+
+        if (index !== -1) {
+            zevPfPortfolios[index] =
+                zevPfCurrentPortfolio;
+        }
+
+        zevPfSetValue(
+            "zevqyn-pf-slug",
+            zevPfCurrentPortfolio.slug
+        );
+
+        zevPfRenderSelector();
+        zevPfUpdatePublishState();
+        zevPfUpdatePreview();
+
+        zevPfStatus(
+            "Portfolio saved successfully.",
+            "success"
+        );
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+    }
+
+    button.disabled = false;
+    button.textContent =
+        "Save Portfolio";
+}
+
+
+function zevPfOpenModal() {
+    zevPfEl(
+        "zevqyn-pf-create-name"
+    ).value = "";
+
+    zevPfEl(
+        "zevqyn-pf-create-slug"
+    ).value = "";
+
+    zevPfEl(
+        "zevqyn-pf-modal"
+    ).hidden = false;
+
+    zevPfEl(
+        "zevqyn-pf-create-name"
+    ).focus();
+}
+
+
+function zevPfCloseModal() {
+    zevPfEl(
+        "zevqyn-pf-modal"
+    ).hidden = true;
+}
+
+
+async function zevPfCreatePortfolio() {
+    const displayName =
+        zevPfValue(
+            "zevqyn-pf-create-name"
+        );
+
+    const slug =
+        zevPfSlugify(
+            zevPfValue(
+                "zevqyn-pf-create-slug"
+            )
+        );
+
+    if (!displayName) {
+        zevPfStatus(
+            "Enter a display name.",
+            "error"
+        );
+        return;
+    }
+
+    if (slug.length < 3) {
+        zevPfStatus(
+            "Slug must be at least 3 characters.",
+            "error"
+        );
+        return;
+    }
+
+    const button =
+        zevPfEl(
+            "zevqyn-pf-create"
+        );
+
+    button.disabled = true;
+    button.textContent = "Creating...";
+
+    try {
+        const portfolio =
+            await zevPfRequest(
+                "/portfolios",
+                {
+                    method: "POST",
+                    body:
+                        JSON.stringify({
+                            slug: slug,
+                            display_name:
+                                displayName,
+                            theme: "light",
+                            is_published:
+                                false,
+                            show_resume:
+                                false,
+                            show_research:
+                                false,
+                            show_certificates:
+                                false,
+                            show_contact:
+                                false
+                        })
+                }
+            );
+
+        zevPfPortfolios.unshift(
+            portfolio
+        );
+
+        zevPfCloseModal();
+
+        await zevPfSelectPortfolio(
+            portfolio.id
+        );
+
+        zevPfStatus(
+            "Portfolio created successfully.",
+            "success"
+        );
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+    }
+
+    button.disabled = false;
+    button.textContent =
+        "Create Portfolio";
+}
+
+
+function zevPfSetupTabs() {
+    const tabs =
+        document.querySelectorAll(
+            "#zevqyn-portfolio-app " +
+            ".zev-pf-tab"
+        );
+
+    tabs.forEach(
+        function (tab) {
+            tab.addEventListener(
+                "click",
+                function () {
+                    tabs.forEach(
+                        function (other) {
+                            other.classList
+                                .remove(
+                                    "active"
+                                );
+                        }
+                    );
+
+                    tab.classList.add(
+                        "active"
+                    );
+
+                    zevPfCurrentTab =
+                        tab.getAttribute(
+                            "data-pf-tab"
+                        );
+
+                    zevPfRenderItems();
+                }
+            );
+        }
+    );
+}
+
+
+function zevPfSetupLivePreview() {
+    const ids = [
+        "zevqyn-pf-name",
+        "zevqyn-pf-headline",
+        "zevqyn-pf-about",
+        "zevqyn-pf-image",
+        "zevqyn-pf-github",
+        "zevqyn-pf-linkedin",
+        "zevqyn-pf-website"
+    ];
+
+    ids.forEach(
+        function (id) {
+            zevPfEl(id)
+                .addEventListener(
+                    "input",
+                    zevPfUpdatePreview
+                );
+        }
+    );
+
+    const toggles = [
+        "zevqyn-pf-published",
+        "zevqyn-pf-contact",
+        "zevqyn-pf-certificates-toggle"
+    ];
+
+    toggles.forEach(
+        function (id) {
+            zevPfEl(id)
+                .addEventListener(
+                    "change",
+                    zevPfUpdatePreview
+                );
+        }
+    );
+}
+
+async function zevPfDeletePortfolio() {
+    if (!zevPfCurrentPortfolio) {
+        return;
+    }
+
+    const portfolioId =
+        zevPfCurrentPortfolio.id;
+
+    const portfolioName =
+        zevPfCurrentPortfolio.display_name ||
+        zevPfCurrentPortfolio.slug;
+
+    const confirmed =
+        window.confirm(
+            'Delete "' +
+            portfolioName +
+            '"?\n\n' +
+            "This action cannot be undone."
+        );
+
+    if (!confirmed) {
+        return;
+    }
+
+    const button =
+        zevPfEl(
+            "zevqyn-pf-delete"
+        );
+
+    button.disabled = true;
+    button.textContent =
+        "Deleting...";
+
+    try {
+        await zevPfRequest(
+            "/portfolios/" +
+            portfolioId,
+            {
+                method: "DELETE"
+            }
+        );
+
+        zevPfCurrentPortfolio = null;
+
+        zevPfStatus(
+            "Portfolio deleted successfully.",
+            "success"
+        );
+
+        await zevPfLoadPortfolios();
+    } catch (error) {
+        zevPfStatus(
+            error.message,
+            "error"
+        );
+    } finally {
+        button.disabled = false;
+        button.textContent =
+            "Delete Portfolio";
+    }
+}
+
+function zevPfSetupEvents() {
+    zevPfEl(
+        "zevqyn-pf-new"
+    ).addEventListener(
+        "click",
+        zevPfOpenModal
+    );
+
+zevPfEl(
+    "zevqyn-pf-delete"
+).addEventListener(
+    "click",
+    zevPfDeletePortfolio
+);
+
+    zevPfEl(
+        "zevqyn-pf-modal-close"
+    ).addEventListener(
+        "click",
+        zevPfCloseModal
+    );
+
+    zevPfEl(
+        "zevqyn-pf-modal"
+    ).querySelector(
+        ".zev-pf-modal-backdrop"
+    ).addEventListener(
+        "click",
+        zevPfCloseModal
+    );
+
+    zevPfEl(
+        "zevqyn-pf-create"
+    ).addEventListener(
+        "click",
+        zevPfCreatePortfolio
+    );
+
+    zevPfEl(
+        "zevqyn-pf-save"
+    ).addEventListener(
+        "click",
+        zevPfSavePortfolio
+    );
+
+    zevPfEl(
+        "zevqyn-pf-selector"
+    ).addEventListener(
+        "change",
+        function (event) {
+            zevPfSelectPortfolio(
+                event.target.value
+            );
+        }
+    );
+
+    zevPfEl(
+        "zevqyn-pf-create-name"
+    ).addEventListener(
+        "input",
+        function () {
+            const slugInput =
+                zevPfEl(
+                    "zevqyn-pf-create-slug"
+                );
+
+            if (!slugInput.value) {
+                slugInput.value =
+                    zevPfSlugify(
+                        zevPfValue(
+                            "zevqyn-pf-create-name"
+                        )
+                    );
+            }
+        }
+    );
+
+    zevPfEl(
+        "zevqyn-pf-slug"
+    ).addEventListener(
+        "blur",
+        function () {
+            this.value =
+                zevPfSlugify(
+                    this.value
+                );
+        }
+    );
+
+    zevPfEl(
+        "zevqyn-pf-create-slug"
+    ).addEventListener(
+        "blur",
+        function () {
+            this.value =
+                zevPfSlugify(
+                    this.value
+                );
+        }
+    );
+
+    zevPfEl(
+        "zevqyn-pf-open-public"
+    ).addEventListener(
+        "click",
+        function () {
+            if (!zevPfCurrentPortfolio) {
+                return;
+            }
+
+            const slug =
+                zevPfCurrentPortfolio.slug;
+
+            window.open(
+    "/p/?slug=" +
+    encodeURIComponent(slug),
+    "_blank"
+);
+        }
+    );
+
+    zevPfSetupTabs();
+    zevPfSetupLivePreview();
+}
+
+
+async function zevPfInitialize() {
+    const app =
+        zevPfEl(
+            "zevqyn-portfolio-app"
+        );
+
+    if (!app) {
+        return;
+    }
+
+   zevPfSetupEvents();
+zevPfUpdatePreview();
+
+try {
+    await zevPfRequireSession();
+    await zevPfLoadPortfolios();
+} catch (error) {
+    zevPfStatus(
+        error.message,
+        "error"
+    );
+}
+}
+
+
+if (
+    document.readyState ===
+    "loading"
+) {
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+            zevPfInitialize();
+        }
+    );
+} else {
+    zevPfInitialize();
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div id="zevqyn-portfolio-app" class="zev-pf-app">
+
+    <div class="zev-pf-shell">
+
+        <!-- Header -->
+        <div class="zev-pf-header">
+            <div>
+                <div class="zev-pf-eyebrow">ZEVQYN CAREER</div>
+                <h1>Portfolio Builder</h1>
+                <p>
+                    Turn your projects, skills, education and achievements
+                    into a professional public portfolio.
+                </p>
+            </div>
+
+           <div class="zev-pf-header-actions">
+    <button type="button" class="zev-pf-btn zev-pf-btn-secondary" id="zevqyn-pf-new">
+        + New Portfolio
+    </button>
+
+    <button type="button" class="zev-pf-btn zev-pf-btn-danger" id="zevqyn-pf-delete">
+        Delete Portfolio
+    </button>
+
+    <button type="button" class="zev-pf-btn zev-pf-btn-primary" id="zevqyn-pf-save">
+        Save Portfolio
+    </button>
+</div>
+</div>
+
+        <!-- Status -->
+        <div id="zevqyn-pf-status" class="zev-pf-status" hidden="">
+        </div>
+
+        <!-- Portfolio Selector -->
+        <div class="zev-pf-toolbar">
+            <div class="zev-pf-field zev-pf-toolbar-field">
+                <label for="zevqyn-pf-selector">
+                    Your Portfolios
+                </label>
+
+                <select id="zevqyn-pf-selector">
+                    <option value="">Loading portfolios...</option>
+                </select>
+            </div>
+
+            <div class="zev-pf-toolbar-meta">
+                <span id="zevqyn-pf-publish-badge" class="zev-pf-badge zev-pf-badge-draft">
+                    Draft
+                </span>
+
+                <button type="button" id="zevqyn-pf-open-public" class="zev-pf-text-btn" hidden="">
+                    Open Public Portfolio ↗
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="zev-pf-grid">
+
+            <!-- LEFT: Editor -->
+            <div class="zev-pf-editor">
+
+                <!-- Portfolio Details -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">01</span>
+                            <h2>Portfolio Details</h2>
+                        </div>
+                        <p>Your public identity and introduction.</p>
+                    </div>
+
+                    <div class="zev-pf-form-grid">
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-name">
+                                Display Name
+                            </label>
+                            <input id="zevqyn-pf-name" type="text" maxlength="200" placeholder="Hussnain Ahmad">
+                        </div>
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-headline">
+                                Professional Headline
+                            </label>
+                            <input id="zevqyn-pf-headline" type="text" maxlength="200" placeholder="Full Stack Developer">
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-slug">
+                                Public Portfolio Slug
+                            </label>
+
+                            <div class="zev-pf-slug-row">
+                                <span>zevqyn.free.je/p/</span>
+                                <input id="zevqyn-pf-slug" type="text" maxlength="100" placeholder="hussnain-ahmad">
+                            </div>
+
+                            <small>
+                                Letters, numbers, hyphens and underscores only.
+                            </small>
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-about">
+                                About Me
+                            </label>
+                            <textarea id="zevqyn-pf-about" maxlength="2000" rows="6" placeholder="Write a short professional introduction..."></textarea>
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-image">
+                                Profile Image URL
+                            </label>
+                            <input id="zevqyn-pf-image" type="url" maxlength="500" placeholder="https://...">
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Links -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">02</span>
+                            <h2>Professional Links</h2>
+                        </div>
+                        <p>Add the places people can find your work.</p>
+                    </div>
+
+                    <div class="zev-pf-form-grid">
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-github">
+                                GitHub
+                            </label>
+                            <input id="zevqyn-pf-github" type="url" placeholder="https://github.com/...">
+                        </div>
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-linkedin">
+                                LinkedIn
+                            </label>
+                            <input id="zevqyn-pf-linkedin" type="url" placeholder="https://linkedin.com/in/...">
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-website">
+                                Website
+                            </label>
+                            <input id="zevqyn-pf-website" type="url" placeholder="https://...">
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Content -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">03</span>
+                            <h2>Portfolio Content</h2>
+                        </div>
+                        <p>
+                            Reuse career records already saved in ZEVQYN.
+                        </p>
+                    </div>
+
+                    <div class="zev-pf-tabs">
+                        <button type="button" class="zev-pf-tab active" data-pf-tab="projects">
+                            Projects
+                        </button>
+
+                        <button type="button" class="zev-pf-tab" data-pf-tab="skills">
+                            Skills
+                        </button>
+
+                        <button type="button" class="zev-pf-tab" data-pf-tab="education">
+                            Education
+                        </button>
+
+                        <button type="button" class="zev-pf-tab" data-pf-tab="certificates">
+                            Certificates
+                        </button>
+                    </div>
+
+                    <div id="zevqyn-pf-items" class="zev-pf-items">
+                        <div class="zev-pf-empty">
+                            Select or create a portfolio first.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Publishing -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">04</span>
+                            <h2>Publishing &amp; Privacy</h2>
+                        </div>
+                        <p>Control what visitors can see.</p>
+                    </div>
+
+                    <div class="zev-pf-toggle-list">
+
+                        <label class="zev-pf-toggle-row">
+                            <div>
+                                <strong>Publish Portfolio</strong>
+                                <span>
+                                    Make the portfolio publicly accessible.
+                                </span>
+                            </div>
+
+                            <input id="zevqyn-pf-published" type="checkbox">
+                        </label>
+
+                        <label class="zev-pf-toggle-row">
+                            <div>
+                                <strong>Show Contact Links</strong>
+                                <span>
+                                    Display GitHub, LinkedIn and website.
+                                </span>
+                            </div>
+
+                            <input id="zevqyn-pf-contact" type="checkbox">
+                        </label>
+
+                        <label class="zev-pf-toggle-row">
+                            <div>
+                                <strong>Show Certificates</strong>
+                                <span>
+                                    Include attached certificates publicly.
+                                </span>
+                            </div>
+
+                            <input id="zevqyn-pf-certificates-toggle" type="checkbox">
+                        </label>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT: Preview -->
+            <aside class="zev-pf-preview-column">
+
+                <div class="zev-pf-preview-top">
+                    <div>
+                        <span class="zev-pf-preview-label">
+                            LIVE PREVIEW
+                        </span>
+                        <h3>Portfolio Preview</h3>
+                    </div>
+                </div>
+
+                <div id="zevqyn-pf-preview" class="zev-pf-preview">
+
+                    <div class="zev-pf-preview-hero">
+
+                        <div id="zevqyn-pf-preview-avatar" class="zev-pf-avatar">
+                            Z
+                        </div>
+
+                        <h2 id="zevqyn-pf-preview-name">
+                            Your Name
+                        </h2>
+
+                        <p id="zevqyn-pf-preview-headline" class="zev-pf-preview-headline">
+                            Your professional headline
+                        </p>
+
+                        <div id="zevqyn-pf-preview-links" class="zev-pf-preview-links">
+                        </div>
+                    </div>
+
+                    <div class="zev-pf-preview-section">
+                        <span class="zev-pf-preview-kicker">
+                            ABOUT
+                        </span>
+
+                        <p id="zevqyn-pf-preview-about">
+                            Tell visitors about yourself, your experience
+                            and what you are building.
+                        </p>
+                    </div>
+
+                    <div id="zevqyn-pf-preview-content">
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+    <!-- Create Portfolio Modal -->
+    <div id="zevqyn-pf-modal" class="zev-pf-modal" hidden="">
+
+        <div class="zev-pf-modal-backdrop"></div>
+
+        <div class="zev-pf-modal-card">
+
+            <div class="zev-pf-modal-heading">
+                <div>
+                    <span class="zev-pf-eyebrow">NEW PORTFOLIO</span>
+                    <h2>Create Portfolio</h2>
+                </div>
+
+                <button type="button" id="zevqyn-pf-modal-close" class="zev-pf-modal-close">
+                    ×
+                </button>
+            </div>
+
+            <div class="zev-pf-field">
+                <label for="zevqyn-pf-create-name">
+                    Display Name
+                </label>
+                <input id="zevqyn-pf-create-name" type="text" maxlength="200" placeholder="Hussnain Ahmad">
+            </div>
+
+            <div class="zev-pf-field">
+                <label for="zevqyn-pf-create-slug">
+                    Portfolio Slug
+                </label>
+                <input id="zevqyn-pf-create-slug" type="text" maxlength="100" placeholder="hussnain-ahmad">
+            </div>
+
+            <button type="button" id="zevqyn-pf-create" class="zev-pf-btn zev-pf-btn-primary zev-pf-btn-full">
+                Create Portfolio
+            </button>
+
+        </div>
+    </div>
+
+</div>
+<!-- /wp:html -->

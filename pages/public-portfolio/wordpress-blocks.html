@@ -1,0 +1,2301 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+#zevqyn-public-portfolio {
+    --bg: #05070b;
+    --surface: #0a0e15;
+    --surface-2: #0e141e;
+    --border: rgba(255,255,255,0.085);
+    --text: #f5f7fb;
+    --muted: #8993a3;
+    --green: #68f5a3;
+    --blue: #6ea8ff;
+    --violet: #a68cff;
+
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 12% 12%,
+            rgba(87,115,255,0.12),
+            transparent 28%
+        ),
+        radial-gradient(
+            circle at 85% 18%,
+            rgba(104,245,163,0.09),
+            transparent 26%
+        ),
+        var(--bg);
+
+    color: var(--text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+#zevqyn-public-portfolio * {
+    box-sizing: border-box;
+}
+
+#zevqyn-public-portfolio a {
+    color: inherit;
+}
+
+#zpp-content {
+    position: relative;
+    z-index: 2;
+    width: min(1280px, calc(100% - 44px));
+    margin: auto;
+}
+
+.zpp-noise {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.025;
+    pointer-events: none;
+
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(255,255,255,0.2) 3px
+        );
+}
+
+.zpp-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    pointer-events: none;
+}
+
+.zpp-orb-one {
+    width: 420px;
+    height: 420px;
+    top: 500px;
+    left: -250px;
+    background: rgba(96,108,255,0.09);
+}
+
+.zpp-orb-two {
+    width: 480px;
+    height: 480px;
+    top: 1400px;
+    right: -280px;
+    background: rgba(104,245,163,0.07);
+}
+
+/* STATE */
+
+.zpp-state {
+    position: relative;
+    z-index: 10;
+    min-height: 80vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.zpp-state span {
+    margin-top: 20px;
+    color: var(--green);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.18em;
+}
+
+.zpp-state p {
+    color: var(--muted);
+}
+
+.zpp-loader {
+    width: 38px;
+    height: 38px;
+
+    border: 3px solid rgba(255,255,255,0.08);
+    border-top-color: var(--green);
+    border-radius: 50%;
+
+    animation: zppSpin 0.8s linear infinite;
+}
+
+@keyframes zppSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.zpp-error h1 {
+    margin: 10px 0;
+    font-size: clamp(40px, 7vw, 80px);
+}
+
+/* NAV */
+
+.zpp-nav {
+    min-height: 88px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    border-bottom: 1px solid var(--border);
+}
+
+.zpp-brand {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+}
+
+.zpp-brand-mark {
+    width: 29px;
+    height: 29px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+    background: var(--green);
+    color: #051008;
+
+    font-weight: 950;
+}
+
+.zpp-nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.zpp-nav-links a {
+    position: relative;
+    text-decoration: none;
+    color: #aeb7c4;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.zpp-nav-links a:hover {
+    color: #fff;
+}
+
+.zpp-nav-cta {
+    padding: 10px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+}
+
+/* HERO */
+
+.zpp-hero {
+    min-height: 720px;
+
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.08fr)
+        minmax(380px, 0.92fr);
+
+    align-items: center;
+    gap: 70px;
+
+    padding: 90px 20px 100px;
+}
+
+.zpp-status-pill {
+    width: fit-content;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 30px;
+    padding: 8px 11px;
+
+    border: 1px solid rgba(104,245,163,0.18);
+    border-radius: 999px;
+
+    background: rgba(104,245,163,0.045);
+
+    color: #a7b5ac;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 0.11em;
+}
+
+.zpp-status-dot {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+    background: var(--green);
+
+    box-shadow: 0 0 12px var(--green);
+
+    animation: zppPulse 1.8s infinite;
+}
+
+@keyframes zppPulse {
+    50% {
+        opacity: 0.4;
+    }
+}
+
+.zpp-intro {
+    margin: 0 0 8px;
+
+    color: var(--green);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+}
+
+.zpp-hero h1 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: clamp(62px, 8vw, 112px);
+    line-height: 0.9;
+
+    letter-spacing: -0.07em;
+}
+
+.zpp-hero-title {
+    margin-top: 18px;
+
+    font-size: clamp(25px, 3vw, 42px);
+    font-weight: 750;
+    letter-spacing: -0.035em;
+
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #8e9aaa
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.zpp-hero-about {
+    max-width: 620px;
+    margin: 24px 0 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.zpp-hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+
+    margin-top: 32px;
+}
+
+.zpp-main-btn {
+    min-height: 48px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+
+    padding: 0 19px;
+
+    border-radius: 11px;
+
+    background: var(--green);
+    color: #041009 !important;
+
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 900;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.zpp-main-btn:hover {
+    transform: translateY(-3px);
+    box-shadow:
+        0 15px 40px rgba(104,245,163,0.15);
+}
+
+.zpp-socials {
+    display: flex;
+    gap: 8px;
+}
+
+.zpp-social-btn {
+    min-height: 45px;
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 0 14px;
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+
+    background: rgba(255,255,255,0.025);
+
+    color: #ccd4de !important;
+
+    text-decoration: none;
+    font-size: 10px;
+    font-weight: 800;
+
+    transition: 0.2s ease;
+}
+
+.zpp-social-btn:hover {
+    transform: translateY(-2px);
+    border-color: rgba(104,245,163,0.3);
+    color: #fff !important;
+}
+
+.zpp-scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-top: 70px;
+
+    color: #596373;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 0.15em;
+}
+
+.zpp-scroll-line {
+    width: 60px;
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #596373,
+            transparent
+        );
+}
+
+/* HERO IMAGE */
+
+.zpp-hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zpp-photo-wrap {
+    position: relative;
+
+    width: min(440px, 90vw);
+    aspect-ratio: 0.86;
+}
+
+.zpp-photo-ring {
+    position: absolute;
+    inset: -20px;
+
+    border: 1px solid rgba(104,245,163,0.10);
+    border-radius: 44% 56% 50% 50% / 42% 44% 56% 58%;
+
+    transform: rotate(5deg);
+
+    animation:
+        zppFloatRing 8s ease-in-out infinite;
+}
+
+@keyframes zppFloatRing {
+    50% {
+        transform: rotate(-2deg) translateY(-8px);
+    }
+}
+
+.zpp-avatar {
+    position: absolute;
+    inset: 0;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 44% 56% 48% 52% / 39% 42% 58% 61%;
+
+    background:
+        radial-gradient(
+            circle at 50% 20%,
+            rgba(104,245,163,0.16),
+            transparent 45%
+        ),
+        var(--surface-2);
+
+    color: var(--green);
+
+    font-size: 100px;
+    font-weight: 900;
+
+    box-shadow:
+        0 40px 100px rgba(0,0,0,0.4);
+}
+
+.zpp-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.zpp-float-card {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 12px 15px;
+
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    background: rgba(10,14,21,0.85);
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 45px rgba(0,0,0,0.35);
+}
+
+.zpp-float-card > span {
+    color: var(--green);
+    font-size: 18px;
+}
+
+.zpp-float-card small {
+    display: block;
+
+    margin-bottom: 2px;
+
+    color: #626e7e;
+
+    font-size: 7px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.zpp-float-card strong {
+    color: #e8edf3;
+    font-size: 10px;
+}
+
+.zpp-float-one {
+    top: 16%;
+    right: -45px;
+}
+
+.zpp-float-two {
+    bottom: 12%;
+    left: -55px;
+}
+
+/* GENERAL SECTION */
+
+.zpp-section {
+    position: relative;
+
+    padding: 110px 20px;
+
+    border-top: 1px solid var(--border);
+}
+
+.zpp-section-number {
+    position: absolute;
+    top: 45px;
+    right: 20px;
+
+    color: rgba(255,255,255,0.035);
+
+    font-size: 100px;
+    font-weight: 950;
+    line-height: 1;
+}
+
+.zpp-section-heading {
+    position: relative;
+    z-index: 2;
+
+    margin-bottom: 45px;
+}
+
+.zpp-section-heading > span {
+    display: block;
+
+    margin-bottom: 12px;
+
+    color: var(--green);
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+}
+
+.zpp-section-heading h2 {
+    max-width: 680px;
+
+    margin: 0;
+
+    color: #fff;
+
+    font-size: clamp(38px, 5vw, 65px);
+    line-height: 1;
+
+    letter-spacing: -0.055em;
+}
+
+.zpp-section-heading h2 em {
+    color: #788393;
+    font-style: normal;
+}
+
+.zpp-heading-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 40px;
+}
+
+.zpp-heading-row p {
+    max-width: 300px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+/* ABOUT */
+
+.zpp-about-grid {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1.6fr)
+        minmax(180px, 0.7fr)
+        minmax(180px, 0.7fr);
+
+    gap: 14px;
+}
+
+.zpp-about-card {
+    min-height: 230px;
+
+    padding: 28px;
+
+    border: 1px solid var(--border);
+    border-radius: 18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,0.025),
+            transparent
+        ),
+        var(--surface);
+}
+
+.zpp-card-label {
+    color: var(--green);
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.17em;
+}
+
+.zpp-about-main p {
+    max-width: 720px;
+
+    margin: 50px 0 0;
+
+    color: #b1bac6;
+
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.zpp-about-mini {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.zpp-big-symbol {
+    margin-bottom: auto;
+
+    color: var(--green);
+
+    font-size: 42px;
+    font-weight: 800;
+}
+
+.zpp-about-mini > span:not(.zpp-big-symbol) {
+    margin-bottom: 6px;
+
+    color: #667181;
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+}
+
+.zpp-about-mini strong {
+    color: #f0f3f7;
+
+    font-size: 15px;
+    line-height: 1.4;
+}
+
+/* PROJECTS */
+
+.zpp-project-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+}
+
+.zpp-project-card {
+    position: relative;
+
+    min-height: 310px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 28px;
+
+    border: 1px solid var(--border);
+    border-radius: 19px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(104,245,163,0.07),
+            transparent 35%
+        ),
+        var(--surface);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.zpp-project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(104,245,163,0.24);
+}
+
+.zpp-project-index {
+    color: #596575;
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.zpp-project-card h3 {
+    margin: 35px 0 10px;
+
+    color: #fff;
+
+    font-size: 24px;
+    letter-spacing: -0.035em;
+}
+
+.zpp-project-card p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+    line-height: 1.75;
+}
+
+.zpp-project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+
+    margin-top: 20px;
+}
+
+.zpp-tech {
+    padding: 6px 8px;
+
+    border-radius: 7px;
+
+    background: rgba(104,245,163,0.065);
+    color: #aaf7c9;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+.zpp-project-actions {
+    display: flex;
+    gap: 8px;
+
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+.zpp-project-link {
+    text-decoration: none;
+
+    color: #dce3eb !important;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.zpp-project-link:hover {
+    color: var(--green) !important;
+}
+
+/* SKILLS */
+
+.zpp-skill-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.zpp-skill {
+    padding: 14px 18px;
+
+    border: 1px solid var(--border);
+    border-radius: 999px;
+
+    background: rgba(255,255,255,0.02);
+
+    color: #d8dfe7;
+
+    font-size: 11px;
+    font-weight: 750;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.zpp-skill:hover {
+    transform: translateY(-3px) rotate(-1deg);
+
+    border-color: rgba(104,245,163,0.3);
+    background: rgba(104,245,163,0.06);
+
+    color: #fff;
+}
+
+/* TIMELINE */
+
+.zpp-timeline {
+    position: relative;
+
+    max-width: 850px;
+}
+
+.zpp-timeline::before {
+    content: "";
+
+    position: absolute;
+    left: 6px;
+    top: 8px;
+    bottom: 8px;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            var(--green),
+            rgba(255,255,255,0.06)
+        );
+}
+
+.zpp-timeline-item {
+    position: relative;
+
+    padding: 0 0 42px 40px;
+}
+
+.zpp-timeline-dot {
+    position: absolute;
+    left: 0;
+    top: 5px;
+
+    width: 13px;
+    height: 13px;
+
+    border: 3px solid var(--bg);
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 0 1px rgba(104,245,163,0.35);
+}
+
+.zpp-timeline-date {
+    color: var(--green);
+
+    font-size: 8px;
+    font-weight: 900;
+    letter-spacing: 0.12em;
+}
+
+.zpp-timeline-item h3 {
+    margin: 7px 0 5px;
+
+    color: #fff;
+
+    font-size: 18px;
+}
+
+.zpp-timeline-item strong {
+    display: block;
+
+    color: #909cab;
+
+    font-size: 11px;
+}
+
+.zpp-timeline-item p {
+    max-width: 650px;
+
+    margin: 10px 0 0;
+
+    color: #778292;
+
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* CERTIFICATES */
+
+.zpp-certificate-grid {
+    display: grid;
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 13px;
+}
+
+.zpp-certificate {
+    min-height: 180px;
+
+    padding: 23px;
+
+    border: 1px solid var(--border);
+    border-radius: 16px;
+
+    background: var(--surface);
+}
+
+.zpp-certificate-icon {
+    color: var(--green);
+    font-size: 22px;
+}
+
+.zpp-certificate h3 {
+    margin: 25px 0 6px;
+
+    color: #fff;
+
+    font-size: 14px;
+}
+
+.zpp-certificate p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 9px;
+}
+
+/* CONNECT */
+
+.zpp-connect {
+    position: relative;
+
+    overflow: hidden;
+
+    margin: 60px 20px 30px;
+    padding: 90px 30px;
+
+    border: 1px solid var(--border);
+    border-radius: 28px;
+
+    background: var(--surface);
+
+    text-align: center;
+}
+
+.zpp-connect-glow {
+    position: absolute;
+
+    width: 500px;
+    height: 250px;
+
+    left: 50%;
+    top: -180px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(104,245,163,0.16);
+    filter: blur(80px);
+}
+
+.zpp-connect-label {
+    position: relative;
+
+    color: var(--green);
+
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+}
+
+.zpp-connect h2 {
+    position: relative;
+
+    max-width: 800px;
+
+    margin: 16px auto;
+
+    color: #fff;
+
+    font-size: clamp(45px, 7vw, 85px);
+    line-height: 0.95;
+
+    letter-spacing: -0.06em;
+}
+
+.zpp-connect h2 em {
+    color: var(--green);
+    font-style: normal;
+}
+
+.zpp-connect p {
+    position: relative;
+
+    max-width: 520px;
+
+    margin: 22px auto;
+
+    color: var(--muted);
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.zpp-connect-actions {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+
+    margin-top: 30px;
+}
+
+/* FOOTER */
+
+.zpp-footer {
+    min-height: 100px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 0 20px;
+
+    border-top: 1px solid var(--border);
+
+    color: #596473;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+.zpp-footer b {
+    color: var(--green);
+}
+
+/* ANIMATION */
+
+.zpp-reveal {
+    opacity: 0;
+    transform: translateY(24px);
+
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
+}
+
+.zpp-reveal.zpp-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 950px) {
+
+    .zpp-nav-links {
+        display: none;
+    }
+
+    .zpp-hero {
+        grid-template-columns: 1fr;
+        gap: 70px;
+
+        padding-top: 70px;
+    }
+
+    .zpp-hero-copy {
+        text-align: center;
+    }
+
+    .zpp-status-pill {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .zpp-hero-about {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .zpp-hero-actions {
+        justify-content: center;
+    }
+
+    .zpp-scroll-hint {
+        justify-content: center;
+    }
+
+    .zpp-photo-wrap {
+        width: min(380px, 75vw);
+    }
+
+    .zpp-about-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zpp-about-main {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+
+    #zpp-content {
+        width: min(100% - 24px, 1280px);
+    }
+
+    .zpp-nav {
+        min-height: 72px;
+    }
+
+    .zpp-nav-cta {
+        display: none;
+    }
+
+    .zpp-hero {
+        min-height: auto;
+        padding:
+            70px 10px
+            90px;
+    }
+
+    .zpp-hero h1 {
+        font-size: clamp(55px, 17vw, 82px);
+    }
+
+    .zpp-hero-title {
+        font-size: 25px;
+    }
+
+    .zpp-scroll-hint {
+        display: none;
+    }
+
+    .zpp-photo-wrap {
+        width: min(300px, 78vw);
+    }
+
+    .zpp-float-one {
+        right: -15px;
+    }
+
+    .zpp-float-two {
+        left: -15px;
+    }
+
+    .zpp-section {
+        padding:
+            85px 10px;
+    }
+
+    .zpp-section-number {
+        right: 10px;
+        top: 35px;
+
+        font-size: 70px;
+    }
+
+    .zpp-heading-row {
+        display: block;
+    }
+
+    .zpp-heading-row p {
+        margin-top: 20px;
+    }
+
+    .zpp-about-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zpp-about-main {
+        grid-column: auto;
+    }
+
+    .zpp-project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zpp-certificate-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zpp-connect {
+        margin-left: 0;
+        margin-right: 0;
+
+        padding:
+            70px 20px;
+    }
+
+    .zpp-footer {
+        margin: 0;
+
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .zpp-socials {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .zpp-hero-actions .zpp-main-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .zpp-float-card {
+        padding: 9px 10px;
+    }
+
+    .zpp-about-card {
+        padding: 22px;
+    }
+
+    .zpp-project-card {
+        padding: 22px;
+    }
+}
+
+#zevqyn-public-portfolio [hidden] {
+    display: none !important;
+}
+
+/* Hide WordPress page title */
+body.page .hero-section,
+body.page .page-title,
+body.page .entry-header {
+    display: none !important;
+}
+
+/* Remove Current Mode / Creating floating card */
+#zevqyn-public-portfolio .zpp-float-one {
+    display: none !important;
+}
+
+/* Remove leftover Blocksy page-title / hero spacing */
+body.page .hero-section,
+body.page .page-title,
+body.page .entry-header {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Remove top spacing added by the page content wrapper */
+body.page .site-main,
+body.page .ct-container-full {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+/* Portfolio starts immediately */
+#zevqyn-public-portfolio {
+    margin-top: 0 !important;
+}
+</style>
+
+<script data-wp-block-html="js">
+const ZPP_API =
+    "https://zevqyn-backend.onrender.com/api/v1";
+
+function zppEl(id) {
+    return document.getElementById(id);
+}
+
+function zppEscape(value) {
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        value || "";
+
+    return div.innerHTML;
+}
+
+function zppUrl(value) {
+    if (!value) {
+        return "";
+    }
+
+    try {
+        const url =
+            new URL(value);
+
+        if (
+            url.protocol === "http:" ||
+            url.protocol === "https:"
+        ) {
+            return url.href;
+        }
+    } catch (error) {
+        return "";
+    }
+
+    return "";
+}
+
+function zppGetSlug() {
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    const querySlug =
+        params.get("slug");
+
+    if (querySlug) {
+        return querySlug
+            .trim()
+            .toLowerCase();
+    }
+
+    const parts =
+        window.location.pathname
+            .split("/")
+            .filter(
+                function (part) {
+                    return Boolean(part);
+                }
+            );
+
+    const pIndex =
+        parts.indexOf("p");
+
+    if (pIndex === -1) {
+        return "";
+    }
+
+    if (
+        parts.length <=
+        pIndex + 1
+    ) {
+        return "";
+    }
+
+    return decodeURIComponent(
+        parts[pIndex + 1]
+    )
+        .trim()
+        .toLowerCase();
+}
+
+function zppInitials(name) {
+    const words =
+        String(name || "Z")
+            .trim()
+            .split(/\s+/);
+
+    let result = "";
+
+    words
+        .slice(0, 2)
+        .forEach(
+            function (word) {
+                if (word) {
+                    result +=
+                        word.charAt(0);
+                }
+            }
+        );
+
+    return result || "Z";
+}
+
+function zppFormatDate(value) {
+    if (!value) {
+        return "";
+    }
+
+    const date =
+        new Date(
+            value + "T00:00:00"
+        );
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+        return value;
+    }
+
+    return date.toLocaleDateString(
+        undefined,
+        {
+            year: "numeric",
+            month: "short"
+        }
+    );
+}
+
+function zppSocialLink(
+    label,
+    url
+) {
+    const safeUrl =
+        zppUrl(url);
+
+    if (!safeUrl) {
+        return "";
+    }
+
+    return (
+        '<a class="zpp-social-btn" ' +
+        'href="' +
+        zppEscape(safeUrl) +
+        '" target="_blank" ' +
+        'rel="noopener noreferrer">' +
+        zppEscape(label) +
+        " ↗</a>"
+    );
+}
+
+function zppRenderHero(data) {
+    const name =
+        data.display_name ||
+        "ZEVQYN Creator";
+
+    zppEl("zpp-name").textContent =
+        name;
+
+    zppEl("zpp-headline").textContent =
+        data.headline ||
+        "Creative Developer";
+
+    zppEl("zpp-hero-about").textContent =
+        data.about ||
+        "Building ideas into digital experiences.";
+
+    zppEl("zpp-footer-name").textContent =
+        name;
+
+    document.title =
+        name + " — Portfolio";
+
+    const avatar =
+        zppEl("zpp-avatar");
+
+    const image =
+        zppUrl(
+            data.profile_image_url
+        );
+
+    if (image) {
+        const img =
+            document.createElement(
+                "img"
+            );
+
+        img.src = image;
+        img.alt = name;
+
+        img.addEventListener(
+            "error",
+            function () {
+                avatar.innerHTML = "";
+                avatar.textContent =
+                    zppInitials(name);
+            }
+        );
+
+        avatar.innerHTML = "";
+        avatar.appendChild(img);
+    } else {
+        avatar.textContent =
+            zppInitials(name);
+    }
+
+    let socials = "";
+
+    socials +=
+        zppSocialLink(
+            "GitHub",
+            data.github_url
+        );
+
+    socials +=
+        zppSocialLink(
+            "LinkedIn",
+            data.linkedin_url
+        );
+
+    socials +=
+        zppSocialLink(
+            "Website",
+            data.website_url
+        );
+
+    zppEl("zpp-socials").innerHTML =
+        socials;
+
+    zppEl(
+        "zpp-footer-socials"
+    ).innerHTML =
+        socials;
+}
+
+function zppRenderAbout(data) {
+    const about =
+        data.about ||
+        "This creator hasn't added an introduction yet.";
+
+    zppEl(
+        "zpp-about-text"
+    ).textContent =
+        about;
+}
+
+function zppRenderProjects(data) {
+    const projects =
+        Array.isArray(data.projects)
+            ? data.projects
+            : [];
+
+    const grid =
+        zppEl(
+            "zpp-project-grid"
+        );
+
+    if (!projects.length) {
+        zppEl(
+            "zpp-projects"
+        ).hidden = true;
+
+        return;
+    }
+
+    let html = "";
+
+    projects.forEach(
+        function (project, index) {
+            const technologies =
+                Array.isArray(
+                    project.technologies
+                )
+                    ? project.technologies
+                    : [];
+
+            let techHtml = "";
+
+            technologies.forEach(
+                function (technology) {
+                    techHtml +=
+                        '<span class="zpp-tech">' +
+                        zppEscape(
+                            technology
+                        ) +
+                        "</span>";
+                }
+            );
+
+            let links = "";
+
+            const github =
+                zppUrl(
+                    project.github_url
+                );
+
+            const live =
+                zppUrl(
+                    project.live_url
+                );
+
+            if (github) {
+                links +=
+                    '<a class="zpp-project-link" ' +
+                    'href="' +
+                    zppEscape(github) +
+                    '" target="_blank" ' +
+                    'rel="noopener noreferrer">' +
+                    "GitHub ↗</a>";
+            }
+
+            if (live) {
+                links +=
+                    '<a class="zpp-project-link" ' +
+                    'href="' +
+                    zppEscape(live) +
+                    '" target="_blank" ' +
+                    'rel="noopener noreferrer">' +
+                    "Live project ↗</a>";
+            }
+
+            const description =
+                project.short_description ||
+                project.description ||
+                "A project built with curiosity and code.";
+
+            html +=
+                '<article class="zpp-project-card zpp-reveal">' +
+                    '<span class="zpp-project-index">' +
+                        "PROJECT / " +
+                        String(index + 1)
+                            .padStart(2, "0") +
+                    "</span>" +
+
+                    "<h3>" +
+                        zppEscape(
+                            project.title ||
+                            "Untitled Project"
+                        ) +
+                    "</h3>" +
+
+                    "<p>" +
+                        zppEscape(
+                            description
+                        ) +
+                    "</p>" +
+
+                    '<div class="zpp-project-tech">' +
+                        techHtml +
+                    "</div>" +
+
+                    '<div class="zpp-project-actions">' +
+                        links +
+                    "</div>" +
+                "</article>";
+        }
+    );
+
+    grid.innerHTML = html;
+}
+
+function zppRenderSkills(data) {
+    const skills =
+        Array.isArray(data.skills)
+            ? data.skills
+            : [];
+
+    if (!skills.length) {
+        zppEl(
+            "zpp-skills"
+        ).hidden = true;
+
+        return;
+    }
+
+    let html = "";
+
+    skills.forEach(
+        function (skill) {
+            html +=
+                '<span class="zpp-skill zpp-reveal">' +
+                    zppEscape(
+                        skill.name ||
+                        "Skill"
+                    ) +
+                "</span>";
+        }
+    );
+
+    zppEl(
+        "zpp-skill-cloud"
+    ).innerHTML = html;
+}
+
+function zppRenderEducation(data) {
+    const education =
+        Array.isArray(
+            data.education
+        )
+            ? data.education
+            : [];
+
+    if (!education.length) {
+        zppEl(
+            "zpp-education"
+        ).hidden = true;
+
+        return;
+    }
+
+    let html = "";
+
+    education.forEach(
+        function (item) {
+            const start =
+                zppFormatDate(
+                    item.start_date
+                );
+
+            const end =
+                item.end_date
+                    ? zppFormatDate(
+                        item.end_date
+                    )
+                    : "Present";
+
+            let dates = "";
+
+            if (start) {
+                dates =
+                    start +
+                    " — " +
+                    end;
+            }
+
+            const study =
+                [
+                    item.degree,
+                    item.field_of_study
+                ]
+                    .filter(
+                        function (value) {
+                            return Boolean(
+                                value
+                            );
+                        }
+                    )
+                    .join(" · ");
+
+            html +=
+                '<div class="zpp-timeline-item zpp-reveal">' +
+                    '<span class="zpp-timeline-dot"></span>' +
+
+                    '<span class="zpp-timeline-date">' +
+                        zppEscape(dates) +
+                    "</span>" +
+
+                    "<h3>" +
+                        zppEscape(
+                            item.institution ||
+                            "Education"
+                        ) +
+                    "</h3>" +
+
+                    "<strong>" +
+                        zppEscape(study) +
+                    "</strong>" +
+
+                    (
+                        item.description
+                            ? "<p>" +
+                                zppEscape(
+                                    item.description
+                                ) +
+                              "</p>"
+                            : ""
+                    ) +
+                "</div>";
+        }
+    );
+
+    zppEl(
+        "zpp-education-list"
+    ).innerHTML = html;
+}
+
+function zppRenderCertificates(
+    data
+) {
+    const certificates =
+        Array.isArray(
+            data.certificates
+        )
+            ? data.certificates
+            : [];
+
+    const section =
+        zppEl(
+            "zpp-certificates"
+        );
+
+    if (!certificates.length) {
+        section.hidden = true;
+        return;
+    }
+
+    section.hidden = false;
+
+    let html = "";
+
+    certificates.forEach(
+        function (certificate) {
+            const date =
+                zppFormatDate(
+                    certificate.issue_date
+                );
+
+            const credential =
+                zppUrl(
+                    certificate.credential_url
+                );
+
+            html +=
+                '<article class="zpp-certificate zpp-reveal">' +
+                    '<span class="zpp-certificate-icon">✦</span>' +
+
+                    "<h3>" +
+                        zppEscape(
+                            certificate.title ||
+                            "Certificate"
+                        ) +
+                    "</h3>" +
+
+                    "<p>" +
+                        zppEscape(
+                            certificate.issuer ||
+                            ""
+                        ) +
+                        (
+                            date
+                                ? " · " +
+                                  zppEscape(
+                                      date
+                                  )
+                                : ""
+                        ) +
+                    "</p>" +
+
+                    (
+                        credential
+                            ? '<div class="zpp-project-actions">' +
+                                '<a class="zpp-project-link" ' +
+                                'href="' +
+                                zppEscape(
+                                    credential
+                                ) +
+                                '" target="_blank" ' +
+                                'rel="noopener noreferrer">' +
+                                "View credential ↗</a>" +
+                              "</div>"
+                            : ""
+                    ) +
+                "</article>";
+        }
+    );
+
+    zppEl(
+        "zpp-certificate-grid"
+    ).innerHTML = html;
+}
+
+function zppSetupReveal() {
+    const elements =
+        document.querySelectorAll(
+            "#zevqyn-public-portfolio .zpp-reveal"
+        );
+
+    if (
+        !("IntersectionObserver" in window)
+    ) {
+        elements.forEach(
+            function (element) {
+                element.classList.add(
+                    "zpp-visible"
+                );
+            }
+        );
+
+        return;
+    }
+
+    const observer =
+        new IntersectionObserver(
+            function (entries) {
+                entries.forEach(
+                    function (entry) {
+                        if (
+                            entry.isIntersecting
+                        ) {
+                            entry.target
+                                .classList.add(
+                                    "zpp-visible"
+                                );
+
+                            observer.unobserve(
+                                entry.target
+                            );
+                        }
+                    }
+                );
+            },
+            {
+                threshold: 0.12
+            }
+        );
+
+    elements.forEach(
+        function (element) {
+            observer.observe(
+                element
+            );
+        }
+    );
+}
+
+function zppShowError(error) {
+    console.error(
+        "ZEVQYN PUBLIC PORTFOLIO ERROR:",
+        error
+    );
+
+    zppEl(
+        "zpp-loading"
+    ).hidden = true;
+
+    zppEl(
+        "zpp-content"
+    ).hidden = true;
+
+    zppEl(
+        "zpp-error"
+    ).hidden = false;
+}
+async function zppInitialize() {
+    const slug =
+        zppGetSlug();
+
+    if (!slug) {
+        zppShowError();
+        return;
+    }
+
+    try {
+        const response =
+            await fetch(
+                ZPP_API +
+                "/public/portfolios/" +
+                encodeURIComponent(
+                    slug
+                )
+            );
+
+        if (!response.ok) {
+            throw new Error(
+                "Portfolio unavailable."
+            );
+        }
+
+        const data =
+            await response.json();
+
+        zppRenderHero(data);
+        zppRenderAbout(data);
+        zppRenderProjects(data);
+        zppRenderSkills(data);
+        zppRenderEducation(data);
+        zppRenderCertificates(data);
+
+        zppEl(
+            "zpp-loading"
+        ).hidden = true;
+
+        zppEl(
+            "zpp-error"
+        ).hidden = true;
+
+        zppEl(
+            "zpp-content"
+        ).hidden = false;
+
+        zppSetupReveal();
+   } catch (error) {
+    zppShowError(error);
+}
+}
+
+if (
+    document.readyState ===
+    "loading"
+) {
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+            zppInitialize();
+        }
+    );
+} else {
+    zppInitialize();
+}
+</script>
+
+<div id="zevqyn-public-portfolio">
+
+    <div class="zpp-noise"></div>
+    <div class="zpp-orb zpp-orb-one"></div>
+    <div class="zpp-orb zpp-orb-two"></div>
+
+    <div id="zpp-loading" class="zpp-state">
+        <div class="zpp-loader"></div>
+        <span>BUILDING PORTFOLIO</span>
+        <p>Loading something cool...</p>
+    </div>
+
+    <div id="zpp-error" class="zpp-state zpp-error" hidden="">
+        <span>404 / PORTFOLIO</span>
+        <h1>Nothing to see here.</h1>
+        <p>
+            This portfolio doesn't exist or isn't public right now.
+        </p>
+        <a href="/" class="zpp-main-btn">
+            Back to ZEVQYN
+        </a>
+    </div>
+
+    <main id="zpp-content" hidden="">
+
+        <nav class="zpp-nav">
+            <a href="#zpp-home" class="zpp-brand">
+                <span class="zpp-brand-mark">Z</span>
+                <span>ZEVQYN</span>
+            </a>
+
+            <div class="zpp-nav-links">
+                <a href="#zpp-about">About</a>
+                <a href="#zpp-projects">Work</a>
+                <a href="#zpp-skills">Skills</a>
+                <a href="#zpp-education">Journey</a>
+            </div>
+
+            <a id="zpp-nav-contact" href="#zpp-connect" class="zpp-nav-cta">
+                Let's talk
+            </a>
+        </nav>
+
+        <section id="zpp-home" class="zpp-hero">
+
+            <div class="zpp-hero-copy">
+
+                <div class="zpp-status-pill">
+                    <span class="zpp-status-dot"></span>
+                    <span>BUILDING • LEARNING • CREATING</span>
+                </div>
+
+                <p class="zpp-intro">
+                    HEY, I'M
+                </p>
+
+                <h1 id="zpp-name">
+                    Your Name
+                </h1>
+
+                <div id="zpp-headline" class="zpp-hero-title">
+                    Creative Developer
+                </div>
+
+                <p id="zpp-hero-about" class="zpp-hero-about">
+                    Building ideas into digital experiences.
+                </p>
+
+                <div class="zpp-hero-actions">
+                    <a href="#zpp-projects" class="zpp-main-btn">
+                        Explore my work
+                        <span>↘</span>
+                    </a>
+
+                    <div id="zpp-socials" class="zpp-socials">
+                    </div>
+                </div>
+
+                <div class="zpp-scroll-hint">
+                    <span>SCROLL TO EXPLORE</span>
+                    <div class="zpp-scroll-line"></div>
+                </div>
+
+            </div>
+
+            <div class="zpp-hero-visual">
+
+                <div class="zpp-photo-wrap">
+
+                    <div class="zpp-photo-ring"></div>
+
+                    <div id="zpp-avatar" class="zpp-avatar">
+                        Z
+                    </div>
+
+                    <div class="zpp-float-card zpp-float-one">
+                        <span>✦</span>
+                        <div>
+                            <small>CURRENT MODE</small>
+                            <strong>Creating</strong>
+                        </div>
+                    </div>
+
+                    <div class="zpp-float-card zpp-float-two">
+                        <span>⌁</span>
+                        <div>
+                            <small>POWERED BY</small>
+                            <strong>Curiosity</strong>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="zpp-about" class="zpp-section">
+
+            <div class="zpp-section-number">
+                01
+            </div>
+
+            <div class="zpp-section-heading">
+                <span>ABOUT ME</span>
+                <h2>
+                    A little bit
+                    <em>about me.</em>
+                </h2>
+            </div>
+
+            <div class="zpp-about-grid">
+
+                <div class="zpp-about-card zpp-about-main">
+                    <span class="zpp-card-label">
+                        MY STORY
+                    </span>
+
+                    <p id="zpp-about-text"></p>
+                </div>
+
+                <div class="zpp-about-card zpp-about-mini">
+                    <span class="zpp-big-symbol">
+                        &lt;/&gt;
+                    </span>
+                    <span>BUILD</span>
+                    <strong>Ideas into products.</strong>
+                </div>
+
+                <div class="zpp-about-card zpp-about-mini">
+                    <span class="zpp-big-symbol">
+                        ✦
+                    </span>
+                    <span>EXPLORE</span>
+                    <strong>Tech without limits.</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="zpp-projects" class="zpp-section">
+
+            <div class="zpp-section-number">
+                02
+            </div>
+
+            <div class="zpp-section-heading zpp-heading-row">
+                <div>
+                    <span>SELECTED WORK</span>
+                    <h2>
+                        Things I've
+                        <em>built.</em>
+                    </h2>
+                </div>
+
+                <p>
+                    Experiments, projects and ideas
+                    turned into something real.
+                </p>
+            </div>
+
+            <div id="zpp-project-grid" class="zpp-project-grid">
+            </div>
+
+        </section>
+
+        <section id="zpp-skills" class="zpp-section">
+
+            <div class="zpp-section-number">
+                03
+            </div>
+
+            <div class="zpp-section-heading">
+                <span>MY TOOLBOX</span>
+                <h2>
+                    Tech I like to
+                    <em>play with.</em>
+                </h2>
+            </div>
+
+            <div id="zpp-skill-cloud" class="zpp-skill-cloud">
+            </div>
+
+        </section>
+
+        <section id="zpp-education" class="zpp-section">
+
+            <div class="zpp-section-number">
+                04
+            </div>
+
+            <div class="zpp-section-heading">
+                <span>MY JOURNEY</span>
+                <h2>
+                    Learning never
+                    <em>really stops.</em>
+                </h2>
+            </div>
+
+            <div id="zpp-education-list" class="zpp-timeline">
+            </div>
+
+        </section>
+
+        <section id="zpp-certificates" class="zpp-section" hidden="">
+
+            <div class="zpp-section-number">
+                05
+            </div>
+
+            <div class="zpp-section-heading">
+                <span>ACHIEVEMENTS</span>
+                <h2>
+                    A few extra
+                    <em>milestones.</em>
+                </h2>
+            </div>
+
+            <div id="zpp-certificate-grid" class="zpp-certificate-grid">
+            </div>
+
+        </section>
+
+        <section id="zpp-connect" class="zpp-connect">
+
+            <div class="zpp-connect-glow"></div>
+
+            <span class="zpp-connect-label">
+                GOT AN IDEA?
+            </span>
+
+            <h2>
+                Let's make something
+                <em>cool.</em>
+            </h2>
+
+            <p>
+                I'm always interested in interesting
+                projects, collaborations and conversations.
+            </p>
+
+            <div id="zpp-footer-socials" class="zpp-connect-actions">
+            </div>
+
+        </section>
+
+        <footer class="zpp-footer">
+            <span id="zpp-footer-name">
+                Portfolio
+            </span>
+
+            <span>
+                Built with ZEVQYN
+                <b>✦</b>
+            </span>
+        </footer>
+
+    </main>
+
+</div>
+<!-- /wp:html -->

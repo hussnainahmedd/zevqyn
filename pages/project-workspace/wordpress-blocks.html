@@ -1,0 +1,3716 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+/* =========================================
+   ZEVQYN PROJECT WORKSPACE
+========================================= */
+
+.zev-pw-page,
+.zev-pw-page * {
+    box-sizing: border-box;
+}
+
+.zev-pw-page {
+    --bg: #030504;
+    --panel: #080d10;
+    --panel2: #0b1115;
+    --border: #1b2931;
+    --text: #f5f7fa;
+    --muted: #839099;
+    --green: #35b85b;
+    --green2: #269747;
+
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+
+    background:
+        radial-gradient(
+            circle at 82% 0%,
+            rgba(53,184,91,.06),
+            transparent 28%
+        ),
+        #030504;
+
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.zev-pw-sidebar {
+    width: 245px;
+    min-width: 245px;
+    min-height: 100vh;
+    padding: 28px 18px;
+
+    display: flex;
+    flex-direction: column;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(53,184,91,.07),
+            transparent 30%
+        ),
+        #050807;
+
+    border-right: 1px solid #172019;
+}
+
+.zev-pw-nav-title {
+    padding: 0 12px;
+    margin-bottom: 10px;
+
+    color: #65706d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.zev-pw-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.zev-pw-nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 14px;
+
+    color: #aeb7bf !important;
+    text-decoration: none !important;
+
+    border-radius: 9px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: .2s ease;
+}
+
+.zev-pw-nav a:hover {
+    color: #fff !important;
+    background: #0c1510;
+}
+
+.zev-pw-nav a.active {
+    color: #fff !important;
+    background: rgba(53,184,91,.13);
+    border: 1px solid rgba(53,184,91,.22);
+}
+
+.zev-pw-nav-icon {
+    width: 20px;
+    text-align: center;
+}
+
+.zev-pw-sidebar-bottom {
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+.zev-pw-back {
+    color: #78857f !important;
+    text-decoration: none !important;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.zev-pw-back:hover {
+    color: #4ed36f !important;
+}
+
+
+/* =========================================
+   MAIN
+========================================= */
+
+.zev-pw-main {
+    flex: 1;
+    min-width: 0;
+    padding: 32px 38px 70px;
+}
+
+
+/* =========================================
+   LOADING / ERROR
+========================================= */
+
+.zev-pw-loading {
+    min-height: 65vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+}
+
+.zev-pw-loader {
+    width: 38px;
+    height: 38px;
+    margin-bottom: 14px;
+
+    border: 3px solid #16221b;
+    border-top-color: #35b85b;
+    border-radius: 50%;
+
+    animation: zevPwSpin .8s linear infinite;
+}
+
+@keyframes zevPwSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.zev-pw-loading strong {
+    color: #fff;
+    font-size: 14px;
+}
+
+.zev-pw-loading span {
+    margin-top: 6px;
+    color: #718078;
+    font-size: 10px;
+}
+
+.zev-pw-error {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 35px;
+
+    text-align: center;
+
+    background: #090e11;
+    border: 1px solid #342426;
+    border-radius: 14px;
+}
+
+.zev-pw-error-icon {
+    width: 45px;
+    height: 45px;
+    margin: 0 auto 14px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(225,107,107,.1);
+    color: #ee8585;
+
+    font-weight: 900;
+}
+
+.zev-pw-error h2 {
+    color: #fff;
+    margin: 0 0 8px;
+}
+
+.zev-pw-error p {
+    color: #829097;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.zev-pw-error a {
+    display: inline-block;
+    margin-top: 12px;
+
+    color: #4ed36f !important;
+    text-decoration: none !important;
+}
+
+
+/* =========================================
+   TOP
+========================================= */
+
+.zev-pw-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 25px;
+
+    margin-bottom: 24px;
+}
+
+.zev-pw-back-link {
+    display: inline-block;
+    margin-bottom: 15px;
+
+    color: #85928c !important;
+    text-decoration: none !important;
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.zev-pw-back-link:hover {
+    color: #4ed36f !important;
+}
+
+.zev-pw-label {
+    display: block;
+
+    color: #3fd064;
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.5px;
+
+    text-transform: uppercase;
+}
+
+.zev-pw-title-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    margin-top: 7px;
+}
+
+.zev-pw-title-row h1 {
+    margin: 0;
+
+    color: #fff;
+
+    font-size: 31px;
+    line-height: 1.2;
+    font-weight: 850;
+}
+
+.zev-pw-visibility {
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    background: rgba(53,184,91,.09);
+    border: 1px solid rgba(53,184,91,.22);
+
+    color: #51d371;
+
+    font-size: 8px;
+    font-weight: 850;
+    letter-spacing: .6px;
+}
+
+#zevqyn-project-subheading {
+    max-width: 650px;
+    margin: 8px 0 0;
+
+    color: #839099;
+
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.zev-pw-top-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.zev-pw-secondary-btn,
+.zev-pw-save-btn {
+    min-height: 39px;
+    padding: 9px 14px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 850;
+
+    cursor: pointer;
+}
+
+.zev-pw-secondary-btn {
+    background: #0b1215;
+    border: 1px solid #26343a;
+    color: #9aa5ab;
+}
+
+.zev-pw-save-btn {
+    border: 0;
+    background: #35b85b;
+    color: #fff;
+}
+
+.zev-pw-save-btn:hover {
+    background: #269747;
+}
+
+.zev-pw-save-btn:disabled {
+    opacity: .55;
+    cursor: wait;
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+.zev-pw-stats {
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    gap: 11px;
+
+    margin-bottom: 17px;
+}
+
+.zev-pw-stat {
+    min-height: 75px;
+    padding: 14px 16px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    background:
+        linear-gradient(145deg,#0a1013,#070b0e);
+
+    border: 1px solid #1b2931;
+    border-radius: 11px;
+}
+
+.zev-pw-stat-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(53,184,91,.1);
+    color: #4ed36f;
+}
+
+.zev-pw-stat strong {
+    display: block;
+
+    color: #fff;
+
+    font-size: 18px;
+    font-weight: 850;
+}
+
+.zev-pw-stat span {
+    display: block;
+    margin-top: 3px;
+
+    color: #758188;
+    font-size: 9px;
+}
+
+
+/* =========================================
+   GRID
+========================================= */
+
+.zev-pw-grid {
+    display: grid;
+    grid-template-columns: minmax(0,1.6fr) minmax(300px,.8fr);
+    gap: 17px;
+    align-items: start;
+}
+
+.zev-pw-column {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+
+/* =========================================
+   PANELS
+========================================= */
+
+.zev-pw-panel {
+    padding: 21px;
+
+    background:
+        linear-gradient(145deg,#090e12,#060a0d);
+
+    border: 1px solid #1b2931;
+    border-radius: 14px;
+}
+
+.zev-pw-panel-head {
+    margin-bottom: 18px;
+    padding-bottom: 15px;
+
+    border-bottom: 1px solid #18242a;
+}
+
+.zev-pw-panel-head h2 {
+    margin: 6px 0 5px;
+
+    color: #fff;
+
+    font-size: 16px;
+    font-weight: 850;
+}
+
+.zev-pw-panel-head p {
+    max-width: 600px;
+    margin: 0;
+
+    color: #78858d;
+
+    font-size: 9px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.zev-pw-form,
+.zev-pw-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.zev-pw-form {
+    gap: 16px;
+}
+
+.zev-pw-field {
+    position: relative;
+    gap: 7px;
+
+    margin-bottom: 15px;
+}
+
+.zev-pw-field:last-child {
+    margin-bottom: 0;
+}
+
+.zev-pw-field label {
+    color: #aeb8bd;
+
+    font-size: 9px;
+    font-weight: 800;
+}
+
+.zev-pw-field input,
+.zev-pw-field textarea,
+.zev-pw-field select,
+.zev-pw-tag-input-row input {
+    width: 100%;
+
+    outline: none;
+
+    background: #070c0f;
+    border: 1px solid #223138;
+    border-radius: 8px;
+
+    color: #f3f6f7;
+
+    font-family: inherit;
+    font-size: 10px;
+    line-height: 1.6;
+
+    transition: .2s ease;
+}
+
+.zev-pw-field input,
+.zev-pw-field select,
+.zev-pw-tag-input-row input {
+    min-height: 41px;
+    padding: 0 12px;
+}
+
+.zev-pw-field textarea {
+    padding: 11px 12px;
+    resize: vertical;
+}
+
+.zev-pw-field input:focus,
+.zev-pw-field textarea:focus,
+.zev-pw-field select:focus,
+.zev-pw-tag-input-row input:focus {
+    border-color: rgba(53,184,91,.65);
+    box-shadow: 0 0 0 3px rgba(53,184,91,.06);
+}
+
+.zev-pw-field input::placeholder,
+.zev-pw-field textarea::placeholder,
+.zev-pw-tag-input-row input::placeholder {
+    color: #505d63;
+}
+
+.zev-pw-field select,
+.zev-pw-field select option {
+    color: #fff !important;
+    background: #081014 !important;
+}
+
+.zev-pw-field small,
+.zev-pw-tag-editor small {
+    color: #647078;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.zev-pw-counter {
+    align-self: flex-end;
+
+    color: #5e6a71;
+
+    font-size: 8px;
+}
+
+
+/* =========================================
+   TAG EDITOR
+========================================= */
+
+.zev-pw-tag-input-row {
+    display: flex;
+    gap: 7px;
+}
+
+.zev-pw-tag-input-row input {
+    flex: 1;
+}
+
+.zev-pw-tag-input-row button {
+    min-width: 70px;
+
+    border: 1px solid rgba(53,184,91,.28);
+    border-radius: 8px;
+
+    background: rgba(53,184,91,.09);
+    color: #4ed36f;
+
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 850;
+
+    cursor: pointer;
+}
+
+.zev-pw-tag-input-row button:hover {
+    background: rgba(53,184,91,.15);
+}
+
+.zev-pw-tags {
+    min-height: 38px;
+    margin: 12px 0 8px;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+}
+
+.zev-pw-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 6px 8px;
+
+    border: 1px solid rgba(53,184,91,.2);
+    border-radius: 6px;
+
+    background: rgba(53,184,91,.08);
+
+    color: #61d87d;
+
+    font-size: 8px;
+    font-weight: 750;
+}
+
+.zev-pw-tag button {
+    padding: 0;
+
+    border: 0;
+    background: transparent;
+
+    color: #799384;
+
+    font-size: 11px;
+
+    cursor: pointer;
+}
+
+.zev-pw-tag button:hover {
+    color: #fff;
+}
+
+.zev-pw-tag-empty {
+    color: #637078;
+    font-size: 9px;
+}
+
+
+/* =========================================
+   TOGGLE
+========================================= */
+
+.zev-pw-toggle-row {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+
+    margin-top: 17px;
+    padding-top: 17px;
+
+    border-top: 1px solid #18242a;
+
+    cursor: pointer;
+}
+
+.zev-pw-toggle-row div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.zev-pw-toggle-row strong {
+    color: #dce2e5;
+    font-size: 10px;
+}
+
+.zev-pw-toggle-row div span {
+    color: #69767d;
+    font-size: 8px;
+    line-height: 1.5;
+}
+
+.zev-pw-toggle-row input {
+    position: absolute;
+    opacity: 0;
+}
+
+.zev-pw-toggle {
+    position: relative;
+
+    width: 38px;
+    height: 21px;
+    min-width: 38px;
+
+    border-radius: 30px;
+
+    background: #1a2429;
+
+    transition: .2s;
+}
+
+.zev-pw-toggle::after {
+    content: "";
+
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    width: 15px;
+    height: 15px;
+
+    border-radius: 50%;
+
+    background: #748087;
+
+    transition: .2s;
+}
+
+.zev-pw-toggle-row input:checked + .zev-pw-toggle {
+    background: rgba(53,184,91,.3);
+}
+
+.zev-pw-toggle-row input:checked + .zev-pw-toggle::after {
+    left: 20px;
+    background: #48d16b;
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+.zev-pw-link-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-top: 14px;
+}
+
+.zev-pw-link-actions a {
+    padding: 7px 9px;
+
+    border: 1px solid #203129;
+    border-radius: 6px;
+
+    background: rgba(53,184,91,.07);
+
+    color: #4ed36f !important;
+    text-decoration: none !important;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   IMAGE
+========================================= */
+
+.zev-pw-image-preview {
+    min-height: 150px;
+    margin-top: 13px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px dashed #213128;
+    border-radius: 9px;
+
+    background: #070c0e;
+}
+
+.zev-pw-image-preview img {
+    width: 100%;
+    max-height: 260px;
+    object-fit: cover;
+}
+
+.zev-pw-image-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+
+    color: #58665e;
+
+    font-size: 18px;
+}
+
+.zev-pw-image-empty span {
+    font-size: 8px;
+}
+
+
+/* =========================================
+   RESEARCH ORIGIN
+========================================= */
+
+.zev-pw-origin-box {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.zev-pw-origin-icon {
+    width: 38px;
+    height: 38px;
+    min-width: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(53,184,91,.09);
+    color: #4ed36f;
+}
+
+.zev-pw-origin-box strong {
+    color: #e4e9eb;
+    font-size: 10px;
+}
+
+.zev-pw-origin-box p {
+    margin: 5px 0 0;
+
+    color: #738087;
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.zev-pw-origin-box a {
+    display: inline-block;
+    margin-top: 9px;
+
+    color: #4ed36f !important;
+    text-decoration: none !important;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   CAREER CARD
+========================================= */
+
+.zev-pw-career-card {
+    padding: 21px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(53,184,91,.12),
+            transparent 45%
+        ),
+        #08100c;
+
+    border: 1px solid rgba(53,184,91,.2);
+    border-radius: 14px;
+}
+
+.zev-pw-career-card h2 {
+    margin: 7px 0;
+
+    color: #fff;
+
+    font-size: 16px;
+    line-height: 1.4;
+}
+
+.zev-pw-career-card p {
+    margin: 0;
+
+    color: #7c898f;
+
+    font-size: 9px;
+    line-height: 1.65;
+}
+
+.zev-pw-career-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+
+    margin-top: 15px;
+}
+
+.zev-pw-career-actions a {
+    padding: 8px 10px;
+
+    border: 1px solid rgba(53,184,91,.25);
+    border-radius: 7px;
+
+    background: rgba(53,184,91,.08);
+
+    color: #51d371 !important;
+    text-decoration: none !important;
+
+    font-size: 8px;
+    font-weight: 800;
+}
+
+
+/* =========================================
+   META
+========================================= */
+
+.zev-pw-meta {
+    margin-top: 17px;
+    padding: 12px 3px;
+
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+
+    color: #59666d;
+
+    font-size: 8px;
+}
+
+.zev-pw-meta strong {
+    margin-left: 4px;
+    color: #7c898f;
+}
+
+
+/* =========================================
+   TOAST
+========================================= */
+
+.zev-pw-toast {
+    position: fixed;
+    right: 22px;
+    bottom: 22px;
+
+    z-index: 999999;
+
+    max-width: 350px;
+    padding: 12px 15px;
+
+    border-radius: 8px;
+
+    background: #10181b;
+    border: 1px solid #26353b;
+
+    box-shadow: 0 15px 45px rgba(0,0,0,.4);
+
+    color: #dce2e5;
+
+    font-size: 10px;
+}
+
+.zev-pw-toast.success {
+    border-color: rgba(53,184,91,.5);
+}
+
+.zev-pw-toast.error {
+    border-color: rgba(225,107,107,.55);
+    color: #efaaaa;
+}
+
+
+/* =========================================
+   HIDDEN
+========================================= */
+
+.zev-pw-page [hidden] {
+    display: none !important;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1150px) {
+
+    .zev-pw-sidebar {
+        width: 205px;
+        min-width: 205px;
+    }
+
+    .zev-pw-grid {
+        grid-template-columns:
+            minmax(0,1.35fr)
+            minmax(280px,.8fr);
+    }
+
+    .zev-pw-stats {
+        grid-template-columns:
+            repeat(2,minmax(0,1fr));
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .zev-pw-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .zev-pw-page {
+        display: block;
+    }
+
+    .zev-pw-sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+
+        padding: 16px;
+    }
+
+    .zev-pw-nav {
+        flex-direction: row;
+        overflow-x: auto;
+    }
+
+    .zev-pw-nav a {
+        white-space: nowrap;
+    }
+
+    .zev-pw-nav-title,
+    .zev-pw-sidebar-bottom {
+        display: none;
+    }
+
+    .zev-pw-main {
+        padding: 22px 15px 45px;
+    }
+
+    .zev-pw-top {
+        flex-direction: column;
+    }
+
+    .zev-pw-top-actions {
+        width: 100%;
+    }
+
+    .zev-pw-secondary-btn,
+    .zev-pw-save-btn {
+        flex: 1;
+    }
+
+    .zev-pw-stats {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+
+@media (max-width: 480px) {
+
+    .zev-pw-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-pw-tag-input-row {
+        flex-direction: column;
+    }
+
+    .zev-pw-tag-input-row button {
+        min-height: 39px;
+    }
+
+    .zev-pw-title-row h1 {
+        font-size: 25px;
+    }
+}
+</style>
+
+<script data-wp-block-html="js">
+/* =========================================
+   ZEVQYN PROJECT WORKSPACE
+========================================= */
+
+
+/* =========================================
+   CONFIG
+========================================= */
+
+const ZEV_PW_SUPABASE_URL =
+    "https://phjizxajnigiiawitkyx.supabase.co";
+
+const ZEV_PW_SUPABASE_KEY =
+    "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+const ZEV_PW_API_BASE =
+    "https://zevqyn-backend.onrender.com";
+
+
+/* =========================================
+   STATE
+========================================= */
+
+let zevPwSupabase = null;
+let zevPwSession = null;
+let zevPwProject = null;
+
+let zevPwTechnologies = [];
+let zevPwSkills = [];
+
+let zevPwToastTimer = null;
+
+
+/* =========================================
+   HELPERS
+========================================= */
+
+function zevPwEl(id) {
+    return document.getElementById(id);
+}
+
+
+function zevPwGetProjectId() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+    return params.get("id");
+
+}
+
+
+function zevPwShowToast(
+    message,
+    type
+) {
+
+    const toast =
+        zevPwEl("zevqyn-project-toast");
+
+    if (!toast) {
+        return;
+    }
+
+    if (zevPwToastTimer) {
+        clearTimeout(
+            zevPwToastTimer
+        );
+    }
+
+    toast.textContent =
+        message;
+
+    toast.className =
+        "zev-pw-toast " +
+        (type || "");
+
+    toast.hidden = false;
+
+    zevPwToastTimer =
+        setTimeout(
+            function () {
+
+                toast.hidden = true;
+
+            },
+            3500
+        );
+
+}
+
+
+function zevPwShowError(message) {
+
+    const loading =
+        zevPwEl(
+            "zevqyn-project-loading"
+        );
+
+    const content =
+        zevPwEl(
+            "zevqyn-project-content"
+        );
+
+    const error =
+        zevPwEl(
+            "zevqyn-project-error"
+        );
+
+    const errorMessage =
+        zevPwEl(
+            "zevqyn-project-error-message"
+        );
+
+    if (loading) {
+        loading.hidden = true;
+    }
+
+    if (content) {
+        content.hidden = true;
+    }
+
+    if (errorMessage) {
+        errorMessage.textContent =
+            message;
+    }
+
+    if (error) {
+        error.hidden = false;
+    }
+
+}
+
+
+function zevPwFormatDate(value) {
+
+    if (!value) {
+        return "—";
+    }
+
+    const date =
+        new Date(value);
+
+    if (
+        Number.isNaN(
+            date.getTime()
+        )
+    ) {
+        return "—";
+    }
+
+    return date.toLocaleDateString(
+        undefined,
+        {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+        }
+    );
+
+}
+
+
+function zevPwNormalizeUrl(value) {
+
+    const clean =
+        String(
+            value || ""
+        ).trim();
+
+    if (!clean) {
+        return "";
+    }
+
+    return clean;
+
+}
+
+
+/* =========================================
+   LOAD SUPABASE
+========================================= */
+
+function zevPwLoadSupabaseLibrary() {
+
+    return new Promise(
+        function (
+            resolve,
+            reject
+        ) {
+
+            if (
+                window.supabase
+            ) {
+                resolve();
+                return;
+            }
+
+            const existing =
+                document.querySelector(
+                    'script[src*="supabase-js"]'
+                );
+
+            if (existing) {
+
+                existing.addEventListener(
+                    "load",
+                    function () {
+                        resolve();
+                    }
+                );
+
+                existing.addEventListener(
+                    "error",
+                    function () {
+                        reject(
+                            new Error(
+                                "Could not load authentication library."
+                            )
+                        );
+                    }
+                );
+
+                return;
+            }
+
+
+            const script =
+                document.createElement(
+                    "script"
+                );
+
+            script.src =
+                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+
+            script.onload =
+                function () {
+                    resolve();
+                };
+
+            script.onerror =
+                function () {
+
+                    reject(
+                        new Error(
+                            "Could not load authentication library."
+                        )
+                    );
+
+                };
+
+            document.head.appendChild(
+                script
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   AUTH
+========================================= */
+
+async function zevPwSetupAuth() {
+
+    await zevPwLoadSupabaseLibrary();
+
+    zevPwSupabase =
+        window.supabase.createClient(
+            ZEV_PW_SUPABASE_URL,
+            ZEV_PW_SUPABASE_KEY
+        );
+
+    const result =
+        await zevPwSupabase.auth
+            .getSession();
+
+    zevPwSession =
+        result.data.session;
+
+    if (!zevPwSession) {
+
+        window.location.assign(
+            "/login/"
+        );
+
+        throw new Error(
+            "Authentication required."
+        );
+    }
+
+}
+
+
+/* =========================================
+   API
+========================================= */
+
+async function zevPwApiRequest(
+    path,
+    options
+) {
+
+    if (!zevPwSession) {
+
+        throw new Error(
+            "Your session has expired."
+        );
+
+    }
+
+    const requestOptions =
+        options || {};
+
+    const headers =
+        new Headers(
+            requestOptions.headers || {}
+        );
+
+    headers.set(
+        "Authorization",
+        "Bearer " +
+        zevPwSession.access_token
+    );
+
+    const response =
+        await fetch(
+            ZEV_PW_API_BASE + path,
+            {
+                method:
+                    requestOptions.method ||
+                    "GET",
+
+                headers:
+                    headers,
+
+                body:
+                    requestOptions.body
+            }
+        );
+
+
+    if (response.status === 401) {
+
+        throw new Error(
+            "Your session has expired. Please sign in again."
+        );
+
+    }
+
+
+    let data = null;
+
+    try {
+
+        data =
+            await response.json();
+
+    } catch (error) {
+
+        data = null;
+
+    }
+
+
+    if (!response.ok) {
+
+        let message =
+            "Request failed.";
+
+        if (data) {
+
+            if (data.detail) {
+
+                if (
+                    typeof data.detail ===
+                    "string"
+                ) {
+
+                    message =
+                        data.detail;
+
+                } else {
+
+                    message =
+                        JSON.stringify(
+                            data.detail
+                        );
+
+                }
+
+            }
+
+        }
+
+        throw new Error(
+            message
+        );
+
+    }
+
+
+    return data;
+
+}
+
+
+/* =========================================
+   LOAD PROJECT
+========================================= */
+
+async function zevPwLoadProject() {
+
+    const projectId =
+        zevPwGetProjectId();
+
+    if (!projectId) {
+
+        zevPwShowError(
+            "No project ID was provided in the page URL."
+        );
+
+        return;
+    }
+
+
+    try {
+
+        const project =
+            await zevPwApiRequest(
+                "/api/v1/projects/" +
+                encodeURIComponent(
+                    projectId
+                )
+            );
+
+        zevPwProject =
+            project;
+
+        zevPwPopulateProject(
+            project
+        );
+
+
+        const loading =
+            zevPwEl(
+                "zevqyn-project-loading"
+            );
+
+        const content =
+            zevPwEl(
+                "zevqyn-project-content"
+            );
+
+        if (loading) {
+            loading.hidden = true;
+        }
+
+        if (content) {
+            content.hidden = false;
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "ZEVQYN project load error:",
+            error
+        );
+
+        zevPwShowError(
+            error.message ||
+            "Could not load this project."
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   POPULATE PROJECT
+========================================= */
+
+function zevPwPopulateProject(
+    project
+) {
+
+    zevPwTechnologies =
+        Array.isArray(
+            project.technologies
+        )
+            ? project.technologies.slice()
+            : [];
+
+    zevPwSkills =
+        Array.isArray(
+            project.skills
+        )
+            ? project.skills.slice()
+            : [];
+
+
+    const heading =
+        zevPwEl(
+            "zevqyn-project-heading"
+        );
+
+    const subheading =
+        zevPwEl(
+            "zevqyn-project-subheading"
+        );
+
+    const title =
+        zevPwEl(
+            "zevqyn-project-title"
+        );
+
+    const shortDescription =
+        zevPwEl(
+            "zevqyn-project-short"
+        );
+
+    const description =
+        zevPwEl(
+            "zevqyn-project-description"
+        );
+
+    const visibility =
+        zevPwEl(
+            "zevqyn-project-visibility"
+        );
+
+    const featured =
+        zevPwEl(
+            "zevqyn-project-featured"
+        );
+
+    const github =
+        zevPwEl(
+            "zevqyn-project-github"
+        );
+
+    const live =
+        zevPwEl(
+            "zevqyn-project-live"
+        );
+
+    const image =
+        zevPwEl(
+            "zevqyn-project-image"
+        );
+
+
+    if (heading) {
+
+        heading.textContent =
+            project.title ||
+            "Untitled Project";
+
+    }
+
+
+    if (subheading) {
+
+        subheading.textContent =
+            project.short_description ||
+            "Manage your ZEVQYN project.";
+
+    }
+
+
+    if (title) {
+
+        title.value =
+            project.title ||
+            "";
+
+    }
+
+
+    if (shortDescription) {
+
+        shortDescription.value =
+            project.short_description ||
+            "";
+
+    }
+
+
+    if (description) {
+
+        description.value =
+            project.description ||
+            "";
+
+    }
+
+
+    if (visibility) {
+
+        visibility.value =
+            project.visibility ||
+            "private";
+
+    }
+
+
+    if (featured) {
+
+        featured.checked =
+            project.featured === true;
+
+    }
+
+
+    if (github) {
+
+        github.value =
+            project.github_url ||
+            "";
+
+    }
+
+
+    if (live) {
+
+        live.value =
+            project.live_url ||
+            "";
+
+    }
+
+
+    if (image) {
+
+        image.value =
+            project.image_url ||
+            "";
+
+    }
+
+
+    zevPwRenderTags();
+
+    zevPwUpdateVisibilityBadge();
+
+    zevPwUpdateStats();
+
+    zevPwUpdateLinks();
+
+    zevPwUpdateImagePreview();
+
+    zevPwUpdateResearchOrigin();
+
+    zevPwUpdateCounters();
+
+
+    const created =
+        zevPwEl(
+            "zevqyn-project-created"
+        );
+
+    const updated =
+        zevPwEl(
+            "zevqyn-project-updated"
+        );
+
+
+    if (created) {
+
+        created.textContent =
+            zevPwFormatDate(
+                project.created_at
+            );
+
+    }
+
+
+    if (updated) {
+
+        updated.textContent =
+            zevPwFormatDate(
+                project.updated_at
+            );
+
+    }
+
+}
+
+
+/* =========================================
+   TAGS
+========================================= */
+
+function zevPwRenderTags() {
+
+    zevPwRenderTagGroup(
+        "zevqyn-tech-tags",
+        zevPwTechnologies,
+        "technology"
+    );
+
+    zevPwRenderTagGroup(
+        "zevqyn-skill-tags",
+        zevPwSkills,
+        "skill"
+    );
+
+}
+
+
+function zevPwRenderTagGroup(
+    containerId,
+    items,
+    type
+) {
+
+    const container =
+        zevPwEl(
+            containerId
+        );
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = "";
+
+
+    if (items.length === 0) {
+
+        const empty =
+            document.createElement(
+                "span"
+            );
+
+        empty.className =
+            "zev-pw-tag-empty";
+
+        empty.textContent =
+            type === "technology"
+                ? "No technologies added yet."
+                : "No skills added yet.";
+
+        container.appendChild(
+            empty
+        );
+
+        return;
+    }
+
+
+    items.forEach(
+        function (
+            item,
+            index
+        ) {
+
+            const tag =
+                document.createElement(
+                    "span"
+                );
+
+            tag.className =
+                "zev-pw-tag";
+
+
+            const text =
+                document.createElement(
+                    "span"
+                );
+
+            text.textContent =
+                String(item);
+
+
+            const remove =
+                document.createElement(
+                    "button"
+                );
+
+            remove.type =
+                "button";
+
+            remove.textContent =
+                "×";
+
+            remove.setAttribute(
+                "aria-label",
+                "Remove " +
+                String(item)
+            );
+
+
+            remove.addEventListener(
+                "click",
+                function () {
+
+                    if (
+                        type ===
+                        "technology"
+                    ) {
+
+                        zevPwTechnologies.splice(
+                            index,
+                            1
+                        );
+
+                    } else {
+
+                        zevPwSkills.splice(
+                            index,
+                            1
+                        );
+
+                    }
+
+                    zevPwRenderTags();
+                    zevPwUpdateStats();
+
+                }
+            );
+
+
+            tag.appendChild(
+                text
+            );
+
+            tag.appendChild(
+                remove
+            );
+
+            container.appendChild(
+                tag
+            );
+
+        }
+    );
+
+}
+
+
+function zevPwAddTag(type) {
+
+    let input = null;
+    let list = null;
+
+    if (
+        type ===
+        "technology"
+    ) {
+
+        input =
+            zevPwEl(
+                "zevqyn-tech-input"
+            );
+
+        list =
+            zevPwTechnologies;
+
+    } else {
+
+        input =
+            zevPwEl(
+                "zevqyn-skill-input"
+            );
+
+        list =
+            zevPwSkills;
+
+    }
+
+
+    if (!input) {
+        return;
+    }
+
+
+    const value =
+        input.value.trim();
+
+    if (!value) {
+        return;
+    }
+
+
+    if (list.length >= 20) {
+
+        zevPwShowToast(
+            "Maximum 20 items allowed.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    const exists =
+        list.some(
+            function (item) {
+
+                return (
+                    String(item)
+                        .toLowerCase() ===
+                    value.toLowerCase()
+                );
+
+            }
+        );
+
+
+    if (exists) {
+
+        zevPwShowToast(
+            "That item is already added.",
+            "error"
+        );
+
+        return;
+    }
+
+
+    list.push(
+        value
+    );
+
+    input.value = "";
+
+    zevPwRenderTags();
+
+    zevPwUpdateStats();
+
+}
+
+
+/* =========================================
+   VISIBILITY
+========================================= */
+
+function zevPwUpdateVisibilityBadge() {
+
+    const select =
+        zevPwEl(
+            "zevqyn-project-visibility"
+        );
+
+    const badge =
+        zevPwEl(
+            "zevqyn-project-visibility-badge"
+        );
+
+    if (!select) {
+        return;
+    }
+
+    if (!badge) {
+        return;
+    }
+
+
+    const value =
+        select.value ||
+        "private";
+
+    badge.textContent =
+        value.toUpperCase();
+
+}
+
+
+/* =========================================
+   STATS
+========================================= */
+
+function zevPwUpdateStats() {
+
+    const tech =
+        zevPwEl(
+            "zevqyn-stat-tech"
+        );
+
+    const skills =
+        zevPwEl(
+            "zevqyn-stat-skills"
+        );
+
+    const links =
+        zevPwEl(
+            "zevqyn-stat-links"
+        );
+
+    const origin =
+        zevPwEl(
+            "zevqyn-stat-origin"
+        );
+
+
+    if (tech) {
+
+        tech.textContent =
+            String(
+                zevPwTechnologies.length
+            );
+
+    }
+
+
+    if (skills) {
+
+        skills.textContent =
+            String(
+                zevPwSkills.length
+            );
+
+    }
+
+
+    let linkCount = 0;
+
+    const github =
+        zevPwEl(
+            "zevqyn-project-github"
+        );
+
+    const live =
+        zevPwEl(
+            "zevqyn-project-live"
+        );
+
+
+    if (github) {
+
+        if (
+            github.value.trim()
+        ) {
+            linkCount += 1;
+        }
+
+    }
+
+
+    if (live) {
+
+        if (
+            live.value.trim()
+        ) {
+            linkCount += 1;
+        }
+
+    }
+
+
+    if (links) {
+
+        links.textContent =
+            String(
+                linkCount
+            );
+
+    }
+
+
+    if (origin) {
+
+        if (zevPwProject) {
+
+            origin.textContent =
+                zevPwProject.workspace_id
+                    ? "Research"
+                    : "Manual";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   LINKS
+========================================= */
+
+function zevPwUpdateLinks() {
+
+    const githubInput =
+        zevPwEl(
+            "zevqyn-project-github"
+        );
+
+    const liveInput =
+        zevPwEl(
+            "zevqyn-project-live"
+        );
+
+    const githubButton =
+        zevPwEl(
+            "zevqyn-open-github"
+        );
+
+    const liveButton =
+        zevPwEl(
+            "zevqyn-open-live"
+        );
+
+
+    const githubUrl =
+        githubInput
+            ? zevPwNormalizeUrl(
+                githubInput.value
+            )
+            : "";
+
+    const liveUrl =
+        liveInput
+            ? zevPwNormalizeUrl(
+                liveInput.value
+            )
+            : "";
+
+
+    if (githubButton) {
+
+        if (githubUrl) {
+
+            githubButton.href =
+                githubUrl;
+
+            githubButton.hidden =
+                false;
+
+        } else {
+
+            githubButton.hidden =
+                true;
+
+        }
+
+    }
+
+
+    if (liveButton) {
+
+        if (liveUrl) {
+
+            liveButton.href =
+                liveUrl;
+
+            liveButton.hidden =
+                false;
+
+        } else {
+
+            liveButton.hidden =
+                true;
+
+        }
+
+    }
+
+
+    zevPwUpdateStats();
+
+}
+
+
+/* =========================================
+   IMAGE PREVIEW
+========================================= */
+
+function zevPwUpdateImagePreview() {
+
+    const input =
+        zevPwEl(
+            "zevqyn-project-image"
+        );
+
+    const image =
+        zevPwEl(
+            "zevqyn-project-image-preview"
+        );
+
+    const empty =
+        zevPwEl(
+            "zevqyn-image-empty"
+        );
+
+
+    if (!input) {
+        return;
+    }
+
+    if (!image) {
+        return;
+    }
+
+    if (!empty) {
+        return;
+    }
+
+
+    const url =
+        input.value.trim();
+
+
+    if (!url) {
+
+        image.hidden = true;
+        image.removeAttribute(
+            "src"
+        );
+
+        empty.hidden = false;
+
+        return;
+    }
+
+
+    image.onload =
+        function () {
+
+            image.hidden = false;
+            empty.hidden = true;
+
+        };
+
+
+    image.onerror =
+        function () {
+
+            image.hidden = true;
+            empty.hidden = false;
+
+        };
+
+
+    image.src =
+        url;
+
+}
+
+
+/* =========================================
+   RESEARCH ORIGIN
+========================================= */
+
+function zevPwUpdateResearchOrigin() {
+
+    if (!zevPwProject) {
+        return;
+    }
+
+
+    const title =
+        zevPwEl(
+            "zevqyn-origin-title"
+        );
+
+    const text =
+        zevPwEl(
+            "zevqyn-origin-text"
+        );
+
+    const link =
+        zevPwEl(
+            "zevqyn-open-research"
+        );
+
+
+    if (
+        zevPwProject.workspace_id
+    ) {
+
+        if (title) {
+
+            title.textContent =
+                "Created from Research";
+
+        }
+
+        if (text) {
+
+            text.textContent =
+                "This project is connected to a ZEVQYN research workspace.";
+
+        }
+
+        if (link) {
+
+            link.href =
+                "/research-workspace/?id=" +
+                encodeURIComponent(
+                    zevPwProject.workspace_id
+                );
+
+            link.hidden = false;
+
+        }
+
+    } else {
+
+        if (title) {
+
+            title.textContent =
+                "Manual Project";
+
+        }
+
+        if (text) {
+
+            text.textContent =
+                "This project was created directly from the Projects workspace.";
+
+        }
+
+        if (link) {
+
+            link.hidden = true;
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   COUNTERS
+========================================= */
+
+function zevPwUpdateCounters() {
+
+    const title =
+        zevPwEl(
+            "zevqyn-project-title"
+        );
+
+    const shortDescription =
+        zevPwEl(
+            "zevqyn-project-short"
+        );
+
+    const description =
+        zevPwEl(
+            "zevqyn-project-description"
+        );
+
+
+    const titleCount =
+        zevPwEl(
+            "zevqyn-title-count"
+        );
+
+    const shortCount =
+        zevPwEl(
+            "zevqyn-short-count"
+        );
+
+    const descriptionCount =
+        zevPwEl(
+            "zevqyn-description-count"
+        );
+
+
+    if (title) {
+
+        if (titleCount) {
+
+            titleCount.textContent =
+                String(
+                    title.value.length
+                );
+
+        }
+
+    }
+
+
+    if (shortDescription) {
+
+        if (shortCount) {
+
+            shortCount.textContent =
+                String(
+                    shortDescription
+                        .value.length
+                );
+
+        }
+
+    }
+
+
+    if (description) {
+
+        if (descriptionCount) {
+
+            descriptionCount.textContent =
+                String(
+                    description
+                        .value.length
+                );
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   SAVE PROJECT
+========================================= */
+
+async function zevPwSaveProject() {
+
+    if (!zevPwProject) {
+        return;
+    }
+
+
+    const title =
+        zevPwEl(
+            "zevqyn-project-title"
+        );
+
+    const shortDescription =
+        zevPwEl(
+            "zevqyn-project-short"
+        );
+
+    const description =
+        zevPwEl(
+            "zevqyn-project-description"
+        );
+
+    const visibility =
+        zevPwEl(
+            "zevqyn-project-visibility"
+        );
+
+    const featured =
+        zevPwEl(
+            "zevqyn-project-featured"
+        );
+
+    const github =
+        zevPwEl(
+            "zevqyn-project-github"
+        );
+
+    const live =
+        zevPwEl(
+            "zevqyn-project-live"
+        );
+
+    const image =
+        zevPwEl(
+            "zevqyn-project-image"
+        );
+
+    const button =
+        zevPwEl(
+            "zevqyn-project-save"
+        );
+
+
+    const cleanTitle =
+        title
+            ? title.value.trim()
+            : "";
+
+
+    if (!cleanTitle) {
+
+        zevPwShowToast(
+            "Project title is required.",
+            "error"
+        );
+
+        if (title) {
+            title.focus();
+        }
+
+        return;
+    }
+
+
+    const payload = {
+
+        title:
+            cleanTitle,
+
+        short_description:
+            shortDescription
+                ? shortDescription.value.trim()
+                : "",
+
+        description:
+            description
+                ? description.value.trim()
+                : "",
+
+        technologies:
+            zevPwTechnologies.slice(),
+
+        skills:
+            zevPwSkills.slice(),
+
+        github_url:
+            github
+                ? github.value.trim() || null
+                : null,
+
+        live_url:
+            live
+                ? live.value.trim() || null
+                : null,
+
+        image_url:
+            image
+                ? image.value.trim() || null
+                : null,
+
+        visibility:
+            visibility
+                ? visibility.value
+                : "private",
+
+        featured:
+            featured
+                ? featured.checked
+                : false
+
+    };
+
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "Saving...";
+
+    }
+
+
+    try {
+
+        const updated =
+            await zevPwApiRequest(
+                "/api/v1/projects/" +
+                encodeURIComponent(
+                    zevPwProject.id
+                ),
+                {
+                    method:
+                        "PATCH",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body:
+                        JSON.stringify(
+                            payload
+                        )
+                }
+            );
+
+
+        zevPwProject =
+            updated;
+
+        zevPwPopulateProject(
+            updated
+        );
+
+
+        zevPwShowToast(
+            "Project saved successfully.",
+            "success"
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "ZEVQYN project save error:",
+            error
+        );
+
+
+        zevPwShowToast(
+            error.message ||
+            "Could not save project.",
+            "error"
+        );
+
+
+    } finally {
+
+        if (button) {
+
+            button.disabled = false;
+
+            button.textContent =
+                "Save Changes";
+
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   RESET
+========================================= */
+
+function zevPwResetProject() {
+
+    if (!zevPwProject) {
+        return;
+    }
+
+    zevPwPopulateProject(
+        zevPwProject
+    );
+
+    zevPwShowToast(
+        "Unsaved changes reset.",
+        ""
+    );
+
+}
+
+
+/* =========================================
+   EVENTS
+========================================= */
+
+function zevPwSetupEvents() {
+
+    const addTech =
+        zevPwEl(
+            "zevqyn-add-tech"
+        );
+
+    const addSkill =
+        zevPwEl(
+            "zevqyn-add-skill"
+        );
+
+    const techInput =
+        zevPwEl(
+            "zevqyn-tech-input"
+        );
+
+    const skillInput =
+        zevPwEl(
+            "zevqyn-skill-input"
+        );
+
+    const save =
+        zevPwEl(
+            "zevqyn-project-save"
+        );
+
+    const reset =
+        zevPwEl(
+            "zevqyn-project-reset"
+        );
+
+    const visibility =
+        zevPwEl(
+            "zevqyn-project-visibility"
+        );
+
+    const github =
+        zevPwEl(
+            "zevqyn-project-github"
+        );
+
+    const live =
+        zevPwEl(
+            "zevqyn-project-live"
+        );
+
+    const image =
+        zevPwEl(
+            "zevqyn-project-image"
+        );
+
+    const title =
+        zevPwEl(
+            "zevqyn-project-title"
+        );
+
+    const shortDescription =
+        zevPwEl(
+            "zevqyn-project-short"
+        );
+
+    const description =
+        zevPwEl(
+            "zevqyn-project-description"
+        );
+
+
+    if (addTech) {
+
+        addTech.addEventListener(
+            "click",
+            function () {
+
+                zevPwAddTag(
+                    "technology"
+                );
+
+            }
+        );
+
+    }
+
+
+    if (addSkill) {
+
+        addSkill.addEventListener(
+            "click",
+            function () {
+
+                zevPwAddTag(
+                    "skill"
+                );
+
+            }
+        );
+
+    }
+
+
+    if (techInput) {
+
+        techInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    event.preventDefault();
+
+                    zevPwAddTag(
+                        "technology"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (skillInput) {
+
+        skillInput.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (
+                    event.key ===
+                    "Enter"
+                ) {
+
+                    event.preventDefault();
+
+                    zevPwAddTag(
+                        "skill"
+                    );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    if (save) {
+
+        save.addEventListener(
+            "click",
+            zevPwSaveProject
+        );
+
+    }
+
+
+    if (reset) {
+
+        reset.addEventListener(
+            "click",
+            zevPwResetProject
+        );
+
+    }
+
+
+    if (visibility) {
+
+        visibility.addEventListener(
+            "change",
+            zevPwUpdateVisibilityBadge
+        );
+
+    }
+
+
+    if (github) {
+
+        github.addEventListener(
+            "input",
+            zevPwUpdateLinks
+        );
+
+    }
+
+
+    if (live) {
+
+        live.addEventListener(
+            "input",
+            zevPwUpdateLinks
+        );
+
+    }
+
+
+    if (image) {
+
+        image.addEventListener(
+            "change",
+            zevPwUpdateImagePreview
+        );
+
+        image.addEventListener(
+            "blur",
+            zevPwUpdateImagePreview
+        );
+
+    }
+
+
+    if (title) {
+
+        title.addEventListener(
+            "input",
+            zevPwUpdateCounters
+        );
+
+    }
+
+
+    if (shortDescription) {
+
+        shortDescription.addEventListener(
+            "input",
+            zevPwUpdateCounters
+        );
+
+    }
+
+
+    if (description) {
+
+        description.addEventListener(
+            "input",
+            zevPwUpdateCounters
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   INITIALIZE
+========================================= */
+
+async function zevPwInitialize() {
+
+    try {
+
+        zevPwSetupEvents();
+
+        await zevPwSetupAuth();
+
+        await zevPwLoadProject();
+
+
+    } catch (error) {
+
+        console.error(
+            "ZEVQYN Project Workspace initialization error:",
+            error
+        );
+
+
+        if (
+            error.message !==
+            "Authentication required."
+        ) {
+
+            zevPwShowError(
+                error.message ||
+                "Could not initialize Project Workspace."
+            );
+
+        }
+
+    }
+
+}
+
+
+if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+            zevPwInitialize();
+        }
+    );
+
+} else {
+
+    zevPwInitialize();
+
+}
+</script>
+
+<div class="zev-pw-page" id="zevqyn-project-workspace">
+
+    <!-- SIDEBAR -->
+    <aside class="zev-pw-sidebar">
+
+        <div class="zev-pw-nav-title">
+            WORKSPACE
+        </div>
+
+        <nav class="zev-pw-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-pw-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/">
+                <span class="zev-pw-nav-icon">⌕</span>
+                Research
+            </a>
+
+            <a href="/projects/" class="active">
+                <span class="zev-pw-nav-icon">◇</span>
+                Projects
+            </a>
+
+            <a href="/resume/">
+                <span class="zev-pw-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="/portfolio/">
+                <span class="zev-pw-nav-icon">◫</span>
+                Portfolio
+            </a>
+
+            <a href="/career-ai/">
+                <span class="zev-pw-nav-icon">✦</span>
+                Career AI
+            </a>
+
+        </nav>
+
+        <div class="zev-pw-sidebar-bottom">
+
+            <a href="/projects/" class="zev-pw-back">
+                ← All Projects
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="zev-pw-main">
+
+        <!-- LOADING -->
+        <div class="zev-pw-loading" id="zevqyn-project-loading">
+            <div class="zev-pw-loader"></div>
+            <strong>Loading project...</strong>
+            <span>
+                Preparing your ZEVQYN project workspace.
+            </span>
+        </div>
+
+
+        <!-- ERROR -->
+        <div class="zev-pw-error" id="zevqyn-project-error" hidden="">
+            <div class="zev-pw-error-icon">!</div>
+
+            <h2>
+                Project unavailable
+            </h2>
+
+            <p id="zevqyn-project-error-message">
+                We could not load this project.
+            </p>
+
+            <a href="/projects/">
+                Return to Projects
+            </a>
+        </div>
+
+
+        <!-- CONTENT -->
+        <div id="zevqyn-project-content" hidden="">
+
+            <!-- TOP -->
+            <header class="zev-pw-top">
+
+                <div>
+
+                    <a href="/projects/" class="zev-pw-back-link">
+                        ← BACK TO PROJECTS
+                    </a>
+
+                    <span class="zev-pw-label">
+                        PROJECT WORKSPACE
+                    </span>
+
+                    <div class="zev-pw-title-row">
+
+                        <h1 id="zevqyn-project-heading">
+                            Project
+                        </h1>
+
+                        <span class="zev-pw-visibility" id="zevqyn-project-visibility-badge">
+                            PRIVATE
+                        </span>
+
+                    </div>
+
+                    <p id="zevqyn-project-subheading">
+                        Manage your project details, skills,
+                        technologies and career-ready information.
+                    </p>
+
+                </div>
+
+
+                <div class="zev-pw-top-actions">
+
+                    <button type="button" class="zev-pw-secondary-btn" id="zevqyn-project-reset">
+                        Reset
+                    </button>
+
+                    <button type="button" class="zev-pw-save-btn" id="zevqyn-project-save">
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- STATS -->
+            <section class="zev-pw-stats">
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ◇
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-tech">
+                            0
+                        </strong>
+                        <span>Technologies</span>
+                    </div>
+
+                </div>
+
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ✦
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-skills">
+                            0
+                        </strong>
+                        <span>Skills</span>
+                    </div>
+
+                </div>
+
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ↗
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-links">
+                            0
+                        </strong>
+                        <span>Project Links</span>
+                    </div>
+
+                </div>
+
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ◎
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-origin">
+                            Manual
+                        </strong>
+                        <span>Project Origin</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN GRID -->
+            <section class="zev-pw-grid">
+
+                <!-- LEFT -->
+                <div class="zev-pw-column">
+
+                    <!-- PROJECT DETAILS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    OVERVIEW
+                                </span>
+
+                                <h2>
+                                    Project Details
+                                </h2>
+
+                                <p>
+                                    Keep the core information about
+                                    your project accurate and
+                                    portfolio-ready.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-form">
+
+                            <div class="zev-pw-field">
+
+                                <label for="zevqyn-project-title">
+                                    Project Title
+                                </label>
+
+                                <input id="zevqyn-project-title" type="text" maxlength="200" placeholder="Project title">
+
+                                <div class="zev-pw-counter">
+                                    <span id="zevqyn-title-count">0</span>/200
+                                </div>
+
+                            </div>
+
+
+                            <div class="zev-pw-field">
+
+                                <label for="zevqyn-project-short">
+                                    Short Description
+                                </label>
+
+                                <textarea id="zevqyn-project-short" rows="3" maxlength="500" placeholder="A short summary of the project"></textarea>
+
+                                <div class="zev-pw-counter">
+                                    <span id="zevqyn-short-count">0</span>/500
+                                </div>
+
+                            </div>
+
+
+                            <div class="zev-pw-field">
+
+                                <label for="zevqyn-project-description">
+                                    Full Description
+                                </label>
+
+                                <textarea id="zevqyn-project-description" rows="9" maxlength="5000" placeholder="Explain what you built, how it works and what problem it solves"></textarea>
+
+                                <div class="zev-pw-counter">
+                                    <span id="zevqyn-description-count">0</span>/5000
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TECHNOLOGIES -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    TECH STACK
+                                </span>
+
+                                <h2>
+                                    Technologies
+                                </h2>
+
+                                <p>
+                                    Add the tools, frameworks and
+                                    technologies used in this project.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-tag-editor">
+
+                            <div class="zev-pw-tag-input-row">
+
+                                <input type="text" id="zevqyn-tech-input" placeholder="Example: FastAPI">
+
+                                <button type="button" id="zevqyn-add-tech">
+                                    + Add
+                                </button>
+
+                            </div>
+
+                            <div class="zev-pw-tags" id="zevqyn-tech-tags"></div>
+
+                            <small>
+                                Maximum 20 technologies.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SKILLS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    CAREER VALUE
+                                </span>
+
+                                <h2>
+                                    Skills Demonstrated
+                                </h2>
+
+                                <p>
+                                    Track the practical skills this
+                                    project demonstrates.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-tag-editor">
+
+                            <div class="zev-pw-tag-input-row">
+
+                                <input type="text" id="zevqyn-skill-input" placeholder="Example: REST API Development">
+
+                                <button type="button" id="zevqyn-add-skill">
+                                    + Add
+                                </button>
+
+                            </div>
+
+                            <div class="zev-pw-tags" id="zevqyn-skill-tags"></div>
+
+                            <small>
+                                Maximum 20 skills.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT -->
+                <div class="zev-pw-column zev-pw-side-column">
+
+                    <!-- PROJECT SETTINGS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    SETTINGS
+                                </span>
+
+                                <h2>
+                                    Project Settings
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-visibility">
+                                Visibility
+                            </label>
+
+                            <select id="zevqyn-project-visibility">
+                                <option value="private">
+                                    Private
+                                </option>
+                                <option value="public">
+                                    Public
+                                </option>
+                            </select>
+
+                            <small>
+                                Public projects can later be used
+                                in your public portfolio.
+                            </small>
+
+                        </div>
+
+
+                        <label class="zev-pw-toggle-row">
+
+                            <div>
+
+                                <strong>
+                                    Featured Project
+                                </strong>
+
+                                <span>
+                                    Mark this as one of your
+                                    highlighted projects.
+                                </span>
+
+                            </div>
+
+                            <input type="checkbox" id="zevqyn-project-featured">
+
+                            <span class="zev-pw-toggle"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- LINKS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    LINKS
+                                </span>
+
+                                <h2>
+                                    Project Links
+                                </h2>
+
+                                <p>
+                                    Connect your source code and
+                                    live project.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-github">
+                                GitHub URL
+                            </label>
+
+                            <input type="url" id="zevqyn-project-github" maxlength="500" placeholder="https://github.com/...">
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-live">
+                                Live Project URL
+                            </label>
+
+                            <input type="url" id="zevqyn-project-live" maxlength="500" placeholder="https://...">
+
+                        </div>
+
+
+                        <div class="zev-pw-link-actions">
+
+                            <a href="#" target="_blank" rel="noopener" id="zevqyn-open-github" hidden="">
+                                Open GitHub ↗
+                            </a>
+
+                            <a href="#" target="_blank" rel="noopener" id="zevqyn-open-live" hidden="">
+                                Open Live Project ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    PRESENTATION
+                                </span>
+
+                                <h2>
+                                    Project Image
+                                </h2>
+
+                                <p>
+                                    Add a hosted image URL for use
+                                    in your portfolio.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-image">
+                                Image URL
+                            </label>
+
+                            <input type="url" id="zevqyn-project-image" maxlength="500" placeholder="https://...">
+
+                        </div>
+
+
+                        <div class="zev-pw-image-preview" id="zevqyn-image-preview">
+
+                            <div class="zev-pw-image-empty" id="zevqyn-image-empty">
+                                ◫
+                                <span>
+                                    No project image
+                                </span>
+                            </div>
+
+                            <img id="zevqyn-project-image-preview" alt="Project preview" hidden="">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESEARCH ORIGIN -->
+                    <div class="zev-pw-panel" id="zevqyn-research-origin-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    RESEARCH ORIGIN
+                                </span>
+
+                                <h2>
+                                    Research Connection
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-origin-box">
+
+                            <div class="zev-pw-origin-icon">
+                                ◎
+                            </div>
+
+                            <div>
+
+                                <strong id="zevqyn-origin-title">
+                                    Manual Project
+                                </strong>
+
+                                <p id="zevqyn-origin-text">
+                                    This project was created directly
+                                    from the Projects workspace.
+                                </p>
+
+                                <a href="#" id="zevqyn-open-research" hidden="">
+                                    Open Research Workspace →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAREER FLOW -->
+                    <div class="zev-pw-career-card">
+
+                        <span class="zev-pw-label">
+                            NEXT STEP
+                        </span>
+
+                        <h2>
+                            Turn your project into career proof
+                        </h2>
+
+                        <p>
+                            Your project data can later be reused
+                            across your ZEVQYN resume and portfolio.
+                        </p>
+
+                        <div class="zev-pw-career-actions">
+
+                            <a href="/resume/">
+                                Add to Resume →
+                            </a>
+
+                            <a href="/portfolio/">
+                                Add to Portfolio →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER META -->
+            <div class="zev-pw-meta">
+
+                <span>
+                    Created
+                    <strong id="zevqyn-project-created">
+                        —
+                    </strong>
+                </span>
+
+                <span>
+                    Last updated
+                    <strong id="zevqyn-project-updated">
+                        —
+                    </strong>
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div class="zev-pw-toast" id="zevqyn-project-toast" hidden=""></div>
+
+</div>
+<!-- /wp:html -->

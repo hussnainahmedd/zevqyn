@@ -1,0 +1,2765 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+/* =========================================
+   HIDE WORDPRESS PAGE TITLE
+   ========================================= */
+
+.hero-section,
+.entry-header {
+    display: none !important;
+}
+
+
+/* =========================================
+   BASE
+   ========================================= */
+
+#zev-contact-page,
+#zev-contact-page * {
+    box-sizing: border-box;
+}
+
+#zev-contact-page {
+    --green: #35dc78;
+    --green2: #91ffb9;
+    --bg: #020504;
+    --panel: #06100c;
+    --panel2: #08140f;
+    --border: #173328;
+    --text: #f6faf8;
+    --muted: #849b91;
+
+    width: 100%;
+    overflow: hidden;
+
+    color: var(--text);
+    background:
+        radial-gradient(
+            circle at 78% 8%,
+            rgba(53, 220, 120, .075),
+            transparent 25%
+        ),
+        var(--bg);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+.zct-container {
+    width: min(1180px, calc(100% - 44px));
+    margin: 0 auto;
+}
+
+.zct-section-label,
+.zct-eyebrow {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--green);
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .17em;
+}
+
+.zct-section-label > span {
+    width: 29px;
+    height: 29px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(53, 220, 120, .3);
+    border-radius: 50%;
+
+    font-size: 7px;
+    letter-spacing: 0;
+}
+
+.zct-eyebrow > span {
+    width: 28px;
+    height: 1px;
+
+    background: var(--green);
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.zct-hero {
+    min-height: 730px;
+
+    position: relative;
+
+    padding: 105px 0;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(71, 118, 97, .1);
+}
+
+.zct-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .15;
+
+    background-image:
+        linear-gradient(
+            rgba(80, 137, 112, .08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(80, 137, 112, .08) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+.zct-hero-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+
+    gap: 75px;
+    align-items: center;
+}
+
+.zct-hero-copy h1 {
+    margin: 22px 0 22px;
+
+    font-size: clamp(56px, 6vw, 84px);
+    line-height: .96;
+
+    letter-spacing: -.055em;
+}
+
+.zct-hero-copy h1 span {
+    color: var(--green);
+}
+
+.zct-hero-copy > p {
+    max-width: 560px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.zct-hero-note {
+    margin-top: 32px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.zct-note-arrow {
+    color: var(--green);
+
+    font-size: 25px;
+
+    transform: rotate(10deg);
+}
+
+.zct-hero-note strong,
+.zct-hero-note span {
+    display: block;
+}
+
+.zct-hero-note strong {
+    color: #dbe9e2;
+
+    font-size: 11px;
+}
+
+.zct-hero-note span {
+    margin-top: 3px;
+
+    color: #61796e;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   RUNNING GREEN BORDER
+   ========================================= */
+
+@property --zct-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.zct-running-border {
+    position: relative;
+
+    isolation: isolate;
+    overflow: hidden;
+
+    border: 1px solid transparent;
+
+    background:
+        linear-gradient(
+            #06100c,
+            #06100c
+        ) padding-box,
+
+        conic-gradient(
+            from var(--zct-angle),
+            transparent 0deg,
+            transparent 300deg,
+            rgba(53, 220, 120, .08) 315deg,
+            rgba(53, 220, 120, .55) 332deg,
+            #35dc78 345deg,
+            #a4ffc4 352deg,
+            #35dc78 357deg,
+            transparent 360deg
+        ) border-box;
+
+    animation:
+        zctBorderRun 4s linear infinite;
+}
+
+@keyframes zctBorderRun {
+
+    from {
+        --zct-angle: 0deg;
+    }
+
+    to {
+        --zct-angle: 360deg;
+    }
+}
+
+
+/* =========================================
+   HERO VISUAL
+   ========================================= */
+
+.zct-hero-visual {
+    min-height: 500px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .45),
+        0 0 60px rgba(53, 220, 120, .04);
+
+    transform: rotate(1.5deg);
+}
+
+.zct-visual-inner {
+    min-height: 498px;
+
+    position: relative;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    border-radius: 19px;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(53, 220, 120, .09),
+            transparent 30%
+        ),
+        #06100c;
+}
+
+.zct-visual-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #587267;
+
+    font-size: 7px;
+    letter-spacing: .15em;
+}
+
+.zct-online {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.zct-online i {
+    width: 6px;
+    height: 6px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
+}
+
+.zct-message-window {
+    margin-top: 70px;
+}
+
+.zct-message-user {
+    width: 76%;
+
+    margin-left: auto;
+    padding: 18px;
+
+    border: 1px solid #1b392e;
+    border-radius: 15px 15px 3px 15px;
+
+    background: #0c1914;
+}
+
+.zct-message-user small,
+.zct-message-zev small {
+    color: #59766a;
+
+    font-size: 6px;
+    letter-spacing: .15em;
+}
+
+.zct-message-user p {
+    margin: 8px 0 0;
+
+    color: #b2c4bc;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.zct-message-line {
+    width: 1px;
+    height: 45px;
+
+    margin: 8px 0 8px 65px;
+
+    background:
+        linear-gradient(
+            var(--green),
+            transparent
+        );
+}
+
+.zct-message-zev {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.zct-zev-avatar {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--green);
+    color: #03180b;
+
+    font-weight: 900;
+}
+
+.zct-message-zev p {
+    margin: 4px 0 0;
+
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.zct-floating-tag {
+    position: absolute;
+
+    padding: 9px 12px;
+
+    border: 1px solid #26503e;
+    border-radius: 8px;
+
+    background: #07110d;
+
+    color: var(--green);
+
+    font-size: 8px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .4);
+}
+
+.zct-tag-one {
+    left: 30px;
+    bottom: 75px;
+
+    transform: rotate(-4deg);
+}
+
+.zct-tag-two {
+    right: 35px;
+    top: 105px;
+
+    transform: rotate(4deg);
+}
+
+.zct-hand-note {
+    position: absolute;
+
+    right: 30px;
+    bottom: 27px;
+
+    color: #b4c9bf;
+
+    font-size: 11px;
+    font-style: italic;
+
+    text-align: right;
+
+    transform: rotate(-3deg);
+}
+
+
+/* =========================================
+   GLOWS
+   ========================================= */
+
+.zct-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.zct-glow-one {
+    width: 400px;
+    height: 400px;
+
+    right: 4%;
+    top: 15%;
+
+    background:
+        rgba(53, 220, 120, .06);
+}
+
+.zct-glow-two {
+    width: 260px;
+    height: 260px;
+
+    left: 5%;
+    bottom: 0;
+
+    background:
+        rgba(74, 72, 255, .035);
+}
+
+
+/* =========================================
+   GENERAL SECTION HEADINGS
+   ========================================= */
+
+.zct-types,
+.zct-contact,
+.zct-help,
+.zct-faq,
+.zct-final {
+    padding: 110px 0;
+}
+
+.zct-section-head {
+    max-width: 720px;
+
+    margin-bottom: 50px;
+}
+
+.zct-section-head h2,
+.zct-contact-copy h2,
+.zct-faq-copy h2,
+.zct-final h2 {
+    margin: 20px 0 13px;
+
+    font-size: clamp(38px, 4.5vw, 58px);
+    line-height: 1.03;
+
+    letter-spacing: -.045em;
+}
+
+.zct-section-head h2 span,
+.zct-contact-copy h2 span,
+.zct-faq-copy h2 span,
+.zct-final h2 span {
+    color: var(--green);
+}
+
+.zct-section-head > p,
+.zct-contact-copy > p,
+.zct-faq-copy > p {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CONTACT TYPES
+   ========================================= */
+
+.zct-type-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+.zct-type-card {
+    min-height: 170px;
+
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: relative;
+
+    cursor: pointer;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #08130f,
+            #050b08
+        );
+
+    color: var(--text);
+
+    text-align: left;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.zct-type-card:hover,
+.zct-type-card.zct-selected {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(53, 220, 120, .45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(53, 220, 120, .07),
+            #050b08
+        );
+}
+
+.zct-type-icon {
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(53, 220, 120, .08);
+
+    color: var(--green);
+
+    font-size: 15px;
+}
+
+.zct-type-card strong,
+.zct-type-card span {
+    display: block;
+}
+
+.zct-type-card strong {
+    font-size: 12px;
+}
+
+.zct-type-card span {
+    margin-top: 5px;
+
+    color: #71877e;
+
+    font-size: 8px;
+}
+
+.zct-type-card > i {
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    color: #436256;
+
+    font-size: 11px;
+    font-style: normal;
+}
+
+
+/* =========================================
+   CONTACT FORM SECTION
+   ========================================= */
+
+.zct-contact {
+    border-top:
+        1px solid rgba(69, 115, 95, .1);
+
+    border-bottom:
+        1px solid rgba(69, 115, 95, .1);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 17, 13, .5),
+            transparent
+        );
+}
+
+.zct-contact-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+    align-items: center;
+}
+
+.zct-contact-copy > p {
+    max-width: 460px;
+}
+
+.zct-contact-points {
+    margin-top: 38px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.zct-contact-points > div {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+
+    gap: 13px;
+}
+
+.zct-contact-points > div > span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #1e4635;
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 7px;
+}
+
+.zct-contact-points strong {
+    display: block;
+
+    font-size: 10px;
+}
+
+.zct-contact-points p {
+    margin: 4px 0 0;
+
+    color: #6f857c;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.zct-side-note {
+    margin-top: 35px;
+
+    color: #a7bcb2;
+
+    font-size: 11px;
+    font-style: italic;
+
+    transform: rotate(-2deg);
+}
+
+.zct-side-note span {
+    margin-right: 8px;
+
+    color: var(--green);
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.zct-form-shell {
+    border-radius: 18px;
+}
+
+.zct-form-inner {
+    padding: 35px;
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0,
+            rgba(53, 220, 120, .055),
+            transparent 25%
+        ),
+        #06100c;
+}
+
+.zct-form-heading {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #173027;
+}
+
+.zct-form-heading small {
+    color: var(--green);
+
+    font-size: 6px;
+    letter-spacing: .16em;
+}
+
+.zct-form-heading h3 {
+    margin: 5px 0 0;
+
+    font-size: 24px;
+}
+
+.zct-form-status {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #718a7e;
+
+    font-size: 7px;
+}
+
+.zct-form-status i {
+    width: 6px;
+    height: 6px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
+}
+
+.zct-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.zct-field {
+    margin-bottom: 17px;
+}
+
+.zct-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #a7b9b1;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.zct-field input,
+.zct-field select,
+.zct-field textarea {
+    width: 100%;
+
+    outline: none;
+
+    border: 1px solid #1b382d;
+    border-radius: 8px;
+
+    background: #08130f;
+
+    color: #eef8f3;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.zct-field input,
+.zct-field select {
+    height: 46px;
+
+    padding: 0 13px;
+}
+
+.zct-field textarea {
+    min-height: 150px;
+
+    padding: 13px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.zct-field input::placeholder,
+.zct-field textarea::placeholder {
+    color: #435d52;
+}
+
+.zct-field input:focus,
+.zct-field select:focus,
+.zct-field textarea:focus {
+    border-color:
+        rgba(53, 220, 120, .55);
+
+    box-shadow:
+        0 0 0 3px rgba(53, 220, 120, .05);
+}
+
+.zct-field select {
+    color-scheme: dark;
+}
+
+.zct-error {
+    min-height: 13px;
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ff7777;
+
+    font-size: 7px;
+}
+
+.zct-message-meta {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.zct-message-meta > span {
+    margin-top: 5px;
+
+    color: #536d61;
+
+    font-size: 7px;
+}
+
+.zct-submit {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: var(--green);
+    color: #03180b;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.zct-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(53, 220, 120, .12);
+}
+
+.zct-submit i {
+    font-style: normal;
+}
+
+.zct-form-response {
+    display: none;
+
+    margin-top: 14px;
+    padding: 12px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.zct-form-response.zct-response-info {
+    display: block;
+
+    border: 1px solid rgba(53, 220, 120, .22);
+
+    background:
+        rgba(53, 220, 120, .05);
+
+    color: #aeeac4;
+}
+
+
+/* =========================================
+   QUICK HELP
+   ========================================= */
+
+.zct-help-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.zct-help-card {
+    min-height: 190px;
+
+    padding: 25px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #07110d,
+            #050a08
+        );
+
+    color: var(--text) !important;
+
+    text-decoration: none !important;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.zct-help-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(53, 220, 120, .4);
+}
+
+.zct-help-card > span {
+    color: #456155;
+
+    font-size: 7px;
+}
+
+.zct-help-card > div {
+    margin-top: auto;
+}
+
+.zct-help-card strong {
+    font-size: 14px;
+}
+
+.zct-help-card p {
+    max-width: 240px;
+
+    margin: 7px 0 0;
+
+    color: #71877e;
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.zct-help-card i {
+    position: absolute;
+
+    right: 22px;
+    top: 20px;
+
+    color: var(--green);
+
+    font-style: normal;
+}
+
+
+/* =========================================
+   FAQ
+   ========================================= */
+
+.zct-faq {
+    border-top:
+        1px solid rgba(69, 115, 95, .1);
+}
+
+.zct-faq-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+}
+
+.zct-faq-copy > p {
+    max-width: 390px;
+}
+
+.zct-faq-item {
+    border-bottom:
+        1px solid #173027;
+}
+
+.zct-faq-button {
+    width: 100%;
+
+    padding: 22px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    border: 0;
+
+    background: transparent;
+    color: #dbe7e1;
+
+    text-align: left;
+}
+
+.zct-faq-button span {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.zct-faq-button i {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #234537;
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 13px;
+    font-style: normal;
+
+    transition:
+        transform .25s ease;
+}
+
+.zct-faq-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height .35s ease;
+}
+
+.zct-faq-answer p {
+    max-width: 600px;
+
+    margin: 0;
+    padding: 0 45px 22px 0;
+
+    color: #768d82;
+
+    font-size: 9px;
+    line-height: 1.75;
+}
+
+.zct-faq-item.zct-open .zct-faq-button i {
+    transform: rotate(45deg);
+}
+
+
+/* =========================================
+   FINAL CTA
+   ========================================= */
+
+.zct-final {
+    padding-top: 30px;
+    padding-bottom: 120px;
+}
+
+.zct-final-card {
+    border-radius: 19px;
+}
+
+.zct-final-inner {
+    min-height: 350px;
+
+    padding: 55px;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    gap: 30px;
+    align-items: center;
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(53, 220, 120, .08),
+            transparent 28%
+        ),
+        #06100c;
+}
+
+.zct-final-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #25503d;
+    border-radius: 15px;
+
+    background:
+        rgba(53, 220, 120, .07);
+
+    color: var(--green);
+
+    font-size: 20px;
+}
+
+.zct-final small {
+    color: var(--green);
+
+    font-size: 7px;
+    letter-spacing: .15em;
+}
+
+.zct-final h2 {
+    margin-top: 10px;
+
+    font-size: clamp(32px, 4vw, 50px);
+}
+
+.zct-final p {
+    max-width: 550px;
+
+    color: #7c9188;
+
+    font-size: 10px;
+    line-height: 1.65;
+}
+
+.zct-btn {
+    min-height: 50px;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    border-radius: 8px;
+
+    text-decoration: none !important;
+
+    font-size: 10px;
+    font-weight: 850;
+}
+
+.zct-btn-primary {
+    background: var(--green);
+
+    color: #03180b !important;
+}
+
+.zct-final-btn {
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   REVEAL
+   ========================================= */
+
+.zct-reveal {
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.zct-reveal.zct-visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 950px) {
+
+    .zct-hero-grid,
+    .zct-contact-grid,
+    .zct-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-hero-copy {
+        text-align: center;
+    }
+
+    .zct-hero-copy > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .zct-eyebrow {
+        justify-content: center;
+    }
+
+    .zct-hero-note {
+        justify-content: center;
+    }
+
+    .zct-hero-visual {
+        max-width: 650px;
+
+        margin: 20px auto 0;
+
+        transform: none;
+    }
+
+    .zct-type-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zct-help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-contact-grid,
+    .zct-faq-grid {
+        gap: 55px;
+    }
+
+    .zct-final-inner {
+        grid-template-columns: auto 1fr;
+    }
+
+    .zct-final-btn {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    .zct-container {
+        width: calc(100% - 28px);
+    }
+
+    .zct-hero {
+        min-height: auto;
+
+        padding: 75px 0;
+    }
+
+    .zct-hero-copy h1 {
+        font-size: 48px;
+    }
+
+    .zct-hero-visual,
+    .zct-visual-inner {
+        min-height: 460px;
+    }
+
+    .zct-visual-inner {
+        padding: 22px;
+    }
+
+    .zct-message-user {
+        width: 90%;
+    }
+
+    .zct-types,
+    .zct-contact,
+    .zct-help,
+    .zct-faq {
+        padding: 75px 0;
+    }
+
+    .zct-type-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-type-card {
+        min-height: 140px;
+    }
+
+    .zct-form-inner {
+        padding: 23px;
+    }
+
+    .zct-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .zct-final {
+        padding-bottom: 80px;
+    }
+
+    .zct-final-inner {
+        min-height: 400px;
+
+        padding: 32px 23px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .zct-final-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .zct-running-border {
+        animation: none;
+    }
+
+    .zct-reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+}
+</style>
+
+<script data-wp-block-html="js">
+function zevContactInitialize() {
+
+    var contactForm =
+        document.getElementById("zct-contact-form");
+
+    var subjectField =
+        document.getElementById("zct-subject");
+
+    var messageField =
+        document.getElementById("zct-message");
+
+    var countField =
+        document.getElementById("zct-count");
+
+    var responseBox =
+        document.getElementById("zct-form-response");
+
+    var submitButton =
+        document.getElementById("zct-submit");
+
+    var typeCards =
+        document.querySelectorAll(
+            "#zev-contact-page .zct-type-card"
+        );
+
+
+    /* =====================================
+       CONTACT TYPE CARDS
+       ===================================== */
+
+    typeCards.forEach(function (card) {
+
+        card.addEventListener(
+            "click",
+            function () {
+
+                typeCards.forEach(
+                    function (item) {
+
+                        item.classList.remove(
+                            "zct-selected"
+                        );
+
+                    }
+                );
+
+                card.classList.add(
+                    "zct-selected"
+                );
+
+                var selectedType =
+                    card.getAttribute(
+                        "data-contact-type"
+                    );
+
+                if (subjectField) {
+
+                    subjectField.value =
+                        selectedType;
+
+                }
+
+
+                var formSection =
+                    document.getElementById(
+                        "zct-form-section"
+                    );
+
+                if (formSection) {
+
+                    formSection.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+
+            }
+        );
+
+    });
+
+
+    /* =====================================
+       CHARACTER COUNTER
+       ===================================== */
+
+    if (messageField) {
+
+        messageField.addEventListener(
+            "input",
+            function () {
+
+                if (countField) {
+
+                    countField.textContent =
+                        String(
+                            messageField.value.length
+                        );
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       ERROR HELPERS
+       ===================================== */
+
+    function zctSetError(
+        field,
+        message
+    ) {
+
+        if (!field) {
+            return;
+        }
+
+        var parent =
+            field.parentElement;
+
+        if (!parent) {
+            return;
+        }
+
+        var error =
+            parent.querySelector(
+                ".zct-error"
+            );
+
+        field.style.borderColor =
+            "rgba(255, 100, 100, .65)";
+
+        if (error) {
+
+            error.textContent =
+                message;
+
+        }
+
+    }
+
+
+    function zctClearError(field) {
+
+        if (!field) {
+            return;
+        }
+
+        var parent =
+            field.parentElement;
+
+        if (!parent) {
+            return;
+        }
+
+        var error =
+            parent.querySelector(
+                ".zct-error"
+            );
+
+        field.style.borderColor = "";
+
+        if (error) {
+
+            error.textContent = "";
+
+        }
+
+    }
+
+
+    function zctEmailValid(email) {
+
+        var atPosition =
+            email.indexOf("@");
+
+        var dotPosition =
+            email.lastIndexOf(".");
+
+        if (atPosition < 1) {
+            return false;
+        }
+
+        if (
+            dotPosition <
+            atPosition + 2
+        ) {
+            return false;
+        }
+
+        if (
+            dotPosition ===
+            email.length - 1
+        ) {
+            return false;
+        }
+
+        return true;
+
+    }
+
+
+    /* =====================================
+       RESPONSE MESSAGE
+       ===================================== */
+
+    function zctShowResponse(
+        type,
+        message
+    ) {
+
+        if (!responseBox) {
+            return;
+        }
+
+        responseBox.className =
+            "zct-form-response " +
+            type;
+
+        responseBox.textContent =
+            message;
+
+    }
+
+
+    /* =====================================
+       SUBMIT BUTTON
+       ===================================== */
+
+    function zctSetSending(
+        sending
+    ) {
+
+        if (!submitButton) {
+            return;
+        }
+
+        if (sending) {
+
+            submitButton.disabled =
+                true;
+
+            submitButton.textContent =
+                "Sending...";
+
+        } else {
+
+            submitButton.disabled =
+                false;
+
+            submitButton.textContent =
+                "Send message";
+
+        }
+
+    }
+
+
+    /* =====================================
+       FORM SUBMISSION
+       ===================================== */
+
+    if (contactForm) {
+
+        contactForm.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+
+                var nameField =
+                    document.getElementById(
+                        "zct-name"
+                    );
+
+                var emailField =
+                    document.getElementById(
+                        "zct-email"
+                    );
+
+
+                if (!nameField) {
+                    return;
+                }
+
+                if (!emailField) {
+                    return;
+                }
+
+                if (!subjectField) {
+                    return;
+                }
+
+                if (!messageField) {
+                    return;
+                }
+
+
+                var valid = true;
+
+
+                zctClearError(
+                    nameField
+                );
+
+                zctClearError(
+                    emailField
+                );
+
+                zctClearError(
+                    subjectField
+                );
+
+                zctClearError(
+                    messageField
+                );
+
+
+                var nameValue =
+                    nameField.value.trim();
+
+                var emailValue =
+                    emailField.value.trim();
+
+                var subjectValue =
+                    subjectField.value;
+
+                var messageValue =
+                    messageField.value.trim();
+
+
+                if (
+                    nameValue.length < 2
+                ) {
+
+                    zctSetError(
+                        nameField,
+                        "Please enter your name."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (
+                    !zctEmailValid(
+                        emailValue
+                    )
+                ) {
+
+                    zctSetError(
+                        emailField,
+                        "Enter a valid email address."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (!subjectValue) {
+
+                    zctSetError(
+                        subjectField,
+                        "Choose a topic."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (
+                    messageValue.length < 10
+                ) {
+
+                    zctSetError(
+                        messageField,
+                        "Give us a little more detail."
+                    );
+
+                    valid = false;
+
+                }
+
+
+                if (!valid) {
+
+                    if (responseBox) {
+
+                        responseBox.className =
+                            "zct-form-response";
+
+                        responseBox.textContent =
+                            "";
+
+                    }
+
+                    return;
+
+                }
+
+
+                /* =====================================
+                   API PAYLOAD
+                   ===================================== */
+
+                var payload = {
+                    name: nameValue,
+                    email: emailValue,
+                    subject: subjectValue,
+                    message: messageValue
+                };
+
+
+                zctSetSending(true);
+
+
+                zctShowResponse(
+                    "zct-response-info",
+                    "Sending your message..."
+                );
+
+
+                /* =====================================
+                   API REQUEST
+                   ===================================== */
+
+                var request =
+                    new XMLHttpRequest();
+
+
+                request.open(
+                    "POST",
+                    "https://zevqyn-backend.onrender.com/api/v1/contact",
+                    true
+                );
+
+
+                request.setRequestHeader(
+                    "Content-Type",
+                    "application/json"
+                );
+
+
+                request.onreadystatechange =
+                    function () {
+
+                        if (
+                            request.readyState !== 4
+                        ) {
+                            return;
+                        }
+
+
+                        zctSetSending(false);
+
+
+                        if (
+                            request.status >= 200
+                        ) {
+
+                            if (
+                                request.status < 300
+                            ) {
+
+                                zctShowResponse(
+                                    "zct-response-success",
+                                    "Message sent successfully! We'll get back to you soon."
+                                );
+
+
+                                contactForm.reset();
+
+
+                                if (countField) {
+
+                                    countField.textContent =
+                                        "0";
+
+                                }
+
+
+                                typeCards.forEach(
+                                    function (item) {
+
+                                        item.classList.remove(
+                                            "zct-selected"
+                                        );
+
+                                    }
+                                );
+
+
+                                return;
+
+                            }
+
+                        }
+
+
+                        zctShowResponse(
+                            "zct-response-error",
+                            "We could not send your message. Please try again."
+                        );
+
+                    };
+
+
+                request.onerror =
+                    function () {
+
+                        zctSetSending(false);
+
+                        zctShowResponse(
+                            "zct-response-error",
+                            "We could not connect to ZEVQYN. Please try again."
+                        );
+
+                    };
+
+
+                request.ontimeout =
+                    function () {
+
+                        zctSetSending(false);
+
+                        zctShowResponse(
+                            "zct-response-error",
+                            "The request took too long. Please try again."
+                        );
+
+                    };
+
+
+                request.timeout =
+                    30000;
+
+
+                request.send(
+                    JSON.stringify(
+                        payload
+                    )
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================
+       FAQ
+       ===================================== */
+
+    var faqButtons =
+        document.querySelectorAll(
+            "#zev-contact-page .zct-faq-button"
+        );
+
+
+    faqButtons.forEach(
+        function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    var item =
+                        button.parentElement;
+
+                    if (!item) {
+                        return;
+                    }
+
+
+                    var answer =
+                        item.querySelector(
+                            ".zct-faq-answer"
+                        );
+
+
+                    var wasOpen =
+                        item.classList.contains(
+                            "zct-open"
+                        );
+
+
+                    var allItems =
+                        document.querySelectorAll(
+                            "#zev-contact-page .zct-faq-item"
+                        );
+
+
+                    allItems.forEach(
+                        function (faqItem) {
+
+                            faqItem.classList.remove(
+                                "zct-open"
+                            );
+
+
+                            var faqAnswer =
+                                faqItem.querySelector(
+                                    ".zct-faq-answer"
+                                );
+
+
+                            if (faqAnswer) {
+
+                                faqAnswer.style.maxHeight =
+                                    null;
+
+                            }
+
+                        }
+                    );
+
+
+                    if (wasOpen) {
+                        return;
+                    }
+
+
+                    item.classList.add(
+                        "zct-open"
+                    );
+
+
+                    if (answer) {
+
+                        answer.style.maxHeight =
+                            answer.scrollHeight +
+                            "px";
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================
+       SCROLL REVEAL
+       ===================================== */
+
+    var revealItems =
+        document.querySelectorAll(
+            "#zev-contact-page .zct-reveal"
+        );
+
+
+    if (
+        "IntersectionObserver" in window
+    ) {
+
+        var observer =
+            new IntersectionObserver(
+                function (entries) {
+
+                    entries.forEach(
+                        function (entry) {
+
+                            if (
+                                entry.isIntersecting
+                            ) {
+
+                                entry.target
+                                    .classList
+                                    .add(
+                                        "zct-visible"
+                                    );
+
+
+                                observer.unobserve(
+                                    entry.target
+                                );
+
+                            }
+
+                        }
+                    );
+
+                },
+                {
+                    threshold: 0.08
+                }
+            );
+
+
+        revealItems.forEach(
+            function (item) {
+
+                observer.observe(
+                    item
+                );
+
+            }
+        );
+
+    } else {
+
+        revealItems.forEach(
+            function (item) {
+
+                item.classList.add(
+                    "zct-visible"
+                );
+
+            }
+        );
+
+    }
+
+}
+
+
+/* =====================================
+   INITIALIZE
+   ===================================== */
+
+if (
+    document.readyState ===
+    "loading"
+) {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            zevContactInitialize();
+
+        }
+    );
+
+} else {
+
+    zevContactInitialize();
+
+}
+</script>
+
+<div id="zev-contact-page" class="zct-page">
+
+    <!-- HERO -->
+    <section class="zct-hero">
+        <div class="zct-glow zct-glow-one"></div>
+        <div class="zct-glow zct-glow-two"></div>
+
+        <div class="zct-container zct-hero-grid">
+
+            <div class="zct-hero-copy zct-reveal">
+
+                <div class="zct-eyebrow">
+                    <span></span>
+                    CONTACT ZEVQYN
+                </div>
+
+                <h1>
+                    Got something<br>
+                    <span>on your mind?</span>
+                </h1>
+
+                <p>
+                    Need help, found something weird, have an idea,
+                    or just want to talk about ZEVQYN?
+                    You're in the right place.
+                </p>
+
+                <div class="zct-hero-note">
+                    <div class="zct-note-arrow">↘</div>
+
+                    <div>
+                        <strong>Real messages only.</strong>
+                        <span>No corporate maze. No 17-step ticket system.</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+            <div class="zct-hero-visual zct-running-border zct-reveal">
+
+                <div class="zct-visual-inner">
+
+                    <div class="zct-visual-top">
+                        <span>MESSAGE INCOMING</span>
+
+                        <div class="zct-online">
+                            <i></i>
+                            ZEVQYN
+                        </div>
+                    </div>
+
+                    <div class="zct-message-window">
+
+                        <div class="zct-message-user">
+                            <small>YOU</small>
+                            <p>
+                                Hey ZEVQYN, I have an idea that could
+                                make the platform even better...
+                            </p>
+                        </div>
+
+                        <div class="zct-message-line"></div>
+
+                        <div class="zct-message-zev">
+                            <div class="zct-zev-avatar">Z</div>
+
+                            <div>
+                                <small>ZEVQYN</small>
+                                <p>We're listening.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="zct-floating-tag zct-tag-one">
+                        ✦ Feedback
+                    </div>
+
+                    <div class="zct-floating-tag zct-tag-two">
+                        Support ↗
+                    </div>
+
+                    <div class="zct-hand-note">
+                        good ideas start<br>
+                        with a message ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT TYPES -->
+    <section class="zct-types">
+        <div class="zct-container">
+
+            <div class="zct-section-head zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>01</span>
+                    WHAT'S UP?
+                </div>
+
+                <h2>
+                    Pick your <span>reason.</span>
+                </h2>
+
+                <p>
+                    Whatever brought you here, point us in the right direction.
+                </p>
+
+            </div>
+
+
+            <div class="zct-type-grid">
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Support">
+                    <div class="zct-type-icon">?</div>
+
+                    <div>
+                        <strong>Need help</strong>
+                        <span>Something isn't working.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Feedback">
+                    <div class="zct-type-icon">✦</div>
+
+                    <div>
+                        <strong>Share feedback</strong>
+                        <span>Tell us what you think.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Partnership">
+                    <div class="zct-type-icon">◇</div>
+
+                    <div>
+                        <strong>Work together</strong>
+                        <span>Partnership or collaboration.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Other">
+                    <div class="zct-type-icon">→</div>
+
+                    <div>
+                        <strong>Something else</strong>
+                        <span>We're still listening.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT FORM -->
+    <section id="zct-form-section" class="zct-contact">
+        <div class="zct-container zct-contact-grid">
+
+            <div class="zct-contact-copy zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>02</span>
+                    SEND A MESSAGE
+                </div>
+
+                <h2>
+                    Tell us what's<br>
+                    <span>going on.</span>
+                </h2>
+
+                <p>
+                    Give us enough detail to understand what you need.
+                    Screenshots, error messages and dramatic backstories
+                    are all welcome.
+                </p>
+
+
+                <div class="zct-contact-points">
+
+                    <div>
+                        <span>01</span>
+
+                        <div>
+                            <strong>Keep it clear</strong>
+                            <p>Tell us what happened or what you're thinking.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+
+                        <div>
+                            <strong>Add useful details</strong>
+                            <p>
+                                For bugs, mention what you were doing
+                                when it happened.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+
+                        <div>
+                            <strong>Hit send</strong>
+                            <p>That's it. No maze of support menus.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-side-note">
+                    <span>↳</span>
+                    humans appreciate context too.
+                </div>
+
+            </div>
+
+
+            <div class="zct-form-shell zct-running-border zct-reveal">
+
+                <div class="zct-form-inner">
+
+                    <div class="zct-form-heading">
+
+                        <div>
+                            <small>CONTACT FORM</small>
+                            <h3>Let's talk.</h3>
+                        </div>
+
+                        <div class="zct-form-status">
+                            <i></i>
+                            READY
+                        </div>
+
+                    </div>
+
+
+                    <form id="zct-contact-form" novalidate="">
+
+                        <div class="zct-form-row">
+
+                            <div class="zct-field">
+                                <label for="zct-name">
+                                    Your name
+                                </label>
+
+                                <input id="zct-name" name="name" type="text" placeholder="What should we call you?" autocomplete="name">
+
+                                <small class="zct-error"></small>
+                            </div>
+
+
+                            <div class="zct-field">
+                                <label for="zct-email">
+                                    Email
+                                </label>
+
+                                <input id="zct-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+
+                                <small class="zct-error"></small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zct-field">
+
+                            <label for="zct-subject">
+                                What's this about?
+                            </label>
+
+                            <select id="zct-subject" name="subject">
+                                <option value="">
+                                    Choose a topic
+                                </option>
+
+                                <option value="Support">
+                                    I need help
+                                </option>
+
+                                <option value="Feedback">
+                                    Feedback / suggestion
+                                </option>
+
+                                <option value="Partnership">
+                                    Partnership / collaboration
+                                </option>
+
+                                <option value="Bug">
+                                    Report a bug
+                                </option>
+
+                                <option value="Other">
+                                    Something else
+                                </option>
+                            </select>
+
+                            <small class="zct-error"></small>
+
+                        </div>
+
+
+                        <div class="zct-field">
+
+                            <label for="zct-message">
+                                Message
+                            </label>
+
+                            <textarea id="zct-message" name="message" rows="7" maxlength="1500" placeholder="Tell us what's on your mind..."></textarea>
+
+                            <div class="zct-message-meta">
+                                <small class="zct-error"></small>
+
+                                <span>
+                                    <b id="zct-count">0</b>/1500
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" class="zct-submit" id="zct-submit">
+                            <span>Send message</span>
+                            <i>↗</i>
+                        </button>
+
+
+                        <div id="zct-form-response" class="zct-form-response" aria-live="polite"></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- QUICK HELP -->
+    <section class="zct-help">
+        <div class="zct-container">
+
+            <div class="zct-section-head zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>03</span>
+                    BEFORE YOU SEND
+                </div>
+
+                <h2>
+                    Maybe the answer is<br>
+                    <span>already here.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="zct-help-grid">
+
+                <a href="/features/" class="zct-help-card zct-reveal">
+                    <span>01</span>
+                    <div>
+                        <strong>Explore Features</strong>
+                        <p>
+                            See what you can actually do inside ZEVQYN.
+                        </p>
+                    </div>
+                    <i>↗</i>
+                </a>
+
+
+                <a href="/how-it-works/" class="zct-help-card zct-reveal">
+                    <span>02</span>
+                    <div>
+                        <strong>How It Works</strong>
+                        <p>
+                            Follow the full research-to-career workflow.
+                        </p>
+                    </div>
+                    <i>↗</i>
+                </a>
+
+
+                <a href="/about/" class="zct-help-card zct-reveal">
+                    <span>03</span>
+                    <div>
+                        <strong>About ZEVQYN</strong>
+                        <p>
+                            Find out why we're building this.
+                        </p>
+                    </div>
+                    <i>↗</i>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="zct-faq">
+        <div class="zct-container zct-faq-grid">
+
+            <div class="zct-faq-copy zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>04</span>
+                    QUICK ANSWERS
+                </div>
+
+                <h2>
+                    Tiny FAQ.<br>
+                    <span>Big questions welcome.</span>
+                </h2>
+
+                <p>
+                    Didn't find what you needed?
+                    That's what the form above is for.
+                </p>
+
+            </div>
+
+
+            <div class="zct-accordion">
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>What is ZEVQYN?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            ZEVQYN is an AI-powered research and career
+                            workspace that connects research, projects,
+                            career information, resumes, portfolios and
+                            AI career guidance.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>Who is ZEVQYN built for?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            It's designed around students, developers,
+                            self-learners and people building toward
+                            internships or early career opportunities.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>Can I report a bug here?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            Yes. Choose “Report a bug” in the contact form
+                            and include what happened, what you expected,
+                            and any useful error details.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>Can I suggest a feature?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            Absolutely. Choose the feedback option and
+                            explain the idea, why you'd use it, and what
+                            problem it would solve for you.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="zct-final">
+        <div class="zct-container">
+
+            <div class="zct-final-card zct-running-border zct-reveal">
+
+                <div class="zct-final-inner">
+
+                    <div class="zct-final-icon">✦</div>
+
+                    <div>
+                        <small>NOT HERE FOR SUPPORT?</small>
+
+                        <h2>
+                            Maybe you're ready to<br>
+                            <span>build something instead.</span>
+                        </h2>
+
+                        <p>
+                            Start your ZEVQYN workspace and turn
+                            what you're learning into work worth showing.
+                        </p>
+                    </div>
+
+                    <a href="/register/" class="zct-btn zct-btn-primary zct-final-btn">
+                        Start with ZEVQYN
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+<!-- /wp:html -->

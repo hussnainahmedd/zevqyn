@@ -1,0 +1,1446 @@
+﻿
+/* =========================================
+   HIDE WORDPRESS PAGE TITLE
+   ========================================= */
+
+.hero-section,
+.entry-header {
+    display: none !important;
+}
+
+
+/* =========================================
+   BASE
+   ========================================= */
+
+#zev-contact-page,
+#zev-contact-page * {
+    box-sizing: border-box;
+}
+
+#zev-contact-page {
+    --green: #35dc78;
+    --green2: #91ffb9;
+    --bg: #020504;
+    --panel: #06100c;
+    --panel2: #08140f;
+    --border: #173328;
+    --text: #f6faf8;
+    --muted: #849b91;
+
+    width: 100%;
+    overflow: hidden;
+
+    color: var(--text);
+    background:
+        radial-gradient(
+            circle at 78% 8%,
+            rgba(53, 220, 120, .075),
+            transparent 25%
+        ),
+        var(--bg);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+.zct-container {
+    width: min(1180px, calc(100% - 44px));
+    margin: 0 auto;
+}
+
+.zct-section-label,
+.zct-eyebrow {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: var(--green);
+
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: .17em;
+}
+
+.zct-section-label > span {
+    width: 29px;
+    height: 29px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid rgba(53, 220, 120, .3);
+    border-radius: 50%;
+
+    font-size: 7px;
+    letter-spacing: 0;
+}
+
+.zct-eyebrow > span {
+    width: 28px;
+    height: 1px;
+
+    background: var(--green);
+}
+
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.zct-hero {
+    min-height: 730px;
+
+    position: relative;
+
+    padding: 105px 0;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(71, 118, 97, .1);
+}
+
+.zct-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .15;
+
+    background-image:
+        linear-gradient(
+            rgba(80, 137, 112, .08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(80, 137, 112, .08) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            #000,
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+.zct-hero-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+
+    gap: 75px;
+    align-items: center;
+}
+
+.zct-hero-copy h1 {
+    margin: 22px 0 22px;
+
+    font-size: clamp(56px, 6vw, 84px);
+    line-height: .96;
+
+    letter-spacing: -.055em;
+}
+
+.zct-hero-copy h1 span {
+    color: var(--green);
+}
+
+.zct-hero-copy > p {
+    max-width: 560px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.zct-hero-note {
+    margin-top: 32px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.zct-note-arrow {
+    color: var(--green);
+
+    font-size: 25px;
+
+    transform: rotate(10deg);
+}
+
+.zct-hero-note strong,
+.zct-hero-note span {
+    display: block;
+}
+
+.zct-hero-note strong {
+    color: #dbe9e2;
+
+    font-size: 11px;
+}
+
+.zct-hero-note span {
+    margin-top: 3px;
+
+    color: #61796e;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   RUNNING GREEN BORDER
+   ========================================= */
+
+@property --zct-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.zct-running-border {
+    position: relative;
+
+    isolation: isolate;
+    overflow: hidden;
+
+    border: 1px solid transparent;
+
+    background:
+        linear-gradient(
+            #06100c,
+            #06100c
+        ) padding-box,
+
+        conic-gradient(
+            from var(--zct-angle),
+            transparent 0deg,
+            transparent 300deg,
+            rgba(53, 220, 120, .08) 315deg,
+            rgba(53, 220, 120, .55) 332deg,
+            #35dc78 345deg,
+            #a4ffc4 352deg,
+            #35dc78 357deg,
+            transparent 360deg
+        ) border-box;
+
+    animation:
+        zctBorderRun 4s linear infinite;
+}
+
+@keyframes zctBorderRun {
+
+    from {
+        --zct-angle: 0deg;
+    }
+
+    to {
+        --zct-angle: 360deg;
+    }
+}
+
+
+/* =========================================
+   HERO VISUAL
+   ========================================= */
+
+.zct-hero-visual {
+    min-height: 500px;
+
+    border-radius: 20px;
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, .45),
+        0 0 60px rgba(53, 220, 120, .04);
+
+    transform: rotate(1.5deg);
+}
+
+.zct-visual-inner {
+    min-height: 498px;
+
+    position: relative;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    border-radius: 19px;
+
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(53, 220, 120, .09),
+            transparent 30%
+        ),
+        #06100c;
+}
+
+.zct-visual-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #587267;
+
+    font-size: 7px;
+    letter-spacing: .15em;
+}
+
+.zct-online {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.zct-online i {
+    width: 6px;
+    height: 6px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 12px var(--green);
+}
+
+.zct-message-window {
+    margin-top: 70px;
+}
+
+.zct-message-user {
+    width: 76%;
+
+    margin-left: auto;
+    padding: 18px;
+
+    border: 1px solid #1b392e;
+    border-radius: 15px 15px 3px 15px;
+
+    background: #0c1914;
+}
+
+.zct-message-user small,
+.zct-message-zev small {
+    color: #59766a;
+
+    font-size: 6px;
+    letter-spacing: .15em;
+}
+
+.zct-message-user p {
+    margin: 8px 0 0;
+
+    color: #b2c4bc;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.zct-message-line {
+    width: 1px;
+    height: 45px;
+
+    margin: 8px 0 8px 65px;
+
+    background:
+        linear-gradient(
+            var(--green),
+            transparent
+        );
+}
+
+.zct-message-zev {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.zct-zev-avatar {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--green);
+    color: #03180b;
+
+    font-weight: 900;
+}
+
+.zct-message-zev p {
+    margin: 4px 0 0;
+
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.zct-floating-tag {
+    position: absolute;
+
+    padding: 9px 12px;
+
+    border: 1px solid #26503e;
+    border-radius: 8px;
+
+    background: #07110d;
+
+    color: var(--green);
+
+    font-size: 8px;
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, .4);
+}
+
+.zct-tag-one {
+    left: 30px;
+    bottom: 75px;
+
+    transform: rotate(-4deg);
+}
+
+.zct-tag-two {
+    right: 35px;
+    top: 105px;
+
+    transform: rotate(4deg);
+}
+
+.zct-hand-note {
+    position: absolute;
+
+    right: 30px;
+    bottom: 27px;
+
+    color: #b4c9bf;
+
+    font-size: 11px;
+    font-style: italic;
+
+    text-align: right;
+
+    transform: rotate(-3deg);
+}
+
+
+/* =========================================
+   GLOWS
+   ========================================= */
+
+.zct-glow {
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+}
+
+.zct-glow-one {
+    width: 400px;
+    height: 400px;
+
+    right: 4%;
+    top: 15%;
+
+    background:
+        rgba(53, 220, 120, .06);
+}
+
+.zct-glow-two {
+    width: 260px;
+    height: 260px;
+
+    left: 5%;
+    bottom: 0;
+
+    background:
+        rgba(74, 72, 255, .035);
+}
+
+
+/* =========================================
+   GENERAL SECTION HEADINGS
+   ========================================= */
+
+.zct-types,
+.zct-contact,
+.zct-help,
+.zct-faq,
+.zct-final {
+    padding: 110px 0;
+}
+
+.zct-section-head {
+    max-width: 720px;
+
+    margin-bottom: 50px;
+}
+
+.zct-section-head h2,
+.zct-contact-copy h2,
+.zct-faq-copy h2,
+.zct-final h2 {
+    margin: 20px 0 13px;
+
+    font-size: clamp(38px, 4.5vw, 58px);
+    line-height: 1.03;
+
+    letter-spacing: -.045em;
+}
+
+.zct-section-head h2 span,
+.zct-contact-copy h2 span,
+.zct-faq-copy h2 span,
+.zct-final h2 span {
+    color: var(--green);
+}
+
+.zct-section-head > p,
+.zct-contact-copy > p,
+.zct-faq-copy > p {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CONTACT TYPES
+   ========================================= */
+
+.zct-type-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+.zct-type-card {
+    min-height: 170px;
+
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: relative;
+
+    cursor: pointer;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #08130f,
+            #050b08
+        );
+
+    color: var(--text);
+
+    text-align: left;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.zct-type-card:hover,
+.zct-type-card.zct-selected {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(53, 220, 120, .45);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(53, 220, 120, .07),
+            #050b08
+        );
+}
+
+.zct-type-icon {
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        rgba(53, 220, 120, .08);
+
+    color: var(--green);
+
+    font-size: 15px;
+}
+
+.zct-type-card strong,
+.zct-type-card span {
+    display: block;
+}
+
+.zct-type-card strong {
+    font-size: 12px;
+}
+
+.zct-type-card span {
+    margin-top: 5px;
+
+    color: #71877e;
+
+    font-size: 8px;
+}
+
+.zct-type-card > i {
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    color: #436256;
+
+    font-size: 11px;
+    font-style: normal;
+}
+
+
+/* =========================================
+   CONTACT FORM SECTION
+   ========================================= */
+
+.zct-contact {
+    border-top:
+        1px solid rgba(69, 115, 95, .1);
+
+    border-bottom:
+        1px solid rgba(69, 115, 95, .1);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 17, 13, .5),
+            transparent
+        );
+}
+
+.zct-contact-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+    align-items: center;
+}
+
+.zct-contact-copy > p {
+    max-width: 460px;
+}
+
+.zct-contact-points {
+    margin-top: 38px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.zct-contact-points > div {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+
+    gap: 13px;
+}
+
+.zct-contact-points > div > span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #1e4635;
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 7px;
+}
+
+.zct-contact-points strong {
+    display: block;
+
+    font-size: 10px;
+}
+
+.zct-contact-points p {
+    margin: 4px 0 0;
+
+    color: #6f857c;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.zct-side-note {
+    margin-top: 35px;
+
+    color: #a7bcb2;
+
+    font-size: 11px;
+    font-style: italic;
+
+    transform: rotate(-2deg);
+}
+
+.zct-side-note span {
+    margin-right: 8px;
+
+    color: var(--green);
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.zct-form-shell {
+    border-radius: 18px;
+}
+
+.zct-form-inner {
+    padding: 35px;
+
+    border-radius: 17px;
+
+    background:
+        radial-gradient(
+            circle at 100% 0,
+            rgba(53, 220, 120, .055),
+            transparent 25%
+        ),
+        #06100c;
+}
+
+.zct-form-heading {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #173027;
+}
+
+.zct-form-heading small {
+    color: var(--green);
+
+    font-size: 6px;
+    letter-spacing: .16em;
+}
+
+.zct-form-heading h3 {
+    margin: 5px 0 0;
+
+    font-size: 24px;
+}
+
+.zct-form-status {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #718a7e;
+
+    font-size: 7px;
+}
+
+.zct-form-status i {
+    width: 6px;
+    height: 6px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow:
+        0 0 10px var(--green);
+}
+
+.zct-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.zct-field {
+    margin-bottom: 17px;
+}
+
+.zct-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #a7b9b1;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.zct-field input,
+.zct-field select,
+.zct-field textarea {
+    width: 100%;
+
+    outline: none;
+
+    border: 1px solid #1b382d;
+    border-radius: 8px;
+
+    background: #08130f;
+
+    color: #eef8f3;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.zct-field input,
+.zct-field select {
+    height: 46px;
+
+    padding: 0 13px;
+}
+
+.zct-field textarea {
+    min-height: 150px;
+
+    padding: 13px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.zct-field input::placeholder,
+.zct-field textarea::placeholder {
+    color: #435d52;
+}
+
+.zct-field input:focus,
+.zct-field select:focus,
+.zct-field textarea:focus {
+    border-color:
+        rgba(53, 220, 120, .55);
+
+    box-shadow:
+        0 0 0 3px rgba(53, 220, 120, .05);
+}
+
+.zct-field select {
+    color-scheme: dark;
+}
+
+.zct-error {
+    min-height: 13px;
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ff7777;
+
+    font-size: 7px;
+}
+
+.zct-message-meta {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.zct-message-meta > span {
+    margin-top: 5px;
+
+    color: #536d61;
+
+    font-size: 7px;
+}
+
+.zct-submit {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: var(--green);
+    color: #03180b;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.zct-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 10px 30px rgba(53, 220, 120, .12);
+}
+
+.zct-submit i {
+    font-style: normal;
+}
+
+.zct-form-response {
+    display: none;
+
+    margin-top: 14px;
+    padding: 12px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.zct-form-response.zct-response-info {
+    display: block;
+
+    border: 1px solid rgba(53, 220, 120, .22);
+
+    background:
+        rgba(53, 220, 120, .05);
+
+    color: #aeeac4;
+}
+
+
+/* =========================================
+   QUICK HELP
+   ========================================= */
+
+.zct-help-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.zct-help-card {
+    min-height: 190px;
+
+    padding: 25px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #07110d,
+            #050a08
+        );
+
+    color: var(--text) !important;
+
+    text-decoration: none !important;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.zct-help-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        rgba(53, 220, 120, .4);
+}
+
+.zct-help-card > span {
+    color: #456155;
+
+    font-size: 7px;
+}
+
+.zct-help-card > div {
+    margin-top: auto;
+}
+
+.zct-help-card strong {
+    font-size: 14px;
+}
+
+.zct-help-card p {
+    max-width: 240px;
+
+    margin: 7px 0 0;
+
+    color: #71877e;
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.zct-help-card i {
+    position: absolute;
+
+    right: 22px;
+    top: 20px;
+
+    color: var(--green);
+
+    font-style: normal;
+}
+
+
+/* =========================================
+   FAQ
+   ========================================= */
+
+.zct-faq {
+    border-top:
+        1px solid rgba(69, 115, 95, .1);
+}
+
+.zct-faq-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+}
+
+.zct-faq-copy > p {
+    max-width: 390px;
+}
+
+.zct-faq-item {
+    border-bottom:
+        1px solid #173027;
+}
+
+.zct-faq-button {
+    width: 100%;
+
+    padding: 22px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    border: 0;
+
+    background: transparent;
+    color: #dbe7e1;
+
+    text-align: left;
+}
+
+.zct-faq-button span {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.zct-faq-button i {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #234537;
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 13px;
+    font-style: normal;
+
+    transition:
+        transform .25s ease;
+}
+
+.zct-faq-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height .35s ease;
+}
+
+.zct-faq-answer p {
+    max-width: 600px;
+
+    margin: 0;
+    padding: 0 45px 22px 0;
+
+    color: #768d82;
+
+    font-size: 9px;
+    line-height: 1.75;
+}
+
+.zct-faq-item.zct-open .zct-faq-button i {
+    transform: rotate(45deg);
+}
+
+
+/* =========================================
+   FINAL CTA
+   ========================================= */
+
+.zct-final {
+    padding-top: 30px;
+    padding-bottom: 120px;
+}
+
+.zct-final-card {
+    border-radius: 19px;
+}
+
+.zct-final-inner {
+    min-height: 350px;
+
+    padding: 55px;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    gap: 30px;
+    align-items: center;
+
+    border-radius: 18px;
+
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            rgba(53, 220, 120, .08),
+            transparent 28%
+        ),
+        #06100c;
+}
+
+.zct-final-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #25503d;
+    border-radius: 15px;
+
+    background:
+        rgba(53, 220, 120, .07);
+
+    color: var(--green);
+
+    font-size: 20px;
+}
+
+.zct-final small {
+    color: var(--green);
+
+    font-size: 7px;
+    letter-spacing: .15em;
+}
+
+.zct-final h2 {
+    margin-top: 10px;
+
+    font-size: clamp(32px, 4vw, 50px);
+}
+
+.zct-final p {
+    max-width: 550px;
+
+    color: #7c9188;
+
+    font-size: 10px;
+    line-height: 1.65;
+}
+
+.zct-btn {
+    min-height: 50px;
+
+    padding: 0 20px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    border-radius: 8px;
+
+    text-decoration: none !important;
+
+    font-size: 10px;
+    font-weight: 850;
+}
+
+.zct-btn-primary {
+    background: var(--green);
+
+    color: #03180b !important;
+}
+
+.zct-final-btn {
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   REVEAL
+   ========================================= */
+
+.zct-reveal {
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
+}
+
+.zct-reveal.zct-visible {
+    opacity: 1;
+
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   TABLET
+   ========================================= */
+
+@media (max-width: 950px) {
+
+    .zct-hero-grid,
+    .zct-contact-grid,
+    .zct-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-hero-copy {
+        text-align: center;
+    }
+
+    .zct-hero-copy > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .zct-eyebrow {
+        justify-content: center;
+    }
+
+    .zct-hero-note {
+        justify-content: center;
+    }
+
+    .zct-hero-visual {
+        max-width: 650px;
+
+        margin: 20px auto 0;
+
+        transform: none;
+    }
+
+    .zct-type-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .zct-help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-contact-grid,
+    .zct-faq-grid {
+        gap: 55px;
+    }
+
+    .zct-final-inner {
+        grid-template-columns: auto 1fr;
+    }
+
+    .zct-final-btn {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    .zct-container {
+        width: calc(100% - 28px);
+    }
+
+    .zct-hero {
+        min-height: auto;
+
+        padding: 75px 0;
+    }
+
+    .zct-hero-copy h1 {
+        font-size: 48px;
+    }
+
+    .zct-hero-visual,
+    .zct-visual-inner {
+        min-height: 460px;
+    }
+
+    .zct-visual-inner {
+        padding: 22px;
+    }
+
+    .zct-message-user {
+        width: 90%;
+    }
+
+    .zct-types,
+    .zct-contact,
+    .zct-help,
+    .zct-faq {
+        padding: 75px 0;
+    }
+
+    .zct-type-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-type-card {
+        min-height: 140px;
+    }
+
+    .zct-form-inner {
+        padding: 23px;
+    }
+
+    .zct-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .zct-final {
+        padding-bottom: 80px;
+    }
+
+    .zct-final-inner {
+        min-height: 400px;
+
+        padding: 32px 23px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .zct-final-icon {
+        width: 45px;
+        height: 45px;
+    }
+
+}
+
+
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .zct-running-border {
+        animation: none;
+    }
+
+    .zct-reveal {
+        opacity: 1;
+        transform: none;
+    }
+
+}

@@ -1,0 +1,35 @@
+.ct-map-icon img {
+	vertical-align: middle;
+}
+
+/* Hide title only on ZEVQYN Login page */
+body.page-id-1237 .entry-title,
+body.page-id-1237 .page-title {
+    display: none !important;
+}
+
+/* Hide automatic WordPress title on Register page */
+body.page-id-1251 .hero-section,
+body.page-id-1251 .page-title,
+body.page-id-1251 .entry-title,
+body.page-id-1251 h1.page-title,
+body.page-id-1251 .ct-page-title {
+    display: none !important;
+}
+
+/* ZEVQYN Dashboard — hide WordPress generated page title/header */
+body.page-id-1269 .hero-section,
+body.page-id-1269 .page-title,
+body.page-id-1269 .entry-header,
+body.page-id-1269 header.entry-header,
+body.page-id-1269 .ct-page-title,
+body.page-id-1269 .entry-title {
+    display: none !important;
+}
+
+/* Hide public Get Started button on ZEVQYN Dashboard */
+body.page-id-1269 .ct-header-cta,
+body.page-id-1269 [class*="header"] a[href*="register"],
+body.page-id-1269 [class*="header"] a[href*="get-started"] {
+    display: none !important;
+}

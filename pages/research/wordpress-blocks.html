@@ -1,0 +1,2851 @@
+﻿<!-- wp:html -->
+<style data-wp-block-html="css">
+/* =========================================
+   ZEVQYN RESEARCH PAGE
+========================================= */
+
+.zev-research-page,
+.zev-research-page * {
+    box-sizing: border-box;
+}
+
+.zev-research-page {
+    --bg: #030504;
+    --panel: #090e12;
+    --panel2: #0d1318;
+    --border: #1c2935;
+    --text: #f5f7fa;
+    --muted: #8f9aa7;
+    --green: #35b85b;
+    --green2: #269747;
+
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    background: #030504;
+    color: var(--text);
+    font-family: Inter, Arial, sans-serif;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.zev-research-sidebar {
+    width: 245px;
+    min-width: 245px;
+    min-height: 100vh;
+    padding: 28px 18px;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(53,184,91,.08),
+            transparent 30%
+        ),
+        #050807;
+
+    border-right: 1px solid #172019;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.zev-nav-title {
+    color: #65706d;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    padding: 0 12px;
+    margin-bottom: 10px;
+}
+
+.zev-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.zev-nav a {
+    color: #aeb7bf !important;
+    text-decoration: none !important;
+
+    padding: 12px 14px;
+    border-radius: 9px;
+
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    transition: .2s ease;
+}
+
+.zev-nav a:hover {
+    color: #ffffff !important;
+    background: #0c1510;
+}
+
+.zev-nav a.active {
+    color: #ffffff !important;
+    background: rgba(53,184,91,.13);
+    border: 1px solid rgba(53,184,91,.22);
+}
+
+.zev-nav-icon {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.zev-sidebar-bottom {
+    margin-top: auto;
+    padding-top: 25px;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.zev-research-main {
+    flex: 1;
+    min-width: 0;
+
+    padding: 34px 40px 70px;
+
+    background:
+        radial-gradient(
+            circle at 80% 0%,
+            rgba(53,184,91,.055),
+            transparent 25%
+        ),
+        #030504;
+}
+
+
+/* =========================================
+   TOP HEADER
+========================================= */
+
+.zev-research-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+
+    margin-bottom: 32px;
+}
+
+.zev-page-label {
+    color: #40c764;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+
+    margin-bottom: 9px;
+}
+
+.zev-research-heading h1 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 36px;
+    line-height: 1.15;
+    font-weight: 850;
+}
+
+.zev-research-heading p {
+    max-width: 650px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   USER ACCOUNT
+========================================= */
+
+.zev-user {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    background: #090d10;
+    border: 1px solid #18232a;
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+    min-width: 190px;
+}
+
+.zev-avatar {
+    width: 36px;
+    height: 36px;
+
+    min-width: 36px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background:
+        linear-gradient(
+            135deg,
+            #35b85b,
+            #1d7c3b
+        );
+
+    color: #ffffff;
+
+    font-weight: 800;
+}
+
+.zev-user-name {
+    color: #f3f6f4;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+.zev-user-email {
+    color: var(--muted);
+
+    font-size: 10px;
+
+    margin-top: 2px;
+
+    max-width: 190px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================
+   ACTION BAR
+========================================= */
+
+.zev-research-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+
+    margin-bottom: 22px;
+}
+
+.zev-search-box {
+    position: relative;
+
+    flex: 1;
+    max-width: 520px;
+}
+
+.zev-search-icon {
+    position: absolute;
+
+    left: 15px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    color: #718078;
+
+    font-size: 17px;
+
+    pointer-events: none;
+}
+
+.zev-search-box input {
+    width: 100%;
+
+    height: 45px;
+
+    padding: 0 16px 0 43px;
+
+    background: #080d10;
+
+    border: 1px solid #1c2930;
+
+    border-radius: 10px;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+
+    outline: none;
+
+    transition: .2s ease;
+}
+
+.zev-search-box input::placeholder {
+    color: #657078;
+}
+
+.zev-search-box input:focus {
+    border-color: #35b85b;
+
+    box-shadow:
+        0 0 0 3px rgba(53,184,91,.08);
+}
+
+.zev-new-research-btn {
+    height: 45px;
+
+    border: 0;
+    border-radius: 9px;
+
+    padding: 0 19px;
+
+    background: var(--green);
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 800;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.zev-new-research-btn:hover {
+    background: var(--green2);
+
+    transform: translateY(-1px);
+}
+
+
+/* =========================================
+   MINI STATS
+========================================= */
+
+.zev-research-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 13px;
+
+    margin-bottom: 28px;
+}
+
+.zev-mini-stat {
+    min-height: 88px;
+
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    padding: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0b1014,
+            #070b0e
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 12px;
+}
+
+.zev-mini-stat-icon {
+    width: 42px;
+    height: 42px;
+
+    min-width: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9px;
+
+    background: rgba(53,184,91,.1);
+
+    color: #4ed36f;
+
+    font-size: 18px;
+}
+
+.zev-mini-stat-number {
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 850;
+
+    line-height: 1;
+}
+
+.zev-mini-stat-label {
+    color: #78858d;
+
+    font-size: 11px;
+
+    margin-top: 6px;
+}
+
+
+/* =========================================
+   WORKSPACE SECTION
+========================================= */
+
+.zev-workspaces-section {
+    padding: 23px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #090e12,
+            #060a0d
+        );
+
+    border: 1px solid var(--border);
+
+    border-radius: 14px;
+}
+
+.zev-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    margin-bottom: 20px;
+}
+
+.zev-section-header h2 {
+    color: #ffffff;
+
+    font-size: 17px;
+    font-weight: 800;
+
+    margin: 0 0 5px;
+}
+
+.zev-section-header p {
+    color: #748089;
+
+    font-size: 11px;
+
+    margin: 0;
+}
+
+#zevqyn-research-sort {
+    min-width: 150px;
+
+    padding: 9px 32px 9px 12px;
+
+    background: #0b1115;
+
+    border: 1px solid #202c33;
+
+    border-radius: 8px;
+
+    color: #bdc6cc;
+
+    font-family: inherit;
+    font-size: 11px;
+
+    outline: none;
+}
+
+
+/* =========================================
+   LOADING
+========================================= */
+
+.zev-research-loading {
+    min-height: 260px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    color: #7c888f;
+
+    font-size: 12px;
+}
+
+.zev-loader {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+
+    border: 3px solid #18221d;
+    border-top-color: #35b85b;
+
+    margin-bottom: 12px;
+
+    animation: zev-spin .8s linear infinite;
+}
+
+@keyframes zev-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================
+   WORKSPACE GRID
+========================================= */
+
+.zev-workspace-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+}
+
+.zev-workspace-card {
+    position: relative;
+
+    min-height: 180px;
+
+    padding: 18px;
+
+    background: #0a1013;
+
+    border: 1px solid #1a272e;
+
+    border-radius: 12px;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.zev-workspace-card:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba(53,184,91,.55);
+
+    background: #0b1210;
+}
+
+
+/* =========================================
+   EMPTY STATE
+========================================= */
+
+.zev-empty-state {
+    min-height: 350px;
+
+    padding: 48px 25px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    text-align: center;
+
+    border: 1px dashed #213129;
+
+    border-radius: 12px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(53,184,91,.055),
+            transparent 48%
+        ),
+        #070b0d;
+}
+
+.zev-empty-icon {
+    width: 58px;
+    height: 58px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 15px;
+
+    margin-bottom: 17px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(53,184,91,.16),
+            rgba(53,184,91,.05)
+        );
+
+    border: 1px solid rgba(53,184,91,.22);
+
+    color: #4ed36f;
+
+    font-size: 25px;
+}
+
+.zev-empty-badge {
+    margin-bottom: 10px;
+
+    color: #3fc761;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+.zev-empty-state h2 {
+    margin: 0 0 10px;
+
+    color: #ffffff;
+
+    font-size: 22px;
+    font-weight: 850;
+}
+
+.zev-empty-state p {
+    max-width: 570px;
+
+    margin: 0 auto 21px;
+
+    color: #7f8b93;
+
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.zev-empty-create-btn {
+    padding: 11px 18px;
+
+    border: 0;
+
+    border-radius: 8px;
+
+    background: var(--green);
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition: .2s ease;
+}
+
+.zev-empty-create-btn:hover {
+    background: var(--green2);
+
+    transform: translateY(-1px);
+}
+
+.zev-supported-files {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 7px;
+
+    margin-top: 18px;
+}
+
+.zev-supported-files span {
+    padding: 5px 8px;
+
+    border-radius: 5px;
+
+    background: #0d1417;
+
+    border: 1px solid #1b292f;
+
+    color: #69767e;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+
+/* =========================================
+   RESEARCH FLOW
+========================================= */
+
+.zev-research-flow {
+    margin-top: 24px;
+
+    padding: 25px 0 5px;
+}
+
+.zev-flow-header {
+    margin-bottom: 17px;
+}
+
+.zev-flow-header > span {
+    color: #3fc761;
+
+    font-size: 9px;
+    font-weight: 800;
+
+    letter-spacing: 1.4px;
+}
+
+.zev-flow-header h2 {
+    margin: 7px 0 0;
+
+    color: #ffffff;
+
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.zev-flow-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0,1fr));
+
+    gap: 13px;
+}
+
+.zev-flow-card {
+    position: relative;
+
+    min-height: 175px;
+
+    padding: 19px;
+
+    background: #080d10;
+
+    border: 1px solid #19242b;
+
+    border-radius: 12px;
+}
+
+.zev-flow-number {
+    position: absolute;
+
+    right: 15px;
+    top: 14px;
+
+    color: #26342c;
+
+    font-size: 20px;
+    font-weight: 900;
+}
+
+.zev-flow-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 8px;
+
+    background: rgba(53,184,91,.1);
+
+    color: #4ed36f;
+
+    margin-bottom: 15px;
+}
+
+.zev-flow-card h3 {
+    margin: 0 0 7px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.zev-flow-card p {
+    margin: 0;
+
+    color: #77838b;
+
+    font-size: 11px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+.zev-modal-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 999999;
+
+    padding: 20px;
+
+    background: rgba(0,0,0,.76);
+
+    backdrop-filter: blur(8px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.zev-modal-overlay:not([hidden]) {
+    display: flex;
+}
+
+.zev-modal-overlay[hidden] {
+    display: none !important;
+}
+
+.zev-modal {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+
+    padding: 30px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #0c1216,
+            #070b0e
+        );
+
+    border: 1px solid #213038;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 25px 80px rgba(0,0,0,.5);
+}
+
+.zev-modal-close {
+    position: absolute;
+
+    top: 14px;
+    right: 15px;
+
+    width: 32px;
+    height: 32px;
+
+    border: 0;
+    border-radius: 7px;
+
+    background: #10171b;
+
+    color: #89949b;
+
+    font-size: 20px;
+
+    cursor: pointer;
+}
+
+.zev-modal-close:hover {
+    color: #ffffff;
+    background: #182126;
+}
+
+.zev-modal-icon {
+    width: 43px;
+    height: 43px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 17px;
+
+    border-radius: 10px;
+
+    background: rgba(53,184,91,.12);
+
+    color: #4bd36c;
+
+    font-size: 19px;
+}
+
+.zev-modal h2 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 21px;
+    font-weight: 850;
+}
+
+.zev-modal > p {
+    margin: 0 0 23px;
+
+    color: #7c888f;
+
+    font-size: 12px;
+    line-height: 1.65;
+}
+
+
+/* =========================================
+   FORM
+========================================= */
+
+.zev-field {
+    margin-bottom: 17px;
+}
+
+.zev-field label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #cbd2d6;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.zev-field label span {
+    color: #66727a;
+
+    font-weight: 400;
+
+    margin-left: 4px;
+}
+
+.zev-field input,
+.zev-field textarea {
+    width: 100%;
+
+    padding: 12px 13px;
+
+    background: #070c0f;
+
+    border: 1px solid #1d2a31;
+
+    border-radius: 8px;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 12px;
+
+    outline: none;
+
+    resize: vertical;
+
+    transition: .2s ease;
+}
+
+.zev-field input:focus,
+.zev-field textarea:focus {
+    border-color: #35b85b;
+
+    box-shadow:
+        0 0 0 3px rgba(53,184,91,.07);
+}
+
+.zev-field input::placeholder,
+.zev-field textarea::placeholder {
+    color: #59656c;
+}
+
+.zev-form-message {
+    min-height: 18px;
+
+    margin-bottom: 10px;
+
+    color: #e16b6b;
+
+    font-size: 11px;
+}
+
+.zev-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+
+    margin-top: 6px;
+}
+
+.zev-cancel-btn,
+.zev-create-btn {
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+
+    cursor: pointer;
+}
+
+.zev-cancel-btn {
+    background: #0c1215;
+
+    border: 1px solid #202d33;
+
+    color: #abb5bb;
+}
+
+.zev-create-btn {
+    border: 0;
+
+    background: var(--green);
+
+    color: #ffffff;
+}
+
+.zev-create-btn:hover {
+    background: var(--green2);
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 1100px) {
+
+    .zev-research-sidebar {
+        width: 205px;
+        min-width: 205px;
+    }
+
+    .zev-workspace-grid {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+
+    .zev-flow-grid {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .zev-research-page {
+        display: block;
+    }
+
+    .zev-research-sidebar {
+        width: 100%;
+        min-width: 0;
+        min-height: auto;
+
+        padding: 17px;
+    }
+
+    .zev-nav {
+        flex-direction: row;
+
+        overflow-x: auto;
+
+        padding-bottom: 4px;
+    }
+
+    .zev-nav a {
+        white-space: nowrap;
+    }
+
+    .zev-nav-title,
+    .zev-sidebar-bottom {
+        display: none;
+    }
+
+    .zev-research-main {
+        padding: 25px 17px 50px;
+    }
+
+    .zev-research-top {
+        display: block;
+    }
+
+    .zev-user {
+        display: none;
+    }
+
+    .zev-research-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .zev-search-box {
+        max-width: none;
+    }
+
+    .zev-new-research-btn {
+        justify-content: center;
+    }
+
+    .zev-research-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #zevqyn-research-sort {
+        width: 100%;
+    }
+
+    .zev-workspace-grid,
+    .zev-flow-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-empty-state {
+        padding: 38px 18px;
+    }
+
+    .zev-modal {
+        padding: 25px 20px;
+    }
+}
+
+/* ZEVQYN sort dropdown */
+select,
+select option {
+    color: #ffffff !important;
+    background-color: #081014 !important;
+}
+
+/* Keep dropdown text white */
+select:focus,
+select:hover {
+    color: #ffffff !important;
+}
+</style>
+
+<script data-wp-block-html="js">
+(function () {
+
+    /* =========================================
+       ZEVQYN RESEARCH
+    ========================================= */
+
+    const SUPABASE_URL =
+        "https://phjizxajnigiiawitkyx.supabase.co";
+
+    const SUPABASE_KEY =
+        "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+    const API_BASE =
+        "https://zevqyn-backend.onrender.com";
+
+    let supabaseClient = null;
+    let currentSession = null;
+    let workspaces = [];
+    let documentCounts = {};
+
+    /* =========================================
+       LOAD SUPABASE
+    ========================================= */
+
+    function loadSupabase() {
+
+        return new Promise(function (resolve, reject) {
+
+            if (window.supabase) {
+                resolve();
+                return;
+            }
+
+            const script = document.createElement("script");
+
+            script.src =
+                "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js";
+
+            script.onload = function () {
+                resolve();
+            };
+
+            script.onerror = function () {
+                reject(new Error("Could not load Supabase."));
+            };
+
+            document.head.appendChild(script);
+
+        });
+
+    }
+
+
+    /* =========================================
+       HELPER
+    ========================================= */
+
+    function getElement(id) {
+        return document.getElementById(id);
+    }
+
+
+    function escapeHTML(value) {
+
+        const div = document.createElement("div");
+
+        div.textContent = value || "";
+
+        return div.innerHTML;
+
+    }
+
+
+    function showCreateMessage(message, success) {
+
+        const element = getElement("zevqyn-create-message");
+
+        if (!element) {
+            return;
+        }
+
+        element.textContent = message || "";
+
+        if (success) {
+            element.style.color = "#4ed36f";
+        } else {
+            element.style.color = "#e16b6b";
+        }
+
+    }
+
+
+    /* =========================================
+       AUTHENTICATED BACKEND REQUEST
+    ========================================= */
+
+    async function apiRequest(path, options) {
+
+        if (!currentSession) {
+            throw new Error("Your session has expired.");
+        }
+
+        const requestOptions = options || {};
+
+        if (!requestOptions.headers) {
+            requestOptions.headers = {};
+        }
+
+        requestOptions.headers["Authorization"] =
+            "Bearer " + currentSession.access_token;
+
+        const response = await fetch(
+            API_BASE + path,
+            requestOptions
+        );
+
+        if (response.status === 401) {
+
+            await supabaseClient.auth.signOut();
+
+            window.location.href =
+                "https://zevqyn.free.je/login/";
+
+            throw new Error("Session expired.");
+
+        }
+
+        if (!response.ok) {
+
+            let message =
+                "Backend request failed (" +
+                response.status +
+                ").";
+
+            try {
+
+                const errorData = await response.json();
+
+                if (errorData.detail) {
+
+                    if (typeof errorData.detail === "string") {
+                        message = errorData.detail;
+                    }
+
+                }
+
+            } catch (error) {
+                /* Keep default message */
+            }
+
+            throw new Error(message);
+
+        }
+
+        if (response.status === 204) {
+            return null;
+        }
+
+        return await response.json();
+
+    }
+
+
+    /* =========================================
+       USER INFORMATION
+    ========================================= */
+
+    function displayUser(user) {
+
+        const metadata = user.user_metadata || {};
+
+        let fullName =
+            metadata.full_name ||
+            metadata.name ||
+            "ZEVQYN User";
+
+        const email =
+            user.email || "";
+
+        let firstLetter = "Z";
+
+        if (fullName) {
+            firstLetter =
+                fullName.charAt(0).toUpperCase();
+        }
+
+        const nameElement =
+            getElement("zevqyn-user-name");
+
+        const emailElement =
+            getElement("zevqyn-user-email");
+
+        const avatarElement =
+            getElement("zevqyn-user-avatar");
+
+
+        if (nameElement) {
+            nameElement.textContent = fullName;
+        }
+
+        if (emailElement) {
+            emailElement.textContent = email;
+        }
+
+        if (avatarElement) {
+            avatarElement.textContent = firstLetter;
+        }
+
+    }
+
+
+    /* =========================================
+       LOADING / EMPTY STATE
+    ========================================= */
+
+    function showLoading() {
+
+        const loading =
+            getElement("zevqyn-research-loading");
+
+        const grid =
+            getElement("zevqyn-workspace-grid");
+
+        const empty =
+            getElement("zevqyn-empty-state");
+
+        if (loading) {
+            loading.style.display = "flex";
+        }
+
+        if (grid) {
+            grid.style.display = "none";
+        }
+
+        if (empty) {
+            empty.style.display = "none";
+        }
+
+    }
+
+
+    function hideLoading() {
+
+        const loading =
+            getElement("zevqyn-research-loading");
+
+        if (loading) {
+            loading.style.display = "none";
+        }
+
+    }
+
+
+    /* =========================================
+       LOAD WORKSPACES
+    ========================================= */
+
+    async function loadWorkspaces() {
+
+        showLoading();
+
+        try {
+
+            const result =
+                await apiRequest(
+                    "/api/v1/workspaces",
+                    {
+                        method: "GET"
+                    }
+                );
+
+            if (Array.isArray(result)) {
+                workspaces = result;
+            } else {
+                workspaces = [];
+            }
+
+            await loadDocumentCounts();
+
+            updateStatistics();
+
+            renderWorkspaces();
+
+        } catch (error) {
+
+            hideLoading();
+
+            console.error(
+                "Workspace loading error:",
+                error
+            );
+
+            const empty =
+                getElement("zevqyn-empty-state");
+
+            if (empty) {
+                empty.style.display = "flex";
+            }
+
+        }
+
+    }
+
+
+    /* =========================================
+       DOCUMENT COUNTS
+    ========================================= */
+
+    async function loadDocumentCounts() {
+
+        documentCounts = {};
+
+        const requests =
+            workspaces.map(async function (workspace) {
+
+                try {
+
+                    const documents =
+                        await apiRequest(
+                            "/api/v1/workspaces/" +
+                            workspace.id +
+                            "/documents",
+                            {
+                                method: "GET"
+                            }
+                        );
+
+                    if (Array.isArray(documents)) {
+
+                        documentCounts[workspace.id] =
+                            documents.length;
+
+                    } else {
+
+                        documentCounts[workspace.id] = 0;
+
+                    }
+
+                } catch (error) {
+
+                    documentCounts[workspace.id] = 0;
+
+                }
+
+            });
+
+        await Promise.all(requests);
+
+    }
+
+
+    /* =========================================
+       STATISTICS
+    ========================================= */
+
+    function updateStatistics() {
+
+        const workspaceCount =
+            getElement("zevqyn-workspace-count");
+
+        const documentCount =
+            getElement("zevqyn-document-count");
+
+        const chatCount =
+            getElement("zevqyn-chat-count");
+
+
+        if (workspaceCount) {
+
+            workspaceCount.textContent =
+                workspaces.length;
+
+        }
+
+
+        let totalDocuments = 0;
+
+        Object.keys(documentCounts).forEach(
+            function (key) {
+
+                totalDocuments +=
+                    Number(documentCounts[key] || 0);
+
+            }
+        );
+
+
+        if (documentCount) {
+
+            documentCount.textContent =
+                totalDocuments;
+
+        }
+
+
+        /*
+           Chat counting will be connected when
+           we build the individual workspace/chat UI.
+        */
+
+        if (chatCount) {
+            chatCount.textContent = "0";
+        }
+
+    }
+
+
+    /* =========================================
+       DATE
+    ========================================= */
+
+    function formatDate(value) {
+
+        if (!value) {
+            return "Recently created";
+        }
+
+        const date = new Date(value);
+
+        if (isNaN(date.getTime())) {
+            return "Recently created";
+        }
+
+        return date.toLocaleDateString(
+            undefined,
+            {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       FILTER + SORT
+    ========================================= */
+
+    function getVisibleWorkspaces() {
+
+        let result =
+            workspaces.slice();
+
+        const searchInput =
+            getElement("zevqyn-research-search");
+
+        const sortInput =
+            getElement("zevqyn-research-sort");
+
+
+        let query = "";
+
+        if (searchInput) {
+
+            query =
+                searchInput.value
+                    .trim()
+                    .toLowerCase();
+
+        }
+
+
+        if (query) {
+
+            result = result.filter(
+                function (workspace) {
+
+                    const name =
+                        String(
+                            workspace.name || ""
+                        ).toLowerCase();
+
+                    const description =
+                        String(
+                            workspace.description || ""
+                        ).toLowerCase();
+
+
+                    if (name.indexOf(query) !== -1) {
+                        return true;
+                    }
+
+                    if (
+                        description.indexOf(query) !== -1
+                    ) {
+                        return true;
+                    }
+
+                    return false;
+
+                }
+            );
+
+        }
+
+
+        let sortValue = "recent";
+
+        if (sortInput) {
+            sortValue = sortInput.value;
+        }
+
+
+        result.sort(
+            function (a, b) {
+
+                if (sortValue === "name") {
+
+                    return String(a.name || "")
+                        .localeCompare(
+                            String(b.name || "")
+                        );
+
+                }
+
+
+                const aDate =
+                    new Date(
+                        a.updated_at ||
+                        a.created_at ||
+                        0
+                    ).getTime();
+
+                const bDate =
+                    new Date(
+                        b.updated_at ||
+                        b.created_at ||
+                        0
+                    ).getTime();
+
+
+                if (sortValue === "oldest") {
+                    return aDate - bDate;
+                }
+
+                return bDate - aDate;
+
+            }
+        );
+
+
+        return result;
+
+    }
+
+
+    /* =========================================
+       RENDER WORKSPACES
+    ========================================= */
+
+    function renderWorkspaces() {
+
+        hideLoading();
+
+        const grid =
+            getElement("zevqyn-workspace-grid");
+
+        const empty =
+            getElement("zevqyn-empty-state");
+
+
+        if (!grid) {
+            return;
+        }
+
+
+        if (workspaces.length === 0) {
+
+            grid.innerHTML = "";
+            grid.style.display = "none";
+
+            if (empty) {
+                empty.style.display = "flex";
+            }
+
+            return;
+
+        }
+
+
+        if (empty) {
+            empty.style.display = "none";
+        }
+
+
+        const visible =
+            getVisibleWorkspaces();
+
+
+        grid.style.display = "grid";
+        grid.innerHTML = "";
+
+
+        if (visible.length === 0) {
+
+            grid.innerHTML =
+                '<div style="' +
+                'grid-column:1/-1;' +
+                'padding:45px 20px;' +
+                'text-align:center;' +
+                'color:#7f8b93;' +
+                'font-size:13px;' +
+                '">' +
+                'No research workspaces match your search.' +
+                '</div>';
+
+            return;
+
+        }
+
+
+        visible.forEach(
+            function (workspace) {
+
+                const card =
+                    document.createElement("div");
+
+                card.className =
+                    "zev-workspace-card";
+
+
+                const description =
+                    workspace.description ||
+                    "No description added yet.";
+
+
+                const documents =
+                    documentCounts[
+                        workspace.id
+                    ] || 0;
+
+
+                card.innerHTML =
+                    '<div style="' +
+                    'display:flex;' +
+                    'justify-content:space-between;' +
+                    'gap:12px;' +
+                    'margin-bottom:16px;' +
+                    '">' +
+
+                        '<div style="' +
+                        'width:38px;' +
+                        'height:38px;' +
+                        'border-radius:9px;' +
+                        'background:rgba(53,184,91,.1);' +
+                        'color:#4ed36f;' +
+                        'display:flex;' +
+                        'align-items:center;' +
+                        'justify-content:center;' +
+                        'font-size:17px;' +
+                        '">' +
+                        '▣' +
+                        '</div>' +
+
+                        '<span style="' +
+                        'color:#647078;' +
+                        'font-size:10px;' +
+                        '">' +
+                        documents +
+                        ' document' +
+                        (documents === 1 ? "" : "s") +
+                        '</span>' +
+
+                    '</div>' +
+
+                    '<h3 style="' +
+                    'margin:0 0 8px;' +
+                    'color:#fff;' +
+                    'font-size:15px;' +
+                    'font-weight:800;' +
+                    '">' +
+                    escapeHTML(workspace.name) +
+                    '</h3>' +
+
+                    '<p style="' +
+                    'margin:0 0 18px;' +
+                    'color:#78858d;' +
+                    'font-size:11px;' +
+                    'line-height:1.6;' +
+                    '">' +
+                    escapeHTML(description) +
+                    '</p>' +
+
+                    '<div style="' +
+                    'color:#59666d;' +
+                    'font-size:9px;' +
+                    '">' +
+                    'Updated ' +
+                    escapeHTML(
+                        formatDate(
+                            workspace.updated_at ||
+                            workspace.created_at
+                        )
+                    ) +
+                    '</div>';
+
+
+                card.addEventListener(
+                    "click",
+                    function () {
+
+                        /*
+                           Next step:
+                           open individual Research Workspace.
+                        */
+
+                      card.addEventListener(
+    "click",
+    function () {
+
+        window.location.assign(
+            "/research-workspace/?id=" +
+            encodeURIComponent(workspace.id)
+        );
+
+    }
+);
+
+                    }
+                );
+
+
+                grid.appendChild(card);
+
+            }
+        );
+
+    }
+
+
+    /* =========================================
+       MODAL
+    ========================================= */
+
+    function openModal() {
+
+        const modal =
+            getElement("zevqyn-create-modal");
+
+        const title =
+            getElement("zevqyn-research-title");
+
+        if (!modal) {
+            return;
+        }
+
+        modal.hidden = false;
+
+        showCreateMessage("", false);
+
+        setTimeout(
+            function () {
+
+                if (title) {
+                    title.focus();
+                }
+
+            },
+            100
+        );
+
+    }
+
+
+    function closeModal() {
+
+        const modal =
+            getElement("zevqyn-create-modal");
+
+        const form =
+            getElement(
+                "zevqyn-create-research-form"
+            );
+
+        if (modal) {
+            modal.hidden = true;
+        }
+
+        if (form) {
+            form.reset();
+        }
+
+        showCreateMessage("", false);
+
+    }
+
+
+    /* =========================================
+       CREATE WORKSPACE
+    ========================================= */
+
+    async function createWorkspace(event) {
+
+        event.preventDefault();
+
+
+        const titleInput =
+            getElement("zevqyn-research-title");
+
+        const descriptionInput =
+            getElement(
+                "zevqyn-research-description"
+            );
+
+        const button =
+            getElement("zevqyn-create-btn");
+
+
+        if (!titleInput) {
+            return;
+        }
+
+
+        const name =
+            titleInput.value.trim();
+
+        let description = "";
+
+        if (descriptionInput) {
+            description =
+                descriptionInput.value.trim();
+        }
+
+
+        if (!name) {
+
+            showCreateMessage(
+                "Please enter a workspace title.",
+                false
+            );
+
+            return;
+
+        }
+
+
+        if (button) {
+
+            button.disabled = true;
+            button.textContent = "Creating...";
+
+        }
+
+
+        showCreateMessage(
+            "Creating your workspace...",
+            true
+        );
+
+
+        try {
+
+            const created =
+                await apiRequest(
+                    "/api/v1/workspaces",
+                    {
+                        method: "POST",
+
+                        headers: {
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body: JSON.stringify({
+                            name: name,
+                            description: description
+                        })
+                    }
+                );
+
+
+            if (created) {
+
+                showCreateMessage(
+                    "Workspace created successfully.",
+                    true
+                );
+
+
+                await loadWorkspaces();
+
+
+                setTimeout(
+                    function () {
+                        closeModal();
+                    },
+                    500
+                );
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Create workspace error:",
+                error
+            );
+
+            showCreateMessage(
+                error.message ||
+                "Could not create workspace.",
+                false
+            );
+
+        } finally {
+
+            if (button) {
+
+                button.disabled = false;
+                button.textContent =
+                    "Create Workspace";
+
+            }
+
+        }
+
+    }
+
+
+    /* =========================================
+       EVENTS
+    ========================================= */
+
+    function setupEvents() {
+
+        const newButton =
+            getElement("zevqyn-new-research");
+
+        const emptyButton =
+            getElement("zevqyn-empty-create");
+
+        const closeButton =
+            getElement("zevqyn-modal-close");
+
+        const cancelButton =
+            getElement("zevqyn-modal-cancel");
+
+        const modal =
+            getElement("zevqyn-create-modal");
+
+        const form =
+            getElement(
+                "zevqyn-create-research-form"
+            );
+
+        const search =
+            getElement("zevqyn-research-search");
+
+        const sort =
+            getElement("zevqyn-research-sort");
+
+        const signOut =
+            getElement("zevqyn-signout");
+
+
+        if (newButton) {
+
+            newButton.addEventListener(
+                "click",
+                openModal
+            );
+
+        }
+
+
+        if (emptyButton) {
+
+            emptyButton.addEventListener(
+                "click",
+                openModal
+            );
+
+        }
+
+
+        if (closeButton) {
+
+            closeButton.addEventListener(
+                "click",
+                closeModal
+            );
+
+        }
+
+
+        if (cancelButton) {
+
+            cancelButton.addEventListener(
+                "click",
+                closeModal
+            );
+
+        }
+
+
+        if (modal) {
+
+            modal.addEventListener(
+                "click",
+                function (event) {
+
+                    if (event.target === modal) {
+                        closeModal();
+                    }
+
+                }
+            );
+
+        }
+
+
+        document.addEventListener(
+            "keydown",
+            function (event) {
+
+                if (event.key === "Escape") {
+                    closeModal();
+                }
+
+            }
+        );
+
+
+        if (form) {
+
+            form.addEventListener(
+                "submit",
+                createWorkspace
+            );
+
+        }
+
+
+        if (search) {
+
+            search.addEventListener(
+                "input",
+                renderWorkspaces
+            );
+
+        }
+
+
+        if (sort) {
+
+            sort.addEventListener(
+                "change",
+                renderWorkspaces
+            );
+
+        }
+
+
+        if (signOut) {
+
+            signOut.addEventListener(
+                "click",
+                async function (event) {
+
+                    event.preventDefault();
+
+                    await supabaseClient
+                        .auth
+                        .signOut();
+
+                    window.location.href =
+                        "https://zevqyn.free.je/login/";
+
+                }
+            );
+
+        }
+
+    }
+
+
+    /* =========================================
+       START APP
+    ========================================= */
+
+    async function startResearchPage() {
+
+        try {
+
+            await loadSupabase();
+
+
+            supabaseClient =
+                window.supabase.createClient(
+                    SUPABASE_URL,
+                    SUPABASE_KEY
+                );
+
+
+            const sessionResult =
+                await supabaseClient
+                    .auth
+                    .getSession();
+
+
+            currentSession =
+                sessionResult.data.session;
+
+
+            if (!currentSession) {
+
+                window.location.href =
+                    "https://zevqyn.free.je/login/";
+
+                return;
+
+            }
+
+
+            displayUser(
+                currentSession.user
+            );
+
+
+            setupEvents();
+
+
+            await loadWorkspaces();
+
+
+        } catch (error) {
+
+            console.error(
+                "ZEVQYN Research initialization error:",
+                error
+            );
+
+
+            const loading =
+                getElement(
+                    "zevqyn-research-loading"
+                );
+
+            if (loading) {
+
+                loading.innerHTML =
+                    '<div style="' +
+                    'color:#e16b6b;' +
+                    'text-align:center;' +
+                    'line-height:1.7;' +
+                    '">' +
+                    'Could not load your research workspace.' +
+                    '<br>' +
+                    '<span style="' +
+                    'color:#77838b;' +
+                    'font-size:10px;' +
+                    '">' +
+                    escapeHTML(error.message) +
+                    '</span>' +
+                    '</div>';
+
+            }
+
+        }
+
+    }
+
+
+  if (document.readyState === "loading") {
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+            startResearchPage();
+        }
+    );
+
+} else {
+
+    startResearchPage();
+
+}
+
+})();
+</script>
+
+<div class="zev-research-page">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="zev-research-sidebar">
+
+        <div class="zev-nav-title">
+            Workspace
+        </div>
+
+        <nav class="zev-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/" class="active">
+                <span class="zev-nav-icon">▣</span>
+                Research
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">◆</span>
+                Projects
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">◎</span>
+                Portfolio
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">✦</span>
+                Career AI
+            </a>
+
+        </nav>
+
+
+        <!-- ACCOUNT -->
+        <div class="zev-sidebar-bottom">
+
+            <div class="zev-nav-title">
+                Account
+            </div>
+
+            <nav class="zev-nav">
+
+                <a href="#">
+                    <span class="zev-nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" id="zevqyn-signout">
+                    <span class="zev-nav-icon">↪</span>
+                    Sign Out
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="zev-research-main">
+
+
+        <!-- TOP -->
+        <div class="zev-research-top">
+
+            <div class="zev-research-heading">
+
+                <div class="zev-page-label">
+                    RESEARCH WORKSPACE
+                </div>
+
+                <h1>
+                    Research
+                </h1>
+
+                <p>
+                    Upload your sources, explore ideas and turn
+                    research into career-ready work.
+                </p>
+
+            </div>
+
+
+            <div class="zev-user">
+
+                <div class="zev-avatar" id="zevqyn-user-avatar">
+                    Z
+                </div>
+
+                <div>
+
+                    <div class="zev-user-name" id="zevqyn-user-name">
+                        Loading...
+                    </div>
+
+                    <div class="zev-user-email" id="zevqyn-user-email">
+                        Loading account...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ACTION BAR
+        ========================== -->
+        <div class="zev-research-actions">
+
+            <div class="zev-search-box">
+
+                <span class="zev-search-icon">
+                    ⌕
+                </span>
+
+                <input type="text" id="zevqyn-research-search" placeholder="Search research workspaces..." autocomplete="off">
+
+            </div>
+
+
+            <button type="button" class="zev-new-research-btn" id="zevqyn-new-research">
+                <span>＋</span>
+                New Research
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+        <section class="zev-research-stats">
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▣
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-workspace-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Workspaces
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▤
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-document-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Documents
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-chat-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        AI Conversations
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WORKSPACES
+        ========================== -->
+        <section class="zev-workspaces-section">
+
+            <div class="zev-section-header">
+
+                <div>
+
+                    <h2>
+                        Your Research
+                    </h2>
+
+                    <p>
+                        Your research workspaces will appear here.
+                    </p>
+
+                </div>
+
+
+                <select id="zevqyn-research-sort">
+
+                    <option value="recent">
+                        Recently updated
+                    </option>
+
+                    <option value="newest">
+                        Newest
+                    </option>
+
+                    <option value="oldest">
+                        Oldest
+                    </option>
+
+                    <option value="name">
+                        Name
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LOADING -->
+            <div class="zev-research-loading" id="zevqyn-research-loading">
+
+                <div class="zev-loader"></div>
+
+                <p>
+                    Loading your research...
+                </p>
+
+            </div>
+
+
+            <!-- WORKSPACE GRID -->
+            <div class="zev-workspace-grid" id="zevqyn-workspace-grid">
+            </div>
+
+
+            <!-- =========================
+                 EMPTY STATE
+            ========================== -->
+            <div class="zev-empty-state" id="zevqyn-empty-state">
+
+                <div class="zev-empty-icon">
+                    ✦
+                </div>
+
+                <div class="zev-empty-badge">
+                    YOUR FIRST WORKSPACE
+                </div>
+
+                <h2>
+                    Start your first research workspace
+                </h2>
+
+                <p>
+                    Create a workspace and bring your research
+                    materials together. Upload PDFs, DOCX, TXT or
+                    Markdown files and use AI to understand your
+                    sources.
+                </p>
+
+
+                <button type="button" class="zev-empty-create-btn" id="zevqyn-empty-create">
+                    ＋ Create Research
+                </button>
+
+
+                <div class="zev-supported-files">
+
+                    <span>PDF</span>
+                    <span>DOCX</span>
+                    <span>TXT</span>
+                    <span>MD</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESEARCH FLOW
+        ========================== -->
+        <section class="zev-research-flow">
+
+            <div class="zev-flow-header">
+
+                <span>
+                    HOW ZEVQYN RESEARCH WORKS
+                </span>
+
+                <h2>
+                    From sources to something useful.
+                </h2>
+
+            </div>
+
+
+            <div class="zev-flow-grid">
+
+
+                <!-- STEP 1 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        01
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ＋
+                    </div>
+
+                    <h3>
+                        Upload
+                    </h3>
+
+                    <p>
+                        Add PDFs, documents, notes and other
+                        supported research files.
+                    </p>
+
+                </div>
+
+
+                <!-- STEP 2 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        02
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Understand
+                    </h3>
+
+                    <p>
+                        ZEVQYN processes your sources so they
+                        can be searched and understood by AI.
+                    </p>
+
+                </div>
+
+
+                <!-- STEP 3 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        03
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ◇
+                    </div>
+
+                    <h3>
+                        Ask
+                    </h3>
+
+                    <p>
+                        Chat with your research and receive
+                        source-backed answers with citations.
+                    </p>
+
+                </div>
+
+
+                <!-- STEP 4 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        04
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Build
+                    </h3>
+
+                    <p>
+                        Turn useful research into projects,
+                        resume experience and portfolio work.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CREATE WORKSPACE MODAL
+        ========================== -->
+        <div class="zev-modal-overlay" id="zevqyn-create-modal" hidden="">
+
+            <div class="zev-modal">
+
+                <button type="button" class="zev-modal-close" id="zevqyn-modal-close">
+                    ×
+                </button>
+
+
+                <div class="zev-modal-icon">
+                    ▣
+                </div>
+
+
+                <h2>
+                    Create Research Workspace
+                </h2>
+
+                <p>
+                    Give your research a name and optional
+                    description. You can upload sources after
+                    creating it.
+                </p>
+
+
+                <form id="zevqyn-create-research-form">
+
+                    <div class="zev-field">
+
+                        <label for="zevqyn-research-title">
+                            Workspace name
+                        </label>
+
+                        <input type="text" id="zevqyn-research-title" placeholder="e.g. Artificial Intelligence Research" maxlength="100" required="">
+
+                    </div>
+
+
+                    <div class="zev-field">
+
+                        <label for="zevqyn-research-description">
+                            Description
+                            <span>Optional</span>
+                        </label>
+
+                        <textarea id="zevqyn-research-description" placeholder="What are you researching?" maxlength="500" rows="4"></textarea>
+
+                    </div>
+
+
+                    <div class="zev-form-message" id="zevqyn-create-message">
+                    </div>
+
+
+                    <div class="zev-modal-actions">
+
+                        <button type="button" class="zev-cancel-btn" id="zevqyn-modal-cancel">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="zev-create-btn" id="zevqyn-create-btn">
+                            Create Workspace
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</div>
+<!-- /wp:html -->
