@@ -1,17 +1,25 @@
-﻿# Contact
+# Contact Page
 
-**Production URL:** https://zevqyn.free.je/contact/
-**WordPress Slug:** `contact`
+**Production URL:** https://zevqyn.free.je/contact/  
+**WordPress Slug:** `contact`  
+**Version:** V1.1 (Refined Support & Inquiries Interface)
+
+---
 
 ## Description
 
-Contact form with AJAX submission to backend API. Custom HTML/CSS/JS with category pre-selection, live character counter, form validation, and FAQ accordion.
+The official contact, inquiry, and FAQ page for ZEVQYN:
+- Category pre-selection (Support, Feedback, Partnership, General Inquiry)
+- Live client-side character counter (1500 chars)
+- Direct asynchronous AJAX submission to FastAPI backend: `POST /api/v1/contact`
+- Responsive FAQ accordion with instant answers
+
+---
 
 ## Files
 
-- `wordpress-blocks.html` â€” Full WordPress block source (original export, source of truth)
-- `script.js` â€” Extracted JavaScript (for reference/readability)
-- `style.css` â€” Extracted CSS (for reference/readability)
-- `content.html` â€” Extracted HTML structure (for reference/readability)
-
-> **Note:** The separated files (script.js, style.css, content.html) are extracted from the wordpress-blocks.html for readability. The wordpress-blocks.html is the authoritative source that runs in the WordPress environment. Do not modify the separated files expecting changes to appear on the production site.
+- `wordpress-blocks.html` — Full WordPress Custom HTML block source (authoritative source)
+- `content.html` — Clean semantic HTML structure
+- `style.css` — Refined stylesheet with V1.1 design tokens and zero spinning conic borders
+- `script.js` — Form submission handler and FAQ accordion logic (preserved intact)
+- `MIGRATION_NOTES_V1_1.md` — Step-by-step WordPress deployment instructions
