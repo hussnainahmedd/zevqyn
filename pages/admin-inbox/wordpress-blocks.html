@@ -1,50 +1,55 @@
-﻿<!-- wp:html -->
+<!-- wp:html -->
 <style data-wp-block-html="css">
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED ADMIN INBOX STYLES
+   Scope: #zev-admin-inbox / .zai-page
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* Hide default Blocksy page titles */
 .hero-section,
-.entry-header {
+.page-title,
+.entry-header,
+header.entry-header,
+.ct-page-title,
+.entry-title {
     display: none !important;
 }
 
-
-
-
-#zev-admin-inbox {
-    --zai-bg: #020807;
-    --zai-panel: rgba(8, 19, 16, 0.88);
-    --zai-panel-2: rgba(12, 27, 22, 0.82);
-    --zai-border: rgba(92, 255, 150, 0.13);
-    --zai-border-strong: rgba(92, 255, 150, 0.27);
-    --zai-green: #42d66d;
-    --zai-green-soft: rgba(66, 214, 109, 0.12);
-    --zai-text: #f3f7f5;
-    --zai-muted: #8c9c96;
-    --zai-danger: #ff7373;
-
-    min-height: 100vh;
-    background:
-        radial-gradient(
-            circle at 70% 10%,
-            rgba(25, 140, 75, 0.11),
-            transparent 34%
-        ),
-        #020807;
-
-    color: var(--zai-text);
-    padding: 60px 22px 90px;
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-}
-
-
+#zev-admin-inbox,
 #zev-admin-inbox * {
     box-sizing: border-box;
 }
 
+#zev-admin-inbox {
+    --zai-bg: var(--zev-bg-canvas, #090b0e);
+    --zai-panel: var(--zev-bg-panel, #0f1217);
+    --zai-panel-2: var(--zev-bg-surface, #151921);
+    --zai-subtle: var(--zev-bg-subtle, #222834);
+
+    --zai-border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --zai-border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --zai-border-faint: var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+
+    --zai-green: var(--zev-green-primary, #2ebd68);
+    --zai-green-dark: var(--zev-green-hover, #269f58);
+    --zai-green-text: var(--zev-green-text, #41cf7b);
+    --zai-green-soft: var(--zev-green-soft, rgba(46, 189, 104, 0.08));
+    --zai-green-border: var(--zev-green-border, rgba(46, 189, 104, 0.22));
+
+    --zai-text: var(--zev-text-primary, #f4f6f8);
+    --zai-text-sec: var(--zev-text-secondary, #c0c7d2);
+    --zai-muted: var(--zev-text-muted, #828c9a);
+    --zai-danger: #ef4444;
+
+    min-height: 100vh;
+    background: var(--zai-bg);
+    color: var(--zai-text);
+    padding: 48px 24px 80px;
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
 
 #zev-admin-inbox button,
 #zev-admin-inbox input,
@@ -52,12 +57,10 @@
     font: inherit;
 }
 
-
 .zai-shell {
     width: min(1320px, 100%);
     margin: 0 auto;
 }
-
 
 /* =====================================
    TOP BAR
@@ -67,97 +70,98 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 30px;
-    margin-bottom: 34px;
+    gap: 24px;
+    margin-bottom: 28px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--zai-border);
 }
-
 
 .zai-eyebrow {
-    color: var(--zai-green);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 0.18em;
-    margin-bottom: 10px;
+    color: var(--zai-green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
-
 
 .zai-topbar h1 {
     margin: 0;
-    font-size: clamp(32px, 5vw, 52px);
-    line-height: 1.05;
-    letter-spacing: -0.04em;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
 }
-
 
 .zai-topbar p {
-    margin: 12px 0 0;
+    margin: 6px 0 0;
     color: var(--zai-muted);
-    font-size: 15px;
+    font-size: 14px;
 }
-
 
 .zai-admin-badge {
     display: flex;
     align-items: center;
-    gap: 9px;
-    padding: 10px 15px;
-    border: 1px solid var(--zai-border);
-    background: rgba(12, 25, 21, 0.8);
-    border-radius: 999px;
-    color: #cce7d5;
-    font-size: 13px;
+    gap: 8px;
+    padding: 6px 14px;
+    border: 1px solid var(--zai-green-border);
+    background: var(--zai-green-soft);
+    border-radius: var(--zev-radius-xs, 4px);
+    color: var(--zai-green-text);
+    font-size: 11px;
+    font-family: var(--zev-font-mono, monospace);
     font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
 }
-
 
 .zai-admin-dot {
-    width: 8px;
-    height: 8px;
+    width: 6px;
+    height: 6px;
     background: var(--zai-green);
     border-radius: 50%;
-    box-shadow:
-        0 0 14px rgba(66, 214, 109, 0.8);
 }
 
-
 /* =====================================
-   STATS
+   STATS BAR
    ===================================== */
 
 .zai-stats {
     display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 14px;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
-
 
 .zai-stat-card {
     border: 1px solid var(--zai-border);
     background: var(--zai-panel);
-    border-radius: 16px;
-    padding: 20px;
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 18px 20px;
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
 }
 
+.zai-stat-card:hover {
+    border-color: var(--zai-border-strong);
+}
 
 .zai-stat-card span {
     display: block;
     color: var(--zai-muted);
-    font-size: 12px;
+    font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
-
 
 .zai-stat-card strong {
     display: block;
-    font-size: 30px;
-    line-height: 1;
+    font-size: 24px;
+    line-height: 1.2;
+    color: var(--zai-text);
+    font-weight: 700;
 }
-
 
 /* =====================================
    TOOLBAR
@@ -165,287 +169,267 @@
 
 .zai-toolbar {
     display: grid;
-    grid-template-columns:
-        minmax(200px, 1fr)
-        180px
-        auto;
-    gap: 12px;
-    margin-bottom: 18px;
+    grid-template-columns: minmax(200px, 1fr) 180px auto;
+    gap: 10px;
+    margin-bottom: 20px;
 }
-
 
 .zai-search-wrap {
     position: relative;
 }
 
-
 .zai-search-icon {
     position: absolute;
-    left: 15px;
+    left: 14px;
     top: 50%;
     transform: translateY(-50%);
     color: var(--zai-muted);
     pointer-events: none;
+    font-size: 14px;
 }
-
 
 .zai-search-wrap input,
 .zai-toolbar select {
     width: 100%;
-    height: 46px;
+    height: 40px;
     border: 1px solid var(--zai-border);
-    background: rgba(7, 18, 15, 0.92);
+    background: var(--zai-panel);
     color: var(--zai-text);
-    border-radius: 12px;
+    border-radius: var(--zev-radius-sm, 6px);
     outline: none;
+    font-size: 13px;
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
 }
-
 
 .zai-search-wrap input {
-    padding: 0 15px 0 42px;
+    padding: 0 14px 0 38px;
 }
 
-
 .zai-toolbar select {
-    padding: 0 14px;
+    padding: 0 12px;
     color-scheme: dark;
 }
 
-
 .zai-search-wrap input:focus,
 .zai-toolbar select:focus {
+    border-color: var(--zai-green);
+    box-shadow: 0 0 0 3px rgba(46, 189, 104, 0.15);
+}
+
+.zai-refresh {
+    height: 40px;
+    padding: 0 16px;
+    border-radius: var(--zev-radius-sm, 6px);
+    border: 1px solid var(--zai-border);
+    background: var(--zai-panel);
+    color: var(--zai-text);
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background var(--zev-duration-standard, 200ms) ease;
+}
+
+.zai-refresh:hover {
+    background: var(--zai-subtle);
     border-color: var(--zai-border-strong);
 }
 
-
-.zai-refresh {
-    height: 46px;
-    padding: 0 18px;
-    border-radius: 12px;
-    border: 1px solid var(--zai-border);
-    background: var(--zai-panel);
-    color: #dce8e1;
-    cursor: pointer;
-    transition: 0.2s ease;
-}
-
-
-.zai-refresh:hover {
-    border-color: var(--zai-green);
-    color: white;
-}
-
-
 /* =====================================
-   STATUS
+   STATUS BANNER
    ===================================== */
 
 .zai-status {
     display: none;
-    padding: 13px 16px;
-    border-radius: 12px;
-    margin-bottom: 15px;
+    padding: 12px 16px;
+    border-radius: var(--zev-radius-sm, 6px);
+    margin-bottom: 16px;
     font-size: 13px;
 }
-
 
 .zai-status.zai-show {
     display: block;
 }
 
-
 .zai-status.zai-info {
-    border: 1px solid rgba(90, 160, 255, 0.22);
-    background: rgba(90, 160, 255, 0.08);
-    color: #bcd8ff;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.1);
+    color: #93c5fd;
 }
-
 
 .zai-status.zai-error {
-    border: 1px solid rgba(255, 115, 115, 0.25);
-    background: rgba(255, 115, 115, 0.08);
-    color: #ffaaaa;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
+    color: #fca5a5;
 }
 
-
 /* =====================================
-   INBOX
+   INBOX MASTER-DETAIL
    ===================================== */
 
 .zai-inbox {
-    min-height: 590px;
+    min-height: 580px;
     display: grid;
-    grid-template-columns:
-        minmax(310px, 0.78fr)
-        minmax(0, 1.5fr);
+    grid-template-columns: minmax(320px, 0.85fr) minmax(0, 1.45fr);
     overflow: hidden;
     border: 1px solid var(--zai-border);
-    border-radius: 20px;
+    border-radius: var(--zev-radius-md, 10px);
     background: var(--zai-panel);
-    box-shadow:
-        0 28px 90px rgba(0, 0, 0, 0.28);
 }
-
 
 .zai-list-panel {
     min-width: 0;
     border-right: 1px solid var(--zai-border);
+    display: flex;
+    flex-direction: column;
 }
 
-
 .zai-list-heading {
-    height: 58px;
-    padding: 0 18px;
+    height: 52px;
+    padding: 0 16px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-bottom: 1px solid var(--zai-border);
+    border-bottom: 1px solid var(--zai-border-faint);
     font-size: 13px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
-
 .zai-small-count {
-    min-width: 28px;
-    height: 24px;
+    min-width: 24px;
+    height: 22px;
     padding: 0 8px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     border-radius: 999px;
     background: var(--zai-green-soft);
-    color: var(--zai-green);
+    border: 1px solid var(--zai-green-border);
+    color: var(--zai-green-text);
+    font-size: 11px;
+    font-family: var(--zev-font-mono, monospace);
+    font-weight: 700;
 }
 
-
 .zai-message-list {
-    max-height: 650px;
+    max-height: 620px;
     overflow-y: auto;
 }
 
-
 .zai-message-item {
     position: relative;
-    padding: 17px 18px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--zai-border-faint);
     cursor: pointer;
-    transition: 0.18s ease;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
-
 
 .zai-message-item:hover {
-    background: rgba(255, 255, 255, 0.025);
+    background: var(--zai-panel-2);
 }
-
 
 .zai-message-item.zai-active {
     background: var(--zai-green-soft);
 }
 
-
 .zai-message-item.zai-active::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 12px;
-    bottom: 12px;
+    top: 8px;
+    bottom: 8px;
     width: 3px;
     background: var(--zai-green);
-    border-radius: 0 4px 4px 0;
+    border-radius: 0 3px 3px 0;
 }
-
 
 .zai-item-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 12px;
-    margin-bottom: 7px;
+    gap: 10px;
+    margin-bottom: 4px;
 }
 
-
 .zai-sender {
-    font-size: 14px;
-    font-weight: 800;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--zai-text);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
 
-
 .zai-date {
     color: var(--zai-muted);
-    font-size: 10px;
+    font-size: 11px;
     white-space: nowrap;
+    font-family: var(--zev-font-mono, monospace);
 }
-
 
 .zai-item-subject {
-    color: #c8d5d0;
+    color: var(--zai-text-sec);
     font-size: 12px;
-    margin-bottom: 7px;
+    margin-bottom: 4px;
+    font-weight: 500;
 }
-
 
 .zai-item-preview {
     color: var(--zai-muted);
     font-size: 12px;
-    line-height: 1.55;
+    line-height: 1.45;
     overflow: hidden;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
 
-
 .zai-status-pill {
     display: inline-flex;
-    margin-top: 10px;
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-size: 9px;
+    margin-top: 8px;
+    padding: 2px 8px;
+    border-radius: var(--zev-radius-xs, 4px);
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    font-weight: 800;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    font-family: var(--zev-font-mono, monospace);
 }
-
 
 .zai-pill-new {
-    color: #7ef39c;
-    background: rgba(66, 214, 109, 0.12);
+    color: var(--zai-green-text);
+    background: var(--zai-green-soft);
+    border: 1px solid var(--zai-green-border);
 }
-
 
 .zai-pill-read {
-    color: #91c8ff;
-    background: rgba(80, 160, 255, 0.11);
+    color: #93c5fd;
+    background: rgba(59, 130, 246, 0.1);
+    border: 1px solid rgba(59, 130, 246, 0.25);
 }
-
 
 .zai-pill-replied {
-    color: #c7a6ff;
-    background: rgba(154, 100, 255, 0.11);
+    color: #c4b5fd;
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.25);
 }
-
 
 .zai-pill-archived {
-    color: #a4ada9;
-    background: rgba(150, 160, 155, 0.1);
+    color: var(--zai-muted);
+    background: var(--zai-subtle);
+    border: 1px solid var(--zai-border);
 }
 
-
 /* =====================================
-   DETAIL
+   DETAIL PANEL
    ===================================== */
 
 .zai-detail {
     min-width: 0;
-    padding: 34px;
+    padding: 28px;
 }
 
-
 .zai-empty {
-    min-height: 510px;
+    min-height: 480px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -453,124 +437,116 @@
     text-align: center;
 }
 
-
 .zai-empty-icon {
-    width: 62px;
-    height: 62px;
+    width: 52px;
+    height: 52px;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid var(--zai-border);
+    border: 1px solid var(--zai-green-border);
     background: var(--zai-green-soft);
-    color: var(--zai-green);
-    border-radius: 18px;
-    font-size: 26px;
-    margin-bottom: 18px;
+    color: var(--zai-green-text);
+    border-radius: var(--zev-radius-md, 10px);
+    font-size: 22px;
+    margin-bottom: 16px;
 }
-
 
 .zai-empty h2 {
-    margin: 0 0 8px;
-    font-size: 21px;
+    margin: 0 0 6px;
+    font-size: 18px;
+    color: var(--zai-text);
+    font-weight: 700;
 }
-
 
 .zai-empty p {
-    max-width: 330px;
+    max-width: 320px;
     margin: 0;
     color: var(--zai-muted);
-    line-height: 1.65;
+    line-height: 1.5;
     font-size: 13px;
 }
-
 
 .zai-detail-top {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    margin-bottom: 28px;
-}
-
-
-.zai-detail-label {
-    color: var(--zai-green);
-    font-size: 10px;
-    letter-spacing: 0.12em;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-
-.zai-detail h2 {
-    margin: 0;
-    font-size: 28px;
-    line-height: 1.2;
-}
-
-
-.zai-detail-date {
-    color: var(--zai-muted);
-    font-size: 11px;
-    white-space: nowrap;
-}
-
-
-.zai-person {
-    display: grid;
-    grid-template-columns:
-        1fr
-        1fr;
-    gap: 12px;
     margin-bottom: 24px;
 }
 
+.zai-detail-label {
+    color: var(--zai-green-text);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+}
+
+.zai-detail h2 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.25;
+    color: var(--zai-text);
+    font-weight: 700;
+}
+
+.zai-detail-date {
+    color: var(--zai-muted);
+    font-size: 12px;
+    white-space: nowrap;
+    font-family: var(--zev-font-mono, monospace);
+}
+
+.zai-person {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+}
 
 .zai-person-box {
     padding: 14px;
-    border-radius: 12px;
+    border-radius: var(--zev-radius-sm, 6px);
     border: 1px solid var(--zai-border);
-    background: rgba(255, 255, 255, 0.018);
+    background: var(--zai-panel-2);
 }
-
 
 .zai-person-box span {
     display: block;
     color: var(--zai-muted);
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 5px;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    margin-bottom: 4px;
 }
-
 
 .zai-person-box strong,
 .zai-person-box a {
-    color: #edf5f0;
+    color: var(--zai-text);
     font-size: 13px;
     text-decoration: none;
     word-break: break-word;
+    font-weight: 600;
 }
-
 
 .zai-person-box a:hover {
-    color: var(--zai-green);
+    color: var(--zai-green-text);
+    text-decoration: underline;
 }
-
 
 .zai-message-body {
-    padding: 22px;
-    border-radius: 15px;
+    padding: 20px;
+    border-radius: var(--zev-radius-md, 10px);
     border: 1px solid var(--zai-border);
-    background: rgba(0, 0, 0, 0.18);
-    color: #d5e0da;
-    font-size: 14px;
-    line-height: 1.8;
+    background: var(--zai-panel-2);
+    color: var(--zai-text);
+    font-size: 13px;
+    line-height: 1.7;
     white-space: pre-wrap;
     overflow-wrap: anywhere;
-    margin-bottom: 25px;
+    margin-bottom: 24px;
 }
-
 
 .zai-actions {
     display: flex;
@@ -579,96 +555,93 @@
     gap: 10px;
 }
 
-
 .zai-actions select {
-    height: 42px;
+    height: 38px;
     padding: 0 12px;
-    border-radius: 10px;
+    border-radius: var(--zev-radius-sm, 6px);
     border: 1px solid var(--zai-border);
-    background: #07120f;
-    color: white;
+    background: var(--zai-panel-2);
+    color: var(--zai-text);
     color-scheme: dark;
     outline: none;
+    font-size: 13px;
 }
-
 
 .zai-action-button {
-    height: 42px;
+    height: 38px;
     padding: 0 16px;
-    border-radius: 10px;
+    border-radius: var(--zev-radius-sm, 6px);
     border: 1px solid var(--zai-border);
-    background: rgba(255, 255, 255, 0.025);
-    color: #e7eee9;
+    background: var(--zai-panel-2);
+    color: var(--zai-text);
     cursor: pointer;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
-
 
 .zai-action-button:hover {
-    border-color: var(--zai-green);
+    background: var(--zai-subtle);
+    border-color: var(--zai-border-strong);
 }
-
 
 .zai-reply {
     background: var(--zai-green);
     border-color: var(--zai-green);
-    color: #031108;
-    font-weight: 800;
+    color: #ffffff !important;
+    font-weight: 600;
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    height: 38px;
+    padding: 0 16px;
+    border-radius: var(--zev-radius-sm, 6px);
+    font-size: 13px;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
-
 
 .zai-reply:hover {
-    color: #031108;
-    transform: translateY(-1px);
+    background: var(--zai-green-dark);
 }
 
-
 /* =====================================
-   LOADING
+   FEEDBACK STATES
    ===================================== */
 
 .zai-loading {
-    padding: 30px 18px;
+    padding: 24px 16px;
     color: var(--zai-muted);
     font-size: 13px;
+    text-align: center;
 }
 
-
 .zai-no-results {
-    padding: 40px 20px;
+    padding: 32px 16px;
     text-align: center;
     color: var(--zai-muted);
     font-size: 13px;
 }
 
-
 /* =====================================
-   RESPONSIVE
+   RESPONSIVE DESIGN
    ===================================== */
 
 @media (max-width: 900px) {
-
     #zev-admin-inbox {
-        padding:
-            40px 14px
-            70px;
+        padding: 32px 16px 60px;
     }
 
     .zai-stats {
-        grid-template-columns:
-            repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .zai-toolbar {
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .zai-search-wrap {
-        grid-column:
-            1 / -1;
+        grid-column: 1 / -1;
     }
 
     .zai-inbox {
@@ -677,26 +650,21 @@
 
     .zai-list-panel {
         border-right: 0;
-        border-bottom:
-            1px solid var(--zai-border);
+        border-bottom: 1px solid var(--zai-border);
     }
 
     .zai-message-list {
-        max-height: 430px;
+        max-height: 380px;
     }
-
 }
 
-
 @media (max-width: 560px) {
-
     .zai-topbar {
         flex-direction: column;
     }
 
     .zai-stats {
-        grid-template-columns:
-            1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .zai-toolbar {
@@ -708,7 +676,7 @@
     }
 
     .zai-detail {
-        padding: 22px 16px;
+        padding: 20px 16px;
     }
 
     .zai-detail-top {
@@ -718,11 +686,21 @@
     .zai-person {
         grid-template-columns: 1fr;
     }
-
 }
+
+@media (prefers-reduced-motion: reduce) {
+    .zai-message-item,
+    .zai-refresh,
+    .zai-action-button,
+    .zai-reply {
+        transition: none !important;
+    }
+}
+
 </style>
 
 <script data-wp-block-html="js">
+﻿
 function zevAdminInboxInitialize() {
 
     var API_BASE =
@@ -1912,6 +1890,7 @@ if (
     zevAdminInboxInitialize();
 
 }
+
 </script>
 
 <div id="zev-admin-inbox" class="zai-page">
@@ -2035,4 +2014,5 @@ if (
     </div>
 
 </div>
+
 <!-- /wp:html -->

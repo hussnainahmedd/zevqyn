@@ -1,0 +1,319 @@
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div id="zev-settings-app" class="zev-settings-app">
+
+    <aside class="zev-settings-sidebar">
+        <div class="zev-sidebar-inner">
+
+            <div class="zev-sidebar-brand">
+                <span class="zev-brand-mark">Z</span>
+                <span class="zev-brand-text">ZEVQYN</span>
+            </div>
+
+            <div class="zev-sidebar-section-label">WORKSPACE</div>
+
+            <nav class="zev-sidebar-nav">
+                <a href="/dashboard/" class="zev-nav-link">
+                    <span class="zev-nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/research/" class="zev-nav-link">
+                    <span class="zev-nav-icon">▣</span>
+                    <span>Research</span>
+                </a>
+
+                <a href="/projects/" class="zev-nav-link">
+                    <span class="zev-nav-icon">◆</span>
+                    <span>Projects</span>
+                </a>
+
+                <a href="/resume/" class="zev-nav-link">
+                    <span class="zev-nav-icon">▤</span>
+                    <span>Resume</span>
+                </a>
+
+                <a href="/portfolio/" class="zev-nav-link">
+                    <span class="zev-nav-icon">◎</span>
+                    <span>Portfolio</span>
+                </a>
+
+                <a href="/career-hub/" class="zev-nav-link">
+                    <span class="zev-nav-icon">✦</span>
+                    <span>Career Hub</span>
+                </a>
+
+                <a href="/career-ai/" class="zev-nav-link">
+                    <span class="zev-nav-icon">↗</span>
+                    <span>Career AI</span>
+                </a>
+            </nav>
+
+            <div class="zev-sidebar-bottom">
+                <div class="zev-sidebar-section-label">ACCOUNT</div>
+
+                <a href="/settings/" class="zev-nav-link active">
+                    <span class="zev-nav-icon">⚙</span>
+                    <span>Settings</span>
+                </a>
+            </div>
+
+        </div>
+    </aside>
+
+
+    <main class="zev-settings-main">
+
+        <div class="zev-settings-container">
+
+            <header class="zev-settings-header">
+                <div>
+                    <div class="zev-eyebrow">ACCOUNT</div>
+                    <h1>Settings</h1>
+                    <p>
+                        Manage your ZEVQYN account, security and active session.
+                    </p>
+                </div>
+
+                <div class="zev-user-pill" id="zev-user-pill">
+                    <div class="zev-user-avatar" id="zev-user-avatar">Z</div>
+
+                    <div class="zev-user-pill-info">
+                        <strong id="zev-user-name">Loading...</strong>
+                        <span id="zev-user-email-top">Checking session...</span>
+                    </div>
+                </div>
+            </header>
+
+
+            <div id="zev-settings-message" class="zev-message" hidden=""></div>
+
+
+            <section class="zev-settings-section">
+
+                <div class="zev-section-heading">
+                    <div>
+                        <h2>Account</h2>
+                        <p>Your authenticated ZEVQYN account information.</p>
+                    </div>
+                </div>
+
+
+                <div class="zev-account-grid">
+
+                    <div class="zev-setting-card zev-account-card">
+
+                        <div class="zev-card-icon">✉</div>
+
+                        <div class="zev-card-content">
+                            <span class="zev-card-label">Email address</span>
+                            <strong id="zev-account-email">Loading...</strong>
+                            <small>
+                                This email is connected to your ZEVQYN login.
+                            </small>
+                        </div>
+
+                    </div>
+
+
+                    <div class="zev-setting-card zev-account-card">
+
+                        <div class="zev-card-icon">✓</div>
+
+                        <div class="zev-card-content">
+                            <span class="zev-card-label">Session status</span>
+                            <strong id="zev-session-status">Checking...</strong>
+                            <small>
+                                Your authentication session with ZEVQYN.
+                            </small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="zev-setting-card zev-account-details-card">
+
+                    <div class="zev-account-details-header">
+                        <div>
+                            <h3>Account details</h3>
+                            <p>
+                                Authentication information associated with this account.
+                            </p>
+                        </div>
+
+                        <span class="zev-status-badge" id="zev-auth-badge">
+                            Checking
+                        </span>
+                    </div>
+
+
+                    <div class="zev-detail-row">
+                        <span>Email</span>
+                        <strong id="zev-detail-email">—</strong>
+                    </div>
+
+                    <div class="zev-detail-row">
+                        <span>User ID</span>
+
+                        <div class="zev-user-id-wrap">
+                            <code id="zev-detail-user-id">—</code>
+
+                            <button type="button" class="zev-copy-btn" id="zev-copy-user-id">
+                                Copy
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="zev-detail-row">
+                        <span>Account created</span>
+                        <strong id="zev-created-at">—</strong>
+                    </div>
+
+                    <div class="zev-detail-row">
+                        <span>Last sign in</span>
+                        <strong id="zev-last-sign-in">—</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <section class="zev-settings-section">
+
+                <div class="zev-section-heading">
+                    <div>
+                        <h2>Security</h2>
+                        <p>
+                            Keep your account secure and manage your password.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="zev-setting-card zev-security-card">
+
+                    <div class="zev-security-info">
+                        <div class="zev-card-icon">⌁</div>
+
+                        <div>
+                            <h3>Change password</h3>
+                            <p>
+                                Set a new password for your currently signed-in account.
+                            </p>
+                        </div>
+                    </div>
+
+
+                    <form id="zev-password-form" class="zev-password-form">
+
+                        <div class="zev-field">
+                            <label for="zev-new-password">New password</label>
+
+                            <div class="zev-password-input-wrap">
+                                <input id="zev-new-password" type="password" minlength="8" autocomplete="new-password" placeholder="Enter new password" required="">
+
+                                <button type="button" class="zev-password-toggle" data-target="zev-new-password">
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="zev-field">
+                            <label for="zev-confirm-password">
+                                Confirm new password
+                            </label>
+
+                            <div class="zev-password-input-wrap">
+                                <input id="zev-confirm-password" type="password" minlength="8" autocomplete="new-password" placeholder="Confirm new password" required="">
+
+                                <button type="button" class="zev-password-toggle" data-target="zev-confirm-password">
+                                    Show
+                                </button>
+                            </div>
+                        </div>
+
+
+                        <div class="zev-password-actions">
+                            <span class="zev-password-hint">
+                                Use at least 8 characters.
+                            </span>
+
+                            <button type="submit" class="zev-btn zev-btn-primary" id="zev-change-password-btn">
+                                Update Password
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <div class="zev-setting-card zev-reset-card">
+
+                    <div class="zev-security-info">
+                        <div class="zev-card-icon">↻</div>
+
+                        <div>
+                            <h3>Password reset email</h3>
+                            <p>
+                                Send a secure password recovery link to your account email.
+                            </p>
+                        </div>
+                    </div>
+
+                    <button type="button" class="zev-btn zev-btn-secondary" id="zev-reset-password-btn">
+                        Send Reset Email
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <section class="zev-settings-section">
+
+                <div class="zev-section-heading">
+                    <div>
+                        <h2>Session</h2>
+                        <p>Manage your current ZEVQYN session.</p>
+                    </div>
+                </div>
+
+
+                <div class="zev-setting-card zev-session-card">
+
+                    <div>
+                        <h3>Sign out of ZEVQYN</h3>
+                        <p>
+                            End your current session on this browser.
+                        </p>
+                    </div>
+
+                    <button type="button" class="zev-btn zev-btn-danger" id="zev-sign-out-btn">
+                        Sign Out
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <div class="zev-settings-footer">
+                <span>ZEVQYN</span>
+                <span>Research smarter. Build your future.</span>
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <div class="zev-loading-overlay" id="zev-settings-loading">
+        <div class="zev-loader"></div>
+        <span>Loading settings...</span>
+    </div>
+
+</div>

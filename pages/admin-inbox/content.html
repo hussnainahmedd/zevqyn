@@ -1,0 +1,121 @@
+<div id="zev-admin-inbox" class="zai-page">
+
+    <div class="zai-shell">
+
+        <!-- TOP BAR -->
+        <header class="zai-topbar">
+            <div>
+                <div class="zai-eyebrow">ZEVQYN ADMIN</div>
+                <h1>Contact Inbox</h1>
+                <p>Manage messages sent through the ZEVQYN website.</p>
+            </div>
+
+            <div class="zai-admin-badge">
+                <span class="zai-admin-dot"></span>
+                Admin
+            </div>
+        </header>
+
+
+        <!-- STATS -->
+        <section class="zai-stats">
+
+            <div class="zai-stat-card">
+                <span>Total</span>
+                <strong id="zai-total-count">0</strong>
+            </div>
+
+            <div class="zai-stat-card">
+                <span>New</span>
+                <strong id="zai-new-count">0</strong>
+            </div>
+
+            <div class="zai-stat-card">
+                <span>Read</span>
+                <strong id="zai-read-count">0</strong>
+            </div>
+
+            <div class="zai-stat-card">
+                <span>Replied</span>
+                <strong id="zai-replied-count">0</strong>
+            </div>
+
+        </section>
+
+
+        <!-- TOOLBAR -->
+        <section class="zai-toolbar">
+
+            <div class="zai-search-wrap">
+                <span class="zai-search-icon">⌕</span>
+
+                <input id="zai-search" type="text" placeholder="Search messages..." autocomplete="off">
+            </div>
+
+
+            <select id="zai-filter">
+                <option value="all">All messages</option>
+                <option value="new">New</option>
+                <option value="read">Read</option>
+                <option value="replied">Replied</option>
+                <option value="archived">Archived</option>
+            </select>
+
+
+            <button id="zai-refresh" class="zai-refresh" type="button">
+                ↻ Refresh
+            </button>
+
+        </section>
+
+
+        <!-- STATUS -->
+        <div id="zai-status" class="zai-status"></div>
+
+
+        <!-- INBOX -->
+        <section class="zai-inbox">
+
+            <!-- MESSAGE LIST -->
+            <aside class="zai-list-panel">
+
+                <div class="zai-list-heading">
+                    <span>Messages</span>
+
+                    <span id="zai-visible-count" class="zai-small-count">
+                        0
+                    </span>
+                </div>
+
+
+                <div id="zai-message-list" class="zai-message-list">
+                </div>
+
+            </aside>
+
+
+            <!-- MESSAGE DETAIL -->
+            <main id="zai-detail" class="zai-detail">
+
+                <div class="zai-empty">
+
+                    <div class="zai-empty-icon">
+                        ✉
+                    </div>
+
+                    <h2>Select a message</h2>
+
+                    <p>
+                        Choose a contact message from the
+                        inbox to read it here.
+                    </p>
+
+                </div>
+
+            </main>
+
+        </section>
+
+    </div>
+
+</div>
