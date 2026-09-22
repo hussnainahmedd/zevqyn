@@ -1,17 +1,25 @@
-﻿# Career Hub
+# Career Hub
 
-**Production URL:** https://zevqyn.free.je/career/
-**WordPress Slug:** `career`
+**Production URL:** https://zevqyn.free.je/career/  
+**WordPress Slug:** `career`  
+**Status:** V1.1 Refined  
 
 ## Description
 
-Central career data repository. Custom SPA with profile management, CRUD for projects/skills/education/certificates, and tabbed library browser.
+Central career data repository. Custom SPA with profile management, CRUD for projects, skills, education, certificates, and tabbed library browser.
+
+## V1.1 Refinement Overview
+
+- Eliminated abrasive mint `#63f1ae` color in favor of the unified `--zev-green-primary` (#2ebd68).
+- Removed oversized blur orbs and ambient gradients, grounding the interface in dark obsidian panels with 1px borders.
+- Re-architected modals for skills, education, certifications, and projects with sharp borders and clean focus rings.
+- Preserved 100% of the 2,324 lines of client-side JavaScript logic and all DOM identifiers.
+- See [MIGRATION_NOTES_V1_1.md](MIGRATION_NOTES_V1_1.md) for full deployment instructions and DOM element inventories.
 
 ## Files
 
-- `wordpress-blocks.html` â€” Full WordPress block source (original export, source of truth)
-- `script.js` â€” Extracted JavaScript (for reference/readability)
-- `style.css` â€” Extracted CSS (for reference/readability)
-- `content.html` â€” Extracted HTML structure (for reference/readability)
-
-> **Note:** The separated files (script.js, style.css, content.html) are extracted from the wordpress-blocks.html for readability. The wordpress-blocks.html is the authoritative source that runs in the WordPress environment. Do not modify the separated files expecting changes to appear on the production site.
+- `wordpress-blocks.html` — Full WordPress block source (authoritative source for WordPress)
+- `content.html` — Clean HTML markup structure
+- `style.css` — V1.1 refined CSS styles
+- `script.js` — Client-side SPA logic (untouched)
+- `MIGRATION_NOTES_V1_1.md` — Step-by-step WordPress migration guide

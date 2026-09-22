@@ -1,17 +1,24 @@
-﻿# Career AI
+# Career AI
 
-**Production URL:** https://zevqyn.free.je/career-ai/
-**WordPress Slug:** `career-ai`
+**Production URL:** https://zevqyn.free.je/career-ai/  
+**WordPress Slug:** `career-ai`  
+**Status:** V1.1 Refined  
 
 ## Description
 
-AI career copilot. Custom SPA with conversational chat, 6 specialized AI tools (profile analysis, skill gap, project ideas, resume review, portfolio review, action plan), and markdown rendering.
+AI career copilot. Custom SPA with conversational chat, 6 specialized AI tools (role fit, skill gap, interview prep, STAR story, career path, learning plan), and markdown rendering.
+
+## V1.1 Refinement Overview
+
+- Re-architected chat stream and 6 AI tool cards into an institutional copilot interface.
+- Eliminated abrasive ambient color blur halos, anchoring the UI in dark obsidian panels with 1px border dividers.
+- Preserved 100% of the 1,439 lines of client JavaScript ensuring streaming responses and modal tool endpoints function without interruption.
+- See [MIGRATION_NOTES_V1_1.md](MIGRATION_NOTES_V1_1.md) for full deployment instructions and DOM element inventories.
 
 ## Files
 
-- `wordpress-blocks.html` â€” Full WordPress block source (original export, source of truth)
-- `script.js` â€” Extracted JavaScript (for reference/readability)
-- `style.css` â€” Extracted CSS (for reference/readability)
-- `content.html` â€” Extracted HTML structure (for reference/readability)
-
-> **Note:** The separated files (script.js, style.css, content.html) are extracted from the wordpress-blocks.html for readability. The wordpress-blocks.html is the authoritative source that runs in the WordPress environment. Do not modify the separated files expecting changes to appear on the production site.
+- `wordpress-blocks.html` — Full WordPress block source (authoritative source for WordPress)
+- `content.html` — Clean HTML markup structure
+- `style.css` — V1.1 refined CSS styles
+- `script.js` — Client-side SPA logic (untouched)
+- `MIGRATION_NOTES_V1_1.md` — Step-by-step WordPress migration guide

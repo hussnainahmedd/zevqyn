@@ -1,8 +1,20 @@
-﻿<!-- wp:html -->
+<!-- wp:html -->
 <style data-wp-block-html="css">
-/* =========================================
-   ZEVQYN RESUME BUILDER
-========================================= */
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED RESUME BUILDER STYLES
+   Scope: #zevqyn-resume-builder / .zev-rb-page
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* Hide default Blocksy page titles */
+.hero-section,
+.page-title,
+.entry-header,
+header.entry-header,
+.ct-page-title,
+.entry-title {
+    display: none !important;
+}
 
 .zev-rb-page,
 .zev-rb-page * {
@@ -10,56 +22,68 @@
 }
 
 .zev-rb-page {
-    --green: #35b85b;
-    --green2: #269747;
-    --panel: #080d10;
-    --border: #1b2931;
-    --muted: #7d8990;
+    --green: var(--zev-green-primary, #2ebd68);
+    --green-hover: var(--zev-green-hover, #269f58);
+    --green-text: var(--zev-green-text, #41cf7b);
+    --green-soft: var(--zev-green-soft, rgba(46, 189, 104, 0.08));
+    --green-border: var(--zev-green-border, rgba(46, 189, 104, 0.22));
+
+    --bg: var(--zev-bg-canvas, #090b0e);
+    --panel: var(--zev-bg-panel, #0f1217);
+    --surface: var(--zev-bg-surface, #151921);
+    --subtle: var(--zev-bg-subtle, #222834);
+
+    --border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --border-faint: var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+
+    --text: var(--zev-text-primary, #f4f6f8);
+    --text-sec: var(--zev-text-secondary, #c0c7d2);
+    --muted: var(--zev-text-muted, #828c9a);
 
     display: flex;
     width: 100%;
     min-height: 100vh;
 
-    background:
-        radial-gradient(
-            circle at 80% 0%,
-            rgba(53,184,91,.06),
-            transparent 30%
-        ),
-        #030504;
-
-    color: #f5f7f8;
-    font-family: Inter, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
 
-
-/* SIDEBAR */
+/* =========================================
+   SIDEBAR
+   ========================================= */
 
 .zev-rb-sidebar {
-    width: 245px;
-    min-width: 245px;
+    width: 240px;
+    min-width: 240px;
     min-height: 100vh;
+    padding: 24px 16px;
 
-    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
 
-    background: #050807;
-    border-right: 1px solid #172019;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
 }
 
 .zev-rb-nav-title {
-    margin: 0 12px 12px;
+    padding: 0 12px;
+    margin-bottom: 12px;
 
-    color: #64706b;
-
+    color: var(--muted);
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.3px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .zev-rb-nav {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .zev-rb-nav a {
@@ -67,312 +91,301 @@
     align-items: center;
     gap: 12px;
 
-    padding: 12px 14px;
+    padding: 10px 12px;
 
-    border-radius: 9px;
-
-    color: #abb5bb !important;
+    color: var(--text-sec) !important;
     text-decoration: none !important;
 
-    font-size: 14px;
+    border-radius: var(--zev-radius-sm, 6px);
+
+    font-size: 13px;
+    font-weight: 500;
+
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-rb-nav a:hover {
-    color: #fff !important;
-    background: #0b130f;
+    color: var(--text) !important;
+    background: var(--subtle);
 }
 
 .zev-rb-nav a.active {
-    color: #fff !important;
-
-    background: rgba(53,184,91,.13);
-    border: 1px solid rgba(53,184,91,.22);
+    color: var(--text) !important;
+    background: var(--green-soft);
+    border: 1px solid var(--green-border);
+    font-weight: 600;
 }
 
 .zev-rb-nav a span {
-    width: 20px;
+    width: 18px;
     text-align: center;
+    font-size: 14px;
+    color: var(--muted);
 }
 
+.zev-rb-nav a.active span {
+    color: var(--green-text);
+}
 
-/* MAIN */
+/* =========================================
+   MAIN
+   ========================================= */
 
 .zev-rb-main {
     flex: 1;
     min-width: 0;
-
-    padding: 34px 38px 70px;
+    padding: 32px 40px 80px;
 }
 
 .zev-rb-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 25px;
-
+    gap: 24px;
     margin-bottom: 24px;
 }
 
 .zev-rb-label {
     display: block;
-
-    color: #3fd064;
-
-    font-size: 9px;
-    font-weight: 850;
-    letter-spacing: 1.5px;
-
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 .zev-rb-header h1 {
-    margin: 7px 0 5px;
-
-    color: #fff;
-
-    font-size: 31px;
-    font-weight: 850;
+    margin: 6px 0 4px;
+    color: var(--text);
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .zev-rb-header p {
     max-width: 650px;
-
     margin: 0;
-
-    color: #839099;
-
-    font-size: 11px;
-    line-height: 1.7;
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.5;
 }
 
-
-/* BUTTONS */
+/* =========================================
+   BUTTONS
+   ========================================= */
 
 .zev-rb-create-btn,
 .zev-rb-export,
 .zev-rb-secondary {
-    min-height: 40px;
-    padding: 9px 14px;
-
-    border-radius: 8px;
-
+    min-height: 38px;
+    padding: 0 16px;
+    border-radius: var(--zev-radius-sm, 6px);
     font-family: inherit;
-    font-size: 9px;
-    font-weight: 850;
-
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-rb-create-btn,
 .zev-rb-export {
-    border: 0;
-
-    background: #35b85b;
+    border: 1px solid var(--green);
+    background: var(--green);
     color: #fff;
 }
 
 .zev-rb-create-btn:hover,
 .zev-rb-export:hover {
-    background: #269747;
+    background: var(--green-hover);
+    border-color: var(--green-hover);
 }
 
 .zev-rb-secondary {
-    background: #0b1215;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
 
-    border: 1px solid #26343a;
-
-    color: #a5afb4;
+.zev-rb-secondary:hover {
+    background: var(--subtle);
+    border-color: var(--border-strong);
 }
 
 .zev-rb-create-btn:disabled,
 .zev-rb-export:disabled,
 .zev-rb-secondary:disabled {
-    opacity: .55;
-    cursor: wait;
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
-
-/* EMPTY */
+/* =========================================
+   EMPTY STATE
+   ========================================= */
 
 .zev-rb-empty {
-    max-width: 580px;
-
-    margin: 100px auto;
-    padding: 45px;
-
+    max-width: 520px;
+    margin: 80px auto;
+    padding: 40px 32px;
     text-align: center;
-
-    background: #080d10;
-
-    border: 1px solid #1b2931;
-    border-radius: 15px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
 }
 
 .zev-rb-empty-icon {
-    width: 55px;
-    height: 55px;
-
-    margin: 0 auto 17px;
-
+    width: 48px;
+    height: 48px;
+    margin: 0 auto 16px;
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 13px;
-
-    background: rgba(53,184,91,.1);
-
-    color: #4ed36f;
-
-    font-size: 22px;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-size: 20px;
+    border: 1px solid var(--green-border);
 }
 
 .zev-rb-empty h2 {
     margin: 0 0 8px;
-
-    color: #fff;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .zev-rb-empty p {
-    color: #7e8a90;
-
-    font-size: 10px;
-    line-height: 1.7;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 16px;
 }
 
 .zev-rb-empty button {
-    margin-top: 12px;
-
-    padding: 10px 15px;
-
-    border: 0;
-    border-radius: 8px;
-
-    background: #35b85b;
+    padding: 0 18px;
+    min-height: 38px;
+    border: 1px solid var(--green);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green);
     color: #fff;
-
-    font-size: 9px;
-    font-weight: 850;
-
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
 
+.zev-rb-empty button:hover {
+    background: var(--green-hover);
+}
 
-/* TOOLBAR */
+/* =========================================
+   TOOLBAR
+   ========================================= */
 
 .zev-rb-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 20px;
-
-    margin-bottom: 14px;
-    padding: 15px;
-
-    background: #080d10;
-
-    border: 1px solid #1b2931;
-    border-radius: 12px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
 }
 
 .zev-rb-resume-select {
-    width: min(430px,100%);
+    width: min(440px, 100%);
 }
 
 .zev-rb-resume-select label {
     display: block;
-
-    margin-bottom: 7px;
-
-    color: #9ca7ad;
-
-    font-size: 9px;
-    font-weight: 800;
+    margin-bottom: 6px;
+    color: var(--text-sec);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .zev-rb-resume-select select {
     width: 100%;
     min-height: 40px;
-
     padding: 0 12px;
-
     outline: none;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
 
-    border: 1px solid #223138;
-    border-radius: 8px;
-
-    background: #070c0f;
-    color: #fff;
-
-    font-size: 10px;
+.zev-rb-resume-select select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(46, 189, 104, 0.15);
 }
 
 .zev-rb-resume-select select option {
-    background: #081014;
-    color: #fff;
+    background: var(--panel);
+    color: var(--text);
 }
 
 .zev-rb-toolbar-actions {
     display: flex;
-    gap: 7px;
+    gap: 8px;
+    flex-wrap: wrap;
 }
 
-
-/* STATS */
+/* =========================================
+   STATS BAR
+   ========================================= */
 
 .zev-rb-stats {
     display: grid;
-    grid-template-columns: repeat(4,minmax(0,1fr));
-
-    gap: 11px;
-
-    margin-bottom: 17px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 20px;
 }
 
 .zev-rb-stat {
-    padding: 15px;
+    padding: 16px 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            #0a1013,
-            #070b0e
-        );
-
-    border: 1px solid #1b2931;
-    border-radius: 11px;
+.zev-rb-stat:hover {
+    border-color: var(--border-strong);
 }
 
 .zev-rb-stat strong {
     display: block;
-
-    color: #fff;
-
-    font-size: 19px;
+    color: var(--text);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .zev-rb-stat span {
     display: block;
-
-    margin-top: 4px;
-
-    color: #77848b;
-
-    font-size: 9px;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: 12px;
 }
 
-
-/* GRID */
+/* =========================================
+   BUILDER GRID
+   ========================================= */
 
 .zev-rb-grid {
     display: grid;
-
-    grid-template-columns:
-        minmax(0,1.2fr)
-        minmax(330px,.8fr);
-
-    gap: 17px;
-
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
+    gap: 20px;
     align-items: start;
 }
 
@@ -380,60 +393,48 @@
 .zev-rb-right {
     display: flex;
     flex-direction: column;
-
-    gap: 17px;
+    gap: 20px;
 }
 
-
-/* PANEL */
+/* =========================================
+   PANELS
+   ========================================= */
 
 .zev-rb-panel {
-    padding: 21px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #090e12,
-            #060a0d
-        );
-
-    border: 1px solid #1b2931;
-    border-radius: 14px;
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
 }
 
 .zev-rb-panel-head {
     margin-bottom: 18px;
-    padding-bottom: 15px;
-
-    border-bottom: 1px solid #18242a;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border-faint);
 }
 
 .zev-rb-panel-head h2 {
-    margin: 6px 0 4px;
-
-    color: #fff;
-
+    margin: 0 0 4px;
+    color: var(--text);
     font-size: 16px;
+    font-weight: 700;
 }
 
 .zev-rb-panel-head p {
     margin: 0;
-
-    color: #78858d;
-
-    font-size: 9px;
-    line-height: 1.6;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-
-/* FORM */
+/* =========================================
+   FORM FIELDS
+   ========================================= */
 
 .zev-rb-field {
     display: flex;
     flex-direction: column;
-
-    gap: 7px;
-
+    gap: 6px;
     margin-bottom: 16px;
 }
 
@@ -442,96 +443,88 @@
 }
 
 .zev-rb-field label {
-    color: #aeb8bd;
-
-    font-size: 9px;
-    font-weight: 800;
+    color: var(--text-sec);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .zev-rb-field input,
 .zev-rb-field textarea,
 .zev-rb-field select {
     width: 100%;
-
     outline: none;
-
-    border: 1px solid #223138;
-    border-radius: 8px;
-
-    background: #070c0f;
-    color: #f3f6f7;
-
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    color: var(--text);
     font-family: inherit;
-    font-size: 10px;
-
-    transition: .2s;
+    font-size: 13px;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-rb-field input,
 .zev-rb-field select {
-    min-height: 41px;
+    min-height: 40px;
     padding: 0 12px;
 }
 
 .zev-rb-field textarea {
-    padding: 11px 12px;
-
-    line-height: 1.65;
-
+    padding: 10px 12px;
+    line-height: 1.5;
     resize: vertical;
 }
 
 .zev-rb-field input:focus,
 .zev-rb-field textarea:focus,
 .zev-rb-field select:focus {
-    border-color: rgba(53,184,91,.65);
-
-    box-shadow:
-        0 0 0 3px rgba(53,184,91,.06);
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(46, 189, 104, 0.15);
 }
 
 .zev-rb-field select,
 .zev-rb-field select option {
-    background: #081014 !important;
-    color: #fff !important;
+    background: var(--surface) !important;
+    color: var(--text) !important;
 }
 
 .zev-rb-field small {
-    color: #657178;
-
-    font-size: 8px;
+    color: var(--muted);
+    font-size: 11px;
     line-height: 1.5;
 }
 
 .zev-rb-count {
     align-self: flex-end;
-
-    color: #5f6c72;
-
-    font-size: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-family: var(--zev-font-mono, monospace);
+    margin-top: 4px;
 }
 
-
-/* RESUME ITEMS */
+/* =========================================
+   RESUME ITEMS LIST
+   ========================================= */
 
 .zev-rb-items {
     display: flex;
     flex-direction: column;
-
     gap: 8px;
 }
 
 .zev-rb-item {
-    padding: 12px;
-
+    padding: 14px;
     display: flex;
     justify-content: space-between;
     gap: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
 
-    border: 1px solid #1c2b31;
-    border-radius: 9px;
-
-    background: #070c0f;
+.zev-rb-item:hover {
+    border-color: var(--border-strong);
 }
 
 .zev-rb-item-info {
@@ -539,137 +532,115 @@
 }
 
 .zev-rb-item-type {
-    display: block;
-
+    display: inline-block;
     margin-bottom: 4px;
-
-    color: #43ca65;
-
-    font-size: 7px;
-    font-weight: 850;
-    letter-spacing: 1px;
-
+    color: var(--green-text);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
 .zev-rb-item strong {
     display: block;
-
-    color: #e9edef;
-
-    font-size: 10px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-rb-item-subtitle {
     display: block;
-
-    margin-top: 4px;
-
-    color: #839097;
-
-    font-size: 8px;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
 }
 
 .zev-rb-item-description {
-    margin: 5px 0 0;
-
-    color: #69767d;
-
-    font-size: 8px;
-    line-height: 1.55;
+    margin: 6px 0 0;
+    color: var(--text-sec);
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .zev-rb-item-remove {
     align-self: flex-start;
-
-    border: 1px solid #382629;
-    border-radius: 6px;
-
-    background: rgba(218,91,91,.06);
-    color: #dd8989;
-
-    padding: 6px 8px;
-
-    font-size: 8px;
-
+    border: 1px solid rgba(239, 68, 68, 0.25);
+    border-radius: var(--zev-radius-xs, 4px);
+    background: rgba(239, 68, 68, 0.08);
+    color: #fca5a5;
+    padding: 4px 8px;
+    font-size: 11px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-rb-item-remove:hover {
+    background: rgba(239, 68, 68, 0.20);
 }
 
 .zev-rb-no-items {
-    padding: 25px 10px;
-
+    padding: 24px 12px;
     text-align: center;
-
-    color: #657178;
-
-    font-size: 9px;
+    color: var(--muted);
+    font-size: 13px;
+    font-style: italic;
 }
 
-
-/* SOURCE TABS */
+/* =========================================
+   SOURCE TABS & LIST
+   ========================================= */
 
 .zev-rb-source-tabs {
     display: grid;
     grid-template-columns: 1fr 1fr;
-
     gap: 6px;
-
-    margin-bottom: 13px;
+    margin-bottom: 14px;
 }
 
 .zev-rb-source-tabs button {
-    padding: 8px;
-
-    border: 1px solid #213038;
-    border-radius: 7px;
-
-    background: #080e11;
-    color: #818e94;
-
-    font-size: 8px;
-    font-weight: 800;
-
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    color: var(--text-sec);
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-rb-source-tabs button.active {
-    border-color: rgba(53,184,91,.35);
-
-    background: rgba(53,184,91,.1);
-    color: #4ed36f;
+    border-color: var(--green-border);
+    background: var(--green-soft);
+    color: var(--green-text);
 }
 
-
-/* SOURCE LIST */
-
 .zev-rb-source-list {
-    max-height: 360px;
-
+    max-height: 380px;
     overflow-y: auto;
-
     display: flex;
     flex-direction: column;
-
-    gap: 7px;
-
-    color: #718087;
-
-    font-size: 9px;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 .zev-rb-source {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
 
-    gap: 10px;
-
-    padding: 10px;
-
-    border: 1px solid #1d2a30;
-    border-radius: 8px;
-
-    background: #070c0f;
+.zev-rb-source:hover {
+    border-color: var(--border-strong);
 }
 
 .zev-rb-source-info {
@@ -678,257 +649,266 @@
 
 .zev-rb-source strong {
     display: block;
-
-    color: #dce2e5;
-
-    font-size: 9px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-rb-source span {
     display: block;
-
-    margin-top: 3px;
-
-    color: #66737a;
-
-    font-size: 7px;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 11px;
 }
 
 .zev-rb-source button {
-    min-width: 52px;
-
-    padding: 6px 8px;
-
-    border: 1px solid rgba(53,184,91,.25);
-    border-radius: 6px;
-
-    background: rgba(53,184,91,.08);
-    color: #4ed36f;
-
-    font-size: 8px;
-    font-weight: 800;
-
+    min-width: 56px;
+    padding: 6px 10px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-xs, 4px);
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-rb-source button:hover {
+    background: rgba(46, 189, 104, 0.18);
 }
 
 .zev-rb-source button:disabled {
-    opacity: .45;
+    opacity: 0.45;
     cursor: default;
 }
 
+/* =========================================
+   PREVIEW WRAPPER / STUDIO CANVAS
+   ========================================= */
 
-/* PREVIEW */
-
-.zev-rb-preview {
-    min-height: 470px;
-
-    padding: 28px 25px;
-
-    background: #f5f5f3;
-    color: #17191a;
-
-    border-radius: 4px;
-
-    box-shadow:
-        0 15px 40px rgba(0,0,0,.25);
+.zev-rb-right {
+    background: #11141b;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 20px;
+    overflow-x: auto;
 }
 
-.zev-rb-preview-head {
-    padding-bottom: 14px;
-
-    border-bottom: 2px solid #222;
-}
-
-.zev-rb-preview-head h2 {
-    margin: 0;
-
-    color: #111;
-
-    font-size: 21px;
-}
-
-.zev-rb-preview-head span {
-    display: block;
-
-    margin-top: 5px;
-
-    color: #777;
-
-    font-size: 6px;
-    letter-spacing: 1px;
-}
-
-.zev-rb-preview-summary {
-    padding: 14px 0;
-
-    color: #444;
-
-    font-size: 8px;
-    line-height: 1.65;
-}
-
-.zev-rb-preview-section {
-    margin-top: 16px;
-}
-
-.zev-rb-preview-section h3 {
-    margin: 0 0 8px;
-
-    padding-bottom: 4px;
-
-    border-bottom: 1px solid #aaa;
-
-    color: #222;
-
-    font-size: 9px;
-    letter-spacing: .8px;
-}
-
-.zev-rb-preview-entry {
-    margin-bottom: 9px;
-}
-
-.zev-rb-preview-entry strong {
-    display: block;
-
-    color: #222;
-
-    font-size: 8px;
-}
-
-.zev-rb-preview-entry span,
-.zev-rb-preview-entry p {
-    color: #555;
-
-    font-size: 7px;
-    line-height: 1.5;
-}
-
-.zev-rb-preview-entry p {
-    margin: 3px 0 0;
-}
-
-
-/* MODAL */
+/* =========================================
+   MODAL
+   ========================================= */
 
 .zev-rb-modal {
     position: fixed;
     inset: 0;
-
     z-index: 999999;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     padding: 20px;
-
-    background: rgba(0,0,0,.75);
-
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
 }
 
 .zev-rb-modal-card {
-    width: min(450px,100%);
-
-    padding: 25px;
-
-    border: 1px solid #233139;
-    border-radius: 14px;
-
-    background: #090e12;
-
-    box-shadow:
-        0 25px 70px rgba(0,0,0,.5);
+    width: min(480px, 100%);
+    padding: 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--panel);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
 }
 
 .zev-rb-modal-card h2 {
-    margin: 7px 0;
-
-    color: #fff;
+    margin: 0 0 6px;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .zev-rb-modal-card > p {
-    margin: 0 0 18px;
-
-    color: #7d898f;
-
-    font-size: 9px;
-    line-height: 1.6;
+    margin: 0 0 16px;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .zev-rb-modal-actions {
     display: flex;
     justify-content: flex-end;
-
-    gap: 7px;
+    gap: 8px;
 }
 
-
-/* TOAST */
+/* =========================================
+   TOAST
+   ========================================= */
 
 .zev-rb-toast {
     position: fixed;
-
-    right: 22px;
-    bottom: 22px;
-
+    right: 24px;
+    bottom: 24px;
     z-index: 1000000;
-
-    max-width: 350px;
-
-    padding: 12px 15px;
-
-    border: 1px solid #26353b;
-    border-radius: 8px;
-
-    background: #10181b;
-
-    color: #dce2e5;
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,.4);
-
-    font-size: 10px;
+    max-width: 360px;
+    padding: 12px 18px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--surface);
+    color: var(--text);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .zev-rb-toast.success {
-    border-color: rgba(53,184,91,.5);
+    border-color: var(--green);
+    color: var(--green-text);
 }
 
 .zev-rb-toast.error {
-    border-color: rgba(225,107,107,.55);
-
-    color: #efaaaa;
+    border-color: rgba(239, 68, 68, 0.6);
+    color: #fca5a5;
 }
 
-
-/* IMPORTANT */
-
+/* Hidden utility */
 .zev-rb-page [hidden] {
     display: none !important;
 }
 
+/* =========================================
+   MANUAL CAREER ENTRY
+   ========================================= */
 
-/* RESPONSIVE */
+.zev-rb-manual-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 14px;
+    padding: 12px 16px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+}
+
+.zev-rb-manual-bar > div {
+    min-width: 0;
+}
+
+.zev-rb-manual-bar strong {
+    display: block;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.zev-rb-manual-bar span {
+    display: block;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.zev-rb-manual-bar button {
+    flex: 0 0 auto;
+    min-height: 34px;
+    padding: 0 12px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-xs, 4px);
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-rb-manual-bar button:hover {
+    background: rgba(46, 189, 104, 0.18);
+}
+
+.zev-rb-manual-card {
+    width: min(720px, 100%);
+    max-height: calc(100vh - 40px);
+    overflow-y: auto;
+}
+
+.zev-rb-manual-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 14px;
+    margin-top: 16px;
+}
+
+.zev-rb-manual-form .zev-rb-field {
+    margin-bottom: 14px;
+}
+
+.zev-rb-manual-form .zev-rb-field.full {
+    grid-column: 1 / -1;
+}
+
+.zev-rb-manual-form input,
+.zev-rb-manual-form textarea,
+.zev-rb-manual-form select {
+    width: 100%;
+    outline: none;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.zev-rb-manual-form input,
+.zev-rb-manual-form select {
+    min-height: 40px;
+    padding: 0 12px;
+}
+
+.zev-rb-manual-form textarea {
+    min-height: 90px;
+    padding: 10px 12px;
+    line-height: 1.5;
+    resize: vertical;
+}
+
+.zev-rb-manual-form input:focus,
+.zev-rb-manual-form textarea:focus,
+.zev-rb-manual-form select:focus {
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(46, 189, 104, 0.15);
+}
+
+.zev-rb-manual-form select,
+.zev-rb-manual-form select option {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+}
+
+.zev-rb-manual-required {
+    color: var(--green-text);
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
 
 @media (max-width: 1100px) {
-
     .zev-rb-sidebar {
-        width: 205px;
-        min-width: 205px;
+        width: 200px;
+        min-width: 200px;
     }
 
     .zev-rb-grid {
-        grid-template-columns:
-            minmax(0,1fr)
-            minmax(300px,.75fr);
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 0.8fr);
     }
 }
 
-
 @media (max-width: 850px) {
-
     .zev-rb-grid {
         grid-template-columns: 1fr;
     }
@@ -938,9 +918,7 @@
     }
 }
 
-
-@media (max-width: 760px) {
-
+@media (max-width: 768px) {
     .zev-rb-page {
         display: block;
     }
@@ -949,7 +927,6 @@
         width: 100%;
         min-width: 0;
         min-height: auto;
-
         padding: 16px;
     }
 
@@ -959,7 +936,6 @@
 
     .zev-rb-nav {
         flex-direction: row;
-
         overflow-x: auto;
     }
 
@@ -968,7 +944,7 @@
     }
 
     .zev-rb-main {
-        padding: 22px 15px 45px;
+        padding: 24px 16px 48px;
     }
 
     .zev-rb-header,
@@ -986,164 +962,7 @@
     }
 }
 
-
-@media (max-width: 480px) {
-
-    .zev-rb-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .zev-rb-source-tabs {
-        grid-template-columns: 1fr;
-    }
-}
-
-
-/* =========================================
-   MANUAL CAREER ENTRY
-========================================= */
-
-.zev-rb-manual-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-
-    margin: 0 0 13px;
-    padding: 11px 12px;
-
-    border: 1px solid rgba(53,184,91,.22);
-    border-radius: 9px;
-
-    background:
-        linear-gradient(
-            135deg,
-            rgba(53,184,91,.08),
-            rgba(53,184,91,.025)
-        );
-}
-
-.zev-rb-manual-bar > div {
-    min-width: 0;
-}
-
-.zev-rb-manual-bar strong {
-    display: block;
-
-    color: #e9edef;
-
-    font-size: 9px;
-}
-
-.zev-rb-manual-bar span {
-    display: block;
-
-    margin-top: 3px;
-
-    color: #738087;
-
-    font-size: 7px;
-    line-height: 1.5;
-}
-
-.zev-rb-manual-bar button {
-    flex: 0 0 auto;
-
-    min-height: 34px;
-    padding: 7px 10px;
-
-    border: 1px solid rgba(53,184,91,.35);
-    border-radius: 7px;
-
-    background: rgba(53,184,91,.11);
-    color: #4ed36f;
-
-    font-family: inherit;
-    font-size: 8px;
-    font-weight: 850;
-
-    cursor: pointer;
-}
-
-.zev-rb-manual-bar button:hover {
-    background: rgba(53,184,91,.18);
-}
-
-.zev-rb-manual-card {
-    width: min(720px,100%);
-    max-height: calc(100vh - 40px);
-
-    overflow-y: auto;
-}
-
-.zev-rb-manual-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 13px;
-
-    margin-top: 18px;
-}
-
-.zev-rb-manual-form .zev-rb-field {
-    margin-bottom: 14px;
-}
-
-.zev-rb-manual-form .zev-rb-field.full {
-    grid-column: 1 / -1;
-}
-
-.zev-rb-manual-form input,
-.zev-rb-manual-form textarea,
-.zev-rb-manual-form select {
-    width: 100%;
-
-    outline: none;
-
-    border: 1px solid #223138;
-    border-radius: 8px;
-
-    background: #070c0f;
-    color: #f3f6f7;
-
-    font-family: inherit;
-    font-size: 10px;
-}
-
-.zev-rb-manual-form input,
-.zev-rb-manual-form select {
-    min-height: 41px;
-    padding: 0 12px;
-}
-
-.zev-rb-manual-form textarea {
-    min-height: 92px;
-    padding: 11px 12px;
-
-    line-height: 1.6;
-    resize: vertical;
-}
-
-.zev-rb-manual-form input:focus,
-.zev-rb-manual-form textarea:focus,
-.zev-rb-manual-form select:focus {
-    border-color: rgba(53,184,91,.65);
-
-    box-shadow:
-        0 0 0 3px rgba(53,184,91,.06);
-}
-
-.zev-rb-manual-form select,
-.zev-rb-manual-form select option {
-    background: #081014 !important;
-    color: #fff !important;
-}
-
-.zev-rb-manual-required {
-    color: #4ed36f;
-}
-
 @media (max-width: 600px) {
-
     .zev-rb-manual-bar {
         align-items: stretch;
         flex-direction: column;
@@ -1161,6 +980,27 @@
         grid-column: auto;
     }
 }
+
+@media (max-width: 480px) {
+    .zev-rb-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .zev-rb-source-tabs {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zev-rb-create-btn,
+    .zev-rb-export,
+    .zev-rb-secondary,
+    .zev-rb-source button,
+    .zev-rb-nav a {
+        transition: none !important;
+    }
+}
+
 
 /* =========================================================
    ZEVQYN ATS RESUME — COMPACT PROFESSIONAL LAYOUT
@@ -1581,9 +1421,11 @@
     line-height: 1.4;
     text-align: right;
 }
+
 </style>
 
 <script data-wp-block-html="js">
+﻿
 /* =========================================
    ZEVQYN RESUME BUILDER
 ========================================= */
@@ -6867,6 +6709,7 @@ if (
     zevRbInitialize();
 
 }
+
 </script>
 
 <div class="zev-rb-page" id="zevqyn-resume-builder">
@@ -7645,4 +7488,5 @@ if (
     </div>
 
 </div>
+
 <!-- /wp:html -->

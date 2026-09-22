@@ -1,0 +1,339 @@
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<div id="zevqyn-portfolio-app" class="zev-pf-app">
+
+    <div class="zev-pf-shell">
+
+        <!-- Header -->
+        <div class="zev-pf-header">
+            <div>
+                <div class="zev-pf-eyebrow">ZEVQYN CAREER</div>
+                <h1>Portfolio Builder</h1>
+                <p>
+                    Turn your projects, skills, education and achievements
+                    into a professional public portfolio.
+                </p>
+            </div>
+
+           <div class="zev-pf-header-actions">
+    <button type="button" class="zev-pf-btn zev-pf-btn-secondary" id="zevqyn-pf-new">
+        + New Portfolio
+    </button>
+
+    <button type="button" class="zev-pf-btn zev-pf-btn-danger" id="zevqyn-pf-delete">
+        Delete Portfolio
+    </button>
+
+    <button type="button" class="zev-pf-btn zev-pf-btn-primary" id="zevqyn-pf-save">
+        Save Portfolio
+    </button>
+</div>
+</div>
+
+        <!-- Status -->
+        <div id="zevqyn-pf-status" class="zev-pf-status" hidden="">
+        </div>
+
+        <!-- Portfolio Selector -->
+        <div class="zev-pf-toolbar">
+            <div class="zev-pf-field zev-pf-toolbar-field">
+                <label for="zevqyn-pf-selector">
+                    Your Portfolios
+                </label>
+
+                <select id="zevqyn-pf-selector">
+                    <option value="">Loading portfolios...</option>
+                </select>
+            </div>
+
+            <div class="zev-pf-toolbar-meta">
+                <span id="zevqyn-pf-publish-badge" class="zev-pf-badge zev-pf-badge-draft">
+                    Draft
+                </span>
+
+                <button type="button" id="zevqyn-pf-open-public" class="zev-pf-text-btn" hidden="">
+                    Open Public Portfolio ↗
+                </button>
+            </div>
+        </div>
+
+        <!-- Main Layout -->
+        <div class="zev-pf-grid">
+
+            <!-- LEFT: Editor -->
+            <div class="zev-pf-editor">
+
+                <!-- Portfolio Details -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">01</span>
+                            <h2>Portfolio Details</h2>
+                        </div>
+                        <p>Your public identity and introduction.</p>
+                    </div>
+
+                    <div class="zev-pf-form-grid">
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-name">
+                                Display Name
+                            </label>
+                            <input id="zevqyn-pf-name" type="text" maxlength="200" placeholder="Hussnain Ahmad">
+                        </div>
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-headline">
+                                Professional Headline
+                            </label>
+                            <input id="zevqyn-pf-headline" type="text" maxlength="200" placeholder="Full Stack Developer">
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-slug">
+                                Public Portfolio Slug
+                            </label>
+
+                            <div class="zev-pf-slug-row">
+                                <span>zevqyn.free.je/p/</span>
+                                <input id="zevqyn-pf-slug" type="text" maxlength="100" placeholder="hussnain-ahmad">
+                            </div>
+
+                            <small>
+                                Letters, numbers, hyphens and underscores only.
+                            </small>
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-about">
+                                About Me
+                            </label>
+                            <textarea id="zevqyn-pf-about" maxlength="2000" rows="6" placeholder="Write a short professional introduction..."></textarea>
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-image">
+                                Profile Image URL
+                            </label>
+                            <input id="zevqyn-pf-image" type="url" maxlength="500" placeholder="https://...">
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Links -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">02</span>
+                            <h2>Professional Links</h2>
+                        </div>
+                        <p>Add the places people can find your work.</p>
+                    </div>
+
+                    <div class="zev-pf-form-grid">
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-github">
+                                GitHub
+                            </label>
+                            <input id="zevqyn-pf-github" type="url" placeholder="https://github.com/...">
+                        </div>
+
+                        <div class="zev-pf-field">
+                            <label for="zevqyn-pf-linkedin">
+                                LinkedIn
+                            </label>
+                            <input id="zevqyn-pf-linkedin" type="url" placeholder="https://linkedin.com/in/...">
+                        </div>
+
+                        <div class="zev-pf-field zev-pf-field-full">
+                            <label for="zevqyn-pf-website">
+                                Website
+                            </label>
+                            <input id="zevqyn-pf-website" type="url" placeholder="https://...">
+                        </div>
+
+                    </div>
+                </section>
+
+                <!-- Content -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">03</span>
+                            <h2>Portfolio Content</h2>
+                        </div>
+                        <p>
+                            Reuse career records already saved in ZEVQYN.
+                        </p>
+                    </div>
+
+                    <div class="zev-pf-tabs">
+                        <button type="button" class="zev-pf-tab active" data-pf-tab="projects">
+                            Projects
+                        </button>
+
+                        <button type="button" class="zev-pf-tab" data-pf-tab="skills">
+                            Skills
+                        </button>
+
+                        <button type="button" class="zev-pf-tab" data-pf-tab="education">
+                            Education
+                        </button>
+
+                        <button type="button" class="zev-pf-tab" data-pf-tab="certificates">
+                            Certificates
+                        </button>
+                    </div>
+
+                    <div id="zevqyn-pf-items" class="zev-pf-items">
+                        <div class="zev-pf-empty">
+                            Select or create a portfolio first.
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Publishing -->
+                <section class="zev-pf-card">
+                    <div class="zev-pf-card-heading">
+                        <div>
+                            <span class="zev-pf-step">04</span>
+                            <h2>Publishing &amp; Privacy</h2>
+                        </div>
+                        <p>Control what visitors can see.</p>
+                    </div>
+
+                    <div class="zev-pf-toggle-list">
+
+                        <label class="zev-pf-toggle-row">
+                            <div>
+                                <strong>Publish Portfolio</strong>
+                                <span>
+                                    Make the portfolio publicly accessible.
+                                </span>
+                            </div>
+
+                            <input id="zevqyn-pf-published" type="checkbox">
+                        </label>
+
+                        <label class="zev-pf-toggle-row">
+                            <div>
+                                <strong>Show Contact Links</strong>
+                                <span>
+                                    Display GitHub, LinkedIn and website.
+                                </span>
+                            </div>
+
+                            <input id="zevqyn-pf-contact" type="checkbox">
+                        </label>
+
+                        <label class="zev-pf-toggle-row">
+                            <div>
+                                <strong>Show Certificates</strong>
+                                <span>
+                                    Include attached certificates publicly.
+                                </span>
+                            </div>
+
+                            <input id="zevqyn-pf-certificates-toggle" type="checkbox">
+                        </label>
+
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- RIGHT: Preview -->
+            <aside class="zev-pf-preview-column">
+
+                <div class="zev-pf-preview-top">
+                    <div>
+                        <span class="zev-pf-preview-label">
+                            LIVE PREVIEW
+                        </span>
+                        <h3>Portfolio Preview</h3>
+                    </div>
+                </div>
+
+                <div id="zevqyn-pf-preview" class="zev-pf-preview">
+
+                    <div class="zev-pf-preview-hero">
+
+                        <div id="zevqyn-pf-preview-avatar" class="zev-pf-avatar">
+                            Z
+                        </div>
+
+                        <h2 id="zevqyn-pf-preview-name">
+                            Your Name
+                        </h2>
+
+                        <p id="zevqyn-pf-preview-headline" class="zev-pf-preview-headline">
+                            Your professional headline
+                        </p>
+
+                        <div id="zevqyn-pf-preview-links" class="zev-pf-preview-links">
+                        </div>
+                    </div>
+
+                    <div class="zev-pf-preview-section">
+                        <span class="zev-pf-preview-kicker">
+                            ABOUT
+                        </span>
+
+                        <p id="zevqyn-pf-preview-about">
+                            Tell visitors about yourself, your experience
+                            and what you are building.
+                        </p>
+                    </div>
+
+                    <div id="zevqyn-pf-preview-content">
+                    </div>
+
+                </div>
+
+            </aside>
+
+        </div>
+
+    </div>
+
+    <!-- Create Portfolio Modal -->
+    <div id="zevqyn-pf-modal" class="zev-pf-modal" hidden="">
+
+        <div class="zev-pf-modal-backdrop"></div>
+
+        <div class="zev-pf-modal-card">
+
+            <div class="zev-pf-modal-heading">
+                <div>
+                    <span class="zev-pf-eyebrow">NEW PORTFOLIO</span>
+                    <h2>Create Portfolio</h2>
+                </div>
+
+                <button type="button" id="zevqyn-pf-modal-close" class="zev-pf-modal-close">
+                    ×
+                </button>
+            </div>
+
+            <div class="zev-pf-field">
+                <label for="zevqyn-pf-create-name">
+                    Display Name
+                </label>
+                <input id="zevqyn-pf-create-name" type="text" maxlength="200" placeholder="Hussnain Ahmad">
+            </div>
+
+            <div class="zev-pf-field">
+                <label for="zevqyn-pf-create-slug">
+                    Portfolio Slug
+                </label>
+                <input id="zevqyn-pf-create-slug" type="text" maxlength="100" placeholder="hussnain-ahmad">
+            </div>
+
+            <button type="button" id="zevqyn-pf-create" class="zev-pf-btn zev-pf-btn-primary zev-pf-btn-full">
+                Create Portfolio
+            </button>
+
+        </div>
+    </div>
+
+</div>
