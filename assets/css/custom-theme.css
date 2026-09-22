@@ -1,14 +1,23 @@
+/* ==========================================================================
+   ZEVQYN V1.1 DESIGN FOUNDATION & CUSTOMIZER STYLES
+   Location: WordPress Admin -> Appearance -> Customize -> Additional CSS
+   Authority: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   0. WORDPRESS THEME OVERRIDES (PRESERVED FROM V1.0)
+   -------------------------------------------------------------------------- */
 .ct-map-icon img {
 	vertical-align: middle;
 }
 
-/* Hide title only on ZEVQYN Login page */
+/* Hide automatic page title on ZEVQYN Login page */
 body.page-id-1237 .entry-title,
 body.page-id-1237 .page-title {
     display: none !important;
 }
 
-/* Hide automatic WordPress title on Register page */
+/* Hide automatic page title on Register page */
 body.page-id-1251 .hero-section,
 body.page-id-1251 .page-title,
 body.page-id-1251 .entry-title,
@@ -32,4 +41,232 @@ body.page-id-1269 .ct-header-cta,
 body.page-id-1269 [class*="header"] a[href*="register"],
 body.page-id-1269 [class*="header"] a[href*="get-started"] {
     display: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. GLOBAL DESIGN TOKENS (CSS CUSTOM PROPERTIES)
+   -------------------------------------------------------------------------- */
+:root {
+  /* Surface Hierarchy (Deep Obsidian / Charcoal) */
+  --zev-bg-canvas: #090b0e;        /* Base page canvas */
+  --zev-bg-panel: #0f1217;         /* Level 1: Sidebars, toolbars, section strips */
+  --zev-bg-surface: #151921;       /* Level 2: Workspaces, cards, rows */
+  --zev-bg-elevated: #1b202a;      /* Level 3: Modals, popovers, dropdowns */
+  --zev-bg-subtle: #222834;        /* Level 4: Active item highlights, hover fill */
+  --zev-bg-input: #0c0f14;         /* Inset field backgrounds */
+
+  /* Calibrated ZEVQYN Brand Green */
+  --zev-green-primary: #2ebd68;    /* Primary brand action green */
+  --zev-green-hover: #26a75a;      /* Hover state */
+  --zev-green-active: #1f8f4c;     /* Pressed state */
+  --zev-green-faint: rgba(46, 189, 104, 0.08);   /* Subtle tag backgrounds */
+  --zev-green-subtle: rgba(46, 189, 104, 0.16);  /* Selected item tint */
+  --zev-green-border: rgba(46, 189, 104, 0.28);  /* Active element border */
+  --zev-green-text: #41cf7b;       /* High-contrast green for dark backgrounds */
+
+  /* Neutral Typography Scales (WCAG 2.1 AA Compliant) */
+  --zev-text-primary: #f4f6f8;     /* 100% white-equivalent: Titles, headings */
+  --zev-text-secondary: #c0c7d2;   /* 85% contrast: Body text, form labels */
+  --zev-text-muted: #828c9a;       /* 60% contrast: Metadata, captions, timestamps */
+  --zev-text-tertiary: #525a66;    /* 40% contrast: Placeholders, disabled text */
+  --zev-text-inverse: #090b0e;     /* High-contrast text on bright green buttons */
+
+  /* Structural 1px Borders (Replacing diffuse neon glow) */
+  --zev-border-faint: rgba(255, 255, 255, 0.06);   /* Dividers & quiet rows */
+  --zev-border-default: rgba(255, 255, 255, 0.10); /* Standard cards and panels */
+  --zev-border-strong: rgba(255, 255, 255, 0.18);  /* Active / hover card borders */
+  --zev-border-focus: var(--zev-green-primary);      /* Focus indicator */
+
+  /* Semantic Status & Accents */
+  --zev-color-info: #06b6d4;
+  --zev-color-info-bg: rgba(6, 182, 212, 0.10);
+  --zev-color-success: #10b981;
+  --zev-color-success-bg: rgba(16, 185, 129, 0.10);
+  --zev-color-warning: #f59e0b;
+  --zev-color-warning-bg: rgba(245, 158, 11, 0.10);
+  --zev-color-danger: #ef4444;
+  --zev-color-danger-bg: rgba(239, 68, 68, 0.10);
+  --zev-color-ai: #a855f7;
+  --zev-color-ai-bg: rgba(168, 85, 247, 0.10);
+
+  /* Typography Stacks */
+  --zev-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --zev-font-mono: 'JetBrains Mono', 'Fira Code', Menlo, Monaco, Consolas, monospace;
+
+  /* Font Sizes */
+  --zev-text-xs: 0.75rem;     /* 12px */
+  --zev-text-sm: 0.8125rem;   /* 13px */
+  --zev-text-base: 0.875rem;  /* 14px */
+  --zev-text-md: 0.9375rem;   /* 15px */
+  --zev-text-lg: 1.125rem;    /* 18px */
+  --zev-text-xl: 1.375rem;    /* 22px */
+  --zev-text-2xl: 1.75rem;    /* 28px */
+  --zev-text-3xl: 2.25rem;    /* 36px */
+  --zev-text-4xl: 3.0rem;     /* 48px */
+
+  /* Standard Spacing Scale (4px Baseline) */
+  --zev-space-1: 4px;
+  --zev-space-2: 8px;
+  --zev-space-3: 12px;
+  --zev-space-4: 16px;
+  --zev-space-6: 24px;
+  --zev-space-8: 32px;
+  --zev-space-12: 48px;
+  --zev-space-16: 64px;
+  --zev-space-24: 96px;
+
+  /* Standardized Border Radii Hierarchy */
+  --zev-radius-xs: 4px;       /* Inner chips, micro-indicators */
+  --zev-radius-sm: 6px;       /* Form controls, buttons, tooltips, tags */
+  --zev-radius-md: 10px;      /* Standard cards, list containers, dropdowns */
+  --zev-radius-lg: 14px;      /* Modals, large panels, feature blocks */
+  --zev-radius-full: 9999px;  /* Pill badges, avatars */
+
+  /* Directional Shadows (Calm Depth, Zero Neon Bloom) */
+  --zev-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --zev-shadow-md: 0 4px 14px rgba(0, 0, 0, 0.45);
+  --zev-shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.60);
+  --zev-shadow-modal: 0 24px 60px rgba(0, 0, 0, 0.85);
+  --zev-shadow-inner: inset 0 1px 1px rgba(255, 255, 255, 0.04);
+
+  /* Physics-Based Motion Tokens */
+  --zev-ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --zev-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --zev-duration-micro: 120ms;
+  --zev-duration-standard: 200ms;
+  --zev-duration-macro: 320ms;
+}
+
+/* --------------------------------------------------------------------------
+   2. ACCESSIBILITY & FOCUS FOUNDATION
+   -------------------------------------------------------------------------- */
+/* Unify focus-visible across all interactive controls */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--zev-green-primary) !important;
+  outline-offset: 2px !important;
+}
+
+/* Support user OS preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   3. SHARED COMPONENT PRIMITIVES
+   -------------------------------------------------------------------------- */
+/* Button Primitives with Tactile Physics */
+.zev-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--zev-space-2);
+  height: 38px;
+  padding: 0 var(--zev-space-4);
+  font-family: var(--zev-font-sans);
+  font-size: var(--zev-text-base);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border-radius: var(--zev-radius-sm);
+  border: 1px solid transparent;
+  cursor: pointer;
+  outline: none;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: transform var(--zev-duration-micro) var(--zev-ease-spring),
+              background var(--zev-duration-standard) ease,
+              border-color var(--zev-duration-standard) ease,
+              box-shadow var(--zev-duration-standard) ease;
+}
+
+.zev-btn:hover {
+  transform: translateY(-1px);
+}
+
+.zev-btn:active {
+  transform: scale(0.985);
+}
+
+.zev-btn-primary {
+  background: var(--zev-green-primary);
+  color: var(--zev-text-inverse) !important;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.zev-btn-primary:hover {
+  background: var(--zev-green-hover);
+  box-shadow: 0 3px 10px rgba(46, 189, 104, 0.22);
+}
+
+.zev-btn-secondary {
+  background: var(--zev-bg-subtle);
+  color: var(--zev-text-primary) !important;
+  border-color: var(--zev-border-default);
+}
+
+.zev-btn-secondary:hover {
+  background: var(--zev-bg-elevated);
+  border-color: var(--zev-border-strong);
+}
+
+/* Card Surface Primitive (Restrained, Crisp 1px Border) */
+.zev-card {
+  background: var(--zev-bg-surface);
+  border: 1px solid var(--zev-border-default);
+  border-radius: var(--zev-radius-md);
+  box-shadow: var(--zev-shadow-md), var(--zev-shadow-inner);
+  transition: border-color var(--zev-duration-standard) ease,
+              transform var(--zev-duration-standard) var(--zev-ease-spring),
+              box-shadow var(--zev-duration-standard) ease;
+}
+
+.zev-card:hover {
+  border-color: var(--zev-border-strong);
+}
+
+/* Subtle Card Lift for Interactive Entities */
+.zev-card-interactive:hover {
+  transform: translateY(-1px);
+  border-color: var(--zev-border-strong);
+  box-shadow: var(--zev-shadow-lg);
+}
+
+/* Clean Badge / Tag Primitive */
+.zev-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zev-space-1);
+  height: 22px;
+  padding: 0 var(--zev-space-2);
+  font-size: var(--zev-text-xs);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  border-radius: var(--zev-radius-xs);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.zev-badge-green {
+  background: var(--zev-green-faint);
+  color: var(--zev-green-text);
+  border: 1px solid var(--zev-green-border);
+}
+
+.zev-badge-neutral {
+  background: var(--zev-bg-subtle);
+  color: var(--zev-text-secondary);
+  border: 1px solid var(--zev-border-default);
 }
