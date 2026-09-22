@@ -1,21 +1,24 @@
-﻿
-/* ================================
-   ZEVQYN REGISTER FORM
-================================ */
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED REGISTER STYLES
+   Scope: .zevqyn-register-card
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
 
 .zevqyn-register-card {
     width: 100%;
-    max-width: 620px;
+    max-width: 480px;
+    margin: 24px auto 0 auto;
+    padding: 32px;
     box-sizing: border-box;
-    background: #080d13;
-    border: 1px solid rgba(70, 95, 200, 0.45);
-    border-radius: 24px;
-    padding: 40px 42px;
-    margin: 25px 0 0 0;
 
-    box-shadow:
-        0 20px 60px rgba(0,0,0,0.35),
-        0 0 30px rgba(40,80,255,0.04);
+    background: var(--zev-bg-panel, #0f1217);
+    border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    border-radius: var(--zev-radius-md, 10px);
+    box-shadow: var(--zev-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.60)),
+                var(--zev-shadow-inner, inset 0 1px 1px rgba(255, 255, 255, 0.04));
+
+    color: var(--zev-text-primary, #f4f6f8);
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
 }
 
 .zevqyn-register-card * {
@@ -23,192 +26,112 @@
 }
 
 .zevqyn-register-card .zevqyn-field {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .zevqyn-register-card label {
     display: block;
-    color: #ffffff;
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 9px;
+    margin-bottom: 8px;
+    color: var(--zev-text-secondary, #c0c7d2);
+    font-size: var(--zev-text-sm, 13px);
+    font-weight: 500;
 }
 
 .zevqyn-register-card input {
     width: 100%;
-    height: 58px;
-    display: block;
-
-    background: #14181d;
-    color: #ffffff;
-
-    border: 1px solid #343a40;
-    border-radius: 13px;
-
-    padding: 0 17px;
-
+    height: 42px;
+    padding: 0 14px;
+    background: var(--zev-bg-input, #0c0f14);
+    color: var(--zev-text-primary, #f4f6f8);
+    border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    border-radius: var(--zev-radius-sm, 6px);
     font-family: inherit;
-    font-size: 16px;
-
+    font-size: var(--zev-text-base, 14px);
     outline: none;
-
-    transition:
-        border-color 0.2s ease,
-        box-shadow 0.2s ease,
-        background 0.2s ease;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease,
+                background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zevqyn-register-card input::placeholder {
-    color: #7d8591;
+    color: var(--zev-text-tertiary, #525a66);
 }
 
 .zevqyn-register-card input:focus {
-    background: #161b20;
-    border-color: #36b45a;
-    box-shadow: 0 0 0 3px rgba(54,180,90,0.12);
+    border-color: var(--zev-green-primary, #2ebd68);
+    box-shadow: 0 0 0 1px var(--zev-green-primary, #2ebd68);
+    background: #0f131a;
 }
 
-
-/* ================================
-   CREATE ACCOUNT BUTTON
-================================ */
-
 .zevqyn-register-btn {
-    display: block;
     width: 100%;
-
-    margin-top: 8px;
-
-    padding: 16px 20px;
-
-    background: #36b45a;
-    color: #ffffff;
-
+    height: 42px;
+    margin-top: 10px;
+    background: var(--zev-green-primary, #2ebd68);
+    color: var(--zev-text-inverse, #090b0e);
     border: none;
-    border-radius: 13px;
-
+    border-radius: var(--zev-radius-sm, 6px);
     font-family: inherit;
-    font-size: 17px;
-    font-weight: 700;
-
+    font-size: var(--zev-text-base, 14px);
+    font-weight: 600;
     cursor: pointer;
-
-    box-shadow:
-        0 10px 25px rgba(54,180,90,0.16);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                background var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .zevqyn-register-btn:hover {
-    background: #2fa64f;
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 14px 30px rgba(54,180,90,0.24);
+    background: var(--zev-green-hover, #26a75a);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 189, 104, 0.25);
 }
 
 .zevqyn-register-btn:active {
-    transform: translateY(0);
+    transform: scale(0.985);
+}
+
+.zevqyn-register-btn:focus-visible {
+    outline: 2px solid var(--zev-green-primary, #2ebd68) !important;
+    outline-offset: 2px !important;
 }
 
 .zevqyn-register-btn:disabled {
-    opacity: 0.65;
+    opacity: 0.55;
     cursor: not-allowed;
-    transform: none;
+    transform: none !important;
 }
 
-
-/* ================================
-   SUCCESS / ERROR MESSAGE
-================================ */
-
-#zevqyn-register-message {
-    display: none;
-
-    margin-top: 16px;
-    padding: 12px 14px;
-
-    border-radius: 10px;
-
+.zevqyn-register-card .zevqyn-auth-links {
+    margin-top: 20px;
     text-align: center;
-
-    font-size: 14px;
-    line-height: 1.5;
+    font-size: var(--zev-text-sm, 13px);
+    color: var(--zev-text-muted, #828c9a);
 }
 
-#zevqyn-register-message.success {
-    display: block;
-
-    color: #63df83;
-
-    background: rgba(54,180,90,0.10);
-
-    border:
-        1px solid rgba(54,180,90,0.25);
-}
-
-#zevqyn-register-message.error {
-    display: block;
-
-    color: #ff7b7b;
-
-    background: rgba(255,80,80,0.08);
-
-    border:
-        1px solid rgba(255,80,80,0.20);
-}
-
-
-/* ================================
-   LOGIN TEXT
-================================ */
-
-.zevqyn-register-login {
-    margin-top: 25px;
-
-    color: #a7adb7;
-
-    text-align: center;
-    font-size: 15px;
-}
-
-.zevqyn-register-login a {
-    color: #36b45a;
-
-    font-weight: 600;
-
+.zevqyn-register-card .zevqyn-auth-links a {
+    color: var(--zev-green-text, #41cf7b);
     text-decoration: none;
-
-    margin-left: 3px;
+    font-weight: 500;
 }
 
-.zevqyn-register-login a:hover {
+.zevqyn-register-card .zevqyn-auth-links a:hover {
     text-decoration: underline;
 }
 
+.zevqyn-register-card .zevqyn-auth-links a:focus-visible {
+    outline: 2px solid var(--zev-green-primary, #2ebd68) !important;
+    outline-offset: 2px !important;
+}
 
-/* ================================
-   MOBILE
-================================ */
+#zevqyn-register-message {
+    border-radius: var(--zev-radius-sm, 6px);
+}
 
-@media (max-width: 768px) {
-
-    .zevqyn-register-card {
-        max-width: 100%;
-
-        padding: 28px 22px;
-
-        border-radius: 20px;
-    }
-
-    .zevqyn-register-card input {
-        height: 54px;
-    }
-
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
     .zevqyn-register-btn {
-        padding: 15px 18px;
+        transition: none !important;
+        transform: none !important;
     }
 }
