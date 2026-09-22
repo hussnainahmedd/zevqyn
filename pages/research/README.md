@@ -1,17 +1,25 @@
-﻿# Research Hub
+# Research Hub Page
 
-**Production URL:** https://zevqyn.free.je/research/
-**WordPress Slug:** `research`
+**Production URL:** https://zevqyn.free.je/research/  
+**WordPress Slug:** `research`  
+**Version:** V1.1 (Refined Research Catalog)
+
+---
 
 ## Description
 
-Research workspaces hub. Custom SPA with workspace CRUD, real-time search/sort, document count tracking, and creation modal.
+The central workspace catalog for research projects:
+- Real-time client-side search and multi-criteria sorting
+- Dynamic document counts per workspace
+- Workspace creation modal with validation
+- Direct launch routing to `/research-workspace/?id=...`
+
+---
 
 ## Files
 
-- `wordpress-blocks.html` â€” Full WordPress block source (original export, source of truth)
-- `script.js` â€” Extracted JavaScript (for reference/readability)
-- `style.css` â€” Extracted CSS (for reference/readability)
-- `content.html` â€” Extracted HTML structure (for reference/readability)
-
-> **Note:** The separated files (script.js, style.css, content.html) are extracted from the wordpress-blocks.html for readability. The wordpress-blocks.html is the authoritative source that runs in the WordPress environment. Do not modify the separated files expecting changes to appear on the production site.
+- `wordpress-blocks.html` — Full WordPress Custom HTML block source (authoritative source)
+- `content.html` — Clean semantic HTML structure
+- `style.css` — Refined catalog stylesheet with V1.1 design tokens
+- `script.js` — Workspace CRUD, search, and filtering engine (preserved intact)
+- `MIGRATION_NOTES_V1_1.md` — Step-by-step WordPress deployment instructions

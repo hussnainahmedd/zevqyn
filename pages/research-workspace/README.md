@@ -1,17 +1,27 @@
-﻿# Research Workspace
+# Research Workspace Page
 
-**Production URL:** https://zevqyn.free.je/research-workspace/
-**WordPress Slug:** `research-workspace`
+**Production URL:** https://zevqyn.free.je/research-workspace/  
+**WordPress Slug:** `research-workspace`  
+**Version:** V1.1 (Refined Research Studio)  
+**Risk Level:** HIGH RISK (CSS-First Refinement)
+
+---
 
 ## Description
 
-Core research workspace. Custom SPA with document upload/download/delete, RAG-powered AI chat with source citations, AI study tools (summary, key points, questions, flashcards), and research-to-project conversion.
+The flagship AI document intelligence environment for ZEVQYN:
+- Multi-document upload (PDF, DOCX, TXT, MD) with automatic indexing
+- Grounded conversational search using Google Gemini & pgvector
+- Verifiable citation pills with exact page numbers
+- Generative study tools (Summary, Key Points, Questions, interactive Flashcards)
+- Research-to-project translation proposal generator
+
+---
 
 ## Files
 
-- `wordpress-blocks.html` â€” Full WordPress block source (original export, source of truth)
-- `script.js` â€” Extracted JavaScript (for reference/readability)
-- `style.css` â€” Extracted CSS (for reference/readability)
-- `content.html` â€” Extracted HTML structure (for reference/readability)
-
-> **Note:** The separated files (script.js, style.css, content.html) are extracted from the wordpress-blocks.html for readability. The wordpress-blocks.html is the authoritative source that runs in the WordPress environment. Do not modify the separated files expecting changes to appear on the production site.
+- `wordpress-blocks.html` — Full WordPress Custom HTML block source (authoritative source)
+- `content.html` — Clean semantic HTML structure
+- `style.css` — High-performance studio stylesheet with V1.1 design tokens
+- `script.js` — 3,202 lines of core RAG chat, document indexing, and study tool engine (preserved 100% intact)
+- `MIGRATION_NOTES_V1_1.md` — Step-by-step WordPress deployment instructions

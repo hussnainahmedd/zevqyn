@@ -1,7 +1,18 @@
-﻿
-/* =========================================
-   ZEVQYN PROJECT WORKSPACE
-========================================= */
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED PROJECT WORKSPACE STYLES
+   Scope: #zevqyn-project-workspace / .zev-pw-page
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* Hide default Blocksy page titles */
+.hero-section,
+.page-title,
+.entry-header,
+header.entry-header,
+.ct-page-title,
+.entry-title {
+    display: none !important;
+}
 
 .zev-pw-page,
 .zev-pw-page * {
@@ -9,70 +20,68 @@
 }
 
 .zev-pw-page {
-    --bg: #030504;
-    --panel: #080d10;
-    --panel2: #0b1115;
-    --border: #1b2931;
-    --text: #f5f7fa;
-    --muted: #839099;
-    --green: #35b85b;
-    --green2: #269747;
+    --green: var(--zev-green-primary, #2ebd68);
+    --green-hover: var(--zev-green-hover, #269f58);
+    --green-text: var(--zev-green-text, #41cf7b);
+    --green-soft: var(--zev-green-soft, rgba(46, 189, 104, 0.08));
+    --green-border: var(--zev-green-border, rgba(46, 189, 104, 0.22));
+
+    --bg: var(--zev-bg-canvas, #090b0e);
+    --panel: var(--zev-bg-panel, #0f1217);
+    --surface: var(--zev-bg-surface, #151921);
+    --subtle: var(--zev-bg-subtle, #222834);
+
+    --border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --border-faint: var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+
+    --text: var(--zev-text-primary, #f4f6f8);
+    --text-sec: var(--zev-text-secondary, #c0c7d2);
+    --muted: var(--zev-text-muted, #828c9a);
 
     width: 100%;
     min-height: 100vh;
     display: flex;
 
-    background:
-        radial-gradient(
-            circle at 82% 0%,
-            rgba(53,184,91,.06),
-            transparent 28%
-        ),
-        #030504;
-
+    background: var(--bg);
     color: var(--text);
-    font-family: Inter, Arial, sans-serif;
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
 }
-
 
 /* =========================================
    SIDEBAR
-========================================= */
+   ========================================= */
 
 .zev-pw-sidebar {
-    width: 245px;
-    min-width: 245px;
+    width: 240px;
+    min-width: 240px;
     min-height: 100vh;
-    padding: 28px 18px;
+    padding: 24px 16px;
 
     display: flex;
     flex-direction: column;
 
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(53,184,91,.07),
-            transparent 30%
-        ),
-        #050807;
-
-    border-right: 1px solid #172019;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
 }
 
 .zev-pw-nav-title {
     padding: 0 12px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 
-    color: #65706d;
+    color: var(--muted);
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 1.3px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .zev-pw-nav {
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .zev-pw-nav a {
@@ -80,88 +89,97 @@
     align-items: center;
     gap: 12px;
 
-    padding: 12px 14px;
+    padding: 10px 12px;
 
-    color: #aeb7bf !important;
+    color: var(--text-sec) !important;
     text-decoration: none !important;
 
-    border-radius: 9px;
+    border-radius: var(--zev-radius-sm, 6px);
 
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 500;
 
-    transition: .2s ease;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-nav a:hover {
-    color: #fff !important;
-    background: #0c1510;
+    color: var(--text) !important;
+    background: var(--subtle);
 }
 
 .zev-pw-nav a.active {
-    color: #fff !important;
-    background: rgba(53,184,91,.13);
-    border: 1px solid rgba(53,184,91,.22);
+    color: var(--text) !important;
+    background: var(--green-soft);
+    border: 1px solid var(--green-border);
+    font-weight: 600;
 }
 
 .zev-pw-nav-icon {
-    width: 20px;
+    width: 18px;
     text-align: center;
+    font-size: 14px;
+    color: var(--muted);
+}
+
+.zev-pw-nav a.active .zev-pw-nav-icon {
+    color: var(--green-text);
 }
 
 .zev-pw-sidebar-bottom {
     margin-top: auto;
-    padding-top: 25px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border-faint);
 }
 
 .zev-pw-back {
-    color: #78857f !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--muted) !important;
     text-decoration: none !important;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
+    transition: color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-back:hover {
-    color: #4ed36f !important;
+    color: var(--green-text) !important;
 }
 
-
 /* =========================================
-   MAIN
-========================================= */
+   MAIN CONTENT AREA
+   ========================================= */
 
 .zev-pw-main {
     flex: 1;
     min-width: 0;
-    padding: 32px 38px 70px;
+    padding: 32px 40px 80px;
 }
-
 
 /* =========================================
    LOADING / ERROR
-========================================= */
+   ========================================= */
 
 .zev-pw-loading {
-    min-height: 65vh;
-
+    min-height: 60vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
 }
 
 .zev-pw-loader {
-    width: 38px;
-    height: 38px;
-    margin-bottom: 14px;
+    width: 36px;
+    height: 36px;
+    margin-bottom: 16px;
 
-    border: 3px solid #16221b;
-    border-top-color: #35b85b;
+    border: 3px solid var(--border);
+    border-top-color: var(--green);
     border-radius: 50%;
 
-    animation: zevPwSpin .8s linear infinite;
+    animation: zevPwSpin 0.8s linear infinite;
 }
 
 @keyframes zevPwSpin {
@@ -171,102 +189,108 @@
 }
 
 .zev-pw-loading strong {
-    color: #fff;
-    font-size: 14px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 600;
 }
 
 .zev-pw-loading span {
     margin-top: 6px;
-    color: #718078;
-    font-size: 10px;
+    color: var(--muted);
+    font-size: 13px;
 }
 
 .zev-pw-error {
-    max-width: 500px;
-    margin: 100px auto;
-    padding: 35px;
+    max-width: 480px;
+    margin: 80px auto;
+    padding: 32px;
 
     text-align: center;
 
-    background: #090e11;
-    border: 1px solid #342426;
-    border-radius: 14px;
+    background: var(--panel);
+    border: 1px solid rgba(225, 107, 107, 0.3);
+    border-radius: var(--zev-radius-md, 10px);
 }
 
 .zev-pw-error-icon {
-    width: 45px;
-    height: 45px;
-    margin: 0 auto 14px;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 16px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     border-radius: 50%;
-
-    background: rgba(225,107,107,.1);
-    color: #ee8585;
-
-    font-weight: 900;
+    background: rgba(225, 107, 107, 0.12);
+    color: #ef8585;
+    font-weight: 700;
+    font-size: 18px;
 }
 
 .zev-pw-error h2 {
-    color: #fff;
+    color: var(--text);
+    font-size: 18px;
+    font-weight: 700;
     margin: 0 0 8px;
 }
 
 .zev-pw-error p {
-    color: #829097;
-    font-size: 11px;
-    line-height: 1.7;
+    color: var(--text-sec);
+    font-size: 13px;
+    line-height: 1.6;
+    margin: 0 0 16px;
 }
 
 .zev-pw-error a {
     display: inline-block;
-    margin-top: 12px;
-
-    color: #4ed36f !important;
+    color: var(--green-text) !important;
     text-decoration: none !important;
+    font-size: 13px;
+    font-weight: 600;
 }
 
+.zev-pw-error a:hover {
+    text-decoration: underline !important;
+}
 
 /* =========================================
-   TOP
-========================================= */
+   TOP HEADER
+   ========================================= */
 
 .zev-pw-top {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
-    gap: 25px;
-
-    margin-bottom: 24px;
+    gap: 24px;
+    margin-bottom: 28px;
 }
 
 .zev-pw-back-link {
     display: inline-block;
-    margin-bottom: 15px;
+    margin-bottom: 8px;
 
-    color: #85928c !important;
+    color: var(--muted) !important;
     text-decoration: none !important;
 
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+
+    transition: color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-back-link:hover {
-    color: #4ed36f !important;
+    color: var(--green-text) !important;
 }
 
 .zev-pw-label {
     display: block;
-
-    color: #3fd064;
-
-    font-size: 9px;
-    font-weight: 850;
-    letter-spacing: 1.5px;
-
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
 }
 
@@ -274,112 +298,115 @@
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-
-    margin-top: 7px;
+    gap: 12px;
+    margin-top: 6px;
 }
 
 .zev-pw-title-row h1 {
     margin: 0;
-
-    color: #fff;
-
-    font-size: 31px;
-    line-height: 1.2;
-    font-weight: 850;
+    color: var(--text);
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .zev-pw-visibility {
-    padding: 5px 8px;
-
-    border-radius: 5px;
-
-    background: rgba(53,184,91,.09);
-    border: 1px solid rgba(53,184,91,.22);
-
-    color: #51d371;
-
-    font-size: 8px;
-    font-weight: 850;
-    letter-spacing: .6px;
+    padding: 3px 8px;
+    border-radius: var(--zev-radius-xs, 4px);
+    background: var(--green-soft);
+    border: 1px solid var(--green-border);
+    color: var(--green-text);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 #zevqyn-project-subheading {
     max-width: 650px;
     margin: 8px 0 0;
-
-    color: #839099;
-
-    font-size: 11px;
-    line-height: 1.7;
+    color: var(--text-sec);
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .zev-pw-top-actions {
     display: flex;
-    gap: 8px;
+    gap: 10px;
+    flex-shrink: 0;
 }
 
 .zev-pw-secondary-btn,
 .zev-pw-save-btn {
-    min-height: 39px;
-    padding: 9px 14px;
-
-    border-radius: 8px;
-
+    min-height: 38px;
+    padding: 0 16px;
+    border-radius: var(--zev-radius-sm, 6px);
     font-family: inherit;
-    font-size: 9px;
-    font-weight: 850;
-
+    font-size: 13px;
+    font-weight: 600;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-secondary-btn {
-    background: #0b1215;
-    border: 1px solid #26343a;
-    color: #9aa5ab;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+}
+
+.zev-pw-secondary-btn:hover {
+    background: var(--subtle);
+    border-color: var(--border-strong);
 }
 
 .zev-pw-save-btn {
-    border: 0;
-    background: #35b85b;
+    border: 1px solid var(--green);
+    background: var(--green);
     color: #fff;
 }
 
 .zev-pw-save-btn:hover {
-    background: #269747;
+    background: var(--green-hover);
+    border-color: var(--green-hover);
 }
 
 .zev-pw-save-btn:disabled {
-    opacity: .55;
-    cursor: wait;
+    opacity: 0.55;
+    cursor: not-allowed;
 }
 
-
 /* =========================================
-   STATS
-========================================= */
+   STATS BAR
+   ========================================= */
 
 .zev-pw-stats {
     display: grid;
-    grid-template-columns: repeat(4,minmax(0,1fr));
-    gap: 11px;
-
-    margin-bottom: 17px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 14px;
+    margin-bottom: 24px;
 }
 
 .zev-pw-stat {
-    min-height: 75px;
-    padding: 14px 16px;
+    min-height: 72px;
+    padding: 14px 18px;
 
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
 
-    background:
-        linear-gradient(145deg,#0a1013,#070b0e);
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
 
-    border: 1px solid #1b2931;
-    border-radius: 11px;
+.zev-pw-stat:hover {
+    border-color: var(--border-strong);
 }
 
 .zev-pw-stat-icon {
@@ -391,92 +418,80 @@
     align-items: center;
     justify-content: center;
 
-    border-radius: 9px;
-
-    background: rgba(53,184,91,.1);
-    color: #4ed36f;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-size: 16px;
+    border: 1px solid var(--green-border);
 }
 
 .zev-pw-stat strong {
     display: block;
-
-    color: #fff;
-
-    font-size: 18px;
-    font-weight: 850;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 .zev-pw-stat span {
     display: block;
-    margin-top: 3px;
-
-    color: #758188;
-    font-size: 9px;
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 12px;
 }
 
-
 /* =========================================
-   GRID
-========================================= */
+   WORKSPACE GRID
+   ========================================= */
 
 .zev-pw-grid {
     display: grid;
-    grid-template-columns: minmax(0,1.6fr) minmax(300px,.8fr);
-    gap: 17px;
+    grid-template-columns: minmax(0, 1.6fr) minmax(320px, 0.9fr);
+    gap: 20px;
     align-items: start;
 }
 
 .zev-pw-column {
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 20px;
 }
-
 
 /* =========================================
    PANELS
-========================================= */
+   ========================================= */
 
 .zev-pw-panel {
-    padding: 21px;
-
-    background:
-        linear-gradient(145deg,#090e12,#060a0d);
-
-    border: 1px solid #1b2931;
-    border-radius: 14px;
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
 }
 
 .zev-pw-panel-head {
-    margin-bottom: 18px;
-    padding-bottom: 15px;
-
-    border-bottom: 1px solid #18242a;
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-faint);
 }
 
 .zev-pw-panel-head h2 {
-    margin: 6px 0 5px;
-
-    color: #fff;
-
+    margin: 6px 0 4px;
+    color: var(--text);
     font-size: 16px;
-    font-weight: 850;
+    font-weight: 700;
 }
 
 .zev-pw-panel-head p {
     max-width: 600px;
     margin: 0;
-
-    color: #78858d;
-
-    font-size: 9px;
-    line-height: 1.65;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-
 /* =========================================
-   FORM
-========================================= */
+   FORM CONTROLS
+   ========================================= */
 
 .zev-pw-form,
 .zev-pw-field {
@@ -490,9 +505,8 @@
 
 .zev-pw-field {
     position: relative;
-    gap: 7px;
-
-    margin-bottom: 15px;
+    gap: 6px;
+    margin-bottom: 16px;
 }
 
 .zev-pw-field:last-child {
@@ -500,10 +514,9 @@
 }
 
 .zev-pw-field label {
-    color: #aeb8bd;
-
-    font-size: 9px;
-    font-weight: 800;
+    color: var(--text-sec);
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .zev-pw-field input,
@@ -511,31 +524,27 @@
 .zev-pw-field select,
 .zev-pw-tag-input-row input {
     width: 100%;
-
     outline: none;
-
-    background: #070c0f;
-    border: 1px solid #223138;
-    border-radius: 8px;
-
-    color: #f3f6f7;
-
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    color: var(--text);
     font-family: inherit;
-    font-size: 10px;
-    line-height: 1.6;
-
-    transition: .2s ease;
+    font-size: 13px;
+    line-height: 1.5;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-field input,
 .zev-pw-field select,
 .zev-pw-tag-input-row input {
-    min-height: 41px;
+    min-height: 40px;
     padding: 0 12px;
 }
 
 .zev-pw-field textarea {
-    padding: 11px 12px;
+    padding: 10px 12px;
     resize: vertical;
 }
 
@@ -543,45 +552,44 @@
 .zev-pw-field textarea:focus,
 .zev-pw-field select:focus,
 .zev-pw-tag-input-row input:focus {
-    border-color: rgba(53,184,91,.65);
-    box-shadow: 0 0 0 3px rgba(53,184,91,.06);
+    border-color: var(--green);
+    box-shadow: 0 0 0 3px rgba(46, 189, 104, 0.15);
 }
 
 .zev-pw-field input::placeholder,
 .zev-pw-field textarea::placeholder,
 .zev-pw-tag-input-row input::placeholder {
-    color: #505d63;
+    color: var(--muted);
 }
 
 .zev-pw-field select,
 .zev-pw-field select option {
-    color: #fff !important;
-    background: #081014 !important;
+    color: var(--text) !important;
+    background: var(--surface) !important;
 }
 
 .zev-pw-field small,
 .zev-pw-tag-editor small {
-    color: #647078;
-    font-size: 8px;
+    color: var(--muted);
+    font-size: 11px;
     line-height: 1.5;
 }
 
 .zev-pw-counter {
     align-self: flex-end;
-
-    color: #5e6a71;
-
-    font-size: 8px;
+    color: var(--muted);
+    font-size: 11px;
+    font-family: var(--zev-font-mono, monospace);
+    margin-top: 4px;
 }
-
 
 /* =========================================
    TAG EDITOR
-========================================= */
+   ========================================= */
 
 .zev-pw-tag-input-row {
     display: flex;
-    gap: 7px;
+    gap: 8px;
 }
 
 .zev-pw-tag-input-row input {
@@ -589,110 +597,102 @@
 }
 
 .zev-pw-tag-input-row button {
-    min-width: 70px;
-
-    border: 1px solid rgba(53,184,91,.28);
-    border-radius: 8px;
-
-    background: rgba(53,184,91,.09);
-    color: #4ed36f;
-
+    min-width: 72px;
+    padding: 0 14px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text);
     font-family: inherit;
-    font-size: 9px;
-    font-weight: 850;
-
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-tag-input-row button:hover {
-    background: rgba(53,184,91,.15);
+    background: rgba(46, 189, 104, 0.16);
 }
 
 .zev-pw-tags {
     min-height: 38px;
     margin: 12px 0 8px;
-
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
+    gap: 8px;
+    align-items: center;
 }
 
 .zev-pw-tag {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-
-    padding: 6px 8px;
-
-    border: 1px solid rgba(53,184,91,.2);
-    border-radius: 6px;
-
-    background: rgba(53,184,91,.08);
-
-    color: #61d87d;
-
-    font-size: 8px;
-    font-weight: 750;
+    gap: 8px;
+    padding: 5px 10px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 12px;
+    font-weight: 500;
 }
 
 .zev-pw-tag button {
     padding: 0;
-
     border: 0;
     background: transparent;
-
-    color: #799384;
-
-    font-size: 11px;
-
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-tag button:hover {
-    color: #fff;
+    color: var(--text);
 }
 
 .zev-pw-tag-empty {
-    color: #637078;
-    font-size: 9px;
+    color: var(--muted);
+    font-size: 12px;
+    font-style: italic;
 }
 
-
 /* =========================================
-   TOGGLE
-========================================= */
+   TOGGLE ROW
+   ========================================= */
 
 .zev-pw-toggle-row {
     position: relative;
-
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 15px;
-
-    margin-top: 17px;
-    padding-top: 17px;
-
-    border-top: 1px solid #18242a;
-
+    gap: 16px;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-faint);
     cursor: pointer;
 }
 
 .zev-pw-toggle-row div {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    gap: 2px;
 }
 
 .zev-pw-toggle-row strong {
-    color: #dce2e5;
-    font-size: 10px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-pw-toggle-row div span {
-    color: #69767d;
-    font-size: 8px;
-    line-height: 1.5;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.4;
 }
 
 .zev-pw-toggle-row input {
@@ -702,96 +702,88 @@
 
 .zev-pw-toggle {
     position: relative;
-
-    width: 38px;
-    height: 21px;
-    min-width: 38px;
-
-    border-radius: 30px;
-
-    background: #1a2429;
-
-    transition: .2s;
+    width: 40px;
+    height: 22px;
+    min-width: 40px;
+    border-radius: 20px;
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-toggle::after {
     content: "";
-
     position: absolute;
-    top: 3px;
-    left: 3px;
-
-    width: 15px;
-    height: 15px;
-
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-
-    background: #748087;
-
-    transition: .2s;
+    background: var(--muted);
+    transition: transform var(--zev-duration-standard, 200ms) ease,
+                background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pw-toggle-row input:checked + .zev-pw-toggle {
-    background: rgba(53,184,91,.3);
+    background: var(--green-soft);
+    border-color: var(--green-border);
 }
 
 .zev-pw-toggle-row input:checked + .zev-pw-toggle::after {
-    left: 20px;
-    background: #48d16b;
+    transform: translateX(18px);
+    background: var(--green);
 }
 
-
 /* =========================================
-   LINKS
-========================================= */
+   LINKS ACTIONS
+   ========================================= */
 
 .zev-pw-link-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-
+    gap: 8px;
     margin-top: 14px;
 }
 
 .zev-pw-link-actions a {
-    padding: 7px 9px;
-
-    border: 1px solid #203129;
-    border-radius: 6px;
-
-    background: rgba(53,184,91,.07);
-
-    color: #4ed36f !important;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text) !important;
     text-decoration: none !important;
-
-    font-size: 8px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
 
+.zev-pw-link-actions a:hover {
+    background: rgba(46, 189, 104, 0.16);
+}
 
 /* =========================================
-   IMAGE
-========================================= */
+   IMAGE PREVIEW
+   ========================================= */
 
 .zev-pw-image-preview {
-    min-height: 150px;
-    margin-top: 13px;
-
+    min-height: 140px;
+    margin-top: 14px;
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 1px dashed #213128;
-    border-radius: 9px;
-
-    background: #070c0e;
+    border: 1px dashed var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--surface);
 }
 
 .zev-pw-image-preview img {
     width: 100%;
-    max-height: 260px;
+    max-height: 240px;
     object-fit: cover;
 }
 
@@ -799,25 +791,22 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 7px;
-
-    color: #58665e;
-
-    font-size: 18px;
+    gap: 6px;
+    color: var(--muted);
+    font-size: 20px;
 }
 
 .zev-pw-image-empty span {
-    font-size: 8px;
+    font-size: 12px;
 }
 
-
 /* =========================================
-   RESEARCH ORIGIN
-========================================= */
+   RESEARCH ORIGIN BOX
+   ========================================= */
 
 .zev-pw-origin-box {
     display: flex;
-    gap: 12px;
+    gap: 14px;
     align-items: flex-start;
 }
 
@@ -825,206 +814,176 @@
     width: 38px;
     height: 38px;
     min-width: 38px;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 9px;
-
-    background: rgba(53,184,91,.09);
-    color: #4ed36f;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-size: 16px;
+    border: 1px solid var(--green-border);
 }
 
 .zev-pw-origin-box strong {
-    color: #e4e9eb;
-    font-size: 10px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-pw-origin-box p {
-    margin: 5px 0 0;
-
-    color: #738087;
-
-    font-size: 9px;
-    line-height: 1.6;
+    margin: 4px 0 0;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .zev-pw-origin-box a {
     display: inline-block;
-    margin-top: 9px;
-
-    color: #4ed36f !important;
+    margin-top: 8px;
+    color: var(--green-text) !important;
     text-decoration: none !important;
-
-    font-size: 8px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 600;
 }
 
+.zev-pw-origin-box a:hover {
+    text-decoration: underline !important;
+}
 
 /* =========================================
    CAREER CARD
-========================================= */
+   ========================================= */
 
 .zev-pw-career-card {
-    padding: 21px;
-
-    background:
-        radial-gradient(
-            circle at 100% 0%,
-            rgba(53,184,91,.12),
-            transparent 45%
-        ),
-        #08100c;
-
-    border: 1px solid rgba(53,184,91,.2);
-    border-radius: 14px;
+    padding: 24px;
+    background: var(--panel);
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-md, 10px);
 }
 
 .zev-pw-career-card h2 {
-    margin: 7px 0;
-
-    color: #fff;
-
+    margin: 8px 0;
+    color: var(--text);
     font-size: 16px;
-    line-height: 1.4;
+    font-weight: 700;
+    line-height: 1.35;
 }
 
 .zev-pw-career-card p {
     margin: 0;
-
-    color: #7c898f;
-
-    font-size: 9px;
-    line-height: 1.65;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.5;
 }
 
 .zev-pw-career-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px;
-
-    margin-top: 15px;
+    gap: 8px;
+    margin-top: 16px;
 }
 
 .zev-pw-career-actions a {
-    padding: 8px 10px;
-
-    border: 1px solid rgba(53,184,91,.25);
-    border-radius: 7px;
-
-    background: rgba(53,184,91,.08);
-
-    color: #51d371 !important;
+    padding: 8px 14px;
+    border: 1px solid var(--green-border);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--green-soft);
+    color: var(--green-text) !important;
     text-decoration: none !important;
-
-    font-size: 8px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
 
+.zev-pw-career-actions a:hover {
+    background: rgba(46, 189, 104, 0.16);
+}
 
 /* =========================================
-   META
-========================================= */
+   FOOTER META
+   ========================================= */
 
 .zev-pw-meta {
-    margin-top: 17px;
-    padding: 12px 3px;
-
+    margin-top: 24px;
+    padding: 16px 4px;
     display: flex;
-    gap: 20px;
+    gap: 24px;
     flex-wrap: wrap;
-
-    color: #59666d;
-
-    font-size: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--border-faint);
 }
 
 .zev-pw-meta strong {
-    margin-left: 4px;
-    color: #7c898f;
+    margin-left: 6px;
+    color: var(--text-sec);
+    font-family: var(--zev-font-mono, monospace);
 }
 
-
 /* =========================================
-   TOAST
-========================================= */
+   TOAST NOTIFICATION
+   ========================================= */
 
 .zev-pw-toast {
     position: fixed;
-    right: 22px;
-    bottom: 22px;
-
+    right: 24px;
+    bottom: 24px;
     z-index: 999999;
-
-    max-width: 350px;
-    padding: 12px 15px;
-
-    border-radius: 8px;
-
-    background: #10181b;
-    border: 1px solid #26353b;
-
-    box-shadow: 0 15px 45px rgba(0,0,0,.4);
-
-    color: #dce2e5;
-
-    font-size: 10px;
+    max-width: 360px;
+    padding: 12px 18px;
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .zev-pw-toast.success {
-    border-color: rgba(53,184,91,.5);
+    border-color: var(--green);
+    color: var(--green-text);
 }
 
 .zev-pw-toast.error {
-    border-color: rgba(225,107,107,.55);
-    color: #efaaaa;
+    border-color: rgba(225, 107, 107, 0.6);
+    color: #f09595;
 }
 
-
 /* =========================================
-   HIDDEN
-========================================= */
+   HIDDEN UTILITY
+   ========================================= */
 
 .zev-pw-page [hidden] {
     display: none !important;
 }
 
-
 /* =========================================
-   RESPONSIVE
-========================================= */
+   RESPONSIVE DESIGN
+   ========================================= */
 
 @media (max-width: 1150px) {
-
     .zev-pw-sidebar {
-        width: 205px;
-        min-width: 205px;
+        width: 200px;
+        min-width: 200px;
     }
 
     .zev-pw-grid {
-        grid-template-columns:
-            minmax(0,1.35fr)
-            minmax(280px,.8fr);
+        grid-template-columns: minmax(0, 1.4fr) minmax(280px, 0.9fr);
     }
 
     .zev-pw-stats {
-        grid-template-columns:
-            repeat(2,minmax(0,1fr));
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }
 
-
 @media (max-width: 900px) {
-
     .zev-pw-grid {
         grid-template-columns: 1fr;
     }
 }
 
-
-@media (max-width: 760px) {
-
+@media (max-width: 768px) {
     .zev-pw-page {
         display: block;
     }
@@ -1033,13 +992,13 @@
         width: 100%;
         min-width: 0;
         min-height: auto;
-
         padding: 16px;
     }
 
     .zev-pw-nav {
         flex-direction: row;
         overflow-x: auto;
+        padding-bottom: 4px;
     }
 
     .zev-pw-nav a {
@@ -1052,7 +1011,7 @@
     }
 
     .zev-pw-main {
-        padding: 22px 15px 45px;
+        padding: 24px 16px 48px;
     }
 
     .zev-pw-top {
@@ -1073,9 +1032,7 @@
     }
 }
 
-
 @media (max-width: 480px) {
-
     .zev-pw-stats {
         grid-template-columns: 1fr;
     }
@@ -1085,10 +1042,24 @@
     }
 
     .zev-pw-tag-input-row button {
-        min-height: 39px;
+        min-height: 38px;
     }
 
     .zev-pw-title-row h1 {
-        font-size: 25px;
+        font-size: 22px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zev-pw-loader {
+        animation: none;
+    }
+
+    .zev-pw-toggle,
+    .zev-pw-toggle::after,
+    .zev-pw-nav a,
+    .zev-pw-secondary-btn,
+    .zev-pw-save-btn {
+        transition: none !important;
     }
 }
