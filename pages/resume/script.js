@@ -1,4 +1,4 @@
-﻿
+
 /* =========================================
    ZEVQYN RESUME BUILDER
 ========================================= */
@@ -36,6 +36,8 @@ let zevRbActiveSource =
     "project";
 
 let zevRbToastTimer = null;
+let zevRbDraggedItemId = null;
+let zevRbDraggedSectionType = null;
 
 
 /* =========================================
@@ -1880,35 +1882,33 @@ function zevRbRenderItems() {
             "zevqyn-no-resume-items"
         );
 
-
     if (!container) {
         return;
     }
 
-
     container.innerHTML = "";
 
-
-    if (
-        zevRbItems.length === 0
-    ) {
-
+    if (zevRbItems.length === 0) {
         if (empty) {
             empty.hidden = false;
         }
-
         return;
-
     }
-
 
     if (empty) {
         empty.hidden = true;
     }
 
-
     zevRbItems.forEach(
         function (item) {
+
+            const sectionType = item.section_type || "record";
+            const sectionItems = zevRbItems.filter(function (it) {
+                return (it.section_type || "record") === sectionType;
+            });
+            const sectionIdx = sectionItems.findIndex(function (it) {
+                return it.id === item.id;
+            });
 
             const row =
                 document.createElement(
@@ -1917,68 +1917,190 @@ function zevRbRenderItems() {
 
             row.className =
                 "zev-rb-item";
+            row.draggable = true;
+            row.setAttribute("data-item-id", item.id);
+            row.setAttribute("data-section-type", sectionType);
 
+            /* Drag handle */
+            const dragHandle =
+                document.createElement(
+                    "div"
+                );
+            dragHandle.className =
+                "zev-rb-drag-handle";
+            dragHandle.title =
+                "Drag to reorder within " + sectionType;
+            dragHandle.setAttribute("aria-hidden", "true");
+            dragHandle.innerHTML = "⋮⋮";
 
+            /* Reorder button group (Accessible Up / Down) */
+            const reorderGroup =
+                document.createElement(
+                    "div"
+                );
+            reorderGroup.className =
+                "zev-rb-reorder-actions";
+
+            const upBtn =
+                document.createElement(
+                    "button"
+                );
+            upBtn.type = "button";
+            upBtn.className =
+                "zev-rb-reorder-btn zev-rb-btn-up";
+            upBtn.setAttribute(
+                "aria-label",
+                "Move " + zevRbItemTitle(item) + " up"
+            );
+            upBtn.title = "Move up";
+            upBtn.textContent = "▲";
+
+            if (sectionIdx <= 0) {
+                upBtn.disabled = true;
+            } else {
+                upBtn.addEventListener(
+                    "click",
+                    function (e) {
+                        e.stopPropagation();
+                        zevRbMoveItem(item.id, "up");
+                    }
+                );
+            }
+
+            const downBtn =
+                document.createElement(
+                    "button"
+                );
+            downBtn.type = "button";
+            downBtn.className =
+                "zev-rb-reorder-btn zev-rb-btn-down";
+            downBtn.setAttribute(
+                "aria-label",
+                "Move " + zevRbItemTitle(item) + " down"
+            );
+            downBtn.title = "Move down";
+            downBtn.textContent = "▼";
+
+            if (sectionIdx >= sectionItems.length - 1) {
+                downBtn.disabled = true;
+            } else {
+                downBtn.addEventListener(
+                    "click",
+                    function (e) {
+                        e.stopPropagation();
+                        zevRbMoveItem(item.id, "down");
+                    }
+                );
+            }
+
+            reorderGroup.appendChild(upBtn);
+            reorderGroup.appendChild(downBtn);
+
+            /* Drag events */
+            row.addEventListener("dragstart", function (e) {
+                zevRbDraggedItemId = item.id;
+                zevRbDraggedSectionType = sectionType;
+                row.classList.add("is-dragging");
+                if (e.dataTransfer) {
+                    e.dataTransfer.effectAllowed = "move";
+                    e.dataTransfer.setData("text/plain", item.id);
+                }
+            });
+
+            row.addEventListener("dragend", function () {
+                row.classList.remove("is-dragging");
+                const targets = document.querySelectorAll(".zev-rb-item.is-drag-over");
+                targets.forEach(function (el) {
+                    el.classList.remove("is-drag-over");
+                });
+                zevRbDraggedItemId = null;
+                zevRbDraggedSectionType = null;
+            });
+
+            row.addEventListener("dragover", function (e) {
+                if (!zevRbDraggedItemId) {
+                    return;
+                }
+                if (zevRbDraggedItemId === item.id) {
+                    return;
+                }
+                if (zevRbDraggedSectionType !== sectionType) {
+                    return;
+                }
+                e.preventDefault();
+                if (e.dataTransfer) {
+                    e.dataTransfer.dropEffect = "move";
+                }
+                row.classList.add("is-drag-over");
+            });
+
+            row.addEventListener("dragleave", function () {
+                row.classList.remove("is-drag-over");
+            });
+
+            row.addEventListener("drop", function (e) {
+                row.classList.remove("is-drag-over");
+                if (!zevRbDraggedItemId) {
+                    return;
+                }
+                if (zevRbDraggedItemId === item.id) {
+                    return;
+                }
+                if (zevRbDraggedSectionType !== sectionType) {
+                    return;
+                }
+                e.preventDefault();
+                zevRbDropItem(zevRbDraggedItemId, item.id);
+            });
+
+            /* Item Info */
             const info =
                 document.createElement(
                     "div"
                 );
-
             info.className =
                 "zev-rb-item-info";
-
 
             const type =
                 document.createElement(
                     "span"
                 );
-
             type.className =
                 "zev-rb-item-type";
-
             type.textContent =
                 item.section_type ||
                 "record";
-
 
             const title =
                 document.createElement(
                     "strong"
                 );
-
             title.textContent =
                 zevRbItemTitle(
                     item
                 );
 
-
             const subtitle =
                 document.createElement(
                     "span"
                 );
-
             subtitle.className =
                 "zev-rb-item-subtitle";
-
             subtitle.textContent =
                 zevRbItemSubtitle(
                     item
                 );
 
-
             const description =
                 document.createElement(
                     "p"
                 );
-
             description.className =
                 "zev-rb-item-description";
-
             description.textContent =
                 zevRbItemDescription(
                     item
                 );
-
 
             info.appendChild(
                 type
@@ -1988,72 +2110,165 @@ function zevRbRenderItems() {
                 title
             );
 
-
-            if (
-                subtitle.textContent
-            ) {
-
+            if (subtitle.textContent) {
                 info.appendChild(
                     subtitle
                 );
-
             }
 
-
-            if (
-                description.textContent
-            ) {
-
+            if (description.textContent) {
                 info.appendChild(
                     description
                 );
-
             }
 
-
+            /* Remove button */
             const remove =
                 document.createElement(
                     "button"
                 );
-
             remove.type =
                 "button";
-
             remove.className =
                 "zev-rb-item-remove";
-
             remove.textContent =
                 "Remove";
 
-
             remove.addEventListener(
                 "click",
-                function () {
-
+                function (e) {
+                    e.stopPropagation();
                     zevRbRemoveItem(
                         item.id
                     );
-
                 }
             );
 
-
-            row.appendChild(
-                info
-            );
-
-            row.appendChild(
-                remove
-            );
-
+            row.appendChild(dragHandle);
+            row.appendChild(reorderGroup);
+            row.appendChild(info);
+            row.appendChild(remove);
 
             container.appendChild(
                 row
             );
-
         }
     );
+}
 
+function zevRbMoveItem(itemId, direction) {
+    const currentItem = zevRbItems.find(function (it) {
+        return it.id === itemId;
+    });
+    if (!currentItem) {
+        return;
+    }
+
+    const secType = currentItem.section_type || "record";
+    const sectionItems = zevRbItems.filter(function (it) {
+        return (it.section_type || "record") === secType;
+    });
+
+    const sIdx = sectionItems.findIndex(function (it) {
+        return it.id === itemId;
+    });
+
+    if (direction === "up") {
+        if (sIdx <= 0) {
+            return;
+        }
+        const targetSibling = sectionItems[sIdx - 1];
+        const idx1 = zevRbItems.indexOf(currentItem);
+        const idx2 = zevRbItems.indexOf(targetSibling);
+        zevRbItems[idx1] = targetSibling;
+        zevRbItems[idx2] = currentItem;
+    } else if (direction === "down") {
+        if (sIdx >= sectionItems.length - 1) {
+            return;
+        }
+        const targetSibling = sectionItems[sIdx + 1];
+        const idx1 = zevRbItems.indexOf(currentItem);
+        const idx2 = zevRbItems.indexOf(targetSibling);
+        zevRbItems[idx1] = targetSibling;
+        zevRbItems[idx2] = currentItem;
+    }
+
+    zevRbPersistReorder();
+}
+
+function zevRbDropItem(sourceId, targetId) {
+    const sourceIdx = zevRbItems.findIndex(function (it) {
+        return it.id === sourceId;
+    });
+    const targetIdx = zevRbItems.findIndex(function (it) {
+        return it.id === targetId;
+    });
+
+    if (sourceIdx === -1) {
+        return;
+    }
+    if (targetIdx === -1) {
+        return;
+    }
+
+    const removed = zevRbItems.splice(sourceIdx, 1)[0];
+    zevRbItems.splice(targetIdx, 0, removed);
+
+    zevRbPersistReorder();
+}
+
+async function zevRbPersistReorder() {
+    if (!zevRbResume) {
+        return;
+    }
+    if (!zevRbResume.id) {
+        return;
+    }
+
+    const snapshot = zevRbItems.slice();
+
+    // Optimistically update UI and live preview
+    zevRbRenderItems();
+    zevRbUpdatePreview();
+
+    const payload = {
+        items: zevRbItems.map(function (it, idx) {
+            return {
+                id: it.id,
+                sort_order: idx
+            };
+        })
+    };
+
+    try {
+        const updated = await zevRbApi(
+            "/api/v1/resumes/" +
+            encodeURIComponent(zevRbResume.id) +
+            "/items/reorder",
+            {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(payload)
+            }
+        );
+
+        if (Array.isArray(updated)) {
+            if (updated.length > 0) {
+                zevRbItems = updated;
+                zevRbRenderItems();
+                zevRbUpdatePreview();
+            }
+        }
+        zevRbToast("Item order updated", "success");
+    } catch (error) {
+        console.error("Failed to persist item order:", error);
+        zevRbItems = snapshot;
+        zevRbRenderItems();
+        zevRbUpdatePreview();
+        zevRbToast("Could not save order: " + error.message, "error");
+    }
 }
 
 

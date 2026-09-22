@@ -511,22 +511,98 @@ header.entry-header,
 }
 
 .zev-rb-item {
-    padding: 14px;
+    padding: 12px 14px;
     display: flex;
-    justify-content: space-between;
+    align-items: center;
     gap: 12px;
     border: 1px solid var(--border);
     border-radius: var(--zev-radius-sm, 6px);
     background: var(--surface);
-    transition: border-color var(--zev-duration-standard, 200ms) ease;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                background var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-rb-item:hover {
     border-color: var(--border-strong);
 }
 
+.zev-rb-item.is-dragging {
+    opacity: 0.45;
+    background: var(--surface-card);
+    border-style: dashed;
+}
+
+.zev-rb-item.is-drag-over {
+    border-color: var(--zev-green-primary, #10b981);
+    box-shadow: 0 0 0 2px var(--zev-green-glow, rgba(16, 185, 129, 0.15));
+}
+
+.zev-rb-drag-handle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 32px;
+    cursor: grab;
+    user-select: none;
+    color: var(--muted);
+    font-size: 14px;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    transition: color var(--zev-duration-fast, 150ms) ease;
+}
+
+.zev-rb-drag-handle:hover {
+    color: var(--text);
+}
+
+.zev-rb-reorder-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.zev-rb-reorder-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 18px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-xs, 4px);
+    color: var(--text-sec);
+    font-size: 8px;
+    cursor: pointer;
+    line-height: 1;
+    transition: background var(--zev-duration-fast, 150ms) ease,
+                color var(--zev-duration-fast, 150ms) ease,
+                border-color var(--zev-duration-fast, 150ms) ease;
+}
+
+.zev-rb-reorder-btn:hover:not(:disabled) {
+    background: var(--surface-hover);
+    color: var(--text);
+    border-color: var(--border-strong);
+}
+
+.zev-rb-reorder-btn:focus-visible {
+    outline: 2px solid var(--zev-green-primary, #10b981);
+    outline-offset: 1px;
+}
+
+.zev-rb-reorder-btn:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    border-color: transparent;
+}
+
 .zev-rb-item-info {
     min-width: 0;
+    flex: 1;
 }
 
 .zev-rb-item-type {

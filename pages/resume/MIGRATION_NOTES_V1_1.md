@@ -11,9 +11,13 @@
 1. **Studio Canvas & Quiet Chrome:** Wrapped the ATS paper sheet in a neutral slate canvas background (`#11141b`) so the white preview sheet stands out like real printed paper.
 2. **Standardized Design Tokens:** Chrome buttons, stats, inputs, panels, modals, and toasts now utilize V1.1 design tokens (`--zev-green-primary`, `--zev-border-default`, `--zev-bg-panel`, `--zev-bg-surface`).
 3. **Ergonomic Scale:** Replaced tiny 8–9px fonts in editor panels with 13px inputs/body and 11px uppercase metadata labels.
-4. **ATS Preview Paper & PDF Export Intact (CRITICAL):**
+4. **Resume Item Reordering (V1.1 Backend Integration):**
+   - Integrated native drag-and-drop and accessible Up/Down reordering controls on all attached resume items.
+   - Strictly enforces section membership: items reorder exclusively within their logical section (Projects, Skills, Education, Certificates).
+   - Bulk persistence via `PATCH /api/v1/resumes/{resume_id}/items/reorder` with optimistic UI update, instant ATS live preview synchronization, and error rollback.
+   - ReportLab backend PDF generator uses the same `sort_order ASC` sequence.
+5. **ATS Preview Paper & PDF Export Intact (CRITICAL):**
    - The entire `#zevqyn-resume-preview` and `.zev-rb-preview-paper` ATS styling is 100% untouched to ensure exact visual correspondence with the backend Python PDF generator.
-   - All 5,285 lines of `script.js` are 100% intact.
    - Exact DOM IDs preserved:
      - Header/Toolbar: `zevqyn-create-resume`, `zevqyn-resume-select`, `zevqyn-edit-resume`, `zevqyn-delete-resume`, `zevqyn-export-pdf`
      - Status/Stats: `zevqyn-resume-empty`, `zevqyn-builder-content`, `zevqyn-stat-items`, `zevqyn-stat-completeness`, `zevqyn-stat-pdf`, `zevqyn-stat-updated`
@@ -41,5 +45,18 @@
 - Navigate to `/resume/` while authenticated.
 - Verify existing resumes load into the dropdown selector.
 - Select a resume and verify the live ATS paper preview renders on the slate canvas.
-- Click "Export PDF" — verify authenticated download from `/api/v1/resumes/{id}/pdf`.
+- Reorder attached items using:
+  - Drag handle (`⋮⋮`) to drag an item above/below another item in the same section.
+  - Up (`▲`) and Down (`▼`) buttons for keyboard and touch navigation.
+- Verify the ATS live preview updates its order immediately.
+- Refresh the page and confirm the persisted order matches.
+- Click "Export PDF" — verify authenticated download from `/api/v1/resumes/{id}/pdf` matches the newly reordered sequence.
 - Test adding items from the source tabs (Projects, Skills, Education, Certificates) into the resume.
+
+---
+
+## Rollback Notes
+
+If reordering issues arise:
+- Restore previous `pages/resume/wordpress-blocks.html` from commit `d58ffaa`.
+- Verify database records in `resume_items` table remain valid (items have integer `sort_order`).
