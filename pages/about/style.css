@@ -263,7 +263,7 @@
 }
 
 .za-belief-card::before {
-    display: none !important; /* Remove @keyframes zaBorderRun */
+    display: none !important; /* Deactivate legacy border loop */
 }
 
 .za-belief-num {

@@ -123,11 +123,32 @@ Research → Project → Resume → Portfolio → Career Growth
 
 ---
 
+## ZEVQYN V1.1 UI/UX Refinement
+
+This branch (`v1.1-ui-refinement`) contains the **V1.1 design refinement** for the entire ZEVQYN frontend suite (all 19 pages).
+
+The objective of V1.1 is to eliminate the "AI-generated SaaS" aesthetic (glowing borders, continuous conic keyframes, excessive glassmorphism, muddy gradients, 24px pills, 8–9px micro-fonts) and elevate ZEVQYN into an institutional, engineering-grade AI workspace (Linear, Cursor, Notion style).
+
+### Key Refinement Documents
+- **[Design System V1.1](docs/DESIGN_SYSTEM_V1_1.md)** — Semantic color tokens (`--zev-*`), typography, elevation, focus states, and component patterns.
+- **[UI/UX Audit V1](docs/UI_UX_AUDIT_V1.md)** — Comprehensive 800+ line audit of all 19 pages with risk matrix and anti-pattern catalogue.
+- **[V1.1 Refinement Report](docs/V1_1_REFINEMENT_REPORT.md)** — Full execution report detailing visual enhancements, JS preservation, and regression verification across all pages.
+- **[WordPress Migration Checklist](docs/V1_1_WORDPRESS_MIGRATION_CHECKLIST.md)** — Production deployment playbook for safe, sequential rollout to WordPress.
+
+### V1.1 Highlights
+- **Engineering-Grade Aesthetic:** Deep charcoal/slate backgrounds (`#0B0D11`, `#11141B`, `#181C24`), disciplined monochrome surfaces, and subtle precision accents (`#10B981` emerald, `#059669` forest).
+- **Zero API or Logic Regressions:** 100% DOM element IDs, class bindings, and event handlers preserved across all 15,000+ lines of custom JavaScript. Working backend API contracts (`https://zevqyn-backend.onrender.com`) and Supabase Auth remain completely untouched.
+- **ATS Resume Paper Verbatim:** `#zevqyn-resume-preview` and `.zev-rb-preview-paper` styling remain byte-identical to maintain exact 1:1 fidelity with Python ReportLab backend PDF generator.
+- **Accessibility & Contrast:** High-contrast text throughout (4.5:1+), WCAG compliant `:focus-visible` rings on all interactive elements, and `@media (prefers-reduced-motion)` guards.
+- **100% Automated Regression Pass:** 114/114 files verified with 0 errors, 0 warnings, 0 forbidden AI tropes, 0 broken links, and 0 secret leaks.
+
+---
+
 ## Repository Structure
 
 ```
 zevqyn/
-├── pages/                        # Page source from WordPress export
+├── pages/                        # Page source from WordPress export & V1.1 refinements
 │   ├── home/                     # Marketing landing page (Greenshift blocks)
 │   ├── features/                 # Feature showcase (custom HTML/CSS/JS)
 │   ├── how-it-works/             # Walkthrough (custom HTML/CSS/JS)
@@ -141,19 +162,26 @@ zevqyn/
 │   ├── projects/                 # Projects hub
 │   ├── project-workspace/        # Project editor
 │   ├── career/                   # Career Hub
-│   ├── resume/                   # Resume Builder
+│   ├── resume/                   # Resume Builder (ATS verbatim preview)
 │   ├── portfolio/                # Portfolio Builder
 │   ├── public-portfolio/         # Public portfolio viewer (slug: /p/)
 │   ├── career-ai/                # Career AI copilot
 │   ├── settings/                 # Account settings
 │   └── admin-inbox/              # Admin contact inbox
+│       # Each page folder contains:
+│       #   content.html, style.css, script.js, wordpress-blocks.html,
+│       #   README.md, MIGRATION_NOTES_V1_1.md
 ├── assets/
 │   ├── css/
-│   │   └── custom-theme.css      # WordPress Customizer CSS
+│   │   └── custom-theme.css      # WordPress Customizer CSS (V1.1 design tokens & resets)
 │   └── README.md
 ├── wordpress-export/
 │   └── zevqyn.WordPress.2026-09-20.xml
 ├── docs/
+│   ├── DESIGN_SYSTEM_V1_1.md               # V1.1 semantic token system & component standards
+│   ├── UI_UX_AUDIT_V1.md                   # 19-page audit & risk matrix
+│   ├── V1_1_REFINEMENT_REPORT.md           # Comprehensive V1.1 refinement report
+│   ├── V1_1_WORDPRESS_MIGRATION_CHECKLIST.md # Step-by-step WordPress deployment checklist
 │   ├── ARCHITECTURE.md
 │   ├── FRONTEND_STRUCTURE.md
 │   ├── WORDPRESS_SETUP.md
