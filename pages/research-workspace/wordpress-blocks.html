@@ -1,4 +1,4 @@
-﻿<!-- wp:html -->
+<!-- wp:html -->
 <style data-wp-block-html="css">
 /* ==========================================================================
    ZEVQYN V1.1 REFINED RESEARCH WORKSPACE STYLES
@@ -361,6 +361,154 @@ header.entry-header,
     color: var(--green-text);
 }
 
+/* Saved Conversations Section */
+.zev-conversations-section {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.zev-conversations-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.zev-conversations-header h3 {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+}
+
+.zev-conversations-header span {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--zev-font-mono, monospace);
+}
+
+.zev-conversation-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.zev-conv-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 2px 4px 2px 10px;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                background var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-conv-item:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-hover);
+}
+
+.zev-conv-item.active {
+    border-color: var(--zev-green-primary, #10b981);
+    background: var(--surface-active, rgba(16, 185, 129, 0.06));
+}
+
+.zev-conv-select-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background: transparent;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    min-width: 0;
+    flex: 1;
+    text-align: left;
+}
+
+.zev-conv-title {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 190px;
+}
+
+.zev-conv-item.active .zev-conv-title {
+    color: var(--green-text);
+    font-weight: 600;
+}
+
+.zev-conv-meta {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 2px;
+}
+
+.zev-conv-delete-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 26px;
+    height: 26px;
+    border: 1px solid transparent;
+    border-radius: var(--zev-radius-xs, 4px);
+    background: transparent;
+    color: var(--muted);
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+    transition: background var(--zev-duration-fast, 150ms) ease,
+                color var(--zev-duration-fast, 150ms) ease,
+                border-color var(--zev-duration-fast, 150ms) ease;
+}
+
+.zev-conv-delete-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: rgba(239, 68, 68, 0.3);
+    color: #fca5a5;
+}
+
+.zev-conv-delete-btn:focus-visible {
+    outline: 2px solid #ef4444;
+    outline-offset: 1px;
+}
+
+.zev-no-conversations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 12px;
+    text-align: center;
+    gap: 4px;
+    border: 1px dashed var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+}
+
+.zev-no-conv-icon {
+    font-size: 16px;
+    color: var(--muted);
+    margin-bottom: 2px;
+}
+
+.zev-no-conversations strong {
+    font-size: 12px;
+    color: var(--text);
+    font-weight: 500;
+}
+
+.zev-no-conversations span {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.4;
+}
+
 /* Right Panel: AI Workspace, Chat, and Tools */
 .zev-ai-panel {
     background: var(--panel);
@@ -554,11 +702,9 @@ header.entry-header,
         transform: none !important;
     }
 }
-
 </style>
 
 <script data-wp-block-html="js">
-
 (function () {
 
     /* =========================================
@@ -1521,6 +1667,8 @@ if (empty) {
        CONVERSATIONS
     ========================================= */
 
+    let pendingDeleteConversationId = null;
+
     async function loadConversations() {
 
         try {
@@ -1544,6 +1692,7 @@ if (empty) {
 
 
             updateStats();
+            renderConversations();
 
 
         } catch (error) {
@@ -1557,6 +1706,198 @@ if (empty) {
 
         }
 
+    }
+
+    function renderConversations() {
+        const list = el("zevqyn-conversation-list");
+        const empty = el("zevqyn-no-conversations");
+        const label = el("zevqyn-conversations-label");
+
+        if (!list) {
+            return;
+        }
+
+        list.innerHTML = "";
+
+        if (label) {
+            const count = conversations.length;
+            label.textContent = count + " chat" + (count === 1 ? "" : "s");
+        }
+
+        if (conversations.length === 0) {
+            if (empty) {
+                empty.hidden = false;
+            }
+            return;
+        }
+
+        if (empty) {
+            empty.hidden = true;
+        }
+
+        conversations.forEach(function (conv) {
+            const item = document.createElement("div");
+            item.className = "zev-conv-item";
+            if (conv.id === currentConversationId) {
+                item.classList.add("active");
+            }
+
+            const mainBtn = document.createElement("button");
+            mainBtn.type = "button";
+            mainBtn.className = "zev-conv-select-btn";
+
+            const titleSpan = document.createElement("span");
+            titleSpan.className = "zev-conv-title";
+            titleSpan.textContent = conv.title || "Research Conversation";
+
+            const metaSpan = document.createElement("span");
+            metaSpan.className = "zev-conv-meta";
+            metaSpan.textContent = formatConvDate(conv.updated_at || conv.created_at);
+
+            mainBtn.appendChild(titleSpan);
+            mainBtn.appendChild(metaSpan);
+
+            mainBtn.addEventListener("click", function () {
+                openConversation(conv.id);
+            });
+
+            const delBtn = document.createElement("button");
+            delBtn.type = "button";
+            delBtn.className = "zev-conv-delete-btn";
+            delBtn.setAttribute("aria-label", "Delete conversation");
+            delBtn.title = "Delete conversation";
+            delBtn.textContent = "×";
+
+            delBtn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                showDeleteConvModal(conv.id);
+            });
+
+            item.appendChild(mainBtn);
+            item.appendChild(delBtn);
+            list.appendChild(item);
+        });
+    }
+
+    function formatConvDate(dateStr) {
+        if (!dateStr) {
+            return "";
+        }
+        try {
+            const d = new Date(dateStr);
+            return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+        } catch (e) {
+            return "";
+        }
+    }
+
+    async function openConversation(conversationId) {
+        if (currentConversationId === conversationId) {
+            return;
+        }
+
+        try {
+            const messages = await apiRequest(
+                "/api/v1/workspaces/" +
+                workspaceId +
+                "/conversations/" +
+                encodeURIComponent(conversationId) +
+                "/messages",
+                { method: "GET" }
+            );
+
+            currentConversationId = conversationId;
+            renderConversations();
+
+            const area = el("zevqyn-chat-area");
+            if (!area) {
+                return;
+            }
+            area.innerHTML = "";
+
+            if (Array.isArray(messages)) {
+                if (messages.length > 0) {
+                    messages.forEach(function (msg) {
+                        addChatMessage(
+                            msg.role,
+                            msg.content,
+                            msg.citations || []
+                        );
+                    });
+                    scrollChatToBottom();
+                    return;
+                }
+            }
+
+            clearChat();
+        } catch (error) {
+            console.error("Failed to load conversation messages:", error);
+            showToast("Could not load chat messages: " + error.message, "error");
+        }
+    }
+
+    function showDeleteConvModal(conversationId) {
+        pendingDeleteConversationId = conversationId;
+        const modal = el("zevqyn-delete-conv-modal");
+        if (modal) {
+            modal.hidden = false;
+        }
+    }
+
+    function hideDeleteConvModal() {
+        pendingDeleteConversationId = null;
+        const modal = el("zevqyn-delete-conv-modal");
+        if (modal) {
+            modal.hidden = true;
+        }
+    }
+
+    async function confirmDeleteConversation() {
+        if (!pendingDeleteConversationId) {
+            return;
+        }
+
+        const idToDelete = pendingDeleteConversationId;
+        const confirmBtn = el("zevqyn-delete-conv-confirm");
+        if (confirmBtn) {
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = "Deleting...";
+        }
+
+        try {
+            await apiRequest(
+                "/api/v1/workspaces/" +
+                workspaceId +
+                "/conversations/" +
+                encodeURIComponent(idToDelete),
+                {
+                    method: "DELETE"
+                }
+            );
+
+            conversations = conversations.filter(function (c) {
+                return c.id !== idToDelete;
+            });
+
+            updateStats();
+            renderConversations();
+
+            if (currentConversationId === idToDelete) {
+                clearChat();
+            }
+
+            hideDeleteConvModal();
+            showToast("Conversation deleted successfully", "success");
+        } catch (error) {
+            console.error("Failed to delete conversation:", error);
+            hideDeleteConvModal();
+            showToast("Failed to delete conversation: " + error.message, "error");
+        } finally {
+            if (confirmBtn) {
+                confirmBtn.disabled = false;
+                confirmBtn.textContent = "Delete";
+            }
+        }
     }
 
 
@@ -3625,6 +3966,30 @@ function addChatMessage(
 
         }
 
+        const deleteConvCancel =
+            el("zevqyn-delete-conv-cancel");
+
+        if (deleteConvCancel) {
+
+            deleteConvCancel.addEventListener(
+                "click",
+                hideDeleteConvModal
+            );
+
+        }
+
+        const deleteConvConfirm =
+            el("zevqyn-delete-conv-confirm");
+
+        if (deleteConvConfirm) {
+
+            deleteConvConfirm.addEventListener(
+                "click",
+                confirmDeleteConversation
+            );
+
+        }
+
 
         if (signOut) {
 
@@ -3759,7 +4124,6 @@ function addChatMessage(
     }
 
 })();
-
 </script>
 
 <div class="zev-ws-page">
@@ -4079,6 +4443,38 @@ function addChatMessage(
                         <span>
                             Upload your first document to
                             begin researching with AI.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SAVED CONVERSATIONS -->
+                <div class="zev-conversations-section">
+
+                    <div class="zev-conversations-header">
+
+                        <h3>Saved Chats</h3>
+
+                        <span id="zevqyn-conversations-label">
+                            0 chats
+                        </span>
+
+                    </div>
+
+                    <div class="zev-conversation-list" id="zevqyn-conversation-list"></div>
+
+                    <div class="zev-no-conversations" id="zevqyn-no-conversations" hidden="">
+
+                        <div class="zev-no-conv-icon">
+                            ✦
+                        </div>
+
+                        <strong>No saved chats</strong>
+
+                        <span>
+                            Ask a question to start your first research conversation.
                         </span>
 
                     </div>
@@ -4538,7 +4934,40 @@ function addChatMessage(
 
         </div>
 
+    <!-- =====================================
+         DELETE CONVERSATION MODAL
+    ====================================== -->
+    <div class="zev-modal-overlay" id="zevqyn-delete-conv-modal" hidden="">
+
+        <div class="zev-confirm-modal">
+
+            <div class="zev-confirm-icon">
+                !
+            </div>
+
+            <h2>Delete conversation?</h2>
+
+            <p>
+                All messages and citations in this research chat
+                will be permanently removed.
+            </p>
+
+            <div class="zev-confirm-actions">
+
+                <button type="button" class="zev-cancel-btn" id="zevqyn-delete-conv-cancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-delete-btn" id="zevqyn-delete-conv-confirm">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
+
 
 </div>
 <!-- /wp:html -->

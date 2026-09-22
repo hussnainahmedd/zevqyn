@@ -1,4 +1,4 @@
-﻿<div class="zev-ws-page">
+<div class="zev-ws-page">
 
     <!-- =====================================
          SIDEBAR
@@ -315,6 +315,38 @@
                         <span>
                             Upload your first document to
                             begin researching with AI.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SAVED CONVERSATIONS -->
+                <div class="zev-conversations-section">
+
+                    <div class="zev-conversations-header">
+
+                        <h3>Saved Chats</h3>
+
+                        <span id="zevqyn-conversations-label">
+                            0 chats
+                        </span>
+
+                    </div>
+
+                    <div class="zev-conversation-list" id="zevqyn-conversation-list"></div>
+
+                    <div class="zev-no-conversations" id="zevqyn-no-conversations" hidden="">
+
+                        <div class="zev-no-conv-icon">
+                            ✦
+                        </div>
+
+                        <strong>No saved chats</strong>
+
+                        <span>
+                            Ask a question to start your first research conversation.
                         </span>
 
                     </div>
@@ -774,6 +806,39 @@
 
         </div>
 
+    <!-- =====================================
+         DELETE CONVERSATION MODAL
+    ====================================== -->
+    <div class="zev-modal-overlay" id="zevqyn-delete-conv-modal" hidden="">
+
+        <div class="zev-confirm-modal">
+
+            <div class="zev-confirm-icon">
+                !
+            </div>
+
+            <h2>Delete conversation?</h2>
+
+            <p>
+                All messages and citations in this research chat
+                will be permanently removed.
+            </p>
+
+            <div class="zev-confirm-actions">
+
+                <button type="button" class="zev-cancel-btn" id="zevqyn-delete-conv-cancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-delete-btn" id="zevqyn-delete-conv-confirm">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
+
 
 </div>
