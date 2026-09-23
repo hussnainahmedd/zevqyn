@@ -300,6 +300,18 @@ header.entry-header,
     margin: 0 0 20px;
 }
 
+.zev-stat-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                transform var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-stat-link:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .zev-app-layout {

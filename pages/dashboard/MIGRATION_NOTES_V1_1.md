@@ -12,7 +12,10 @@
 2. **Compact Metric Indicator Tiles:** Clean $20\text{px}$ padding tiles with crisp 1px borders replacing bulky containers.
 3. **Refined Stepper Progress Bar:** Clean linear milestone tracking without gamified neon halos.
 4. **Preserved Multi-Endpoint Aggregation:** Preserved 100% of the parallel fetch logic querying `/workspaces`, `/workspaces/{id}/documents`, `/projects`, `/profile`, `/resumes`, and `/portfolios`.
-5. **Preserved DOM IDs:** `zevqyn-user-name`, `zevqyn-user-email`, `zevqyn-user-avatar`, `zevqyn-welcome`, `zevqyn-research-count`, `zevqyn-document-count`, `zevqyn-project-count`, `zevqyn-profile-completion`, `zevqyn-recent-research`, `.zev-progress span`, `zevqyn-signout`.
+5. **Global Documents Integration (V1.1 Backend Integration):**
+   - Added "Documents" navigation link in sidebar pointing to `/documents/`.
+   - Added "Document Library" quick action button pointing to `/documents/`.
+6. **Preserved DOM IDs:** `zevqyn-user-name`, `zevqyn-user-email`, `zevqyn-user-avatar`, `zevqyn-welcome`, `zevqyn-research-count`, `zevqyn-document-count`, `zevqyn-project-count`, `zevqyn-profile-completion`, `zevqyn-recent-research`, `.zev-progress span`, `zevqyn-signout`.
 
 ---
 
@@ -33,5 +36,7 @@
 - Log into an account and open `/dashboard/`.
 - Verify user name and email display properly in the sidebar.
 - Verify workspace, document, and project counters display accurate numbers.
+- Verify sidebar contains "Documents" link and clicking it navigates to `/documents/`.
+- Verify quick actions bar contains "Document Library" button and clicking it navigates to `/documents/`.
 - Verify clicking a recent workspace navigates to `/research-workspace/?id=...`.
 - Verify "Sign Out" cleanly terminates the session.

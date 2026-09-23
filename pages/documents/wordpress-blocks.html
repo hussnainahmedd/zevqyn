@@ -1,0 +1,1570 @@
+<!-- wp:html -->
+<style data-wp-block-html="css">
+/* ==========================================================================
+   ZEVQYN V1.1 GLOBAL DOCUMENTS LIBRARY STYLES
+   Scope: .zev-docs-page / #zevqyn-documents-app
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* Hide default Blocksy page titles */
+.hero-section,
+.page-title,
+.entry-header,
+header.entry-header,
+.ct-page-title,
+.entry-title {
+    display: none !important;
+}
+
+.zev-docs-page,
+.zev-docs-page * {
+    box-sizing: border-box;
+}
+
+.zev-docs-page {
+    --green: var(--zev-green-primary, #10b981);
+    --green-hover: var(--zev-green-hover, #059669);
+    --green-text: var(--zev-green-text, #34d399);
+    --green-faint: var(--zev-green-faint, rgba(16, 185, 129, 0.08));
+    --green-glow: var(--zev-green-glow, rgba(16, 185, 129, 0.12));
+    --bg: var(--zev-bg-canvas, #0b0d11);
+    --panel: var(--zev-bg-surface, #11141b);
+    --surface: var(--zev-bg-card, #181c24);
+    --surface-hover: #1f242e;
+    --subtle: #151820;
+    --border: var(--zev-border-subtle, #232834);
+    --border-strong: var(--zev-border-strong, #333a4d);
+    --text: var(--zev-text-primary, #f1f5f9);
+    --text-sec: var(--zev-text-secondary, #94a3b8);
+    --muted: var(--zev-text-muted, #64748b);
+
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--zev-font-sans, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Inter, sans-serif);
+    display: flex;
+}
+
+/* =========================================
+   SIDEBAR
+   ========================================= */
+.zev-docs-sidebar {
+    width: 240px;
+    background: var(--panel);
+    border-right: 1px solid var(--border);
+    padding: 24px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+}
+
+.zev-nav-title {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 0 12px;
+    margin-bottom: 8px;
+}
+
+.zev-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.zev-nav a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 12px;
+    color: var(--text-sec);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: var(--zev-radius-sm, 6px);
+    border: 1px solid transparent;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-nav a:hover {
+    background: var(--subtle);
+    color: var(--text);
+}
+
+.zev-nav a.active {
+    background: var(--surface);
+    color: var(--green-text);
+    border-color: var(--border);
+    font-weight: 600;
+}
+
+.zev-nav-icon {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.zev-sidebar-bottom {
+    margin-top: auto;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+/* =========================================
+   MAIN LAYOUT
+   ========================================= */
+.zev-docs-main {
+    flex: 1;
+    min-width: 0;
+    padding: 32px 40px;
+    overflow-y: auto;
+}
+
+.zev-docs-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.zev-page-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    margin-bottom: 6px;
+}
+
+.zev-docs-heading h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 6px;
+    letter-spacing: -0.02em;
+}
+
+.zev-docs-heading p {
+    font-size: 13px;
+    color: var(--text-sec);
+    margin: 0;
+    max-width: 580px;
+}
+
+.zev-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 8px 14px;
+    flex-shrink: 0;
+}
+
+.zev-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 1px solid var(--border-strong);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 13px;
+    color: var(--green-text);
+}
+
+.zev-user-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.zev-user-email {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* =========================================
+   STATS
+   ========================================= */
+.zev-docs-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 28px;
+}
+
+.zev-mini-stat {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 16px 20px;
+}
+
+.zev-mini-stat-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--green-text);
+    flex-shrink: 0;
+}
+
+.zev-mini-stat-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.2;
+}
+
+.zev-mini-stat-label {
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-top: 2px;
+}
+
+/* =========================================
+   FILTERS BAR
+   ========================================= */
+.zev-docs-filters {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.zev-search-box {
+    position: relative;
+    flex: 1;
+    min-width: 240px;
+    max-width: 380px;
+}
+
+.zev-search-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--muted);
+    pointer-events: none;
+}
+
+.zev-search-box input {
+    width: 100%;
+    height: 38px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 0 12px 0 34px;
+    color: var(--text);
+    font-size: 13px;
+    outline: none;
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-search-box input:focus {
+    border-color: var(--green);
+}
+
+.zev-filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.zev-filter-group select {
+    height: 38px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 0 12px;
+    color: var(--text-sec);
+    font-size: 13px;
+    outline: none;
+    cursor: pointer;
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-filter-group select:focus {
+    border-color: var(--green);
+}
+
+.zev-reset-filters-btn {
+    height: 38px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 0 14px;
+    color: var(--text-sec);
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-reset-filters-btn:hover {
+    background: var(--subtle);
+    color: var(--text);
+    border-color: var(--border-strong);
+}
+
+/* =========================================
+   DOCUMENTS CONTENT & GRID
+   ========================================= */
+.zev-docs-content {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 24px;
+}
+
+.zev-docs-meta-bar {
+    margin-bottom: 16px;
+    font-size: 12px;
+    color: var(--muted);
+    font-family: var(--zev-font-mono, monospace);
+}
+
+.zev-docs-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 40px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.zev-small-loader {
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--border);
+    border-top-color: var(--green);
+    border-radius: 50%;
+    animation: zevSpin 0.8s linear infinite;
+}
+
+@keyframes zevSpin {
+    to { transform: rotate(360deg); }
+}
+
+.zev-docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+}
+
+.zev-doc-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 14px;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                transform var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-doc-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+}
+
+.zev-doc-card-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.zev-doc-badge {
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    background: var(--subtle);
+    border: 1px solid var(--border);
+    color: var(--text-sec);
+}
+
+.zev-doc-badge.pdf {
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.08);
+}
+
+.zev-doc-badge.docx {
+    color: #93c5fd;
+    border-color: rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.08);
+}
+
+.zev-doc-badge.txt,
+.zev-doc-badge.md {
+    color: var(--green-text);
+    border-color: rgba(16, 185, 129, 0.3);
+    background: var(--green-faint);
+}
+
+.zev-doc-status-pill {
+    font-size: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 2px 8px;
+    border-radius: 12px;
+}
+
+.zev-doc-status-pill.indexed,
+.zev-doc-status-pill.ready,
+.zev-doc-status-pill.processed {
+    background: var(--green-faint);
+    color: var(--green-text);
+    border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.zev-doc-status-pill.uploaded,
+.zev-doc-status-pill.pending {
+    background: rgba(100, 116, 139, 0.12);
+    color: #94a3b8;
+    border: 1px solid rgba(100, 116, 139, 0.25);
+}
+
+.zev-doc-status-pill.extracting,
+.zev-doc-status-pill.processing {
+    background: rgba(245, 158, 11, 0.1);
+    color: #fcd34d;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.zev-doc-card-body h4 {
+    margin: 0 0 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.35;
+    word-break: break-word;
+}
+
+.zev-doc-meta-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.zev-doc-workspace-name {
+    color: var(--text-sec);
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.zev-doc-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 6px;
+}
+
+.zev-doc-size {
+    font-size: 11px;
+    color: var(--muted);
+    font-family: var(--zev-font-mono, monospace);
+}
+
+.zev-open-ws-btn {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--green-text);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: color var(--zev-duration-fast, 150ms) ease;
+}
+
+.zev-open-ws-btn:hover {
+    color: var(--green);
+}
+
+/* =========================================
+   EMPTY STATE
+   ========================================= */
+.zev-no-docs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 60px 20px;
+    border: 1px dashed var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+}
+
+.zev-no-doc-icon {
+    font-size: 32px;
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.zev-no-docs h3 {
+    margin: 0 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.zev-no-docs p {
+    margin: 0 0 20px;
+    font-size: 13px;
+    color: var(--text-sec);
+    max-width: 400px;
+}
+
+.zev-docs-btn {
+    height: 38px;
+    padding: 0 18px;
+    border-radius: var(--zev-radius-sm, 6px);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-docs-btn-primary {
+    background: var(--green);
+    color: #ffffff;
+    border: none;
+}
+
+.zev-docs-btn-primary:hover {
+    background: var(--green-hover);
+}
+
+/* =========================================
+   PAGINATION
+   ========================================= */
+.zev-docs-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 24px;
+}
+
+.zev-load-more-btn {
+    height: 38px;
+    padding: 0 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-load-more-btn:hover {
+    background: var(--surface-hover);
+    border-color: var(--border-strong);
+}
+
+.zev-load-more-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   TOAST
+   ========================================= */
+.zev-toast {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 10px 18px;
+    font-size: 13px;
+    color: var(--text);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    z-index: 9999;
+}
+
+.zev-toast.error {
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+}
+
+.zev-toast.success {
+    border-color: rgba(16, 185, 129, 0.4);
+    color: var(--green-text);
+}
+
+/* =========================================
+   RESPONSIVE (1440, 1366, 768, 390)
+   ========================================= */
+@media (max-width: 1024px) {
+    .zev-docs-stats {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .zev-docs-page {
+        flex-direction: column;
+    }
+
+    .zev-docs-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        padding: 16px;
+    }
+
+    .zev-docs-main {
+        padding: 20px 16px;
+    }
+
+    .zev-docs-top {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .zev-docs-filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .zev-search-box {
+        max-width: 100%;
+    }
+
+    .zev-filter-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .zev-docs-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .zev-docs-page * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+</style>
+
+<script data-wp-block-html="js">
+(function () {
+    "use strict";
+
+    var API_BASE = "https://zevqyn-backend.onrender.com/api/v1";
+    var SUPABASE_URL = "https://phjizxajnigiiawitkyx.supabase.co";
+    var SUPABASE_KEY = "sb_publishable_oYTMqlTbVsNqToWxvq6I9w_pQ9NFZWk";
+
+    var supabaseClient = null;
+    var session = null;
+
+    var workspacesMap = {};
+    var allWorkspaces = [];
+    var documents = [];
+
+    var activeSearch = "";
+    var activeWorkspaceId = "";
+    var activeFileType = "";
+    var activeStatus = "";
+
+    var limit = 50;
+    var offset = 0;
+    var isLoading = false;
+    var hasMore = false;
+    var searchTimer = null;
+    var toastTimer = null;
+
+    function el(id) {
+        return document.getElementById(id);
+    }
+
+    function escapeHtml(text) {
+        if (!text) {
+            return "";
+        }
+        var div = document.createElement("div");
+        div.textContent = String(text);
+        return div.innerHTML;
+    }
+
+    function showToast(message, type) {
+        var toast = el("zevqyn-toast");
+        if (!toast) {
+            return;
+        }
+
+        if (toastTimer) {
+            clearTimeout(toastTimer);
+        }
+
+        toast.textContent = message;
+        toast.className = "zev-toast " + (type || "");
+        toast.hidden = false;
+
+        toastTimer = setTimeout(function () {
+            toast.hidden = true;
+        }, 3500);
+    }
+
+    function loadSupabaseLibrary() {
+        return new Promise(function (resolve, reject) {
+            if (window.supabase) {
+                resolve();
+                return;
+            }
+
+            var script = document.createElement("script");
+            script.src = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2";
+            script.async = true;
+
+            script.onload = function () {
+                resolve();
+            };
+
+            script.onerror = function () {
+                reject(new Error("Failed to load Supabase SDK"));
+            };
+
+            document.head.appendChild(script);
+        });
+    }
+
+    function apiRequest(path, options) {
+        if (!session) {
+            throw new Error("Authentication required.");
+        }
+
+        var config = options || {};
+        var headers = config.headers || {};
+
+        headers["Authorization"] = "Bearer " + session.access_token;
+        headers["Accept"] = "application/json";
+
+        return fetch(API_BASE + path, {
+            method: config.method || "GET",
+            headers: headers,
+            body: config.body
+        }).then(function (response) {
+            if (response.status === 401) {
+                window.location.href = "/login/";
+                throw new Error("Session expired.");
+            }
+
+            return response.text().then(function (text) {
+                var data = null;
+                if (text) {
+                    try {
+                        data = JSON.parse(text);
+                    } catch (e) {
+                        data = null;
+                    }
+                }
+
+                if (!response.ok) {
+                    var msg = "Request failed.";
+                    if (data) {
+                        if (typeof data.detail === "string") {
+                            msg = data.detail;
+                        }
+                    }
+                    throw new Error(msg);
+                }
+
+                return data;
+            });
+        });
+    }
+
+    function formatFileSize(bytes) {
+        if (!bytes) {
+            return "0 B";
+        }
+        var num = Number(bytes);
+        if (num < 1024) {
+            return num + " B";
+        }
+        if (num < 1024 * 1024) {
+            return (num / 1024).toFixed(1) + " KB";
+        }
+        return (num / (1024 * 1024)).toFixed(1) + " MB";
+    }
+
+    function formatDate(dateStr) {
+        if (!dateStr) {
+            return "";
+        }
+        try {
+            var d = new Date(dateStr);
+            return d.toLocaleDateString(undefined, {
+                year: "numeric",
+                month: "short",
+                day: "numeric"
+            });
+        } catch (e) {
+            return "";
+        }
+    }
+
+    async function loadWorkspaces() {
+        try {
+            var result = await apiRequest("/workspaces");
+            if (Array.isArray(result)) {
+                allWorkspaces = result;
+                workspacesMap = {};
+                var select = el("zevqyn-filter-workspace");
+
+                result.forEach(function (ws) {
+                    workspacesMap[ws.id] = ws.title || "Untitled Workspace";
+
+                    if (select) {
+                        var opt = document.createElement("option");
+                        opt.value = ws.id;
+                        opt.textContent = ws.title || "Untitled Workspace";
+                        select.appendChild(opt);
+                    }
+                });
+
+                var wsCount = el("zevqyn-doc-workspace-count");
+                if (wsCount) {
+                    wsCount.textContent = result.length;
+                }
+            }
+        } catch (error) {
+            console.error("Failed to load workspaces for documents:", error);
+        }
+    }
+
+    async function loadDocuments(isLoadMore) {
+        if (isLoading) {
+            return;
+        }
+
+        isLoading = true;
+        var loadingEl = el("zevqyn-docs-loading");
+        var loadMoreBtn = el("zevqyn-load-more-btn");
+        var paginationEl = el("zevqyn-docs-pagination");
+
+        if (isLoadMore) {
+            if (loadMoreBtn) {
+                loadMoreBtn.disabled = true;
+                loadMoreBtn.textContent = "Loading...";
+            }
+        } else {
+            offset = 0;
+            if (loadingEl) {
+                loadingEl.hidden = false;
+            }
+        }
+
+        var queryParts = [
+            "limit=" + limit,
+            "offset=" + offset
+        ];
+
+        if (activeSearch) {
+            queryParts.push("search=" + encodeURIComponent(activeSearch));
+        }
+        if (activeWorkspaceId) {
+            queryParts.push("workspace_id=" + encodeURIComponent(activeWorkspaceId));
+        }
+        if (activeFileType) {
+            queryParts.push("file_type=" + encodeURIComponent(activeFileType));
+        }
+        if (activeStatus) {
+            queryParts.push("status=" + encodeURIComponent(activeStatus));
+        }
+
+        try {
+            var result = await apiRequest("/documents?" + queryParts.join("&"));
+            var fetched = Array.isArray(result) ? result : [];
+
+            if (isLoadMore) {
+                documents = documents.concat(fetched);
+            } else {
+                documents = fetched;
+            }
+
+            if (fetched.length === limit) {
+                hasMore = true;
+                offset = offset + limit;
+            } else {
+                hasMore = false;
+            }
+
+            renderDocuments();
+            updateStats();
+
+            if (paginationEl) {
+                paginationEl.hidden = !hasMore;
+            }
+        } catch (error) {
+            console.error("Failed to fetch documents:", error);
+            showToast("Failed to load documents: " + error.message, "error");
+        } finally {
+            isLoading = false;
+            if (loadingEl) {
+                loadingEl.hidden = true;
+            }
+            if (loadMoreBtn) {
+                loadMoreBtn.disabled = false;
+                loadMoreBtn.textContent = "Load More Documents";
+            }
+        }
+    }
+
+    function renderDocuments() {
+        var grid = el("zevqyn-docs-grid");
+        var emptyEl = el("zevqyn-no-docs");
+        var countLabel = el("zevqyn-docs-count-label");
+
+        if (!grid) {
+            return;
+        }
+
+        grid.innerHTML = "";
+
+        if (countLabel) {
+            var count = documents.length;
+            countLabel.textContent = "Showing " + count + " document" + (count === 1 ? "" : "s");
+        }
+
+        if (documents.length === 0) {
+            if (emptyEl) {
+                emptyEl.hidden = false;
+                var title = el("zevqyn-empty-title");
+                var desc = el("zevqyn-empty-desc");
+                var action = el("zevqyn-empty-action");
+
+                var hasFilters = false;
+                if (activeSearch) {
+                    hasFilters = true;
+                }
+                if (activeWorkspaceId) {
+                    hasFilters = true;
+                }
+                if (activeFileType) {
+                    hasFilters = true;
+                }
+                if (activeStatus) {
+                    hasFilters = true;
+                }
+
+                if (hasFilters) {
+                    if (title) {
+                        title.textContent = "No documents match your filters";
+                    }
+                    if (desc) {
+                        desc.textContent = "Try clearing your search keyword, workspace, or file type filters.";
+                    }
+                    if (action) {
+                        action.textContent = "Reset Filters";
+                        action.href = "#";
+                        action.onclick = function (e) {
+                            e.preventDefault();
+                            resetFilters();
+                        };
+                    }
+                } else {
+                    if (title) {
+                        title.textContent = "No documents yet";
+                    }
+                    if (desc) {
+                        desc.textContent = "Upload documents inside a research workspace to see them in your central library.";
+                    }
+                    if (action) {
+                        action.textContent = "Go to Research Hub";
+                        action.href = "/research/";
+                        action.onclick = null;
+                    }
+                }
+            }
+            return;
+        }
+
+        if (emptyEl) {
+            emptyEl.hidden = true;
+        }
+
+        documents.forEach(function (doc) {
+            var card = document.createElement("div");
+            card.className = "zev-doc-card";
+
+            var fileType = (doc.file_type || "pdf").toLowerCase().replace(/^\./, "");
+            var status = (doc.status || "uploaded").toLowerCase();
+            var wsTitle = workspacesMap[doc.workspace_id] || "Workspace " + String(doc.workspace_id).slice(0, 8);
+
+            var head = document.createElement("div");
+            head.className = "zev-doc-card-head";
+
+            var badge = document.createElement("span");
+            badge.className = "zev-doc-badge " + fileType;
+            badge.textContent = fileType.toUpperCase();
+
+            var pill = document.createElement("span");
+            pill.className = "zev-doc-status-pill " + status;
+            pill.textContent = status;
+
+            head.appendChild(badge);
+            head.appendChild(pill);
+
+            var body = document.createElement("div");
+            body.className = "zev-doc-card-body";
+
+            var titleH4 = document.createElement("h4");
+            titleH4.textContent = doc.original_filename || "Untitled Document";
+            titleH4.title = doc.original_filename || "";
+
+            var metaRow = document.createElement("div");
+            metaRow.className = "zev-doc-meta-row";
+
+            var wsSpan = document.createElement("span");
+            wsSpan.className = "zev-doc-workspace-name";
+            wsSpan.textContent = "▣ " + wsTitle;
+
+            var dateSpan = document.createElement("span");
+            dateSpan.textContent = "Uploaded " + formatDate(doc.created_at);
+
+            metaRow.appendChild(wsSpan);
+            metaRow.appendChild(dateSpan);
+
+            body.appendChild(titleH4);
+            body.appendChild(metaRow);
+
+            var foot = document.createElement("div");
+            foot.className = "zev-doc-card-footer";
+
+            var sizeSpan = document.createElement("span");
+            sizeSpan.className = "zev-doc-size";
+            sizeSpan.textContent = formatFileSize(doc.file_size);
+
+            var openLink = document.createElement("a");
+            openLink.className = "zev-open-ws-btn";
+            openLink.href = "/research-workspace/?id=" + encodeURIComponent(doc.workspace_id);
+            openLink.textContent = "Open in Workspace →";
+
+            foot.appendChild(sizeSpan);
+            foot.appendChild(openLink);
+
+            card.appendChild(head);
+            card.appendChild(body);
+            card.appendChild(foot);
+
+            grid.appendChild(card);
+        });
+    }
+
+    function updateStats() {
+        var totalEl = el("zevqyn-doc-total-count");
+        var readyEl = el("zevqyn-doc-ready-count");
+
+        if (totalEl) {
+            totalEl.textContent = documents.length;
+        }
+
+        if (readyEl) {
+            var readyCount = 0;
+            documents.forEach(function (doc) {
+                var s = String(doc.status || "").toLowerCase();
+                if (s === "indexed") {
+                    readyCount += 1;
+                }
+                if (s === "ready") {
+                    readyCount += 1;
+                }
+                if (s === "processed") {
+                    readyCount += 1;
+                }
+            });
+            readyEl.textContent = readyCount;
+        }
+    }
+
+    function resetFilters() {
+        activeSearch = "";
+        activeWorkspaceId = "";
+        activeFileType = "";
+        activeStatus = "";
+
+        var searchInput = el("zevqyn-docs-search");
+        if (searchInput) {
+            searchInput.value = "";
+        }
+        var wsSelect = el("zevqyn-filter-workspace");
+        if (wsSelect) {
+            wsSelect.value = "";
+        }
+        var typeSelect = el("zevqyn-filter-type");
+        if (typeSelect) {
+            typeSelect.value = "";
+        }
+        var statusSelect = el("zevqyn-filter-status");
+        if (statusSelect) {
+            statusSelect.value = "";
+        }
+
+        loadDocuments(false);
+    }
+
+    function bindEvents() {
+        var searchInput = el("zevqyn-docs-search");
+        if (searchInput) {
+            searchInput.addEventListener("input", function () {
+                if (searchTimer) {
+                    clearTimeout(searchTimer);
+                }
+                searchTimer = setTimeout(function () {
+                    activeSearch = searchInput.value.trim();
+                    loadDocuments(false);
+                }, 300);
+            });
+        }
+
+        var wsSelect = el("zevqyn-filter-workspace");
+        if (wsSelect) {
+            wsSelect.addEventListener("change", function () {
+                activeWorkspaceId = wsSelect.value;
+                loadDocuments(false);
+            });
+        }
+
+        var typeSelect = el("zevqyn-filter-type");
+        if (typeSelect) {
+            typeSelect.addEventListener("change", function () {
+                activeFileType = typeSelect.value;
+                loadDocuments(false);
+            });
+        }
+
+        var statusSelect = el("zevqyn-filter-status");
+        if (statusSelect) {
+            statusSelect.value = "";
+            statusSelect.addEventListener("change", function () {
+                activeStatus = statusSelect.value;
+                loadDocuments(false);
+            });
+        }
+
+        var resetBtn = el("zevqyn-reset-filters");
+        if (resetBtn) {
+            resetBtn.addEventListener("click", resetFilters);
+        }
+
+        var loadMoreBtn = el("zevqyn-load-more-btn");
+        if (loadMoreBtn) {
+            loadMoreBtn.addEventListener("click", function () {
+                loadDocuments(true);
+            });
+        }
+
+        var signOut = el("zevqyn-signout");
+        if (signOut) {
+            signOut.addEventListener("click", async function (e) {
+                e.preventDefault();
+                if (supabaseClient) {
+                    await supabaseClient.auth.signOut();
+                }
+                window.location.href = "/login/";
+            });
+        }
+    }
+
+    function initUser(user) {
+        var nameEl = el("zevqyn-user-name");
+        var emailEl = el("zevqyn-user-email");
+        var avatarEl = el("zevqyn-user-avatar");
+
+        var email = user.email || "";
+        var name = (user.user_metadata && user.user_metadata.full_name) || email.split("@")[0] || "User";
+
+        if (nameEl) {
+            nameEl.textContent = name;
+        }
+        if (emailEl) {
+            emailEl.textContent = email;
+        }
+        if (avatarEl) {
+            avatarEl.textContent = name.charAt(0).toUpperCase();
+        }
+    }
+
+    function init() {
+        loadSupabaseLibrary()
+            .then(function () {
+                supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+                return supabaseClient.auth.getSession();
+            })
+            .then(async function (res) {
+                if (!res.data || !res.data.session) {
+                    window.location.href = "/login/";
+                    return;
+                }
+
+                session = res.data.session;
+                initUser(session.user);
+                bindEvents();
+
+                await loadWorkspaces();
+                await loadDocuments(false);
+            })
+            .catch(function (error) {
+                console.error("Initialization error:", error);
+                window.location.href = "/login/";
+            });
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
+    } else {
+        init();
+    }
+})();
+</script>
+
+<div class="zev-docs-page" id="zevqyn-documents-app">
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+    <aside class="zev-docs-sidebar">
+
+        <div class="zev-nav-title">
+            Workspace
+        </div>
+
+        <nav class="zev-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/">
+                <span class="zev-nav-icon">▣</span>
+                Research
+            </a>
+
+            <a href="/documents/" class="active">
+                <span class="zev-nav-icon">▤</span>
+                Documents
+            </a>
+
+            <a href="/projects/">
+                <span class="zev-nav-icon">◆</span>
+                Projects
+            </a>
+
+            <a href="/resume/">
+                <span class="zev-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="/portfolio/">
+                <span class="zev-nav-icon">◎</span>
+                Portfolio
+            </a>
+
+            <a href="/career/">
+                <span class="zev-nav-icon">✦</span>
+                Career Hub
+            </a>
+
+            <a href="/career-ai/">
+                <span class="zev-nav-icon">↗</span>
+                Career AI
+            </a>
+
+        </nav>
+
+
+        <!-- ACCOUNT -->
+        <div class="zev-sidebar-bottom">
+
+            <div class="zev-nav-title">
+                Account
+            </div>
+
+            <nav class="zev-nav">
+
+                <a href="/settings/">
+                    <span class="zev-nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" id="zevqyn-signout">
+                    <span class="zev-nav-icon">↪</span>
+                    Sign Out
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+    <main class="zev-docs-main">
+
+        <!-- TOPBAR -->
+        <div class="zev-docs-top">
+
+            <div class="zev-docs-heading">
+
+                <div class="zev-page-label">
+                    CENTRAL KNOWLEDGE BASE
+                </div>
+
+                <h1>
+                    Document Library
+                </h1>
+
+                <p>
+                    Browse, search, and manage source documents across all your research workspaces.
+                </p>
+
+            </div>
+
+
+            <div class="zev-user">
+
+                <div class="zev-avatar" id="zevqyn-user-avatar">
+                    Z
+                </div>
+
+                <div>
+
+                    <div class="zev-user-name" id="zevqyn-user-name">
+                        Loading...
+                    </div>
+
+                    <div class="zev-user-email" id="zevqyn-user-email">
+                        Loading account...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+        <section class="zev-docs-stats">
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▤
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-doc-total-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Total Documents
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▣
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-doc-workspace-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Workspaces
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ◈
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-doc-ready-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Indexed Sources
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTERS BAR -->
+        <div class="zev-docs-filters">
+
+            <div class="zev-search-box">
+
+                <span class="zev-search-icon">
+                    ⌕
+                </span>
+
+                <input type="text" id="zevqyn-docs-search" placeholder="Search by filename..." autocomplete="off">
+
+            </div>
+
+
+            <div class="zev-filter-group">
+
+                <select id="zevqyn-filter-workspace">
+                    <option value="">All Workspaces</option>
+                </select>
+
+                <select id="zevqyn-filter-type">
+                    <option value="">All File Types</option>
+                    <option value="pdf">PDF</option>
+                    <option value="docx">DOCX</option>
+                    <option value="txt">TXT</option>
+                    <option value="md">Markdown (MD)</option>
+                </select>
+
+                <select id="zevqyn-filter-status">
+                    <option value="">All Statuses</option>
+                    <option value="indexed">Indexed</option>
+                    <option value="uploaded">Uploaded</option>
+                    <option value="extracting">Extracting</option>
+                </select>
+
+                <button type="button" class="zev-reset-filters-btn" id="zevqyn-reset-filters" title="Reset all filters">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DOCUMENTS SECTION -->
+        <section class="zev-docs-content">
+
+            <div class="zev-docs-meta-bar">
+
+                <span id="zevqyn-docs-count-label">
+                    Loading documents...
+                </span>
+
+            </div>
+
+
+            <div class="zev-docs-loading" id="zevqyn-docs-loading">
+
+                <div class="zev-small-loader"></div>
+
+                Loading documents...
+
+            </div>
+
+
+            <div class="zev-docs-grid" id="zevqyn-docs-grid"></div>
+
+
+            <!-- EMPTY STATE -->
+            <div class="zev-no-docs" id="zevqyn-no-docs" hidden="">
+
+                <div class="zev-no-doc-icon">
+                    ▤
+                </div>
+
+                <h3 id="zevqyn-empty-title">
+                    No documents yet
+                </h3>
+
+                <p id="zevqyn-empty-desc">
+                    Upload documents inside a research workspace to see them in your central library.
+                </p>
+
+                <a href="/research/" class="zev-docs-btn zev-docs-btn-primary" id="zevqyn-empty-action">
+                    Go to Research Hub
+                </a>
+
+            </div>
+
+
+            <!-- PAGINATION / LOAD MORE -->
+            <div class="zev-docs-pagination" id="zevqyn-docs-pagination" hidden="">
+
+                <button type="button" class="zev-load-more-btn" id="zevqyn-load-more-btn">
+                    Load More Documents
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div class="zev-toast" id="zevqyn-toast" hidden=""></div>
+
+</div>
+<!-- /wp:html -->

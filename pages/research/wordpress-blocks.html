@@ -1,4 +1,4 @@
-﻿<!-- wp:html -->
+<!-- wp:html -->
 <style data-wp-block-html="css">
 /* ==========================================================================
    ZEVQYN V1.1 REFINED RESEARCH STYLES
@@ -302,6 +302,18 @@ header.entry-header,
     margin: 0 0 20px;
 }
 
+.zev-stat-link {
+    text-decoration: none;
+    cursor: pointer;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                transform var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-stat-link:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-1px);
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
     .zev-app-layout {
@@ -344,11 +356,9 @@ header.entry-header,
         transform: none !important;
     }
 }
-
 </style>
 
 <script data-wp-block-html="js">
-
 (function () {
 
     /* =========================================
@@ -660,6 +670,42 @@ header.entry-header,
     async function loadDocumentCounts() {
 
         documentCounts = {};
+
+        try {
+
+            const allDocs =
+                await apiRequest(
+                    "/api/v1/documents?limit=100",
+                    {
+                        method: "GET"
+                    }
+                );
+
+            if (Array.isArray(allDocs)) {
+
+                allDocs.forEach(function (doc) {
+
+                    if (doc.workspace_id) {
+
+                        const wsId =
+                            doc.workspace_id;
+
+                        documentCounts[wsId] =
+                            (documentCounts[wsId] || 0) + 1;
+
+                    }
+
+                });
+
+                return;
+
+            }
+
+        } catch (globalDocError) {
+
+            /* Fallback to per-workspace documents fetch if global query is not yet active */
+
+        }
 
         const requests =
             workspaces.map(async function (workspace) {
@@ -1530,7 +1576,6 @@ header.entry-header,
 }
 
 })();
-
 </script>
 
 <div class="zev-research-page">
@@ -1554,6 +1599,11 @@ header.entry-header,
             <a href="/research/" class="active">
                 <span class="zev-nav-icon">▣</span>
                 Research
+            </a>
+
+            <a href="/documents/">
+                <span class="zev-nav-icon">▤</span>
+                Documents
             </a>
 
             <a href="#">
@@ -1705,7 +1755,7 @@ header.entry-header,
             </div>
 
 
-            <div class="zev-mini-stat">
+            <a href="/documents/" class="zev-mini-stat zev-stat-link" title="Open Global Document Library">
 
                 <div class="zev-mini-stat-icon">
                     ▤
@@ -1718,12 +1768,12 @@ header.entry-header,
                     </div>
 
                     <div class="zev-mini-stat-label">
-                        Documents
+                        Documents →
                     </div>
 
                 </div>
 
-            </div>
+            </a>
 
 
             <div class="zev-mini-stat">
