@@ -1,0 +1,391 @@
+<div id="zev-career-app" class="zev-career-app">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Background -->
+    <div class="zev-career-bg">
+        <div class="zev-career-glow zev-career-glow-one"></div>
+        <div class="zev-career-glow zev-career-glow-two"></div>
+    </div>
+
+    <div class="zev-career-shell">
+
+        <!-- Header -->
+        <header class="zev-career-header">
+
+            <div>
+                <div class="zev-career-eyebrow">
+                    ZEVQYN CAREER
+                </div>
+
+                <h1>Career Hub</h1>
+
+                <p>
+                    Your professional profile and career records,
+                    all in one workspace.
+                </p>
+            </div>
+
+            <div class="zev-career-header-actions">
+                <a href="/resume/" class="zev-career-btn zev-career-btn-secondary">
+                    Resume Builder
+                </a>
+
+                <a href="/portfolio/" class="zev-career-btn zev-career-btn-primary">
+                    Portfolio Builder
+                </a>
+            </div>
+
+        </header>
+
+        <!-- Status -->
+        <div id="zev-career-status" class="zev-career-status"></div>
+
+        <!-- Loading -->
+        <div id="zev-career-loading" class="zev-career-loading">
+
+            <div class="zev-career-spinner"></div>
+
+            <div>
+                <strong>Preparing your Career Hub</strong>
+                <span>Loading your professional data...</span>
+            </div>
+
+        </div>
+
+        <!-- Main Content -->
+        <main id="zev-career-content" class="zev-career-content">
+
+            <!-- Stats -->
+            <section class="zev-career-stats">
+
+                <div class="zev-career-stat">
+                    <span class="zev-career-stat-label">Projects</span>
+                    <strong id="zev-career-project-count">0</strong>
+                    <small>Career projects</small>
+                </div>
+
+                <div class="zev-career-stat">
+                    <span class="zev-career-stat-label">Skills</span>
+                    <strong id="zev-career-skill-count">0</strong>
+                    <small>Professional skills</small>
+                </div>
+
+                <div class="zev-career-stat">
+                    <span class="zev-career-stat-label">Education</span>
+                    <strong id="zev-career-education-count">0</strong>
+                    <small>Education records</small>
+                </div>
+
+                <div class="zev-career-stat">
+                    <span class="zev-career-stat-label">Certificates</span>
+                    <strong id="zev-career-certificate-count">0</strong>
+                    <small>Achievements</small>
+                </div>
+
+            </section>
+
+            <!-- Profile -->
+            <section class="zev-career-panel zev-career-profile-panel">
+
+                <div class="zev-career-section-heading">
+
+                    <div>
+                        <span class="zev-career-section-kicker">
+                            PROFESSIONAL IDENTITY
+                        </span>
+
+                        <h2>Career Profile</h2>
+
+                        <p>
+                            Your reusable professional information across ZEVQYN.
+                        </p>
+                    </div>
+
+                    <button type="button" id="zev-career-save-profile" class="zev-career-btn zev-career-btn-primary">
+                        Save Profile
+                    </button>
+
+                </div>
+
+                <div class="zev-career-profile-layout">
+
+                    <!-- Avatar -->
+                    <div class="zev-career-profile-preview">
+
+                        <div class="zev-career-avatar-wrap">
+
+                            <img id="zev-career-avatar" class="zev-career-avatar" alt="Profile">
+
+                            <div id="zev-career-avatar-fallback" class="zev-career-avatar-fallback">
+                                Z
+                            </div>
+
+                        </div>
+
+                        <strong id="zev-career-preview-name">
+                            Your Name
+                        </strong>
+
+                        <span id="zev-career-preview-username">
+                            @username
+                        </span>
+
+                        <p id="zev-career-preview-location">
+                            Add your location
+                        </p>
+
+                    </div>
+
+                    <!-- Fields -->
+                    <div class="zev-career-profile-fields">
+
+                        <div class="zev-career-form-grid">
+
+                            <div class="zev-career-field">
+                                <label for="zev-profile-full-name">
+                                    Full Name
+                                </label>
+                                <input id="zev-profile-full-name" type="text" placeholder="Hussnain Ahmad">
+                            </div>
+
+                            <div class="zev-career-field">
+                                <label for="zev-profile-username">
+                                    Username
+                                </label>
+                                <input id="zev-profile-username" type="text" placeholder="hussnain">
+                            </div>
+
+                            <div class="zev-career-field">
+                                <label for="zev-profile-location">
+                                    Location
+                                </label>
+                                <input id="zev-profile-location" type="text" placeholder="Islamabad, Pakistan">
+                            </div>
+
+                            <div class="zev-career-field">
+                                <label for="zev-profile-phone">
+                                    Phone
+                                </label>
+                                <input id="zev-profile-phone" type="text" placeholder="+92...">
+                            </div>
+
+                            <div class="zev-career-field zev-career-field-full">
+                                <label for="zev-profile-bio">
+                                    Professional Bio
+                                </label>
+                                <textarea id="zev-profile-bio" rows="4" placeholder="Tell people about your professional journey..."></textarea>
+                            </div>
+
+                            <div class="zev-career-field zev-career-field-full">
+                                <label for="zev-profile-avatar">
+                                    Profile Image URL
+                                </label>
+                                <input id="zev-profile-avatar" type="url" placeholder="https://...">
+                            </div>
+
+                            <div class="zev-career-field">
+                                <label for="zev-profile-github">
+                                    GitHub
+                                </label>
+                                <input id="zev-profile-github" type="url" placeholder="https://github.com/...">
+                            </div>
+
+                            <div class="zev-career-field">
+                                <label for="zev-profile-linkedin">
+                                    LinkedIn
+                                </label>
+                                <input id="zev-profile-linkedin" type="url" placeholder="https://linkedin.com/in/...">
+                            </div>
+
+                            <div class="zev-career-field zev-career-field-full">
+                                <label for="zev-profile-website">
+                                    Website
+                                </label>
+                                <input id="zev-profile-website" type="url" placeholder="https://...">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- Career Records -->
+            <section class="zev-career-panel">
+
+                <div class="zev-career-section-heading">
+
+                    <div>
+                        <span class="zev-career-section-kicker">
+                            CAREER LIBRARY
+                        </span>
+
+                        <h2>Career Records</h2>
+
+                        <p>
+                            Manage the information used by your resumes
+                            and portfolios.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- Tabs -->
+                <div class="zev-career-tabs">
+
+                    <button type="button" class="zev-career-tab active" data-career-tab="projects">
+                        Projects
+                    </button>
+
+                    <button type="button" class="zev-career-tab" data-career-tab="skills">
+                        Skills
+                    </button>
+
+                    <button type="button" class="zev-career-tab" data-career-tab="education">
+                        Education
+                    </button>
+
+                    <button type="button" class="zev-career-tab" data-career-tab="certificates">
+                        Certificates
+                    </button>
+
+                </div>
+
+                <!-- PROJECTS -->
+                <div id="zev-career-tab-projects" class="zev-career-tab-content active">
+
+                    <div class="zev-career-content-header">
+                        <div>
+                            <h3>Projects</h3>
+                            <p>
+                                Projects you can reuse across ZEVQYN.
+                            </p>
+                        </div>
+
+                        <button type="button" class="zev-career-btn zev-career-btn-primary" data-career-add="project">
+                            + Add Project
+                        </button>
+                    </div>
+
+                    <div id="zev-career-projects" class="zev-career-record-grid"></div>
+
+                </div>
+
+                <!-- SKILLS -->
+                <div id="zev-career-tab-skills" class="zev-career-tab-content">
+
+                    <div class="zev-career-content-header">
+                        <div>
+                            <h3>Skills</h3>
+                            <p>
+                                Track your professional capabilities.
+                            </p>
+                        </div>
+
+                        <button type="button" class="zev-career-btn zev-career-btn-primary" data-career-add="skill">
+                            + Add Skill
+                        </button>
+                    </div>
+
+                    <div id="zev-career-skills" class="zev-career-record-grid"></div>
+
+                </div>
+
+                <!-- EDUCATION -->
+                <div id="zev-career-tab-education" class="zev-career-tab-content">
+
+                    <div class="zev-career-content-header">
+                        <div>
+                            <h3>Education</h3>
+                            <p>
+                                Your academic background.
+                            </p>
+                        </div>
+
+                        <button type="button" class="zev-career-btn zev-career-btn-primary" data-career-add="education">
+                            + Add Education
+                        </button>
+                    </div>
+
+                    <div id="zev-career-education" class="zev-career-record-grid"></div>
+
+                </div>
+
+                <!-- CERTIFICATES -->
+                <div id="zev-career-tab-certificates" class="zev-career-tab-content">
+
+                    <div class="zev-career-content-header">
+                        <div>
+                            <h3>Certificates</h3>
+                            <p>
+                                Certifications and professional achievements.
+                            </p>
+                        </div>
+
+                        <button type="button" class="zev-career-btn zev-career-btn-primary" data-career-add="certificate">
+                            + Add Certificate
+                        </button>
+                    </div>
+
+                    <div id="zev-career-certificates" class="zev-career-record-grid"></div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <!-- Modal -->
+    <div id="zev-career-modal" class="zev-career-modal">
+
+        <div class="zev-career-modal-backdrop" data-career-close-modal=""></div>
+
+        <div class="zev-career-modal-card">
+
+            <div class="zev-career-modal-header">
+
+                <div>
+                    <span class="zev-career-section-kicker">
+                        CAREER RECORD
+                    </span>
+
+                    <h2 id="zev-career-modal-title">
+                        Add Record
+                    </h2>
+                </div>
+
+                <button type="button" id="zev-career-modal-close" class="zev-career-close" aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+            <form id="zev-career-modal-form">
+
+                <div id="zev-career-modal-fields"></div>
+
+                <div class="zev-career-modal-actions">
+
+                    <button type="button" id="zev-career-modal-cancel" class="zev-career-btn zev-career-btn-secondary">
+                        Cancel
+                    </button>
+
+                    <button type="submit" id="zev-career-modal-save" class="zev-career-btn zev-career-btn-primary">
+                        Save
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- /wp:html -->

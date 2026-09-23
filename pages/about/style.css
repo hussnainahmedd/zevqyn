@@ -1,1173 +1,461 @@
-﻿
-/* =========================================================
-   ZEVQYN ABOUT PAGE
-   ========================================================= */
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED ABOUT STYLES
+   Scope: #zev-about-page
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
 
-.zabout {
-    --za-green: #25e879;
-    --za-green-soft: #75f6a6;
-    --za-bg: #020604;
-    --za-card: #06100b;
-    --za-card-2: #08130e;
-    --za-line: rgba(99, 255, 158, 0.17);
-    --za-text: #f5fff8;
-    --za-muted: #89a99a;
-
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 80% 5%, rgba(26, 255, 113, 0.07), transparent 28%),
-        radial-gradient(circle at 15% 48%, rgba(26, 255, 113, 0.035), transparent 25%),
-        var(--za-bg);
-
-    color: var(--za-text);
-    font-family: inherit;
+/* Hide default Blocksy page titles */
+.hero-section,
+.entry-header {
+    display: none !important;
 }
 
-.zabout *,
-.zabout *::before,
-.zabout *::after {
+#zev-about-page,
+#zev-about-page * {
     box-sizing: border-box;
 }
 
-.za-wrap {
-    width: min(1180px, calc(100% - 48px));
+#zev-about-page {
+    --green: var(--zev-green-primary, #2ebd68);
+    --green-text: var(--zev-green-text, #41cf7b);
+    --bg: var(--zev-bg-canvas, #090b0e);
+    --panel: var(--zev-bg-panel, #0f1217);
+    --surface: var(--zev-bg-surface, #151921);
+    --subtle: var(--zev-bg-subtle, #222834);
+    --border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --text: var(--zev-text-primary, #f4f6f8);
+    --text-sec: var(--zev-text-secondary, #c0c7d2);
+    --muted: var(--zev-text-muted, #828c9a);
+
+    width: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+}
+
+.za-container {
+    width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
 }
 
+@media (max-width: 768px) {
+    .za-container {
+        width: calc(100% - 32px);
+    }
+}
+
+/* --------------------------------------------------------------------------
+   HERO SECTION
+   -------------------------------------------------------------------------- */
 .za-hero {
-    min-height: 790px;
     position: relative;
-    display: flex;
-    align-items: center;
-    padding: 100px 0 90px;
+    padding: 110px 0 80px;
+    background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(46, 189, 104, 0.08), transparent 70%);
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
 }
 
 .za-hero-grid {
     display: grid;
-    grid-template-columns: 0.92fr 1.08fr;
-    gap: 75px;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 60px;
     align-items: center;
-    position: relative;
-    z-index: 2;
 }
 
-.za-eyebrow,
-.za-section-label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--za-green);
-    font-size: 11px;
-    letter-spacing: 2.6px;
-    font-weight: 700;
-}
-
-.za-eyebrow span {
-    width: 28px;
-    height: 1px;
-    background: var(--za-green);
-}
-
-.za-section-label span {
-    border: 1px solid rgba(37, 232, 121, 0.35);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+.za-badge {
     display: inline-flex;
     align-items: center;
-    justify-content: center;
-    letter-spacing: 0;
-    font-size: 10px;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
+    border: 1px solid var(--zev-green-border, rgba(46, 189, 104, 0.28));
+    border-radius: var(--zev-radius-full, 9999px);
+    font-size: var(--zev-text-xs, 12px);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    margin-bottom: 20px;
 }
 
 .za-hero h1 {
-    margin: 24px 0 24px;
-    font-size: clamp(54px, 5.5vw, 82px);
-    line-height: 0.98;
-    letter-spacing: -4px;
-    font-weight: 800;
+    margin: 0 0 20px;
+    font-size: clamp(34px, 4.5vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    color: var(--text);
 }
 
 .za-hero h1 span,
-.za-manifesto-title h2 span,
-.za-shift-head h2 span,
-.za-built-copy h2 span,
-.za-statement h2 span,
-.za-cta h2 span {
-    color: var(--za-green);
+.za-manifesto h2 span,
+.za-final h2 span {
+    color: var(--green-text);
 }
 
 .za-lead {
-    max-width: 590px;
-    margin: 0;
-    color: var(--za-muted);
-    font-size: 18px;
-    line-height: 1.75;
+    margin: 0 0 32px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-sec);
+    max-width: 520px;
 }
 
 .za-hero-actions {
     display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
-    margin-top: 34px;
 }
 
 .za-btn {
-    min-height: 50px;
-    padding: 0 22px;
-    border-radius: 9px;
     display: inline-flex;
-    justify-content: center;
     align-items: center;
-    gap: 18px;
-    text-decoration: none !important;
-    font-weight: 700;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: var(--zev-radius-sm, 6px);
     font-size: 14px;
-    transition:
-        transform 0.25s ease,
-        background 0.25s ease,
-        border-color 0.25s ease;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .za-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-1px);
+}
+
+.za-btn:active {
+    transform: scale(0.985);
 }
 
 .za-btn-primary {
-    color: #001b0c !important;
-    background: var(--za-green);
-    border: 1px solid var(--za-green);
-    box-shadow: 0 0 30px rgba(37, 232, 121, 0.12);
+    background: var(--green);
+    color: var(--zev-text-inverse, #090b0e) !important;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 .za-btn-primary:hover {
-    background: #54f391;
+    background: var(--zev-green-hover, #26a75a);
+    box-shadow: 0 4px 12px rgba(46, 189, 104, 0.25);
 }
 
 .za-btn-secondary {
-    color: #eafff1 !important;
-    border: 1px solid rgba(184, 255, 209, 0.17);
-    background: rgba(255,255,255,0.025);
+    background: var(--subtle);
+    color: var(--text) !important;
+    border-color: var(--border);
 }
 
-.za-mini-note {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 29px;
-    color: #6e8c7e;
-    font-size: 12px;
+.za-btn-secondary:hover {
+    background: var(--zev-bg-elevated, #1b202a);
+    border-color: var(--border-strong);
 }
 
-.za-note-line {
-    display: block;
-    width: 35px;
-    height: 1px;
-    background: #345444;
-}
-
-
-/* MOVING BORDER */
-
-.za-running-border {
-    position: relative;
-    border-radius: 28px;
-    overflow: hidden;
-    padding: 1px;
-    isolation: isolate;
-    background: rgba(36, 232, 120, 0.12);
-}
-
-.za-running-border::before {
-    content: "";
-    position: absolute;
-    z-index: -2;
-    width: 45%;
-    height: 170%;
-    left: 27%;
-    top: -35%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        transparent,
-        #25e879,
-        #9bffc0,
-        #25e879,
-        transparent,
-        transparent
-    );
-    filter: blur(1px);
-    animation: zaBorderRun 5s linear infinite;
-    transform-origin: center;
-}
-
-.za-running-border::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: -1;
-    border-radius: 27px;
-    background: #041009;
-}
-
-@keyframes zaBorderRun {
-    from {
-        transform: rotate(0deg) scale(1.8);
-    }
-    to {
-        transform: rotate(360deg) scale(1.8);
-    }
-}
-
-
-/* HERO VISUAL */
-
+/* --------------------------------------------------------------------------
+   EDITORIAL MANIFESTO VISUAL
+   -------------------------------------------------------------------------- */
 .za-visual {
-    min-height: 550px;
-    box-shadow:
-        0 40px 100px rgba(0,0,0,0.55),
-        0 0 80px rgba(37,232,121,0.06);
-    transform: rotate(-1.5deg);
-}
-
-.za-visual-inner {
-    min-height: 548px;
-    padding: 35px;
-    border-radius: 27px;
-    background:
-        linear-gradient(135deg, rgba(6,19,12,0.98), rgba(3,10,7,0.98));
     position: relative;
-    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-lg, 14px);
+    padding: 32px;
+    box-shadow: var(--zev-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.60)),
+                var(--zev-shadow-inner, inset 0 1px 1px rgba(255, 255, 255, 0.04));
+    transition: transform var(--zev-duration-macro, 320ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.za-visual-inner::before {
-    content: "";
-    width: 330px;
-    height: 330px;
-    border-radius: 50%;
-    position: absolute;
-    right: -130px;
-    bottom: -140px;
-    background: rgba(37,232,121,0.08);
-    filter: blur(50px);
-}
-
-.za-visual-top {
-    display: flex;
-    justify-content: space-between;
-    color: #5e8973;
-    font-size: 10px;
-    letter-spacing: 2px;
-}
-
-.za-live-dot {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: #87ad99;
-}
-
-.za-live-dot i {
-    width: 6px;
-    height: 6px;
-    background: var(--za-green);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--za-green);
-}
-
-.za-visual-title {
-    margin: 52px 0 35px;
-}
-
-.za-visual-title small {
-    display: block;
-    color: #9bb3a6;
-    font-size: 19px;
-    margin-bottom: 5px;
-}
-
-.za-visual-title strong {
-    font-size: 34px;
-    letter-spacing: -1.4px;
-}
-
-.za-flow {
-    display: grid;
-    grid-template-columns: 1fr 20px 1fr;
-    gap: 10px;
-}
-
-.za-flow-card {
-    min-height: 105px;
-    border: 1px solid rgba(99,255,158,0.13);
-    background: rgba(255,255,255,0.02);
-    border-radius: 14px;
-    padding: 17px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.za-flow-card:nth-of-type(5),
-.za-flow-card:nth-of-type(7) {
-    margin-top: 5px;
-}
-
-.za-flow-icon {
-    width: 37px;
-    height: 37px;
-    border-radius: 10px;
-    background: rgba(37,232,121,0.08);
-    color: var(--za-green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
-}
-
-.za-flow-card small {
-    display: block;
-    color: #4f8067;
-    font-size: 9px;
-}
-
-.za-flow-card strong {
-    display: block;
-    margin: 2px 0;
-    font-size: 14px;
-}
-
-.za-flow-card p {
-    margin: 0;
-    color: #698576;
-    font-size: 10px;
-}
-
-.za-flow-line {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.za-flow-line span {
-    width: 100%;
-    height: 1px;
-    background: rgba(37,232,121,0.2);
-}
-
-.za-flow-active {
-    border-color: rgba(37,232,121,0.42);
-    background: rgba(37,232,121,0.06);
-}
-
-.za-handwritten {
-    position: absolute;
-    right: 35px;
-    bottom: 30px;
-    transform: rotate(-3deg);
+.za-visual-quote {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--text-sec);
     font-style: italic;
-    font-family: "Comic Sans MS", cursive;
+    border-left: 2px solid var(--green);
+    padding-left: 16px;
+    margin-bottom: 24px;
 }
 
-.za-handwritten span,
-.za-handwritten strong {
+.za-visual-stat-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+}
+
+.za-visual-stat h4 {
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--green-text);
+    margin: 0 0 4px 0;
+}
+
+.za-visual-stat p {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   THE 3 CORE BELIEFS (EDITORIAL CARDS)
+   -------------------------------------------------------------------------- */
+.za-beliefs-section {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+    background: var(--panel);
+}
+
+.za-beliefs-header {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 50px auto;
+}
+
+.za-kicker {
+    display: inline-block;
+    font-size: var(--zev-text-xs, 12px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    margin-bottom: 8px;
+}
+
+.za-beliefs-header h2 {
+    font-size: clamp(24px, 3.5vw, 36px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    margin: 0 0 12px;
+    color: var(--text);
+}
+
+.za-beliefs-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.za-belief-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 28px 24px;
+    transition: transform var(--zev-duration-standard, 200ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                border-color var(--zev-duration-standard, 200ms) ease;
+}
+
+.za-belief-card:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+}
+
+.za-belief-card::before {
+    display: none !important; /* Deactivate legacy border loop */
+}
+
+.za-belief-num {
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-text);
+    margin-bottom: 12px;
     display: block;
 }
 
-.za-handwritten span {
-    color: #d9f5e4;
-    font-size: 14px;
+.za-belief-card h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
 }
 
-.za-handwritten strong {
-    color: var(--za-green);
-    font-size: 17px;
+.za-belief-card p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--text-sec);
+    line-height: 1.6;
 }
 
-.za-handwritten i {
-    color: var(--za-green);
-    position: absolute;
-    left: -25px;
-    top: 18px;
-}
-
-
-/* BACKGROUND */
-
-.za-orb {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(100px);
-}
-
-.za-orb-one {
-    width: 450px;
-    height: 450px;
-    background: rgba(37,232,121,0.06);
-    right: 4%;
-    top: 18%;
-}
-
-.za-orb-two {
-    width: 250px;
-    height: 250px;
-    background: rgba(70,110,255,0.04);
-    left: 3%;
-    bottom: 0;
-}
-
-
-/* SECTIONS */
-
-.za-manifesto,
-.za-shift,
-.za-philosophy,
-.za-built,
-.za-statement,
-.za-cta {
-    padding: 120px 0;
-    position: relative;
-}
-
-.za-manifesto {
-    border-top: 1px solid rgba(122,255,169,0.08);
+/* --------------------------------------------------------------------------
+   MANIFESTO COMPARISON (BEFORE & AFTER ZEVQYN)
+   -------------------------------------------------------------------------- */
+.za-manifesto-section {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
 }
 
 .za-manifesto-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    margin-top: 55px;
+    gap: 32px;
+    margin-top: 40px;
 }
 
-.za-manifesto-title h2,
-.za-shift-head h2,
-.za-built-copy h2,
-.za-cta h2 {
-    font-size: clamp(42px, 4vw, 64px);
-    line-height: 1.04;
-    letter-spacing: -2.8px;
-    margin: 0;
+.za-manifesto-column {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 28px;
 }
 
-.za-manifesto-copy {
-    padding-top: 8px;
+.za-manifesto-column.za-traditional {
+    border-color: rgba(239, 68, 68, 0.2);
 }
 
-.za-manifesto-copy p {
-    color: #91ad9e;
-    font-size: 17px;
-    line-height: 1.8;
-    margin: 0 0 25px;
+.za-manifesto-column.za-zevqyn {
+    border-color: var(--zev-green-border, rgba(46, 189, 104, 0.28));
 }
 
-.za-highlight {
-    margin-top: 38px;
-    padding: 20px 22px;
-    border-left: 2px solid var(--za-green);
-    background: linear-gradient(
-        90deg,
-        rgba(37,232,121,0.08),
-        transparent
-    );
-    color: #e8fff0;
-    font-size: 16px;
-}
-
-
-/* SHIFT */
-
-.za-shift {
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            rgba(37,232,121,0.018),
-            transparent
-        );
-}
-
-.za-shift-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 80px;
-    align-items: flex-end;
-    margin-top: 50px;
-}
-
-.za-shift-head p {
-    width: 380px;
-    max-width: 100%;
-    color: var(--za-muted);
-    line-height: 1.7;
-    margin: 0;
-}
-
-.za-shift-grid {
-    display: grid;
-    grid-template-columns: 1fr 80px 1fr;
-    align-items: center;
-    gap: 20px;
-    margin-top: 70px;
-}
-
-.za-chaos-card {
-    min-height: 490px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: #070b09;
-    border-radius: 26px;
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-}
-
-.za-card-tag {
-    color: #557464;
-    letter-spacing: 2px;
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.za-chaos-space {
-    height: 335px;
-    position: relative;
-}
-
-.za-chaos-item {
-    position: absolute;
-    padding: 13px 17px;
-    background: #0e1511;
-    border: 1px solid rgba(255,255,255,0.07);
-    color: #789286;
-    border-radius: 8px;
-    font-size: 11px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-}
-
-.ci-1 {
-    left: 6%;
-    top: 40px;
-    transform: rotate(-7deg);
-}
-
-.ci-2 {
-    right: 8%;
-    top: 68px;
-    transform: rotate(8deg);
-}
-
-.ci-3 {
-    left: 22%;
-    top: 145px;
-    transform: rotate(4deg);
-}
-
-.ci-4 {
-    right: 5%;
-    top: 215px;
-    transform: rotate(-5deg);
-}
-
-.ci-5 {
-    left: 4%;
-    top: 245px;
-    transform: rotate(7deg);
-}
-
-.ci-6 {
-    right: 29%;
-    top: 285px;
-    transform: rotate(-9deg);
-}
-
-.za-card-bottom {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 20px;
-}
-
-.za-card-bottom strong,
-.za-card-bottom span {
-    display: block;
-}
-
-.za-card-bottom strong {
-    font-size: 18px;
-}
-
-.za-card-bottom span {
-    color: #62796d;
-    margin-top: 4px;
-    font-size: 13px;
-}
-
-.za-arrow-middle {
-    text-align: center;
-    color: var(--za-green);
-}
-
-.za-arrow-middle span {
-    display: block;
-    font-size: 35px;
-}
-
-.za-arrow-middle small {
-    color: #668174;
-    font-style: italic;
-}
-
-.za-system-card {
-    min-height: 490px;
-}
-
-.za-system-inner {
-    min-height: 488px;
-    border-radius: 27px;
-    padding: 30px;
-    background: #06100b;
-}
-
-.za-node-main {
-    margin-top: 35px;
-}
-
-.za-system-node {
-    border: 1px solid rgba(37,232,121,0.13);
-    background: rgba(255,255,255,0.018);
-    border-radius: 13px;
-    padding: 17px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.za-node-logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 11px;
-    background: var(--za-green);
-    color: #001a0b;
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.za-node-main small {
-    color: #5c8370;
-    display: block;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.za-node-main strong {
-    font-size: 18px;
-}
-
-.za-node-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.za-node-grid span {
-    color: var(--za-green);
-}
-
-.za-node-grid strong {
-    font-size: 12px;
-}
-
-.za-ai-bar {
-    margin-top: 12px;
-    border: 1px solid rgba(37,232,121,0.3);
-    background: rgba(37,232,121,0.06);
-    border-radius: 13px;
-    padding: 17px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 13px;
-    align-items: center;
-}
-
-.za-ai-bar > span,
-.za-ai-bar i {
-    color: var(--za-green);
-}
-
-.za-ai-bar strong,
-.za-ai-bar small {
-    display: block;
-}
-
-.za-ai-bar small {
-    color: #719181;
-    margin-top: 3px;
-}
-
-
-/* BELIEFS */
-
-.za-belief-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 60px;
-}
-
-.za-belief {
-    min-height: 330px;
-    padding: 30px;
-    border: 1px solid rgba(91,255,151,0.13);
-    border-radius: 20px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,20,13,0.8),
-            rgba(3,8,5,0.8)
-        );
-    position: relative;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.za-belief:hover {
-    transform: translateY(-8px);
-    border-color: rgba(37,232,121,0.4);
-}
-
-.za-belief-num {
-    position: absolute;
-    right: 25px;
-    top: 24px;
-    color: #254332;
-    font-size: 12px;
-}
-
-.za-belief-icon {
-    width: 48px;
-    height: 48px;
-    background: rgba(37,232,121,0.08);
-    border: 1px solid rgba(37,232,121,0.14);
-    border-radius: 13px;
-    color: var(--za-green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.za-belief h3 {
-    margin: 65px 0 14px;
-    font-size: 23px;
-    letter-spacing: -0.7px;
-}
-
-.za-belief p {
-    margin: 0;
-    color: #789587;
-    line-height: 1.7;
-    font-size: 14px;
-}
-
-
-/* BUILT FOR */
-
-.za-built-box {
-    min-height: 600px;
-}
-
-.za-built-inner {
-    min-height: 598px;
-    border-radius: 27px;
-    background:
-        radial-gradient(circle at 75% 50%, rgba(37,232,121,0.09), transparent 30%),
-        #05100a;
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    align-items: center;
-    padding: 65px;
-    gap: 50px;
-}
-
-.za-built-copy h2 {
-    margin: 35px 0 25px;
-}
-
-.za-built-copy p {
-    color: #89a697;
-    line-height: 1.75;
-    max-width: 540px;
-}
-
-.za-built-copy blockquote {
-    margin: 28px 0 0;
-    padding: 18px 0 18px 20px;
-    border-left: 2px solid var(--za-green);
-    color: #dffff0;
-    font-size: 18px;
-    font-style: italic;
-}
-
-.za-built-graphic {
-    width: 400px;
-    height: 400px;
-    max-width: 100%;
-    position: relative;
-    margin: auto;
-}
-
-.za-orbit {
-    position: absolute;
-    border: 1px solid rgba(37,232,121,0.15);
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.orbit-one {
-    width: 170px;
-    height: 170px;
-}
-
-.orbit-two {
-    width: 270px;
-    height: 270px;
-}
-
-.orbit-three {
-    width: 380px;
-    height: 380px;
-}
-
-.za-core {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: #0a1c11;
-    border: 1px solid rgba(37,232,121,0.45);
-    box-shadow:
-        0 0 60px rgba(37,232,121,0.13);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.za-core small {
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: #668977;
-}
-
-.za-core strong {
-    font-size: 25px;
-    line-height: 1;
-}
-
-.za-core span {
-    color: var(--za-green);
-    font-weight: 800;
-}
-
-.za-orbit-label {
-    position: absolute;
-    background: #07130c;
-    border: 1px solid rgba(37,232,121,0.22);
-    color: #9ac4aa;
-    font-size: 9px;
-    letter-spacing: 2px;
-    padding: 9px 13px;
-    border-radius: 20px;
-}
-
-.ol-one {
-    left: 5%;
-    top: 44%;
-}
-
-.ol-two {
-    right: 8%;
-    top: 16%;
-}
-
-.ol-three {
-    right: 2%;
-    bottom: 20%;
-}
-
-
-/* STATEMENT */
-
-.za-statement {
-    text-align: center;
-}
-
-.za-statement-inner {
-    max-width: 900px;
-    margin: auto;
-}
-
-.za-statement-small {
-    color: #527161;
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-bottom: 35px;
-}
-
-.za-statement h2 {
-    margin: 0;
-    font-size: clamp(55px, 7vw, 100px);
-    line-height: 0.98;
-    letter-spacing: -5px;
-}
-
-.za-scribble {
-    margin: 40px 0 0 45%;
-    color: #b6d9c4;
-    font-family: "Comic Sans MS", cursive;
-    font-style: italic;
+.za-manifesto-column h4 {
     font-size: 15px;
-    transform: rotate(-4deg);
-}
-
-
-/* CTA */
-
-.za-cta {
-    padding-bottom: 140px;
-}
-
-.za-cta-box {
-    min-height: 350px;
-}
-
-.za-cta-inner {
-    min-height: 348px;
-    border-radius: 27px;
-    background:
-        radial-gradient(circle at 85% 50%, rgba(37,232,121,0.09), transparent 30%),
-        #06100b;
-    padding: 60px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 50px;
-}
-
-.za-cta h2 {
-    margin: 25px 0 15px;
-}
-
-.za-cta p {
-    color: #7f9c8d;
-}
-
-.za-cta-right {
+    font-weight: 600;
+    margin: 0 0 16px 0;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 14px;
+    gap: 8px;
 }
 
-.za-big-btn {
-    min-height: 58px;
-    padding: 0 30px;
+.za-manifesto-column.za-traditional h4 {
+    color: var(--zev-color-danger, #ef4444);
 }
 
-.za-cta-right small {
-    color: #557363;
+.za-manifesto-column.za-zevqyn h4 {
+    color: var(--green-text);
 }
 
+.za-manifesto-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
 
-/* REVEAL */
+.za-manifesto-list li {
+    font-size: 13px;
+    color: var(--text-sec);
+    margin-bottom: 12px;
+    line-height: 1.5;
+    padding-left: 20px;
+    position: relative;
+}
 
+.za-manifesto-column.za-traditional li::before {
+    content: "✕";
+    position: absolute;
+    left: 0;
+    color: var(--zev-color-danger, #ef4444);
+}
+
+.za-manifesto-column.za-zevqyn li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--green-text);
+}
+
+/* --------------------------------------------------------------------------
+   FINAL CALL TO ACTION
+   -------------------------------------------------------------------------- */
+.za-final {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(46, 189, 104, 0.08), transparent 70%);
+}
+
+.za-final-box h2 {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    color: var(--text);
+}
+
+.za-final-box p {
+    font-size: 15px;
+    color: var(--text-sec);
+    max-width: 560px;
+    margin: 0 auto 32px auto;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   REVEAL TRANSITIONS (INTERSECTION OBSERVER)
+   -------------------------------------------------------------------------- */
 .za-reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+    transform: translateY(12px);
+    transition: opacity var(--zev-duration-macro, 320ms) ease,
+                transform var(--zev-duration-macro, 320ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.za-reveal.za-visible {
+.za-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-
-/* RESPONSIVE */
-
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN BREAKPOINTS
+   -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-
-    .za-hero-grid,
-    .za-manifesto-grid,
-    .za-built-inner {
+    .za-hero-grid {
         grid-template-columns: 1fr;
-    }
-
-    .za-hero {
-        padding-top: 70px;
-    }
-
-    .za-visual {
-        max-width: 700px;
-    }
-
-    .za-manifesto-grid {
         gap: 40px;
     }
 
-    .za-shift-grid {
+    .za-beliefs-grid {
         grid-template-columns: 1fr;
     }
 
-    .za-arrow-middle {
-        transform: rotate(90deg);
-        padding: 10px 0;
-    }
-
-    .za-belief-grid {
+    .za-manifesto-grid {
         grid-template-columns: 1fr;
-    }
-
-    .za-built-graphic {
-        margin-top: 20px;
     }
 }
 
-@media (max-width: 700px) {
-
-    .za-wrap {
-        width: min(100% - 28px, 1180px);
-    }
-
-    .za-hero,
-    .za-manifesto,
-    .za-shift,
-    .za-philosophy,
-    .za-built,
-    .za-statement,
-    .za-cta {
-        padding: 80px 0;
-    }
-
-    .za-hero h1 {
-        font-size: 48px;
-        letter-spacing: -2.7px;
-    }
-
-    .za-lead {
-        font-size: 16px;
+@media (max-width: 640px) {
+    .za-hero {
+        padding: 60px 0 40px;
     }
 
     .za-hero-actions {
-        align-items: stretch;
         flex-direction: column;
-    }
-
-    .za-btn {
         width: 100%;
     }
 
-    .za-visual {
-        min-height: auto;
-        transform: none;
+    .za-hero-actions .za-btn {
+        width: 100%;
     }
+}
 
-    .za-visual-inner {
-        min-height: 600px;
-        padding: 23px;
-    }
+/* Accessibility Focus States */
+#zev-about-page a:focus-visible,
+#zev-about-page button:focus-visible {
+    outline: 2px solid var(--green) !important;
+    outline-offset: 2px !important;
+}
 
-    .za-flow {
-        grid-template-columns: 1fr;
-    }
-
-    .za-flow-line {
-        display: none;
-    }
-
-    .za-handwritten {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: 30px;
-    }
-
-    .za-manifesto-title h2,
-    .za-shift-head h2,
-    .za-built-copy h2,
-    .za-cta h2 {
-        font-size: 42px;
-        letter-spacing: -2px;
-    }
-
-    .za-shift-head {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .za-chaos-card,
-    .za-system-card,
-    .za-system-inner {
-        min-height: 460px;
-    }
-
-    .za-built-inner {
-        padding: 35px 24px;
-    }
-
-    .za-built-graphic {
-        width: 290px;
-        height: 290px;
-    }
-
-    .orbit-one {
-        width: 120px;
-        height: 120px;
-    }
-
-    .orbit-two {
-        width: 200px;
-        height: 200px;
-    }
-
-    .orbit-three {
-        width: 280px;
-        height: 280px;
-    }
-
-    .za-core {
-        width: 105px;
-        height: 105px;
-    }
-
-    .za-statement h2 {
-        font-size: 52px;
-        letter-spacing: -3px;
-    }
-
-    .za-scribble {
-        margin-left: 15%;
-    }
-
-    .za-cta-inner {
-        padding: 35px 24px;
-        grid-template-columns: 1fr;
-    }
-
-    .za-cta-right {
-        align-items: stretch;
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+    .za-reveal,
+    .za-visible,
+    .za-belief-card,
+    .za-visual,
+    .za-btn {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+        opacity: 1 !important;
     }
 }

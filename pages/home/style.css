@@ -1,0 +1,587 @@
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED HOME STYLES
+   Scope: .zev-home
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. RESET & WRAPPER
+   -------------------------------------------------------------------------- */
+.zev-home {
+  background-color: var(--zev-bg-canvas, #090b0e);
+  color: var(--zev-text-primary, #f4f6f8);
+  font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+  line-height: var(--zev-leading-normal, 1.5);
+  font-size: var(--zev-text-base, 14px);
+  width: 100%;
+  overflow-x: hidden;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.zev-home *,
+.zev-home *::before,
+.zev-home *::after {
+  box-sizing: border-box;
+}
+
+.zev-home-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--zev-space-6, 24px);
+}
+
+@media (max-width: 768px) {
+  .zev-home-container {
+    padding: 0 var(--zev-space-4, 16px);
+  }
+}
+
+/* --------------------------------------------------------------------------
+   2. HERO SECTION
+   -------------------------------------------------------------------------- */
+.zev-hero {
+  position: relative;
+  padding: 120px 0 80px 0;
+  overflow: hidden;
+  border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+  background: radial-gradient(
+    ellipse 80% 50% at 50% -20%,
+    rgba(46, 189, 104, 0.07),
+    transparent 70%
+  );
+}
+
+.zev-hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--zev-space-12, 48px);
+  align-items: center;
+}
+
+.zev-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.zev-hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--zev-space-2, 8px);
+  padding: 6px 14px;
+  background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
+  border: 1px solid var(--zev-green-border, rgba(46, 189, 104, 0.28));
+  border-radius: var(--zev-radius-full, 9999px);
+  font-size: var(--zev-text-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--zev-green-text, #41cf7b);
+  margin-bottom: var(--zev-space-6, 24px);
+}
+
+.zev-hero-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--zev-green-primary, #2ebd68);
+}
+
+.zev-hero-title {
+  font-size: clamp(2.25rem, 4.5vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--zev-text-primary, #f4f6f8);
+  margin: 0 0 var(--zev-space-6, 24px) 0;
+}
+
+.zev-hero-title-accent {
+  color: var(--zev-green-text, #41cf7b);
+  display: block;
+}
+
+.zev-hero-desc {
+  font-size: clamp(1rem, 1.25vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--zev-text-secondary, #c0c7d2);
+  margin: 0 0 var(--zev-space-8, 32px) 0;
+  max-width: 560px;
+}
+
+.zev-hero-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--zev-space-4, 16px);
+  flex-wrap: wrap;
+}
+
+.zev-hero-note {
+  font-size: var(--zev-text-xs, 12px);
+  color: var(--zev-text-muted, #828c9a);
+  margin-top: var(--zev-space-3, 12px);
+  display: flex;
+  align-items: center;
+  gap: var(--zev-space-2, 8px);
+}
+
+/* Hero Media / Preview Visual */
+.zev-hero-visual {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  perspective: 1200px;
+}
+
+.zev-hero-preview-frame {
+  position: relative;
+  width: 100%;
+  background: var(--zev-bg-surface, #151921);
+  border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+  border-radius: var(--zev-radius-lg, 14px);
+  box-shadow: var(--zev-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.60)),
+              var(--zev-shadow-inner, inset 0 1px 1px rgba(255, 255, 255, 0.04));
+  overflow: hidden;
+  transition: transform var(--zev-duration-macro, 320ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.zev-hero-preview-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  background: var(--zev-bg-panel, #0f1217);
+  border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+}
+
+.zev-hero-preview-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.zev-hero-preview-dots span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.zev-hero-preview-tag {
+  font-family: var(--zev-font-mono, monospace);
+  font-size: 11px;
+  color: var(--zev-text-muted, #828c9a);
+}
+
+.zev-hero-preview-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   3. JOURNEY MILESTONES (THE 4-STEP WORKFLOW)
+   -------------------------------------------------------------------------- */
+.zev-section-journey {
+  padding: 80px 0;
+  border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+  background: var(--zev-bg-panel, #0f1217);
+}
+
+.zev-journey-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto var(--zev-space-12, 48px) auto;
+}
+
+.zev-journey-header .zev-section-label {
+  display: inline-block;
+  font-size: var(--zev-text-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--zev-green-text, #41cf7b);
+  margin-bottom: var(--zev-space-2, 8px);
+}
+
+.zev-journey-header .zev-section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 var(--zev-space-3, 12px) 0;
+}
+
+.zev-journey-header .zev-section-desc {
+  font-size: var(--zev-text-base, 14px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  margin: 0;
+}
+
+.zev-journey-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--zev-space-4, 16px);
+}
+
+.zev-journey-step {
+  position: relative;
+  background: var(--zev-bg-surface, #151921);
+  border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+  border-radius: var(--zev-radius-md, 10px);
+  padding: var(--zev-space-6, 24px);
+  transition: transform var(--zev-duration-standard, 200ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+              border-color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-journey-step:hover {
+  transform: translateY(-2px);
+  border-color: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+}
+
+.zev-journey-step-num {
+  font-family: var(--zev-font-mono, monospace);
+  font-size: var(--zev-text-sm, 13px);
+  font-weight: 700;
+  color: var(--zev-green-text, #41cf7b);
+  margin-bottom: var(--zev-space-3, 12px);
+  display: inline-block;
+}
+
+.zev-journey-step-title {
+  font-size: var(--zev-text-lg, 18px);
+  font-weight: 600;
+  color: var(--zev-text-primary, #f4f6f8);
+  margin: 0 0 var(--zev-space-2, 8px) 0;
+}
+
+.zev-journey-step-desc {
+  font-size: var(--zev-text-sm, 13px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  line-height: var(--zev-leading-normal, 1.5);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   4. EDITORIAL PILLARS (3 CORE WORKSPACES)
+   -------------------------------------------------------------------------- */
+.zev-section-pillars {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+}
+
+.zev-pillars-header {
+  margin-bottom: var(--zev-space-12, 48px);
+  max-width: 600px;
+}
+
+.zev-pillars-header .zev-section-label {
+  font-size: var(--zev-text-xs, 12px);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--zev-green-text, #41cf7b);
+  margin-bottom: var(--zev-space-2, 8px);
+  display: block;
+}
+
+.zev-pillars-header .zev-section-title {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.25;
+  margin: 0 0 var(--zev-space-3, 12px) 0;
+}
+
+.zev-pillars-header .zev-section-desc {
+  font-size: var(--zev-text-base, 14px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  margin: 0;
+}
+
+.zev-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--zev-space-6, 24px);
+}
+
+.zev-pillar-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--zev-bg-panel, #0f1217);
+  border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+  border-radius: var(--zev-radius-md, 10px);
+  padding: var(--zev-space-8, 32px) var(--zev-space-6, 24px);
+  transition: border-color var(--zev-duration-standard, 200ms) ease,
+              transform var(--zev-duration-standard, 200ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+}
+
+.zev-pillar-card:hover {
+  border-color: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+  transform: translateY(-2px);
+}
+
+.zev-pillar-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: var(--zev-radius-sm, 6px);
+  background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
+  border: 1px solid var(--zev-green-border, rgba(46, 189, 104, 0.28));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--zev-green-text, #41cf7b);
+  margin-bottom: var(--zev-space-4, 16px);
+}
+
+.zev-pillar-title {
+  font-size: var(--zev-text-lg, 18px);
+  font-weight: 600;
+  color: var(--zev-text-primary, #f4f6f8);
+  margin: 0 0 var(--zev-space-2, 8px) 0;
+}
+
+.zev-pillar-desc {
+  font-size: var(--zev-text-sm, 13px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  line-height: var(--zev-leading-normal, 1.5);
+  margin: 0 0 var(--zev-space-6, 24px) 0;
+  flex-grow: 1;
+}
+
+.zev-pillar-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--zev-space-6, 24px) 0;
+  border-top: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+  padding-top: var(--zev-space-4, 16px);
+}
+
+.zev-pillar-features li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--zev-space-2, 8px);
+  font-size: var(--zev-text-xs, 12px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  margin-bottom: var(--zev-space-2, 8px);
+  line-height: 1.4;
+}
+
+.zev-pillar-features li svg {
+  flex-shrink: 0;
+  margin-top: 2px;
+  color: var(--zev-green-text, #41cf7b);
+}
+
+.zev-pillar-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--zev-text-sm, 13px);
+  font-weight: 500;
+  color: var(--zev-green-text, #41cf7b);
+  text-decoration: none;
+  transition: gap var(--zev-duration-micro, 120ms) ease;
+}
+
+.zev-pillar-link:hover {
+  gap: 10px;
+}
+
+/* --------------------------------------------------------------------------
+   5. TECHNICAL RIGOR & SECURITY (EDITORIAL SPLIT)
+   -------------------------------------------------------------------------- */
+.zev-section-rigor {
+  padding: 90px 0;
+  border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+  background: var(--zev-bg-panel, #0f1217);
+}
+
+.zev-rigor-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--zev-space-12, 48px);
+  align-items: center;
+}
+
+.zev-rigor-content h2 {
+  font-size: clamp(1.75rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--zev-space-4, 16px) 0;
+}
+
+.zev-rigor-content p {
+  font-size: var(--zev-text-base, 14px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  line-height: var(--zev-leading-normal, 1.5);
+  margin: 0 0 var(--zev-space-6, 24px) 0;
+}
+
+.zev-rigor-specs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--zev-space-4, 16px);
+}
+
+.zev-rigor-spec-item {
+  background: var(--zev-bg-surface, #151921);
+  border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+  border-radius: var(--zev-radius-sm, 6px);
+  padding: var(--zev-space-4, 16px);
+}
+
+.zev-rigor-spec-item h4 {
+  font-size: var(--zev-text-sm, 13px);
+  font-weight: 600;
+  color: var(--zev-text-primary, #f4f6f8);
+  margin: 0 0 4px 0;
+}
+
+.zev-rigor-spec-item p {
+  font-size: var(--zev-text-xs, 12px);
+  color: var(--zev-text-muted, #828c9a);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.zev-rigor-card {
+  background: var(--zev-bg-surface, #151921);
+  border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+  border-radius: var(--zev-radius-md, 10px);
+  padding: var(--zev-space-6, 24px);
+  box-shadow: var(--zev-shadow-md, 0 4px 14px rgba(0, 0, 0, 0.45));
+}
+
+.zev-rigor-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--zev-space-4, 16px);
+  padding-bottom: var(--zev-space-3, 12px);
+  border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+}
+
+.zev-rigor-citation-item {
+  background: var(--zev-bg-panel, #0f1217);
+  border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+  border-radius: var(--zev-radius-sm, 6px);
+  padding: var(--zev-space-3, 12px);
+  margin-bottom: var(--zev-space-3, 12px);
+  font-size: var(--zev-text-xs, 12px);
+}
+
+.zev-rigor-citation-item strong {
+  color: var(--zev-green-text, #41cf7b);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   6. BOTTOM CALL TO ACTION
+   -------------------------------------------------------------------------- */
+.zev-section-cta {
+  position: relative;
+  padding: 100px 0;
+  text-align: center;
+  background: radial-gradient(
+    ellipse 60% 50% at 50% 100%,
+    rgba(46, 189, 104, 0.08),
+    transparent 70%
+  );
+}
+
+.zev-cta-box {
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.zev-cta-box h2 {
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 var(--zev-space-4, 16px) 0;
+}
+
+.zev-cta-box p {
+  font-size: var(--zev-text-base, 14px);
+  color: var(--zev-text-secondary, #c0c7d2);
+  line-height: 1.6;
+  margin: 0 0 var(--zev-space-8, 32px) 0;
+}
+
+.zev-cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--zev-space-4, 16px);
+  flex-wrap: wrap;
+}
+
+/* --------------------------------------------------------------------------
+   7. RESPONSIVE REFINEMENTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+  .zev-hero-grid {
+    grid-template-columns: 1fr;
+    gap: var(--zev-space-8, 32px);
+  }
+
+  .zev-hero-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .zev-hero-desc {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .zev-hero-actions {
+    justify-content: center;
+  }
+
+  .zev-journey-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .zev-pillars-grid {
+    grid-template-columns: 1fr;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+
+  .zev-rigor-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .zev-hero {
+    padding: 70px 0 50px 0;
+  }
+
+  .zev-journey-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .zev-rigor-specs {
+    grid-template-columns: 1fr;
+  }
+
+  .zev-hero-actions,
+  .zev-cta-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .zev-hero-actions .zev-btn,
+  .zev-cta-actions .zev-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,480 @@
+﻿<div id="zevqyn-projects-app" class="zev-projects-app">
+
+    <!-- APP SIDEBAR -->
+    <aside class="zev-sidebar">
+
+        <div class="zev-sidebar-inner">
+
+            <div class="zev-sidebar-label">
+                WORKSPACE
+            </div>
+
+            <nav class="zev-sidebar-nav">
+
+                <a href="/dashboard/" class="zev-nav-item">
+                    <span class="zev-nav-icon">⌂</span>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="/research/" class="zev-nav-item">
+                    <span class="zev-nav-icon">▣</span>
+                    <span>Research</span>
+                </a>
+
+                <a href="/projects/" class="zev-nav-item active">
+                    <span class="zev-nav-icon">◆</span>
+                    <span>Projects</span>
+                </a>
+
+                <a href="/resume/" class="zev-nav-item">
+                    <span class="zev-nav-icon">▤</span>
+                    <span>Resume</span>
+                </a>
+
+                <a href="/portfolio/" class="zev-nav-item">
+                    <span class="zev-nav-icon">◎</span>
+                    <span>Portfolio</span>
+                </a>
+
+                <a href="/career-ai/" class="zev-nav-item">
+                    <span class="zev-nav-icon">✦</span>
+                    <span>Career AI</span>
+                </a>
+
+            </nav>
+
+        </div>
+
+        <div class="zev-sidebar-user">
+
+            <div id="zevqyn-user-avatar" class="zev-user-avatar">
+                Z
+            </div>
+
+            <div class="zev-user-details">
+
+                <strong id="zevqyn-user-name">
+                    Loading...
+                </strong>
+
+                <span id="zevqyn-user-email">
+                </span>
+
+            </div>
+
+            <button type="button" id="zevqyn-signout" class="zev-signout" title="Sign out">
+                ↗
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="zev-projects-main">
+
+        <!-- HEADER -->
+        <header class="zev-projects-header">
+
+            <div>
+
+                <div class="zev-eyebrow">
+                    BUILD &amp; SHOWCASE
+                </div>
+
+                <h1>
+                    Projects
+                </h1>
+
+                <p>
+                    Turn your research into real projects
+                    and build proof of your skills.
+                </p>
+
+            </div>
+
+            <button type="button" id="zevqyn-new-project" class="zev-primary-btn">
+                + New Project
+            </button>
+
+        </header>
+
+
+        <!-- STATS -->
+        <section class="zev-project-stats">
+
+            <div class="zev-stat-card">
+
+                <div class="zev-stat-icon">
+                    ◆
+                </div>
+
+                <div>
+                    <strong id="zevqyn-project-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Total Projects
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="zev-stat-card">
+
+                <div class="zev-stat-icon">
+                    ✦
+                </div>
+
+                <div>
+                    <strong id="zevqyn-research-project-count">
+                        0
+                    </strong>
+
+                    <span>
+                        From Research
+                    </span>
+                </div>
+
+            </div>
+
+
+            <div class="zev-stat-card">
+
+                <div class="zev-stat-icon">
+                    ◎
+                </div>
+
+                <div>
+                    <strong id="zevqyn-public-project-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Public Projects
+                    </span>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- TOOLBAR -->
+        <section class="zev-project-toolbar">
+
+            <div class="zev-project-search">
+
+                <span>
+                    ⌕
+                </span>
+
+                <input type="search" id="zevqyn-project-search" placeholder="Search your projects..." autocomplete="off">
+
+            </div>
+
+
+            <select id="zevqyn-project-filter" class="zev-project-select">
+                <option value="all">
+                    All projects
+                </option>
+
+                <option value="research">
+                    From research
+                </option>
+
+                <option value="manual">
+                    Created manually
+                </option>
+
+                <option value="public">
+                    Public
+                </option>
+
+                <option value="private">
+                    Private
+                </option>
+            </select>
+
+
+            <select id="zevqyn-project-sort" class="zev-project-select">
+                <option value="updated">
+                    Recently updated
+                </option>
+
+                <option value="newest">
+                    Newest
+                </option>
+
+                <option value="oldest">
+                    Oldest
+                </option>
+
+                <option value="name">
+                    Name
+                </option>
+            </select>
+
+        </section>
+
+
+        <!-- PROJECTS AREA -->
+        <section class="zev-projects-section">
+
+            <div class="zev-section-heading">
+
+                <div>
+                    <h2>
+                        Your Projects
+                    </h2>
+
+                    <p>
+                        Manage projects created manually
+                        or generated from your research.
+                    </p>
+                </div>
+
+                <span id="zevqyn-projects-label">
+                    0 projects
+                </span>
+
+            </div>
+
+
+            <!-- LOADING -->
+            <div id="zevqyn-projects-loading" class="zev-projects-loading">
+
+                <div class="zev-loader"></div>
+
+                <span>
+                    Loading your projects...
+                </span>
+
+            </div>
+
+
+            <!-- PROJECT GRID -->
+            <div id="zevqyn-project-grid" class="zev-project-grid">
+            </div>
+
+
+            <!-- EMPTY STATE -->
+            <div id="zevqyn-no-projects" class="zev-project-empty" hidden="">
+
+                <div class="zev-empty-icon">
+                    ◆
+                </div>
+
+                <h3>
+                    Build your first project
+                </h3>
+
+                <p>
+                    Create a project from scratch or turn
+                    one of your research workspaces into
+                    something you can showcase.
+                </p>
+
+                <div class="zev-empty-actions">
+
+                    <button type="button" id="zevqyn-empty-new-project" class="zev-primary-btn">
+                        + Create Project
+                    </button>
+
+                    <a href="/research/" class="zev-secondary-btn">
+                        Explore Research
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- NEW PROJECT MODAL -->
+    <div id="zevqyn-project-modal" class="zev-modal" hidden="">
+
+        <div class="zev-modal-backdrop"></div>
+
+        <div class="zev-modal-card" role="dialog" aria-modal="true" aria-labelledby="zevqyn-project-modal-title">
+
+            <div class="zev-modal-header">
+
+                <div>
+
+                    <div class="zev-eyebrow">
+                        NEW PROJECT
+                    </div>
+
+                    <h2 id="zevqyn-project-modal-title">
+                        Create a project
+                    </h2>
+
+                    <p>
+                        Add the basics now. You can add
+                        more project details later.
+                    </p>
+
+                </div>
+
+                <button type="button" id="zevqyn-project-modal-close" class="zev-modal-close" aria-label="Close">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="zevqyn-project-form">
+
+                <div class="zev-form-group">
+
+                    <label for="zevqyn-project-title">
+                        Project title
+                    </label>
+
+                    <input type="text" id="zevqyn-project-title" placeholder="e.g. AI Study Assistant" maxlength="120" required="">
+
+                </div>
+
+
+                <div class="zev-form-group">
+
+                    <label for="zevqyn-project-description">
+                        Short description
+                    </label>
+
+                    <textarea id="zevqyn-project-description" placeholder="What are you building?" rows="4"></textarea>
+
+                </div>
+
+
+                <div class="zev-form-group">
+
+                    <label for="zevqyn-project-technologies">
+                        Technologies
+                    </label>
+
+                    <input type="text" id="zevqyn-project-technologies" placeholder="Python, FastAPI, React...">
+
+                    <small>
+                        Separate technologies with commas.
+                    </small>
+
+                </div>
+
+
+                <div class="zev-form-row">
+
+                    <div class="zev-form-group">
+
+                        <label for="zevqyn-project-github">
+                            GitHub URL
+                        </label>
+
+                        <input type="url" id="zevqyn-project-github" placeholder="GitHub repository URL">
+
+                    </div>
+
+
+                    <div class="zev-form-group">
+
+                        <label for="zevqyn-project-live">
+                            Live URL
+                        </label>
+
+                        <input type="url" id="zevqyn-project-live" placeholder="Live project URL">
+
+                    </div>
+
+                </div>
+
+
+                <label class="zev-visibility-option">
+
+                    <input type="checkbox" id="zevqyn-project-public">
+
+                    <span class="zev-visibility-control"></span>
+
+                    <span>
+
+                        <strong>
+                            Public project
+                        </strong>
+
+                        <small>
+                            Allow this project to appear
+                            in your public portfolio.
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <div class="zev-modal-actions">
+
+                    <button type="button" id="zevqyn-project-cancel" class="zev-secondary-btn">
+                        Cancel
+                    </button>
+
+                    <button type="submit" id="zevqyn-project-submit" class="zev-primary-btn">
+                        Create Project
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- DELETE MODAL -->
+    <div id="zevqyn-project-delete-modal" class="zev-modal" hidden="">
+
+        <div class="zev-modal-backdrop"></div>
+
+        <div class="zev-modal-card zev-delete-card" role="dialog" aria-modal="true">
+
+            <div class="zev-delete-icon">
+                !
+            </div>
+
+            <h2>
+                Delete project?
+            </h2>
+
+            <p>
+                This will permanently remove the project.
+                This action cannot be undone.
+            </p>
+
+            <div class="zev-modal-actions">
+
+                <button type="button" id="zevqyn-project-delete-cancel" class="zev-secondary-btn">
+                    Cancel
+                </button>
+
+                <button type="button" id="zevqyn-project-delete-confirm" class="zev-danger-btn">
+                    Delete Project
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- TOAST -->
+    <div id="zevqyn-project-toast" class="zev-toast" hidden="">
+    </div>
+
+</div>

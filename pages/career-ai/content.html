@@ -1,0 +1,262 @@
+<div id="zev-career-ai" class="zev-cai-app">
+
+    <!-- SIDEBAR -->
+    <aside class="zev-cai-sidebar">
+
+        <div class="zev-cai-brand">
+            <div class="zev-cai-brand-icon">Z</div>
+            <div>
+                <strong>ZEVQYN</strong>
+                <span>Career AI</span>
+            </div>
+        </div>
+
+        <button id="zev-cai-new-chat" class="zev-cai-new-chat" type="button">
+            <span>＋</span>
+            New conversation
+        </button>
+
+        <div class="zev-cai-sidebar-label">CONVERSATIONS</div>
+
+        <div id="zev-cai-conversations" class="zev-cai-conversations">
+            <div class="zev-cai-history-placeholder">
+                Your conversations will appear here.
+            </div>
+        </div>
+
+        <div class="zev-cai-sidebar-bottom">
+            <a href="/dashboard/" class="zev-cai-back">
+                <span>←</span>
+                Back to Dashboard
+            </a>
+        </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="zev-cai-main">
+
+        <!-- HEADER -->
+        <header class="zev-cai-header">
+            <div>
+                <div class="zev-cai-eyebrow">
+                    <span class="zev-cai-status-dot"></span>
+                    PERSONALIZED CAREER COPILOT
+                </div>
+
+                <h1>Career AI</h1>
+
+                <p>
+                    Turn your ZEVQYN profile into smarter career decisions.
+                </p>
+            </div>
+
+            <a href="/career/" class="zev-cai-profile-link">
+                Career Hub
+                <span>↗</span>
+            </a>
+        </header>
+
+        <!-- AI TOOLKIT -->
+        <section class="zev-cai-toolkit">
+
+            <div class="zev-cai-section-heading">
+                <div>
+                    <span class="zev-cai-section-kicker">AI TOOLKIT</span>
+                    <h2>What do you want to improve?</h2>
+                </div>
+
+                <span class="zev-cai-grounded">
+                    <span></span>
+                    Grounded in your ZEVQYN data
+                </span>
+            </div>
+
+            <div class="zev-cai-tools">
+
+                <button class="zev-cai-tool-card" data-tool="analyze" type="button">
+                    <div class="zev-cai-tool-icon">✦</div>
+                    <div>
+                        <h3>Analyze Profile</h3>
+                        <p>Discover strengths, gaps and your next career moves.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="skill-gap" type="button">
+                    <div class="zev-cai-tool-icon">⌁</div>
+                    <div>
+                        <h3>Skill Gap</h3>
+                        <p>Compare your skills with the role you want next.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="projects" type="button">
+                    <div class="zev-cai-tool-icon">◇</div>
+                    <div>
+                        <h3>Project Ideas</h3>
+                        <p>Generate projects that strengthen your profile.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="resume" type="button">
+                    <div class="zev-cai-tool-icon">▤</div>
+                    <div>
+                        <h3>Resume Review</h3>
+                        <p>Improve impact, content quality and ATS readiness.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="portfolio" type="button">
+                    <div class="zev-cai-tool-icon">◎</div>
+                    <div>
+                        <h3>Portfolio Review</h3>
+                        <p>Strengthen your portfolio story and presentation.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+                <button class="zev-cai-tool-card" data-tool="plan" type="button">
+                    <div class="zev-cai-tool-icon">↗</div>
+                    <div>
+                        <h3>Career Plan</h3>
+                        <p>Build a personalized 30 / 60 / 90-day roadmap.</p>
+                    </div>
+                    <span class="zev-cai-tool-arrow">→</span>
+                </button>
+
+            </div>
+        </section>
+
+        <!-- COPILOT -->
+        <section class="zev-cai-chat-shell">
+
+            <div class="zev-cai-chat-topbar">
+                <div class="zev-cai-ai-identity">
+                    <div class="zev-cai-ai-logo">✦</div>
+
+                    <div>
+                        <strong>Career Copilot</strong>
+                        <span>Powered by your career profile</span>
+                    </div>
+                </div>
+
+                <button id="zev-cai-clear-chat" class="zev-cai-icon-button" type="button" title="New conversation">
+                    ＋
+                </button>
+            </div>
+
+            <div id="zev-cai-chat-messages" class="zev-cai-chat-messages">
+
+                <div id="zev-cai-welcome" class="zev-cai-welcome">
+
+                    <div class="zev-cai-welcome-icon">✦</div>
+
+                    <h2>Where do you want your career to go?</h2>
+
+                    <p>
+                        I can use your projects, skills, education, certificates,
+                        resumes and portfolio to give you personalized guidance.
+                    </p>
+
+                    <div class="zev-cai-prompts">
+
+                        <button type="button" class="zev-cai-prompt">
+                            What should I learn next?
+                        </button>
+
+                        <button type="button" class="zev-cai-prompt">
+                            How can I become a backend developer?
+                        </button>
+
+                        <button type="button" class="zev-cai-prompt">
+                            Which project should I build next?
+                        </button>
+
+                        <button type="button" class="zev-cai-prompt">
+                            What are the biggest gaps in my profile?
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- TYPING -->
+            <div id="zev-cai-typing" class="zev-cai-typing" hidden="">
+                <div class="zev-cai-message-avatar">✦</div>
+
+                <div class="zev-cai-typing-bubble">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+
+            <!-- COMPOSER -->
+            <div class="zev-cai-composer-wrap">
+
+                <div class="zev-cai-composer">
+
+                    <textarea id="zev-cai-input" rows="1" maxlength="2000" placeholder="Ask Career AI anything about your career..."></textarea>
+
+                    <button id="zev-cai-send" type="button" aria-label="Send message">
+                        ↑
+                    </button>
+
+                </div>
+
+                <div class="zev-cai-composer-meta">
+                    <span>
+                        Career AI uses your saved ZEVQYN career data.
+                    </span>
+
+                    <span id="zev-cai-char-count">0 / 2000</span>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- TOOL MODAL -->
+    <div id="zev-cai-modal" class="zev-cai-modal" hidden="">
+
+        <div class="zev-cai-modal-backdrop" data-close-modal=""></div>
+
+        <div class="zev-cai-modal-card">
+
+            <div class="zev-cai-modal-header">
+                <div>
+                    <span id="zev-cai-modal-kicker">CAREER AI</span>
+                    <h2 id="zev-cai-modal-title">Career Analysis</h2>
+                </div>
+
+                <button id="zev-cai-modal-close" class="zev-cai-modal-close" type="button" aria-label="Close">
+                    ×
+                </button>
+            </div>
+
+            <div id="zev-cai-modal-form" class="zev-cai-modal-form"></div>
+
+            <div id="zev-cai-modal-loading" class="zev-cai-modal-loading" hidden="">
+                <div class="zev-cai-loader"></div>
+                <strong>Career AI is analyzing your profile...</strong>
+                <span>This may take a few seconds.</span>
+            </div>
+
+            <div id="zev-cai-modal-result" class="zev-cai-modal-result"></div>
+
+        </div>
+
+    </div>
+
+    <!-- TOAST -->
+    <div id="zev-cai-toast" class="zev-cai-toast" hidden=""></div>
+
+</div>

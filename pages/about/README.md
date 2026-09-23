@@ -1,17 +1,25 @@
-﻿# About
+# About Page
 
-**Production URL:** https://zevqyn.free.je/about/
-**WordPress Slug:** `about`
+**Production URL:** https://zevqyn.free.je/about/  
+**WordPress Slug:** `about`  
+**Version:** V1.1 (Refined Editorial Brand Manifesto)
+
+---
 
 ## Description
 
-Brand story and vision page. Custom HTML/CSS/JS with 3D interactive card tilt, orbital graphics, scroll reveal animations, and manifesto sections.
+The brand vision and manifesto page articulating why traditional academic research tools and career platforms are disconnected, and how ZEVQYN unifies them:
+- Core problem manifesto (fragmented study vs proof-of-work)
+- 3 foundational platform beliefs
+- Direct before/after comparison between traditional approaches and ZEVQYN
+- Mission statement for students, developers, and researchers
+
+---
 
 ## Files
 
-- `wordpress-blocks.html` â€” Full WordPress block source (original export, source of truth)
-- `script.js` â€” Extracted JavaScript (for reference/readability)
-- `style.css` â€” Extracted CSS (for reference/readability)
-- `content.html` â€” Extracted HTML structure (for reference/readability)
-
-> **Note:** The separated files (script.js, style.css, content.html) are extracted from the wordpress-blocks.html for readability. The wordpress-blocks.html is the authoritative source that runs in the WordPress environment. Do not modify the separated files expecting changes to appear on the production site.
+- `wordpress-blocks.html` — Full WordPress Custom HTML block source (authoritative source)
+- `content.html` — Clean semantic HTML structure
+- `style.css` — Refined stylesheet with V1.1 design tokens and zero continuous spinning borders
+- `script.js` — IntersectionObserver reveals and touch-safe desktop tilt
+- `MIGRATION_NOTES_V1_1.md` — Step-by-step WordPress deployment instructions

@@ -1,4 +1,4 @@
-﻿
+
 (function () {
 
     /* =========================================
@@ -961,6 +961,8 @@ if (empty) {
        CONVERSATIONS
     ========================================= */
 
+    let pendingDeleteConversationId = null;
+
     async function loadConversations() {
 
         try {
@@ -984,6 +986,7 @@ if (empty) {
 
 
             updateStats();
+            renderConversations();
 
 
         } catch (error) {
@@ -997,6 +1000,198 @@ if (empty) {
 
         }
 
+    }
+
+    function renderConversations() {
+        const list = el("zevqyn-conversation-list");
+        const empty = el("zevqyn-no-conversations");
+        const label = el("zevqyn-conversations-label");
+
+        if (!list) {
+            return;
+        }
+
+        list.innerHTML = "";
+
+        if (label) {
+            const count = conversations.length;
+            label.textContent = count + " chat" + (count === 1 ? "" : "s");
+        }
+
+        if (conversations.length === 0) {
+            if (empty) {
+                empty.hidden = false;
+            }
+            return;
+        }
+
+        if (empty) {
+            empty.hidden = true;
+        }
+
+        conversations.forEach(function (conv) {
+            const item = document.createElement("div");
+            item.className = "zev-conv-item";
+            if (conv.id === currentConversationId) {
+                item.classList.add("active");
+            }
+
+            const mainBtn = document.createElement("button");
+            mainBtn.type = "button";
+            mainBtn.className = "zev-conv-select-btn";
+
+            const titleSpan = document.createElement("span");
+            titleSpan.className = "zev-conv-title";
+            titleSpan.textContent = conv.title || "Research Conversation";
+
+            const metaSpan = document.createElement("span");
+            metaSpan.className = "zev-conv-meta";
+            metaSpan.textContent = formatConvDate(conv.updated_at || conv.created_at);
+
+            mainBtn.appendChild(titleSpan);
+            mainBtn.appendChild(metaSpan);
+
+            mainBtn.addEventListener("click", function () {
+                openConversation(conv.id);
+            });
+
+            const delBtn = document.createElement("button");
+            delBtn.type = "button";
+            delBtn.className = "zev-conv-delete-btn";
+            delBtn.setAttribute("aria-label", "Delete conversation");
+            delBtn.title = "Delete conversation";
+            delBtn.textContent = "×";
+
+            delBtn.addEventListener("click", function (e) {
+                e.stopPropagation();
+                showDeleteConvModal(conv.id);
+            });
+
+            item.appendChild(mainBtn);
+            item.appendChild(delBtn);
+            list.appendChild(item);
+        });
+    }
+
+    function formatConvDate(dateStr) {
+        if (!dateStr) {
+            return "";
+        }
+        try {
+            const d = new Date(dateStr);
+            return d.toLocaleDateString(undefined, { month: "short", day: "numeric" });
+        } catch (e) {
+            return "";
+        }
+    }
+
+    async function openConversation(conversationId) {
+        if (currentConversationId === conversationId) {
+            return;
+        }
+
+        try {
+            const messages = await apiRequest(
+                "/api/v1/workspaces/" +
+                workspaceId +
+                "/conversations/" +
+                encodeURIComponent(conversationId) +
+                "/messages",
+                { method: "GET" }
+            );
+
+            currentConversationId = conversationId;
+            renderConversations();
+
+            const area = el("zevqyn-chat-area");
+            if (!area) {
+                return;
+            }
+            area.innerHTML = "";
+
+            if (Array.isArray(messages)) {
+                if (messages.length > 0) {
+                    messages.forEach(function (msg) {
+                        addChatMessage(
+                            msg.role,
+                            msg.content,
+                            msg.citations || []
+                        );
+                    });
+                    scrollChatToBottom();
+                    return;
+                }
+            }
+
+            clearChat();
+        } catch (error) {
+            console.error("Failed to load conversation messages:", error);
+            showToast("Could not load chat messages: " + error.message, "error");
+        }
+    }
+
+    function showDeleteConvModal(conversationId) {
+        pendingDeleteConversationId = conversationId;
+        const modal = el("zevqyn-delete-conv-modal");
+        if (modal) {
+            modal.hidden = false;
+        }
+    }
+
+    function hideDeleteConvModal() {
+        pendingDeleteConversationId = null;
+        const modal = el("zevqyn-delete-conv-modal");
+        if (modal) {
+            modal.hidden = true;
+        }
+    }
+
+    async function confirmDeleteConversation() {
+        if (!pendingDeleteConversationId) {
+            return;
+        }
+
+        const idToDelete = pendingDeleteConversationId;
+        const confirmBtn = el("zevqyn-delete-conv-confirm");
+        if (confirmBtn) {
+            confirmBtn.disabled = true;
+            confirmBtn.textContent = "Deleting...";
+        }
+
+        try {
+            await apiRequest(
+                "/api/v1/workspaces/" +
+                workspaceId +
+                "/conversations/" +
+                encodeURIComponent(idToDelete),
+                {
+                    method: "DELETE"
+                }
+            );
+
+            conversations = conversations.filter(function (c) {
+                return c.id !== idToDelete;
+            });
+
+            updateStats();
+            renderConversations();
+
+            if (currentConversationId === idToDelete) {
+                clearChat();
+            }
+
+            hideDeleteConvModal();
+            showToast("Conversation deleted successfully", "success");
+        } catch (error) {
+            console.error("Failed to delete conversation:", error);
+            hideDeleteConvModal();
+            showToast("Failed to delete conversation: " + error.message, "error");
+        } finally {
+            if (confirmBtn) {
+                confirmBtn.disabled = false;
+                confirmBtn.textContent = "Delete";
+            }
+        }
     }
 
 
@@ -3061,6 +3256,30 @@ function addChatMessage(
             deleteConfirm.addEventListener(
                 "click",
                 confirmDeleteDocument
+            );
+
+        }
+
+        const deleteConvCancel =
+            el("zevqyn-delete-conv-cancel");
+
+        if (deleteConvCancel) {
+
+            deleteConvCancel.addEventListener(
+                "click",
+                hideDeleteConvModal
+            );
+
+        }
+
+        const deleteConvConfirm =
+            el("zevqyn-delete-conv-confirm");
+
+        if (deleteConvConfirm) {
+
+            deleteConvConfirm.addEventListener(
+                "click",
+                confirmDeleteConversation
             );
 
         }

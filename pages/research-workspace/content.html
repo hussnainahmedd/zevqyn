@@ -1,0 +1,844 @@
+<div class="zev-ws-page">
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+    <aside class="zev-ws-sidebar">
+
+        <div class="zev-nav-title">Workspace</div>
+
+        <nav class="zev-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/" class="active">
+                <span class="zev-nav-icon">▣</span>
+                Research
+            </a>
+
+            <a href="/projects/">
+                <span class="zev-nav-icon">◆</span>
+                Projects
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">◎</span>
+                Portfolio
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">✦</span>
+                Career AI
+            </a>
+
+        </nav>
+
+        <div class="zev-sidebar-bottom">
+
+            <div class="zev-nav-title">Account</div>
+
+            <nav class="zev-nav">
+
+                <a href="#">
+                    <span class="zev-nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" id="zevqyn-signout">
+                    <span class="zev-nav-icon">↪</span>
+                    Sign Out
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN
+    ====================================== -->
+    <main class="zev-ws-main">
+
+
+        <!-- TOP BAR -->
+        <div class="zev-ws-top">
+
+            <div class="zev-ws-heading">
+
+                <a href="/research/" class="zev-back-link">
+                    ← Back to Research
+                </a>
+
+                <div class="zev-page-label">
+                    RESEARCH WORKSPACE
+                </div>
+
+                <h1 id="zevqyn-workspace-name">
+                    Loading workspace...
+                </h1>
+
+                <p id="zevqyn-workspace-description">
+                    Loading your research workspace.
+                </p>
+
+            </div>
+
+
+            <!-- USER -->
+            <div class="zev-user">
+
+                <div class="zev-avatar" id="zevqyn-user-avatar">
+                    Z
+                </div>
+
+                <div>
+
+                    <div class="zev-user-name" id="zevqyn-user-name">
+                        Loading...
+                    </div>
+
+                    <div class="zev-user-email" id="zevqyn-user-email">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =====================================
+             WORKSPACE STATS
+        ====================================== -->
+        <section class="zev-ws-stats">
+
+            <div class="zev-ws-stat">
+
+                <div class="zev-stat-icon">
+                    ▤
+                </div>
+
+                <div>
+
+                    <div class="zev-stat-number" id="zevqyn-document-count">
+                        0
+                    </div>
+
+                    <div class="zev-stat-label">
+                        Documents
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-ws-stat">
+
+                <div class="zev-stat-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <div class="zev-stat-number" id="zevqyn-conversation-count">
+                        0
+                    </div>
+
+                    <div class="zev-stat-label">
+                        AI Conversations
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-ws-stat">
+
+                <div class="zev-stat-icon">
+                    ◈
+                </div>
+
+                <div>
+
+                    <div class="zev-stat-number" id="zevqyn-ready-count">
+                        0
+                    </div>
+
+                    <div class="zev-stat-label">
+                        Ready Sources
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             MAIN WORKSPACE GRID
+        ====================================== -->
+        <section class="zev-workspace-layout">
+
+
+            <!-- =================================
+                 LEFT — SOURCES
+            ================================== -->
+            <div class="zev-sources-panel">
+
+                <div class="zev-panel-header">
+
+                    <div>
+
+                        <span class="zev-panel-label">
+                            KNOWLEDGE BASE
+                        </span>
+
+                        <h2>Your Sources</h2>
+
+                        <p>
+                            Upload documents for ZEVQYN to
+                            understand and use in your research.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPLOAD -->
+                <div class="zev-upload-zone" id="zevqyn-upload-zone">
+
+                    <input type="file" id="zevqyn-file-input" accept=".pdf,.docx,.txt,.md" hidden="">
+
+                    <div class="zev-upload-icon">
+                        ↑
+                    </div>
+
+                    <h3>Upload a source</h3>
+
+                    <p>
+                        Drag &amp; drop a document here or
+                        choose a file from your computer.
+                    </p>
+
+                    <button type="button" class="zev-upload-btn" id="zevqyn-upload-btn">
+                        + Choose File
+                    </button>
+
+                    <div class="zev-file-types">
+
+                        <span>PDF</span>
+                        <span>DOCX</span>
+                        <span>TXT</span>
+                        <span>MD</span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- UPLOAD PROGRESS -->
+                <div class="zev-upload-progress" id="zevqyn-upload-progress" hidden="">
+
+                    <div class="zev-progress-top">
+
+                        <span id="zevqyn-upload-name">
+                            Uploading...
+                        </span>
+
+                        <span id="zevqyn-upload-percent">
+                            0%
+                        </span>
+
+                    </div>
+
+                    <div class="zev-progress-track">
+
+                        <div class="zev-progress-bar" id="zevqyn-progress-bar"></div>
+
+                    </div>
+
+                    <div class="zev-upload-message" id="zevqyn-upload-message">
+                        Preparing document...
+                    </div>
+
+                </div>
+
+
+                <!-- DOCUMENT LIST -->
+                <div class="zev-documents-section">
+
+                    <div class="zev-documents-header">
+
+                        <h3>Documents</h3>
+
+                        <span id="zevqyn-documents-label">
+                            0 sources
+                        </span>
+
+                    </div>
+
+
+                    <div class="zev-documents-loading" id="zevqyn-documents-loading">
+
+                        <div class="zev-small-loader"></div>
+
+                        Loading documents...
+
+                    </div>
+
+
+                    <div class="zev-document-list" id="zevqyn-document-list"></div>
+
+
+                    <div class="zev-no-documents" id="zevqyn-no-documents" hidden="">
+
+                        <div class="zev-no-doc-icon">
+                            ▤
+                        </div>
+
+                        <strong>No sources yet</strong>
+
+                        <span>
+                            Upload your first document to
+                            begin researching with AI.
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SAVED CONVERSATIONS -->
+                <div class="zev-conversations-section">
+
+                    <div class="zev-conversations-header">
+
+                        <h3>Saved Chats</h3>
+
+                        <span id="zevqyn-conversations-label">
+                            0 chats
+                        </span>
+
+                    </div>
+
+                    <div class="zev-conversation-list" id="zevqyn-conversation-list"></div>
+
+                    <div class="zev-no-conversations" id="zevqyn-no-conversations" hidden="">
+
+                        <div class="zev-no-conv-icon">
+                            ✦
+                        </div>
+
+                        <strong>No saved chats</strong>
+
+                        <span>
+                            Ask a question to start your first research conversation.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================
+                 RIGHT — AI RESEARCH
+            ================================== -->
+            <div class="zev-ai-panel">
+
+
+                <!-- AI HEADER -->
+                <div class="zev-ai-header">
+
+                    <div>
+
+                        <span class="zev-panel-label">
+                            GROUNDED AI
+                        </span>
+
+                        <h2>Research Assistant</h2>
+
+                        <p>
+                            Ask questions grounded in your
+                            uploaded sources.
+                        </p>
+
+                    </div>
+
+
+                    <button type="button" class="zev-new-chat-btn" id="zevqyn-new-chat">
+                        + New Chat
+                    </button>
+
+                </div>
+
+
+                <!-- TOOL TABS -->
+                <div class="zev-ai-tools">
+
+                    <button type="button" class="zev-tool-tab active" data-tool="chat">
+                        ✦ Chat
+                    </button>
+
+                    <button type="button" class="zev-tool-tab" data-tool="summary">
+                        ▤ Summary
+                    </button>
+
+                    <button type="button" class="zev-tool-tab" data-tool="keypoints">
+                        ◈ Key Points
+                    </button>
+
+                    <button type="button" class="zev-tool-tab" data-tool="questions">
+                        ? Questions
+                    </button>
+
+                    <button type="button" class="zev-tool-tab" data-tool="flashcards">
+                        ▣ Flashcards
+                    </button>
+
+                </div>
+
+
+                <!-- =================================
+                     CHAT VIEW
+                ================================== -->
+                <div class="zev-tool-view active" id="zevqyn-view-chat">
+
+                    <div class="zev-chat-area" id="zevqyn-chat-area">
+
+                        <div class="zev-chat-empty">
+
+                            <div class="zev-chat-ai-icon">
+                                ✦
+                            </div>
+
+                            <h3>
+                                Ask your research
+                            </h3>
+
+                            <p>
+                                Upload at least one source,
+                                then ask ZEVQYN questions.
+                                Answers will be grounded in
+                                your documents with citations.
+                            </p>
+
+
+                            <div class="zev-suggested-prompts">
+
+                                <button type="button">
+                                    Summarize the main ideas
+                                </button>
+
+                                <button type="button">
+                                    Explain the key concepts
+                                </button>
+
+                                <button type="button">
+                                    What should I study?
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CHAT INPUT -->
+                    <div class="zev-chat-input-wrap">
+
+                        <textarea id="zevqyn-chat-input" rows="1" placeholder="Ask something about your sources..."></textarea>
+
+                        <button type="button" id="zevqyn-send-message" class="zev-send-btn" aria-label="Send message">
+                            ↑
+                        </button>
+
+                    </div>
+
+                    <div class="zev-ai-disclaimer">
+                        ZEVQYN answers from your uploaded
+                        research sources. Check citations
+                        before using important information.
+                    </div>
+
+                </div>
+
+
+                <!-- =================================
+                     SUMMARY VIEW
+                ================================== -->
+                <div class="zev-tool-view" id="zevqyn-view-summary" hidden="">
+
+                    <div class="zev-generation-empty">
+
+                        <div class="zev-generation-icon">
+                            ▤
+                        </div>
+
+                        <h3>Research Summary</h3>
+
+                        <p>
+                            Generate a structured summary
+                            grounded in your uploaded sources.
+                        </p>
+
+                        <button type="button" class="zev-generate-btn" id="zevqyn-generate-summary">
+                            ✦ Generate Summary
+                        </button>
+
+                    </div>
+
+                    <div class="zev-generated-content" id="zevqyn-summary-content" hidden=""></div>
+
+                </div>
+
+
+                <!-- =================================
+                     KEY POINTS VIEW
+                ================================== -->
+                <div class="zev-tool-view" id="zevqyn-view-keypoints" hidden="">
+
+                    <div class="zev-generation-empty">
+
+                        <div class="zev-generation-icon">
+                            ◈
+                        </div>
+
+                        <h3>Key Points</h3>
+
+                        <p>
+                            Extract the most important ideas
+                            and findings from your research.
+                        </p>
+
+                        <button type="button" class="zev-generate-btn" id="zevqyn-generate-keypoints">
+                            ✦ Generate Key Points
+                        </button>
+
+                    </div>
+
+                    <div class="zev-generated-content" id="zevqyn-keypoints-content" hidden=""></div>
+
+                </div>
+
+
+                <!-- =================================
+                     QUESTIONS VIEW
+                ================================== -->
+                <div class="zev-tool-view" id="zevqyn-view-questions" hidden="">
+
+                    <div class="zev-generation-empty">
+
+                        <div class="zev-generation-icon">
+                            ?
+                        </div>
+
+                        <h3>AI Questions</h3>
+
+                        <p>
+                            Generate useful questions from
+                            your sources for learning and
+                            deeper research.
+                        </p>
+
+                        <button type="button" class="zev-generate-btn" id="zevqyn-generate-questions">
+                            ✦ Generate Questions
+                        </button>
+
+                    </div>
+
+                    <div class="zev-generated-content" id="zevqyn-questions-content" hidden=""></div>
+
+                </div>
+
+
+                <!-- =================================
+                     FLASHCARDS VIEW
+                ================================== -->
+                <div class="zev-tool-view" id="zevqyn-view-flashcards" hidden="">
+
+                    <div class="zev-generation-empty">
+
+                        <div class="zev-generation-icon">
+                            ▣
+                        </div>
+
+                        <h3>Flashcards</h3>
+
+                        <p>
+                            Turn your research into
+                            study-ready AI flashcards.
+                        </p>
+
+                        <button type="button" class="zev-generate-btn" id="zevqyn-generate-flashcards">
+                            ✦ Generate Flashcards
+                        </button>
+
+                    </div>
+
+                    <div class="zev-flashcard-grid" id="zevqyn-flashcards-content" hidden=""></div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             RESEARCH → CAREER
+        ====================================== -->
+        <section class="zev-career-convert">
+
+            <div>
+
+                <span class="zev-panel-label">
+                    RESEARCH → CAREER
+                </span>
+
+                <h2>
+                    Turn this research into a project
+                </h2>
+
+                <p>
+                    Convert your research into a structured
+                    ZEVQYN project that can later strengthen
+                    your resume and portfolio.
+                </p>
+
+            </div>
+
+            <button type="button" class="zev-convert-btn" id="zevqyn-convert-project">
+                Convert to Project →
+            </button>
+
+        </section>
+
+
+        <!-- =====================================
+             AI PROJECT PROPOSAL
+        ====================================== -->
+        <section class="zev-project-proposal" id="zevqyn-project-proposal" hidden="">
+
+            <div class="zev-proposal-header">
+
+                <div>
+
+                    <span class="zev-panel-label">
+                        AI PROJECT PROPOSAL
+                    </span>
+
+                    <h2>
+                        Review your generated project
+                    </h2>
+
+                    <p>
+                        ZEVQYN created this project from your
+                        research. Review the details before
+                        adding it to your Projects workspace.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-proposal-grid">
+
+
+                <!-- PROJECT TITLE -->
+                <div class="zev-proposal-field zev-proposal-full">
+
+                    <label for="zevqyn-proposal-title">
+                        Project Title
+                    </label>
+
+                    <input type="text" id="zevqyn-proposal-title" placeholder="Project title">
+
+                </div>
+
+
+                <!-- DESCRIPTION -->
+                <div class="zev-proposal-field zev-proposal-full">
+
+                    <label for="zevqyn-proposal-description">
+                        Description
+                    </label>
+
+                    <textarea id="zevqyn-proposal-description" rows="4" placeholder="Project description"></textarea>
+
+                </div>
+
+
+                <!-- PROBLEM -->
+                <div class="zev-proposal-field zev-proposal-full">
+
+                    <label for="zevqyn-proposal-problem">
+                        Problem Statement
+                    </label>
+
+                    <textarea id="zevqyn-proposal-problem" rows="4" placeholder="Problem this project solves"></textarea>
+
+                </div>
+
+
+                <!-- FEATURES -->
+                <div class="zev-proposal-field">
+
+                    <label>
+                        Suggested Features
+                    </label>
+
+                    <div class="zev-proposal-list" id="zevqyn-proposal-features"></div>
+
+                </div>
+
+
+                <!-- TECHNOLOGIES -->
+                <div class="zev-proposal-field">
+
+                    <label>
+                        Technologies
+                    </label>
+
+                    <div class="zev-proposal-tags" id="zevqyn-proposal-technologies"></div>
+
+                </div>
+
+
+                <!-- SKILLS -->
+                <div class="zev-proposal-field">
+
+                    <label>
+                        Skills
+                    </label>
+
+                    <div class="zev-proposal-tags" id="zevqyn-proposal-skills"></div>
+
+                </div>
+
+
+                <!-- SOURCES -->
+                <div class="zev-proposal-field">
+
+                    <label>
+                        Research Sources
+                    </label>
+
+                    <div class="zev-proposal-sources" id="zevqyn-proposal-sources"></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ACTIONS -->
+            <div class="zev-proposal-actions">
+
+                <button type="button" class="zev-proposal-cancel" id="zevqyn-proposal-cancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-proposal-create" id="zevqyn-proposal-create">
+                    Create Project →
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =====================================
+         GLOBAL MESSAGE / TOAST
+    ====================================== -->
+    <div class="zev-toast" id="zevqyn-toast" hidden=""></div>
+
+
+    <!-- =====================================
+         DELETE DOCUMENT MODAL
+    ====================================== -->
+    <div class="zev-modal-overlay" id="zevqyn-delete-modal" hidden="">
+
+        <div class="zev-confirm-modal">
+
+            <div class="zev-confirm-icon">
+                !
+            </div>
+
+            <h2>Delete document?</h2>
+
+            <p>
+                This source and its indexed research data
+                will be removed from this workspace.
+            </p>
+
+            <div class="zev-confirm-actions">
+
+                <button type="button" class="zev-cancel-btn" id="zevqyn-delete-cancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-delete-btn" id="zevqyn-delete-confirm">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    <!-- =====================================
+         DELETE CONVERSATION MODAL
+    ====================================== -->
+    <div class="zev-modal-overlay" id="zevqyn-delete-conv-modal" hidden="">
+
+        <div class="zev-confirm-modal">
+
+            <div class="zev-confirm-icon">
+                !
+            </div>
+
+            <h2>Delete conversation?</h2>
+
+            <p>
+                All messages and citations in this research chat
+                will be permanently removed.
+            </p>
+
+            <div class="zev-confirm-actions">
+
+                <button type="button" class="zev-cancel-btn" id="zevqyn-delete-conv-cancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-delete-btn" id="zevqyn-delete-conv-confirm">
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

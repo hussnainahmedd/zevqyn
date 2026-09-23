@@ -1,0 +1,667 @@
+﻿<div class="zev-pw-page" id="zevqyn-project-workspace">
+
+    <!-- SIDEBAR -->
+    <aside class="zev-pw-sidebar">
+
+        <div class="zev-pw-nav-title">
+            WORKSPACE
+        </div>
+
+        <nav class="zev-pw-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-pw-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/">
+                <span class="zev-pw-nav-icon">⌕</span>
+                Research
+            </a>
+
+            <a href="/projects/" class="active">
+                <span class="zev-pw-nav-icon">◇</span>
+                Projects
+            </a>
+
+            <a href="/resume/">
+                <span class="zev-pw-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="/portfolio/">
+                <span class="zev-pw-nav-icon">◫</span>
+                Portfolio
+            </a>
+
+            <a href="/career-ai/">
+                <span class="zev-pw-nav-icon">✦</span>
+                Career AI
+            </a>
+
+        </nav>
+
+        <div class="zev-pw-sidebar-bottom">
+
+            <a href="/projects/" class="zev-pw-back">
+                ← All Projects
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="zev-pw-main">
+
+        <!-- LOADING -->
+        <div class="zev-pw-loading" id="zevqyn-project-loading">
+            <div class="zev-pw-loader"></div>
+            <strong>Loading project...</strong>
+            <span>
+                Preparing your ZEVQYN project workspace.
+            </span>
+        </div>
+
+
+        <!-- ERROR -->
+        <div class="zev-pw-error" id="zevqyn-project-error" hidden="">
+            <div class="zev-pw-error-icon">!</div>
+
+            <h2>
+                Project unavailable
+            </h2>
+
+            <p id="zevqyn-project-error-message">
+                We could not load this project.
+            </p>
+
+            <a href="/projects/">
+                Return to Projects
+            </a>
+        </div>
+
+
+        <!-- CONTENT -->
+        <div id="zevqyn-project-content" hidden="">
+
+            <!-- TOP -->
+            <header class="zev-pw-top">
+
+                <div>
+
+                    <a href="/projects/" class="zev-pw-back-link">
+                        ← BACK TO PROJECTS
+                    </a>
+
+                    <span class="zev-pw-label">
+                        PROJECT WORKSPACE
+                    </span>
+
+                    <div class="zev-pw-title-row">
+
+                        <h1 id="zevqyn-project-heading">
+                            Project
+                        </h1>
+
+                        <span class="zev-pw-visibility" id="zevqyn-project-visibility-badge">
+                            PRIVATE
+                        </span>
+
+                    </div>
+
+                    <p id="zevqyn-project-subheading">
+                        Manage your project details, skills,
+                        technologies and career-ready information.
+                    </p>
+
+                </div>
+
+
+                <div class="zev-pw-top-actions">
+
+                    <button type="button" class="zev-pw-secondary-btn" id="zevqyn-project-reset">
+                        Reset
+                    </button>
+
+                    <button type="button" class="zev-pw-save-btn" id="zevqyn-project-save">
+                        Save Changes
+                    </button>
+
+                </div>
+
+            </header>
+
+
+            <!-- STATS -->
+            <section class="zev-pw-stats">
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ◇
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-tech">
+                            0
+                        </strong>
+                        <span>Technologies</span>
+                    </div>
+
+                </div>
+
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ✦
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-skills">
+                            0
+                        </strong>
+                        <span>Skills</span>
+                    </div>
+
+                </div>
+
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ↗
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-links">
+                            0
+                        </strong>
+                        <span>Project Links</span>
+                    </div>
+
+                </div>
+
+
+                <div class="zev-pw-stat">
+
+                    <div class="zev-pw-stat-icon">
+                        ◎
+                    </div>
+
+                    <div>
+                        <strong id="zevqyn-stat-origin">
+                            Manual
+                        </strong>
+                        <span>Project Origin</span>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- MAIN GRID -->
+            <section class="zev-pw-grid">
+
+                <!-- LEFT -->
+                <div class="zev-pw-column">
+
+                    <!-- PROJECT DETAILS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    OVERVIEW
+                                </span>
+
+                                <h2>
+                                    Project Details
+                                </h2>
+
+                                <p>
+                                    Keep the core information about
+                                    your project accurate and
+                                    portfolio-ready.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-form">
+
+                            <div class="zev-pw-field">
+
+                                <label for="zevqyn-project-title">
+                                    Project Title
+                                </label>
+
+                                <input id="zevqyn-project-title" type="text" maxlength="200" placeholder="Project title">
+
+                                <div class="zev-pw-counter">
+                                    <span id="zevqyn-title-count">0</span>/200
+                                </div>
+
+                            </div>
+
+
+                            <div class="zev-pw-field">
+
+                                <label for="zevqyn-project-short">
+                                    Short Description
+                                </label>
+
+                                <textarea id="zevqyn-project-short" rows="3" maxlength="500" placeholder="A short summary of the project"></textarea>
+
+                                <div class="zev-pw-counter">
+                                    <span id="zevqyn-short-count">0</span>/500
+                                </div>
+
+                            </div>
+
+
+                            <div class="zev-pw-field">
+
+                                <label for="zevqyn-project-description">
+                                    Full Description
+                                </label>
+
+                                <textarea id="zevqyn-project-description" rows="9" maxlength="5000" placeholder="Explain what you built, how it works and what problem it solves"></textarea>
+
+                                <div class="zev-pw-counter">
+                                    <span id="zevqyn-description-count">0</span>/5000
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TECHNOLOGIES -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    TECH STACK
+                                </span>
+
+                                <h2>
+                                    Technologies
+                                </h2>
+
+                                <p>
+                                    Add the tools, frameworks and
+                                    technologies used in this project.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-tag-editor">
+
+                            <div class="zev-pw-tag-input-row">
+
+                                <input type="text" id="zevqyn-tech-input" placeholder="Example: FastAPI">
+
+                                <button type="button" id="zevqyn-add-tech">
+                                    + Add
+                                </button>
+
+                            </div>
+
+                            <div class="zev-pw-tags" id="zevqyn-tech-tags"></div>
+
+                            <small>
+                                Maximum 20 technologies.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SKILLS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    CAREER VALUE
+                                </span>
+
+                                <h2>
+                                    Skills Demonstrated
+                                </h2>
+
+                                <p>
+                                    Track the practical skills this
+                                    project demonstrates.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-tag-editor">
+
+                            <div class="zev-pw-tag-input-row">
+
+                                <input type="text" id="zevqyn-skill-input" placeholder="Example: REST API Development">
+
+                                <button type="button" id="zevqyn-add-skill">
+                                    + Add
+                                </button>
+
+                            </div>
+
+                            <div class="zev-pw-tags" id="zevqyn-skill-tags"></div>
+
+                            <small>
+                                Maximum 20 skills.
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIGHT -->
+                <div class="zev-pw-column zev-pw-side-column">
+
+                    <!-- PROJECT SETTINGS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    SETTINGS
+                                </span>
+
+                                <h2>
+                                    Project Settings
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-visibility">
+                                Visibility
+                            </label>
+
+                            <select id="zevqyn-project-visibility">
+                                <option value="private">
+                                    Private
+                                </option>
+                                <option value="public">
+                                    Public
+                                </option>
+                            </select>
+
+                            <small>
+                                Public projects can later be used
+                                in your public portfolio.
+                            </small>
+
+                        </div>
+
+
+                        <label class="zev-pw-toggle-row">
+
+                            <div>
+
+                                <strong>
+                                    Featured Project
+                                </strong>
+
+                                <span>
+                                    Mark this as one of your
+                                    highlighted projects.
+                                </span>
+
+                            </div>
+
+                            <input type="checkbox" id="zevqyn-project-featured">
+
+                            <span class="zev-pw-toggle"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <!-- LINKS -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    LINKS
+                                </span>
+
+                                <h2>
+                                    Project Links
+                                </h2>
+
+                                <p>
+                                    Connect your source code and
+                                    live project.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-github">
+                                GitHub URL
+                            </label>
+
+                            <input type="url" id="zevqyn-project-github" maxlength="500" placeholder="https://github.com/...">
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-live">
+                                Live Project URL
+                            </label>
+
+                            <input type="url" id="zevqyn-project-live" maxlength="500" placeholder="https://...">
+
+                        </div>
+
+
+                        <div class="zev-pw-link-actions">
+
+                            <a href="#" target="_blank" rel="noopener" id="zevqyn-open-github" hidden="">
+                                Open GitHub ↗
+                            </a>
+
+                            <a href="#" target="_blank" rel="noopener" id="zevqyn-open-live" hidden="">
+                                Open Live Project ↗
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- IMAGE -->
+                    <div class="zev-pw-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    PRESENTATION
+                                </span>
+
+                                <h2>
+                                    Project Image
+                                </h2>
+
+                                <p>
+                                    Add a hosted image URL for use
+                                    in your portfolio.
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-field">
+
+                            <label for="zevqyn-project-image">
+                                Image URL
+                            </label>
+
+                            <input type="url" id="zevqyn-project-image" maxlength="500" placeholder="https://...">
+
+                        </div>
+
+
+                        <div class="zev-pw-image-preview" id="zevqyn-image-preview">
+
+                            <div class="zev-pw-image-empty" id="zevqyn-image-empty">
+                                ◫
+                                <span>
+                                    No project image
+                                </span>
+                            </div>
+
+                            <img id="zevqyn-project-image-preview" alt="Project preview" hidden="">
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- RESEARCH ORIGIN -->
+                    <div class="zev-pw-panel" id="zevqyn-research-origin-panel">
+
+                        <div class="zev-pw-panel-head">
+
+                            <div>
+                                <span class="zev-pw-label">
+                                    RESEARCH ORIGIN
+                                </span>
+
+                                <h2>
+                                    Research Connection
+                                </h2>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-pw-origin-box">
+
+                            <div class="zev-pw-origin-icon">
+                                ◎
+                            </div>
+
+                            <div>
+
+                                <strong id="zevqyn-origin-title">
+                                    Manual Project
+                                </strong>
+
+                                <p id="zevqyn-origin-text">
+                                    This project was created directly
+                                    from the Projects workspace.
+                                </p>
+
+                                <a href="#" id="zevqyn-open-research" hidden="">
+                                    Open Research Workspace →
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CAREER FLOW -->
+                    <div class="zev-pw-career-card">
+
+                        <span class="zev-pw-label">
+                            NEXT STEP
+                        </span>
+
+                        <h2>
+                            Turn your project into career proof
+                        </h2>
+
+                        <p>
+                            Your project data can later be reused
+                            across your ZEVQYN resume and portfolio.
+                        </p>
+
+                        <div class="zev-pw-career-actions">
+
+                            <a href="/resume/">
+                                Add to Resume →
+                            </a>
+
+                            <a href="/portfolio/">
+                                Add to Portfolio →
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- FOOTER META -->
+            <div class="zev-pw-meta">
+
+                <span>
+                    Created
+                    <strong id="zevqyn-project-created">
+                        —
+                    </strong>
+                </span>
+
+                <span>
+                    Last updated
+                    <strong id="zevqyn-project-updated">
+                        —
+                    </strong>
+                </span>
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div class="zev-pw-toast" id="zevqyn-project-toast" hidden=""></div>
+
+</div>

@@ -1,0 +1,306 @@
+<div class="zev-docs-page" id="zevqyn-documents-app">
+
+    <!-- =====================================
+         SIDEBAR
+    ====================================== -->
+    <aside class="zev-docs-sidebar">
+
+        <div class="zev-nav-title">
+            Workspace
+        </div>
+
+        <nav class="zev-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/">
+                <span class="zev-nav-icon">▣</span>
+                Research
+            </a>
+
+            <a href="/documents/" class="active">
+                <span class="zev-nav-icon">▤</span>
+                Documents
+            </a>
+
+            <a href="/projects/">
+                <span class="zev-nav-icon">◆</span>
+                Projects
+            </a>
+
+            <a href="/resume/">
+                <span class="zev-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="/portfolio/">
+                <span class="zev-nav-icon">◎</span>
+                Portfolio
+            </a>
+
+            <a href="/career/">
+                <span class="zev-nav-icon">✦</span>
+                Career Hub
+            </a>
+
+            <a href="/career-ai/">
+                <span class="zev-nav-icon">↗</span>
+                Career AI
+            </a>
+
+        </nav>
+
+
+        <!-- ACCOUNT -->
+        <div class="zev-sidebar-bottom">
+
+            <div class="zev-nav-title">
+                Account
+            </div>
+
+            <nav class="zev-nav">
+
+                <a href="/settings/">
+                    <span class="zev-nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" id="zevqyn-signout">
+                    <span class="zev-nav-icon">↪</span>
+                    Sign Out
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================
+         MAIN CONTENT
+    ====================================== -->
+    <main class="zev-docs-main">
+
+        <!-- TOPBAR -->
+        <div class="zev-docs-top">
+
+            <div class="zev-docs-heading">
+
+                <div class="zev-page-label">
+                    CENTRAL KNOWLEDGE BASE
+                </div>
+
+                <h1>
+                    Document Library
+                </h1>
+
+                <p>
+                    Browse, search, and manage source documents across all your research workspaces.
+                </p>
+
+            </div>
+
+
+            <div class="zev-user">
+
+                <div class="zev-avatar" id="zevqyn-user-avatar">
+                    Z
+                </div>
+
+                <div>
+
+                    <div class="zev-user-name" id="zevqyn-user-name">
+                        Loading...
+                    </div>
+
+                    <div class="zev-user-email" id="zevqyn-user-email">
+                        Loading account...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- STATS -->
+        <section class="zev-docs-stats">
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▤
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-doc-total-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Total Documents
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▣
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-doc-workspace-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Workspaces
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ◈
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-doc-ready-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Indexed Sources
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FILTERS BAR -->
+        <div class="zev-docs-filters">
+
+            <div class="zev-search-box">
+
+                <span class="zev-search-icon">
+                    ⌕
+                </span>
+
+                <input type="text" id="zevqyn-docs-search" placeholder="Search by filename..." autocomplete="off">
+
+            </div>
+
+
+            <div class="zev-filter-group">
+
+                <select id="zevqyn-filter-workspace">
+                    <option value="">All Workspaces</option>
+                </select>
+
+                <select id="zevqyn-filter-type">
+                    <option value="">All File Types</option>
+                    <option value="pdf">PDF</option>
+                    <option value="docx">DOCX</option>
+                    <option value="txt">TXT</option>
+                    <option value="md">Markdown (MD)</option>
+                </select>
+
+                <select id="zevqyn-filter-status">
+                    <option value="">All Statuses</option>
+                    <option value="indexed">Indexed</option>
+                    <option value="uploaded">Uploaded</option>
+                    <option value="extracting">Extracting</option>
+                </select>
+
+                <button type="button" class="zev-reset-filters-btn" id="zevqyn-reset-filters" title="Reset all filters">
+                    Reset
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- DOCUMENTS SECTION -->
+        <section class="zev-docs-content">
+
+            <div class="zev-docs-meta-bar">
+
+                <span id="zevqyn-docs-count-label">
+                    Loading documents...
+                </span>
+
+            </div>
+
+
+            <div class="zev-docs-loading" id="zevqyn-docs-loading">
+
+                <div class="zev-small-loader"></div>
+
+                Loading documents...
+
+            </div>
+
+
+            <div class="zev-docs-grid" id="zevqyn-docs-grid"></div>
+
+
+            <!-- EMPTY STATE -->
+            <div class="zev-no-docs" id="zevqyn-no-docs" hidden="">
+
+                <div class="zev-no-doc-icon">
+                    ▤
+                </div>
+
+                <h3 id="zevqyn-empty-title">
+                    No documents yet
+                </h3>
+
+                <p id="zevqyn-empty-desc">
+                    Upload documents inside a research workspace to see them in your central library.
+                </p>
+
+                <a href="/research/" class="zev-docs-btn zev-docs-btn-primary" id="zevqyn-empty-action">
+                    Go to Research Hub
+                </a>
+
+            </div>
+
+
+            <!-- PAGINATION / LOAD MORE -->
+            <div class="zev-docs-pagination" id="zevqyn-docs-pagination" hidden="">
+
+                <button type="button" class="zev-load-more-btn" id="zevqyn-load-more-btn">
+                    Load More Documents
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- TOAST -->
+    <div class="zev-toast" id="zevqyn-toast" hidden=""></div>
+
+</div>

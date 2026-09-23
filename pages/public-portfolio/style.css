@@ -1,45 +1,62 @@
-﻿
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED PUBLIC PORTFOLIO STYLES
+   Scope: #zevqyn-public-portfolio
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
+
+/* Hide WordPress page titles and wrapper spacing */
+body.page .hero-section,
+body.page .page-title,
+body.page .entry-header,
+header.entry-header,
+.ct-page-title,
+.entry-title {
+    display: none !important;
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+body.page .site-main,
+body.page .ct-container-full {
+    padding-top: 0 !important;
+    margin-top: 0 !important;
+}
+
+#zevqyn-public-portfolio,
+#zevqyn-public-portfolio * {
+    box-sizing: border-box;
+}
+
 #zevqyn-public-portfolio {
-    --bg: #05070b;
-    --surface: #0a0e15;
-    --surface-2: #0e141e;
-    --border: rgba(255,255,255,0.085);
-    --text: #f5f7fb;
-    --muted: #8993a3;
-    --green: #68f5a3;
-    --blue: #6ea8ff;
-    --violet: #a68cff;
+    --bg: var(--zev-bg-canvas, #090b0e);
+    --surface: var(--zev-bg-panel, #0f1217);
+    --surface-2: var(--zev-bg-surface, #151921);
+    --subtle: var(--zev-bg-subtle, #222834);
+    --border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --border-faint: var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+
+    --text: var(--zev-text-primary, #f4f6f8);
+    --text-sec: var(--zev-text-secondary, #c0c7d2);
+    --muted: var(--zev-text-muted, #828c9a);
+
+    --green: var(--zev-green-primary, #2ebd68);
+    --green-dark: var(--zev-green-hover, #269f58);
+    --green-text: var(--zev-green-text, #41cf7b);
+    --green-soft: var(--zev-green-soft, rgba(46, 189, 104, 0.08));
+    --green-border: var(--zev-green-border, rgba(46, 189, 104, 0.22));
 
     position: relative;
     width: 100%;
     min-height: 100vh;
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 12% 12%,
-            rgba(87,115,255,0.12),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 85% 18%,
-            rgba(104,245,163,0.09),
-            transparent 26%
-        ),
-        var(--bg);
-
+    background: var(--bg);
     color: var(--text);
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-}
-
-#zevqyn-public-portfolio * {
-    box-sizing: border-box;
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    margin-top: 0 !important;
 }
 
 #zevqyn-public-portfolio a {
@@ -49,84 +66,57 @@
 #zpp-content {
     position: relative;
     z-index: 2;
-    width: min(1280px, calc(100% - 44px));
-    margin: auto;
+    width: min(1200px, calc(100% - 48px));
+    margin: 0 auto;
 }
 
-.zpp-noise {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-    opacity: 0.025;
-    pointer-events: none;
-
-    background-image:
-        repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255,255,255,0.2) 3px
-        );
+/* Deactivate cyberpunk scanlines and ambient blur balls */
+.zpp-noise,
+.zpp-orb,
+.zpp-orb-one,
+.zpp-orb-two,
+.zpp-connect-glow,
+.zpp-float-one {
+    display: none !important;
 }
 
-.zpp-orb {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(100px);
-    pointer-events: none;
-}
-
-.zpp-orb-one {
-    width: 420px;
-    height: 420px;
-    top: 500px;
-    left: -250px;
-    background: rgba(96,108,255,0.09);
-}
-
-.zpp-orb-two {
-    width: 480px;
-    height: 480px;
-    top: 1400px;
-    right: -280px;
-    background: rgba(104,245,163,0.07);
-}
-
-/* STATE */
+/* =========================================
+   STATE (LOADING / ERROR)
+   ========================================= */
 
 .zpp-state {
     position: relative;
     z-index: 10;
-    min-height: 80vh;
-
+    min-height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text-align: center;
+    padding: 40px 20px;
 }
 
 .zpp-state span {
     margin-top: 20px;
-    color: var(--green);
-    font-size: 10px;
-    font-weight: 900;
-    letter-spacing: 0.18em;
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .zpp-state p {
     color: var(--muted);
+    font-size: 14px;
+    margin-top: 6px;
 }
 
 .zpp-loader {
-    width: 38px;
-    height: 38px;
-
-    border: 3px solid rgba(255,255,255,0.08);
+    width: 36px;
+    height: 36px;
+    border: 3px solid var(--border);
     border-top-color: var(--green);
     border-radius: 50%;
-
     animation: zppSpin 0.8s linear infinite;
 }
 
@@ -137,218 +127,177 @@
 }
 
 .zpp-error h1 {
-    margin: 10px 0;
-    font-size: clamp(40px, 7vw, 80px);
+    margin: 12px 0 8px;
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-/* NAV */
+/* =========================================
+   NAVIGATION BAR
+   ========================================= */
 
 .zpp-nav {
-    min-height: 88px;
-
+    min-height: 80px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 30px;
-
+    gap: 24px;
     border-bottom: 1px solid var(--border);
 }
 
 .zpp-brand {
     display: flex;
     align-items: center;
-    gap: 9px;
-
+    gap: 10px;
     text-decoration: none;
     font-size: 13px;
-    font-weight: 900;
-    letter-spacing: 0.08em;
+    font-weight: 700;
+    letter-spacing: 0.06em;
 }
 
 .zpp-brand-mark {
-    width: 29px;
-    height: 29px;
-
+    width: 28px;
+    height: 28px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-
-    border-radius: 8px;
+    border-radius: var(--zev-radius-xs, 4px);
     background: var(--green);
-    color: #051008;
-
-    font-weight: 950;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 13px;
 }
 
 .zpp-nav-links {
     display: flex;
-    gap: 30px;
+    gap: 28px;
 }
 
 .zpp-nav-links a {
-    position: relative;
     text-decoration: none;
-    color: #aeb7c4;
-
-    font-size: 11px;
-    font-weight: 700;
+    color: var(--text-sec);
+    font-size: 13px;
+    font-weight: 500;
+    transition: color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zpp-nav-links a:hover {
-    color: #fff;
+    color: var(--text);
 }
 
 .zpp-nav-cta {
-    padding: 10px 15px;
-
+    padding: 8px 16px;
     border: 1px solid var(--border);
-    border-radius: 999px;
-
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface-2);
     text-decoration: none;
-    font-size: 10px;
-    font-weight: 800;
+    font-size: 12px;
+    font-weight: 600;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
-/* HERO */
+.zpp-nav-cta:hover {
+    background: var(--subtle);
+    border-color: var(--border-strong);
+}
+
+/* =========================================
+   HERO
+   ========================================= */
 
 .zpp-hero {
-    min-height: 720px;
-
+    min-height: 600px;
     display: grid;
-    grid-template-columns:
-        minmax(0, 1.08fr)
-        minmax(380px, 0.92fr);
-
+    grid-template-columns: minmax(0, 1.15fr) minmax(340px, 0.85fr);
     align-items: center;
-    gap: 70px;
-
-    padding: 90px 20px 100px;
+    gap: 56px;
+    padding: 72px 0 88px;
 }
 
 .zpp-status-pill {
     width: fit-content;
-
     display: flex;
     align-items: center;
     gap: 8px;
-
-    margin-bottom: 30px;
-    padding: 8px 11px;
-
-    border: 1px solid rgba(104,245,163,0.18);
+    margin-bottom: 24px;
+    padding: 6px 12px;
+    border: 1px solid var(--green-border);
     border-radius: 999px;
-
-    background: rgba(104,245,163,0.045);
-
-    color: #a7b5ac;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.11em;
+    background: var(--green-soft);
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
 }
 
 .zpp-status-dot {
     width: 6px;
     height: 6px;
-
     border-radius: 50%;
     background: var(--green);
-
-    box-shadow: 0 0 12px var(--green);
-
-    animation: zppPulse 1.8s infinite;
-}
-
-@keyframes zppPulse {
-    50% {
-        opacity: 0.4;
-    }
 }
 
 .zpp-intro {
-    margin: 0 0 8px;
-
-    color: var(--green);
-    font-size: 11px;
-    font-weight: 900;
-    letter-spacing: 0.2em;
+    margin: 0 0 6px;
+    color: var(--green-text);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .zpp-hero h1 {
     margin: 0;
-
-    color: #fff;
-
-    font-size: clamp(62px, 8vw, 112px);
-    line-height: 0.9;
-
-    letter-spacing: -0.07em;
+    color: var(--text);
+    font-size: clamp(44px, 6vw, 76px);
+    line-height: 1.05;
+    letter-spacing: -0.035em;
+    font-weight: 700;
 }
 
 .zpp-hero-title {
-    margin-top: 18px;
-
-    font-size: clamp(25px, 3vw, 42px);
-    font-weight: 750;
-    letter-spacing: -0.035em;
-
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #8e9aaa
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
+    margin-top: 14px;
+    font-size: clamp(20px, 2.5vw, 32px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--text-sec);
 }
 
 .zpp-hero-about {
-    max-width: 620px;
-    margin: 24px 0 0;
-
+    max-width: 580px;
+    margin: 18px 0 0;
     color: var(--muted);
-
-    font-size: 14px;
-    line-height: 1.8;
+    font-size: 15px;
+    line-height: 1.65;
 }
 
 .zpp-hero-actions {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 18px;
-
-    margin-top: 32px;
+    gap: 14px;
+    margin-top: 28px;
 }
 
 .zpp-main-btn {
-    min-height: 48px;
-
+    min-height: 42px;
     display: inline-flex;
     align-items: center;
-    gap: 15px;
-
-    padding: 0 19px;
-
-    border-radius: 11px;
-
+    gap: 10px;
+    padding: 0 20px;
+    border-radius: var(--zev-radius-sm, 6px);
     background: var(--green);
-    color: #041009 !important;
-
+    color: #ffffff !important;
     text-decoration: none;
-    font-size: 11px;
-    font-weight: 900;
-
-    transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zpp-main-btn:hover {
-    transform: translateY(-3px);
-    box-shadow:
-        0 15px 40px rgba(104,245,163,0.15);
+    background: var(--green-dark);
 }
 
 .zpp-socials {
@@ -357,59 +306,48 @@
 }
 
 .zpp-social-btn {
-    min-height: 45px;
-
+    min-height: 40px;
     display: inline-flex;
     align-items: center;
-
     padding: 0 14px;
-
     border: 1px solid var(--border);
-    border-radius: 10px;
-
-    background: rgba(255,255,255,0.025);
-
-    color: #ccd4de !important;
-
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    color: var(--text-sec) !important;
     text-decoration: none;
-    font-size: 10px;
-    font-weight: 800;
-
-    transition: 0.2s ease;
+    font-size: 12px;
+    font-weight: 500;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zpp-social-btn:hover {
-    transform: translateY(-2px);
-    border-color: rgba(104,245,163,0.3);
-    color: #fff !important;
+    background: var(--subtle);
+    border-color: var(--border-strong);
+    color: var(--text) !important;
 }
 
 .zpp-scroll-hint {
     display: flex;
     align-items: center;
-    gap: 14px;
-
-    margin-top: 70px;
-
-    color: #596373;
-    font-size: 8px;
-    font-weight: 800;
-    letter-spacing: 0.15em;
+    gap: 12px;
+    margin-top: 48px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .zpp-scroll-line {
-    width: 60px;
+    width: 48px;
     height: 1px;
-
-    background:
-        linear-gradient(
-            90deg,
-            #596373,
-            transparent
-        );
+    background: var(--border-strong);
 }
 
-/* HERO IMAGE */
+/* =========================================
+   HERO AVATAR VISUAL
+   ========================================= */
 
 .zpp-hero-visual {
     display: flex;
@@ -419,58 +357,28 @@
 
 .zpp-photo-wrap {
     position: relative;
-
-    width: min(440px, 90vw);
-    aspect-ratio: 0.86;
+    width: min(380px, 90vw);
+    aspect-ratio: 1;
 }
 
 .zpp-photo-ring {
-    position: absolute;
-    inset: -20px;
-
-    border: 1px solid rgba(104,245,163,0.10);
-    border-radius: 44% 56% 50% 50% / 42% 44% 56% 58%;
-
-    transform: rotate(5deg);
-
-    animation:
-        zppFloatRing 8s ease-in-out infinite;
-}
-
-@keyframes zppFloatRing {
-    50% {
-        transform: rotate(-2deg) translateY(-8px);
-    }
+    display: none;
 }
 
 .zpp-avatar {
     position: absolute;
     inset: 0;
-
     overflow: hidden;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 44% 56% 48% 52% / 39% 42% 58% 61%;
-
-    background:
-        radial-gradient(
-            circle at 50% 20%,
-            rgba(104,245,163,0.16),
-            transparent 45%
-        ),
-        var(--surface-2);
-
-    color: var(--green);
-
-    font-size: 100px;
-    font-weight: 900;
-
-    box-shadow:
-        0 40px 100px rgba(0,0,0,0.4);
+    border: 2px solid var(--border-strong);
+    border-radius: var(--zev-radius-lg, 16px);
+    background: var(--surface);
+    color: var(--green-text);
+    font-size: 80px;
+    font-weight: 700;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 .zpp-avatar img {
@@ -481,111 +389,91 @@
 
 .zpp-float-card {
     position: absolute;
-
     display: flex;
     align-items: center;
     gap: 10px;
-
-    padding: 12px 15px;
-
-    border: 1px solid var(--border);
-    border-radius: 12px;
-
-    background: rgba(10,14,21,0.85);
-    backdrop-filter: blur(15px);
-
-    box-shadow:
-        0 15px 45px rgba(0,0,0,0.35);
+    padding: 10px 14px;
+    border: 1px solid var(--border-strong);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
 }
 
 .zpp-float-card > span {
-    color: var(--green);
-    font-size: 18px;
+    color: var(--green-text);
+    font-size: 16px;
 }
 
 .zpp-float-card small {
     display: block;
-
     margin-bottom: 2px;
-
-    color: #626e7e;
-
-    font-size: 7px;
-    font-weight: 800;
-    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 .zpp-float-card strong {
-    color: #e8edf3;
-    font-size: 10px;
-}
-
-.zpp-float-one {
-    top: 16%;
-    right: -45px;
+    color: var(--text);
+    font-size: 12px;
 }
 
 .zpp-float-two {
-    bottom: 12%;
-    left: -55px;
+    bottom: -16px;
+    left: -16px;
 }
 
-/* GENERAL SECTION */
+/* =========================================
+   GENERAL SECTIONS
+   ========================================= */
 
 .zpp-section {
     position: relative;
-
-    padding: 110px 20px;
-
+    padding: 88px 0;
     border-top: 1px solid var(--border);
 }
 
 .zpp-section-number {
     position: absolute;
-    top: 45px;
-    right: 20px;
-
-    color: rgba(255,255,255,0.035);
-
-    font-size: 100px;
-    font-weight: 950;
+    top: 32px;
+    right: 0;
+    color: var(--border-faint);
+    font-size: 80px;
+    font-weight: 800;
     line-height: 1;
+    font-family: var(--zev-font-mono, monospace);
+    pointer-events: none;
 }
 
 .zpp-section-heading {
     position: relative;
     z-index: 2;
-
-    margin-bottom: 45px;
+    margin-bottom: 36px;
 }
 
 .zpp-section-heading > span {
     display: block;
-
-    margin-bottom: 12px;
-
-    color: var(--green);
-
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 0.2em;
+    margin-bottom: 8px;
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .zpp-section-heading h2 {
     max-width: 680px;
-
     margin: 0;
-
-    color: #fff;
-
-    font-size: clamp(38px, 5vw, 65px);
-    line-height: 1;
-
-    letter-spacing: -0.055em;
+    color: var(--text);
+    font-size: clamp(32px, 4vw, 48px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
 }
 
 .zpp-section-heading h2 em {
-    color: #788393;
+    color: var(--muted);
     font-style: normal;
 }
 
@@ -593,66 +481,54 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 40px;
+    gap: 32px;
 }
 
 .zpp-heading-row p {
-    max-width: 300px;
-
+    max-width: 320px;
     margin: 0;
-
     color: var(--muted);
-
-    font-size: 11px;
-    line-height: 1.7;
+    font-size: 13px;
+    line-height: 1.5;
 }
 
-/* ABOUT */
+/* =========================================
+   ABOUT SECTION
+   ========================================= */
 
 .zpp-about-grid {
     display: grid;
-    grid-template-columns:
-        minmax(0, 1.6fr)
-        minmax(180px, 0.7fr)
-        minmax(180px, 0.7fr);
-
-    gap: 14px;
+    grid-template-columns: minmax(0, 1.6fr) minmax(180px, 0.7fr) minmax(180px, 0.7fr);
+    gap: 16px;
 }
 
 .zpp-about-card {
-    min-height: 230px;
-
-    padding: 28px;
-
+    min-height: 200px;
+    padding: 24px;
     border: 1px solid var(--border);
-    border-radius: 18px;
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--surface);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
 
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.025),
-            transparent
-        ),
-        var(--surface);
+.zpp-about-card:hover {
+    border-color: var(--border-strong);
 }
 
 .zpp-card-label {
-    color: var(--green);
-
-    font-size: 8px;
-    font-weight: 900;
-    letter-spacing: 0.17em;
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .zpp-about-main p {
-    max-width: 720px;
-
-    margin: 50px 0 0;
-
-    color: #b1bac6;
-
-    font-size: 16px;
-    line-height: 1.9;
+    max-width: 680px;
+    margin: 24px 0 0;
+    color: var(--text-sec);
+    font-size: 15px;
+    line-height: 1.7;
 }
 
 .zpp-about-mini {
@@ -663,423 +539,325 @@
 
 .zpp-big-symbol {
     margin-bottom: auto;
-
-    color: var(--green);
-
-    font-size: 42px;
-    font-weight: 800;
+    color: var(--green-text);
+    font-size: 32px;
+    font-weight: 700;
 }
 
 .zpp-about-mini > span:not(.zpp-big-symbol) {
-    margin-bottom: 6px;
-
-    color: #667181;
-
-    font-size: 8px;
-    font-weight: 900;
-    letter-spacing: 0.14em;
+    margin-bottom: 4px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
 }
 
 .zpp-about-mini strong {
-    color: #f0f3f7;
-
+    color: var(--text);
     font-size: 15px;
     line-height: 1.4;
 }
 
-/* PROJECTS */
+/* =========================================
+   PROJECTS SECTION
+   ========================================= */
 
 .zpp-project-grid {
     display: grid;
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 15px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .zpp-project-card {
     position: relative;
-
-    min-height: 310px;
-    overflow: hidden;
-
+    min-height: 280px;
     display: flex;
     flex-direction: column;
-
-    padding: 28px;
-
+    padding: 24px;
     border: 1px solid var(--border);
-    border-radius: 19px;
-
-    background:
-        radial-gradient(
-            circle at 100% 0%,
-            rgba(104,245,163,0.07),
-            transparent 35%
-        ),
-        var(--surface);
-
-    transition:
-        transform 0.25s ease,
-        border-color 0.25s ease;
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--surface);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zpp-project-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(104,245,163,0.24);
+    border-color: var(--border-strong);
 }
 
 .zpp-project-index {
-    color: #596575;
-
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 0.12em;
+    color: var(--muted);
+    font-size: 11px;
+    font-family: var(--zev-font-mono, monospace);
+    font-weight: 700;
 }
 
 .zpp-project-card h3 {
-    margin: 35px 0 10px;
-
-    color: #fff;
-
-    font-size: 24px;
-    letter-spacing: -0.035em;
+    margin: 20px 0 8px;
+    color: var(--text);
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .zpp-project-card p {
-    max-width: 520px;
-
+    max-width: 500px;
     margin: 0;
-
     color: var(--muted);
-
-    font-size: 11px;
-    line-height: 1.75;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .zpp-project-tech {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
-
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .zpp-tech {
-    padding: 6px 8px;
-
-    border-radius: 7px;
-
-    background: rgba(104,245,163,0.065);
-    color: #aaf7c9;
-
-    font-size: 8px;
-    font-weight: 800;
+    padding: 4px 8px;
+    border-radius: var(--zev-radius-xs, 4px);
+    background: var(--green-soft);
+    border: 1px solid var(--green-border);
+    color: var(--green-text);
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 11px;
 }
 
 .zpp-project-actions {
     display: flex;
-    gap: 8px;
-
+    gap: 10px;
     margin-top: auto;
-    padding-top: 25px;
+    padding-top: 20px;
 }
 
 .zpp-project-link {
     text-decoration: none;
-
-    color: #dce3eb !important;
-
-    font-size: 9px;
-    font-weight: 800;
+    color: var(--green-text) !important;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .zpp-project-link:hover {
-    color: var(--green) !important;
+    text-decoration: underline;
 }
 
-/* SKILLS */
+/* =========================================
+   SKILLS CLOUD
+   ========================================= */
 
 .zpp-skill-cloud {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
 }
 
 .zpp-skill {
-    padding: 14px 18px;
-
+    padding: 10px 16px;
     border: 1px solid var(--border);
-    border-radius: 999px;
-
-    background: rgba(255,255,255,0.02);
-
-    color: #d8dfe7;
-
-    font-size: 11px;
-    font-weight: 750;
-
-    transition:
-        transform 0.2s ease,
-        background 0.2s ease,
-        border-color 0.2s ease;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zpp-skill:hover {
-    transform: translateY(-3px) rotate(-1deg);
-
-    border-color: rgba(104,245,163,0.3);
-    background: rgba(104,245,163,0.06);
-
-    color: #fff;
+    border-color: var(--green-border);
+    background: var(--green-soft);
+    color: var(--green-text);
 }
 
-/* TIMELINE */
+/* =========================================
+   TIMELINE / JOURNEY
+   ========================================= */
 
 .zpp-timeline {
     position: relative;
-
-    max-width: 850px;
+    max-width: 800px;
 }
 
 .zpp-timeline::before {
     content: "";
-
     position: absolute;
     left: 6px;
     top: 8px;
     bottom: 8px;
-
     width: 1px;
-
-    background:
-        linear-gradient(
-            var(--green),
-            rgba(255,255,255,0.06)
-        );
+    background: var(--border-strong);
 }
 
 .zpp-timeline-item {
     position: relative;
-
-    padding: 0 0 42px 40px;
+    padding: 0 0 36px 36px;
 }
 
 .zpp-timeline-dot {
     position: absolute;
     left: 0;
     top: 5px;
-
     width: 13px;
     height: 13px;
-
     border: 3px solid var(--bg);
     border-radius: 50%;
-
     background: var(--green);
-
-    box-shadow:
-        0 0 0 1px rgba(104,245,163,0.35);
 }
 
 .zpp-timeline-date {
-    color: var(--green);
-
-    font-size: 8px;
-    font-weight: 900;
-    letter-spacing: 0.12em;
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    font-family: var(--zev-font-mono, monospace);
+    letter-spacing: 0.06em;
 }
 
 .zpp-timeline-item h3 {
-    margin: 7px 0 5px;
-
-    color: #fff;
-
-    font-size: 18px;
+    margin: 6px 0 4px;
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .zpp-timeline-item strong {
     display: block;
-
-    color: #909cab;
-
-    font-size: 11px;
+    color: var(--text-sec);
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .zpp-timeline-item p {
-    max-width: 650px;
-
-    margin: 10px 0 0;
-
-    color: #778292;
-
-    font-size: 10px;
-    line-height: 1.7;
+    max-width: 600px;
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.55;
 }
 
-/* CERTIFICATES */
+/* =========================================
+   CERTIFICATES
+   ========================================= */
 
 .zpp-certificate-grid {
     display: grid;
-    grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-    gap: 13px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 16px;
 }
 
 .zpp-certificate {
-    min-height: 180px;
-
-    padding: 23px;
-
+    min-height: 160px;
+    padding: 20px;
     border: 1px solid var(--border);
-    border-radius: 16px;
-
+    border-radius: var(--zev-radius-md, 10px);
     background: var(--surface);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zpp-certificate:hover {
+    border-color: var(--border-strong);
 }
 
 .zpp-certificate-icon {
-    color: var(--green);
-    font-size: 22px;
+    color: var(--green-text);
+    font-size: 20px;
 }
 
 .zpp-certificate h3 {
-    margin: 25px 0 6px;
-
-    color: #fff;
-
-    font-size: 14px;
+    margin: 16px 0 4px;
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .zpp-certificate p {
     margin: 0;
-
     color: var(--muted);
-
-    font-size: 9px;
+    font-size: 12px;
 }
 
-/* CONNECT */
+/* =========================================
+   CONNECT SECTION
+   ========================================= */
 
 .zpp-connect {
     position: relative;
-
     overflow: hidden;
-
-    margin: 60px 20px 30px;
-    padding: 90px 30px;
-
+    margin: 60px 0 40px;
+    padding: 64px 32px;
     border: 1px solid var(--border);
-    border-radius: 28px;
-
+    border-radius: var(--zev-radius-lg, 16px);
     background: var(--surface);
-
     text-align: center;
 }
 
-.zpp-connect-glow {
-    position: absolute;
-
-    width: 500px;
-    height: 250px;
-
-    left: 50%;
-    top: -180px;
-
-    transform: translateX(-50%);
-
-    border-radius: 50%;
-
-    background: rgba(104,245,163,0.16);
-    filter: blur(80px);
-}
-
 .zpp-connect-label {
-    position: relative;
-
-    color: var(--green);
-
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 0.2em;
+    color: var(--green-text);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .zpp-connect h2 {
-    position: relative;
-
-    max-width: 800px;
-
-    margin: 16px auto;
-
-    color: #fff;
-
-    font-size: clamp(45px, 7vw, 85px);
-    line-height: 0.95;
-
-    letter-spacing: -0.06em;
+    max-width: 720px;
+    margin: 14px auto;
+    color: var(--text);
+    font-size: clamp(32px, 5vw, 56px);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    font-weight: 700;
 }
 
 .zpp-connect h2 em {
-    color: var(--green);
+    color: var(--green-text);
     font-style: normal;
 }
 
 .zpp-connect p {
-    position: relative;
-
-    max-width: 520px;
-
-    margin: 22px auto;
-
+    max-width: 500px;
+    margin: 14px auto 0;
     color: var(--muted);
-
-    font-size: 12px;
-    line-height: 1.7;
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 .zpp-connect-actions {
-    position: relative;
-
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 8px;
-
-    margin-top: 30px;
+    gap: 10px;
+    margin-top: 24px;
 }
 
-/* FOOTER */
+/* =========================================
+   FOOTER
+   ========================================= */
 
 .zpp-footer {
-    min-height: 100px;
-
+    min-height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin: 0 20px;
-
     border-top: 1px solid var(--border);
-
-    color: #596473;
-
-    font-size: 9px;
-    font-weight: 700;
+    color: var(--muted);
+    font-size: 12px;
 }
 
 .zpp-footer b {
-    color: var(--green);
+    color: var(--green-text);
+    font-weight: 600;
 }
 
-/* ANIMATION */
+/* =========================================
+   REVEAL ANIMATION
+   ========================================= */
 
 .zpp-reveal {
     opacity: 0;
-    transform: translateY(24px);
-
-    transition:
-        opacity 0.65s ease,
-        transform 0.65s ease;
+    transform: translateY(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .zpp-reveal.zpp-visible {
@@ -1087,45 +865,41 @@
     transform: translateY(0);
 }
 
-/* RESPONSIVE */
+/* Hidden utility */
+#zevqyn-public-portfolio [hidden] {
+    display: none !important;
+}
+
+/* =========================================
+   RESPONSIVE DESIGN
+   ========================================= */
 
 @media (max-width: 950px) {
-
     .zpp-nav-links {
         display: none;
     }
 
     .zpp-hero {
         grid-template-columns: 1fr;
-        gap: 70px;
-
-        padding-top: 70px;
+        gap: 48px;
+        padding-top: 48px;
     }
 
     .zpp-hero-copy {
         text-align: center;
     }
 
-    .zpp-status-pill {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .zpp-hero-about {
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .zpp-hero-actions {
-        justify-content: center;
-    }
-
+    .zpp-status-pill,
+    .zpp-hero-about,
+    .zpp-hero-actions,
     .zpp-scroll-hint {
+        margin-left: auto;
+        margin-right: auto;
         justify-content: center;
     }
 
     .zpp-photo-wrap {
-        width: min(380px, 75vw);
+        width: min(340px, 75vw);
     }
 
     .zpp-about-grid {
@@ -1138,13 +912,12 @@
 }
 
 @media (max-width: 700px) {
-
     #zpp-content {
-        width: min(100% - 24px, 1280px);
+        width: min(100% - 32px, 1200px);
     }
 
     .zpp-nav {
-        min-height: 72px;
+        min-height: 64px;
     }
 
     .zpp-nav-cta {
@@ -1152,46 +925,24 @@
     }
 
     .zpp-hero {
-        min-height: auto;
-        padding:
-            70px 10px
-            90px;
+        padding: 48px 0 64px;
     }
 
     .zpp-hero h1 {
-        font-size: clamp(55px, 17vw, 82px);
-    }
-
-    .zpp-hero-title {
-        font-size: 25px;
+        font-size: clamp(38px, 12vw, 56px);
     }
 
     .zpp-scroll-hint {
         display: none;
     }
 
-    .zpp-photo-wrap {
-        width: min(300px, 78vw);
-    }
-
-    .zpp-float-one {
-        right: -15px;
-    }
-
-    .zpp-float-two {
-        left: -15px;
-    }
-
     .zpp-section {
-        padding:
-            85px 10px;
+        padding: 64px 0;
     }
 
     .zpp-section-number {
-        right: 10px;
-        top: 35px;
-
-        font-size: 70px;
+        font-size: 56px;
+        top: 24px;
     }
 
     .zpp-heading-row {
@@ -1199,10 +950,12 @@
     }
 
     .zpp-heading-row p {
-        margin-top: 20px;
+        margin-top: 14px;
     }
 
-    .zpp-about-grid {
+    .zpp-about-grid,
+    .zpp-project-grid,
+    .zpp-certificate-grid {
         grid-template-columns: 1fr;
     }
 
@@ -1210,91 +963,34 @@
         grid-column: auto;
     }
 
-    .zpp-project-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .zpp-certificate-grid {
-        grid-template-columns: 1fr;
-    }
-
     .zpp-connect {
-        margin-left: 0;
-        margin-right: 0;
-
-        padding:
-            70px 20px;
+        padding: 48px 20px;
     }
 
     .zpp-footer {
-        margin: 0;
-
         flex-direction: column;
         justify-content: center;
         gap: 8px;
+        text-align: center;
+        padding: 20px 0;
     }
 }
 
-@media (max-width: 420px) {
-
-    .zpp-socials {
-        width: 100%;
-        justify-content: center;
+@media (prefers-reduced-motion: reduce) {
+    .zpp-loader {
+        animation: none;
     }
 
-    .zpp-hero-actions .zpp-main-btn {
-        width: 100%;
-        justify-content: center;
+    .zpp-reveal {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
     }
 
-    .zpp-float-card {
-        padding: 9px 10px;
+    .zpp-main-btn,
+    .zpp-social-btn,
+    .zpp-project-card,
+    .zpp-skill {
+        transition: none !important;
     }
-
-    .zpp-about-card {
-        padding: 22px;
-    }
-
-    .zpp-project-card {
-        padding: 22px;
-    }
-}
-
-#zevqyn-public-portfolio [hidden] {
-    display: none !important;
-}
-
-/* Hide WordPress page title */
-body.page .hero-section,
-body.page .page-title,
-body.page .entry-header {
-    display: none !important;
-}
-
-/* Remove Current Mode / Creating floating card */
-#zevqyn-public-portfolio .zpp-float-one {
-    display: none !important;
-}
-
-/* Remove leftover Blocksy page-title / hero spacing */
-body.page .hero-section,
-body.page .page-title,
-body.page .entry-header {
-    display: none !important;
-    height: 0 !important;
-    min-height: 0 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
-
-/* Remove top spacing added by the page content wrapper */
-body.page .site-main,
-body.page .ct-container-full {
-    padding-top: 0 !important;
-    margin-top: 0 !important;
-}
-
-/* Portfolio starts immediately */
-#zevqyn-public-portfolio {
-    margin-top: 0 !important;
 }

@@ -1,0 +1,521 @@
+<div class="zev-research-page">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="zev-research-sidebar">
+
+        <div class="zev-nav-title">
+            Workspace
+        </div>
+
+        <nav class="zev-nav">
+
+            <a href="/dashboard/">
+                <span class="zev-nav-icon">⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/" class="active">
+                <span class="zev-nav-icon">▣</span>
+                Research
+            </a>
+
+            <a href="/documents/">
+                <span class="zev-nav-icon">▤</span>
+                Documents
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">◆</span>
+                Projects
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">▤</span>
+                Resume
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">◎</span>
+                Portfolio
+            </a>
+
+            <a href="#">
+                <span class="zev-nav-icon">✦</span>
+                Career AI
+            </a>
+
+        </nav>
+
+
+        <!-- ACCOUNT -->
+        <div class="zev-sidebar-bottom">
+
+            <div class="zev-nav-title">
+                Account
+            </div>
+
+            <nav class="zev-nav">
+
+                <a href="#">
+                    <span class="zev-nav-icon">⚙</span>
+                    Settings
+                </a>
+
+                <a href="#" id="zevqyn-signout">
+                    <span class="zev-nav-icon">↪</span>
+                    Sign Out
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="zev-research-main">
+
+
+        <!-- TOP -->
+        <div class="zev-research-top">
+
+            <div class="zev-research-heading">
+
+                <div class="zev-page-label">
+                    RESEARCH WORKSPACE
+                </div>
+
+                <h1>
+                    Research
+                </h1>
+
+                <p>
+                    Upload your sources, explore ideas and turn
+                    research into career-ready work.
+                </p>
+
+            </div>
+
+
+            <div class="zev-user">
+
+                <div class="zev-avatar" id="zevqyn-user-avatar">
+                    Z
+                </div>
+
+                <div>
+
+                    <div class="zev-user-name" id="zevqyn-user-name">
+                        Loading...
+                    </div>
+
+                    <div class="zev-user-email" id="zevqyn-user-email">
+                        Loading account...
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ACTION BAR
+        ========================== -->
+        <div class="zev-research-actions">
+
+            <div class="zev-search-box">
+
+                <span class="zev-search-icon">
+                    ⌕
+                </span>
+
+                <input type="text" id="zevqyn-research-search" placeholder="Search research workspaces..." autocomplete="off">
+
+            </div>
+
+
+            <button type="button" class="zev-new-research-btn" id="zevqyn-new-research">
+                <span>＋</span>
+                New Research
+            </button>
+
+        </div>
+
+
+        <!-- =========================
+             STATS
+        ========================== -->
+        <section class="zev-research-stats">
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ▣
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-workspace-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Workspaces
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <a href="/documents/" class="zev-mini-stat zev-stat-link" title="Open Global Document Library">
+
+                <div class="zev-mini-stat-icon">
+                    ▤
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-document-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        Documents →
+                    </div>
+
+                </div>
+
+            </a>
+
+
+            <div class="zev-mini-stat">
+
+                <div class="zev-mini-stat-icon">
+                    ✦
+                </div>
+
+                <div>
+
+                    <div class="zev-mini-stat-number" id="zevqyn-chat-count">
+                        0
+                    </div>
+
+                    <div class="zev-mini-stat-label">
+                        AI Conversations
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             WORKSPACES
+        ========================== -->
+        <section class="zev-workspaces-section">
+
+            <div class="zev-section-header">
+
+                <div>
+
+                    <h2>
+                        Your Research
+                    </h2>
+
+                    <p>
+                        Your research workspaces will appear here.
+                    </p>
+
+                </div>
+
+
+                <select id="zevqyn-research-sort">
+
+                    <option value="recent">
+                        Recently updated
+                    </option>
+
+                    <option value="newest">
+                        Newest
+                    </option>
+
+                    <option value="oldest">
+                        Oldest
+                    </option>
+
+                    <option value="name">
+                        Name
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- LOADING -->
+            <div class="zev-research-loading" id="zevqyn-research-loading">
+
+                <div class="zev-loader"></div>
+
+                <p>
+                    Loading your research...
+                </p>
+
+            </div>
+
+
+            <!-- WORKSPACE GRID -->
+            <div class="zev-workspace-grid" id="zevqyn-workspace-grid">
+            </div>
+
+
+            <!-- =========================
+                 EMPTY STATE
+            ========================== -->
+            <div class="zev-empty-state" id="zevqyn-empty-state">
+
+                <div class="zev-empty-icon">
+                    ✦
+                </div>
+
+                <div class="zev-empty-badge">
+                    YOUR FIRST WORKSPACE
+                </div>
+
+                <h2>
+                    Start your first research workspace
+                </h2>
+
+                <p>
+                    Create a workspace and bring your research
+                    materials together. Upload PDFs, DOCX, TXT or
+                    Markdown files and use AI to understand your
+                    sources.
+                </p>
+
+
+                <button type="button" class="zev-empty-create-btn" id="zevqyn-empty-create">
+                    ＋ Create Research
+                </button>
+
+
+                <div class="zev-supported-files">
+
+                    <span>PDF</span>
+                    <span>DOCX</span>
+                    <span>TXT</span>
+                    <span>MD</span>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RESEARCH FLOW
+        ========================== -->
+        <section class="zev-research-flow">
+
+            <div class="zev-flow-header">
+
+                <span>
+                    HOW ZEVQYN RESEARCH WORKS
+                </span>
+
+                <h2>
+                    From sources to something useful.
+                </h2>
+
+            </div>
+
+
+            <div class="zev-flow-grid">
+
+
+                <!-- STEP 1 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        01
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ＋
+                    </div>
+
+                    <h3>
+                        Upload
+                    </h3>
+
+                    <p>
+                        Add PDFs, documents, notes and other
+                        supported research files.
+                    </p>
+
+                </div>
+
+
+                <!-- STEP 2 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        02
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ✦
+                    </div>
+
+                    <h3>
+                        Understand
+                    </h3>
+
+                    <p>
+                        ZEVQYN processes your sources so they
+                        can be searched and understood by AI.
+                    </p>
+
+                </div>
+
+
+                <!-- STEP 3 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        03
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ◇
+                    </div>
+
+                    <h3>
+                        Ask
+                    </h3>
+
+                    <p>
+                        Chat with your research and receive
+                        source-backed answers with citations.
+                    </p>
+
+                </div>
+
+
+                <!-- STEP 4 -->
+                <div class="zev-flow-card">
+
+                    <div class="zev-flow-number">
+                        04
+                    </div>
+
+                    <div class="zev-flow-icon">
+                        ↗
+                    </div>
+
+                    <h3>
+                        Build
+                    </h3>
+
+                    <p>
+                        Turn useful research into projects,
+                        resume experience and portfolio work.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CREATE WORKSPACE MODAL
+        ========================== -->
+        <div class="zev-modal-overlay" id="zevqyn-create-modal" hidden="">
+
+            <div class="zev-modal">
+
+                <button type="button" class="zev-modal-close" id="zevqyn-modal-close">
+                    ×
+                </button>
+
+
+                <div class="zev-modal-icon">
+                    ▣
+                </div>
+
+
+                <h2>
+                    Create Research Workspace
+                </h2>
+
+                <p>
+                    Give your research a name and optional
+                    description. You can upload sources after
+                    creating it.
+                </p>
+
+
+                <form id="zevqyn-create-research-form">
+
+                    <div class="zev-field">
+
+                        <label for="zevqyn-research-title">
+                            Workspace name
+                        </label>
+
+                        <input type="text" id="zevqyn-research-title" placeholder="e.g. Artificial Intelligence Research" maxlength="100" required="">
+
+                    </div>
+
+
+                    <div class="zev-field">
+
+                        <label for="zevqyn-research-description">
+                            Description
+                            <span>Optional</span>
+                        </label>
+
+                        <textarea id="zevqyn-research-description" placeholder="What are you researching?" maxlength="500" rows="4"></textarea>
+
+                    </div>
+
+
+                    <div class="zev-form-message" id="zevqyn-create-message">
+                    </div>
+
+
+                    <div class="zev-modal-actions">
+
+                        <button type="button" class="zev-cancel-btn" id="zevqyn-modal-cancel">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="zev-create-btn" id="zevqyn-create-btn">
+                            Create Workspace
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+    </main>
+
+</div>

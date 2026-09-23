@@ -1,0 +1,776 @@
+<div class="zev-rb-page" id="zevqyn-resume-builder">
+
+    <!-- =========================================
+         SIDEBAR
+    ========================================== -->
+
+    <aside class="zev-rb-sidebar">
+
+        <div class="zev-rb-nav-title">
+            WORKSPACE
+        </div>
+
+        <nav class="zev-rb-nav">
+
+            <a href="/dashboard/">
+                <span>⌂</span>
+                Dashboard
+            </a>
+
+            <a href="/research/">
+                <span>⌕</span>
+                Research
+            </a>
+
+            <a href="/projects/">
+                <span>◇</span>
+                Projects
+            </a>
+
+            <a href="/resume/" class="active">
+                <span>▤</span>
+                Resume
+            </a>
+
+            <a href="/portfolio/">
+                <span>◫</span>
+                Portfolio
+            </a>
+
+            <a href="/career-ai/">
+                <span>✦</span>
+                Career AI
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================================
+         MAIN
+    ========================================== -->
+
+    <main class="zev-rb-main">
+
+        <!-- HEADER -->
+
+        <header class="zev-rb-header">
+
+            <div>
+
+                <span class="zev-rb-label">
+                    CAREER WORKSPACE
+                </span>
+
+                <h1>
+                    Resume Builder
+                </h1>
+
+                <p>
+                    Turn your verified ZEVQYN projects, skills,
+                    education and certificates into an ATS-friendly resume.
+                </p>
+
+            </div>
+
+            <button type="button" class="zev-rb-create-btn" id="zevqyn-new-resume">
+                + New Resume
+            </button>
+
+        </header>
+
+
+        <!-- =========================================
+             EMPTY STATE
+        ========================================== -->
+
+        <section class="zev-rb-empty" id="zevqyn-resume-empty" hidden="">
+
+            <div class="zev-rb-empty-icon">
+                ▤
+            </div>
+
+            <h2>
+                Create your first resume
+            </h2>
+
+            <p>
+                Build a professional resume using the projects
+                and career information already stored in ZEVQYN.
+            </p>
+
+            <button type="button" id="zevqyn-empty-create">
+                Create Resume →
+            </button>
+
+        </section>
+
+
+        <!-- =========================================
+             RESUME BUILDER
+        ========================================== -->
+
+        <div class="zev-rb-workspace" id="zevqyn-resume-workspace" hidden="">
+
+            <!-- TOOLBAR -->
+
+            <section class="zev-rb-toolbar">
+
+                <div class="zev-rb-resume-select">
+
+                    <label for="zevqyn-resume-select">
+                        Resume
+                    </label>
+
+                    <select id="zevqyn-resume-select">
+                    </select>
+
+                </div>
+
+
+                <div class="zev-rb-toolbar-actions">
+
+                    <button type="button" class="zev-rb-secondary" id="zevqyn-delete-resume">
+                        Delete
+                    </button>
+
+                    <button type="button" class="zev-rb-secondary" id="zevqyn-save-resume">
+                        Save
+                    </button>
+
+                    <button type="button" class="zev-rb-export" id="zevqyn-export-pdf">
+                        Export PDF ↓
+                    </button>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 STATS
+            ========================================== -->
+
+            <section class="zev-rb-stats">
+
+                <div class="zev-rb-stat">
+
+                    <strong id="zevqyn-resume-project-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Projects
+                    </span>
+
+                </div>
+
+
+                <div class="zev-rb-stat">
+
+                    <strong id="zevqyn-resume-skill-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Skills
+                    </span>
+
+                </div>
+
+
+                <div class="zev-rb-stat">
+
+                    <strong id="zevqyn-resume-education-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Education
+                    </span>
+
+                </div>
+
+
+                <div class="zev-rb-stat">
+
+                    <strong id="zevqyn-resume-certificate-count">
+                        0
+                    </strong>
+
+                    <span>
+                        Certificates
+                    </span>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================================
+                 MAIN BUILDER GRID
+            ========================================== -->
+
+            <section class="zev-rb-grid">
+
+
+                <!-- =====================================
+                     LEFT / EDITOR
+                ====================================== -->
+
+                <div class="zev-rb-editor">
+
+
+                    <!-- =================================
+                         RESUME DETAILS
+                    ================================== -->
+
+                    <div class="zev-rb-panel">
+
+                        <div class="zev-rb-panel-head">
+
+                            <div>
+
+                                <span class="zev-rb-label">
+                                    RESUME SETTINGS
+                                </span>
+
+                                <h2>
+                                    Resume Details
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- RESUME NAME -->
+
+                        <div class="zev-rb-field">
+
+                            <label for="zevqyn-resume-name">
+                                Resume Name
+                            </label>
+
+                            <input type="text" id="zevqyn-resume-name" maxlength="200" placeholder="Example: Software Developer Resume">
+
+                        </div>
+
+
+                        <!-- TEMPLATE -->
+
+                        <div class="zev-rb-field">
+
+                            <label for="zevqyn-resume-template">
+                                Template
+                            </label>
+
+                            <select id="zevqyn-resume-template">
+
+                                <option value="professional">
+                                    Professional
+                                </option>
+
+                            </select>
+
+                            <small>
+                                ZEVQYN V1 currently uses one clean
+                                ATS-friendly professional template.
+                            </small>
+
+                        </div>
+
+
+                        <!-- VISIBILITY -->
+
+                        <div class="zev-rb-field">
+
+                            <label for="zevqyn-resume-visibility">
+                                Visibility
+                            </label>
+
+                            <select id="zevqyn-resume-visibility">
+
+                                <option value="private">
+                                    Private
+                                </option>
+
+                                <option value="public">
+                                    Public
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- =================================
+                             PERSONAL INFORMATION
+                        ================================== -->
+
+                        <div class="zev-rb-profile-section">
+
+                            <div class="zev-rb-profile-heading">
+
+                                <span class="zev-rb-label">
+                                    PERSONAL INFORMATION
+                                </span>
+
+                                <h3>
+                                    Resume Header
+                                </h3>
+
+                                <p>
+                                    Add the contact information that will
+                                    appear at the top of your resume.
+                                </p>
+
+                            </div>
+
+
+                            <div class="zev-rb-profile-grid">
+
+
+                                <!-- FULL NAME -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-full-name">
+                                        Full Name
+                                    </label>
+
+                                    <input type="text" id="zevqyn-resume-full-name" maxlength="150" autocomplete="name" placeholder="Example: Hussnain Ahmad">
+
+                                </div>
+
+
+                                <!-- PROFESSIONAL TITLE -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-professional-title">
+                                        Professional Title
+                                    </label>
+
+                                    <input type="text" id="zevqyn-resume-professional-title" maxlength="150" placeholder="Example: Computer Science Student">
+
+                                </div>
+
+
+                                <!-- EMAIL -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-email">
+                                        Email
+                                    </label>
+
+                                    <input type="email" id="zevqyn-resume-email" maxlength="254" autocomplete="email" placeholder="name@example.com">
+
+                                </div>
+
+
+                                <!-- PHONE -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-phone">
+                                        Phone
+                                    </label>
+
+                                    <input type="tel" id="zevqyn-resume-phone" maxlength="50" autocomplete="tel" placeholder="+92 300 1234567">
+
+                                </div>
+
+
+                                <!-- LOCATION -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-location">
+                                        Location
+                                    </label>
+
+                                    <input type="text" id="zevqyn-resume-location" maxlength="150" placeholder="Islamabad, Pakistan">
+
+                                </div>
+
+
+                                <!-- LINKEDIN -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-linkedin">
+                                        LinkedIn URL
+                                    </label>
+
+                                    <input type="url" id="zevqyn-resume-linkedin" maxlength="500" placeholder="https://linkedin.com/in/username">
+
+                                </div>
+
+
+                                <!-- GITHUB -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-github">
+                                        GitHub URL
+                                    </label>
+
+                                    <input type="url" id="zevqyn-resume-github" maxlength="500" placeholder="https://github.com/username">
+
+                                </div>
+
+
+                                <!-- PORTFOLIO -->
+
+                                <div class="zev-rb-field">
+
+                                    <label for="zevqyn-resume-portfolio">
+                                        Portfolio URL
+                                    </label>
+
+                                    <input type="url" id="zevqyn-resume-portfolio" maxlength="500" placeholder="https://yourportfolio.com">
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================
+                             PROFESSIONAL SUMMARY
+                        ================================== -->
+
+                        <div class="zev-rb-field">
+
+                            <label for="zevqyn-resume-summary">
+                                Professional Summary
+                            </label>
+
+                            <textarea id="zevqyn-resume-summary" rows="7" maxlength="2000" placeholder="Write a concise professional summary..."></textarea>
+
+                            <div class="zev-rb-count">
+                                <span id="zevqyn-summary-count">0</span>/2000
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         ATTACHED CAREER DATA
+                    ================================== -->
+
+                    <div class="zev-rb-panel">
+
+                        <div class="zev-rb-panel-head">
+
+                            <div>
+
+                                <span class="zev-rb-label">
+                                    RESUME CONTENT
+                                </span>
+
+                                <h2>
+                                    Attached Career Data
+                                </h2>
+
+                                <p>
+                                    Add trusted records from your
+                                    ZEVQYN workspace.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-rb-items" id="zevqyn-resume-items">
+                        </div>
+
+
+                        <div class="zev-rb-no-items" id="zevqyn-no-resume-items">
+                            No career records attached yet.
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================
+                     RIGHT SIDE
+                ====================================== -->
+
+                <div class="zev-rb-right">
+
+
+                    <!-- =================================
+                         CAREER RECORDS
+                    ================================== -->
+
+                    <div class="zev-rb-panel">
+
+                        <div class="zev-rb-panel-head">
+
+                            <div>
+
+                                <span class="zev-rb-label">
+                                    ADD CONTENT
+                                </span>
+
+                                <h2>
+                                    Career Records
+                                </h2>
+
+                                <p>
+                                    Select existing records to add
+                                    to this resume.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- SOURCE TABS -->
+
+                        <div class="zev-rb-source-tabs">
+
+                            <button type="button" class="active" data-source="project">
+                                Projects
+                            </button>
+
+                            <button type="button" data-source="skill">
+                                Skills
+                            </button>
+
+                            <button type="button" data-source="education">
+                                Education
+                            </button>
+
+                            <button type="button" data-source="certificate">
+                                Certificates
+                            </button>
+
+                        </div>
+
+
+                        <!-- MANUAL ENTRY -->
+
+                        <div class="zev-rb-manual-bar">
+
+                            <div>
+
+                                <strong>
+                                    Can't find what you need?
+                                </strong>
+
+                                <span>
+                                    Add a new record manually and attach
+                                    it to this resume.
+                                </span>
+
+                            </div>
+
+                            <button type="button" id="zevqyn-manual-entry">
+                                + Add Manually
+                            </button>
+
+                        </div>
+
+
+                        <!-- SOURCE LIST -->
+
+                        <div class="zev-rb-source-list" id="zevqyn-source-list">
+                            Loading...
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================
+                         LIVE PREVIEW
+                    ================================== -->
+
+                    <div class="zev-rb-panel">
+
+                        <div class="zev-rb-panel-head">
+
+                            <div>
+
+                                <span class="zev-rb-label">
+                                    LIVE PREVIEW
+                                </span>
+
+                                <h2>
+                                    Professional Template
+                                </h2>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="zev-rb-preview">
+
+                            <!-- RESUME HEADER -->
+
+                            <div class="zev-rb-preview-head">
+
+                                <h2 id="zevqyn-preview-name">
+                                    Your Name
+                                </h2>
+
+                                <div class="zev-rb-preview-professional-title" id="zevqyn-preview-professional-title">
+                                </div>
+
+                                <div class="zev-rb-preview-contact" id="zevqyn-preview-contact">
+                                </div>
+
+                                <div class="zev-rb-preview-links" id="zevqyn-preview-links">
+                                </div>
+
+                            </div>
+
+
+                            <!-- SUMMARY -->
+
+                         <!-- SUMMARY -->
+
+<div class="zev-rb-preview-summary-section">
+
+    <div class="zev-rb-preview-section-title">
+        PROFESSIONAL SUMMARY
+    </div>
+
+    <div class="zev-rb-preview-summary" id="zevqyn-preview-summary">
+        Add your professional summary.
+    </div>
+
+</div>
+
+
+                            <!-- GENERATED CAREER CONTENT -->
+
+                            <div class="zev-rb-preview-content" id="zevqyn-preview-content">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================================
+         CREATE RESUME MODAL
+    ========================================== -->
+
+    <div class="zev-rb-modal" id="zevqyn-resume-modal" hidden="">
+
+        <div class="zev-rb-modal-card">
+
+            <span class="zev-rb-label">
+                NEW RESUME
+            </span>
+
+            <h2>
+                Create Resume
+            </h2>
+
+            <p>
+                Give this resume a name. You can edit everything
+                else after creating it.
+            </p>
+
+
+            <div class="zev-rb-field">
+
+                <label for="zevqyn-new-resume-name">
+                    Resume Name
+                </label>
+
+                <input type="text" id="zevqyn-new-resume-name" maxlength="200" placeholder="Software Developer Resume">
+
+            </div>
+
+
+            <div class="zev-rb-modal-actions">
+
+                <button type="button" class="zev-rb-secondary" id="zevqyn-cancel-resume">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-rb-create-btn" id="zevqyn-create-resume">
+                    Create Resume
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         MANUAL CAREER RECORD MODAL
+    ========================================== -->
+
+    <div class="zev-rb-modal" id="zevqyn-manual-modal" hidden="">
+
+        <div class="zev-rb-modal-card zev-rb-manual-card">
+
+            <span class="zev-rb-label">
+                MANUAL CAREER RECORD
+            </span>
+
+            <h2 id="zevqyn-manual-title">
+                Add Record
+            </h2>
+
+            <p id="zevqyn-manual-description">
+                Create a new career record and add it directly
+                to this resume.
+            </p>
+
+
+            <div class="zev-rb-manual-form" id="zevqyn-manual-form">
+            </div>
+
+
+            <div class="zev-rb-modal-actions">
+
+                <button type="button" class="zev-rb-secondary" id="zevqyn-manual-cancel">
+                    Cancel
+                </button>
+
+                <button type="button" class="zev-rb-create-btn" id="zevqyn-manual-save">
+                    Save &amp; Add
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================================
+         TOAST
+    ========================================== -->
+
+    <div class="zev-rb-toast" id="zevqyn-resume-toast" hidden="">
+    </div>
+
+</div>

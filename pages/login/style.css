@@ -1,224 +1,137 @@
-﻿
-/* =========================
-   ZEVQYN LOGIN CARD
-   ========================= */
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED LOGIN STYLES
+   Scope: .zevqyn-login-card
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
 
 .zevqyn-login-card {
     width: 100%;
-    max-width: 600px;
-    margin: 32px 0 0 0;
-    padding: 46px 48px;
+    max-width: 480px;
+    margin: 24px auto 0 auto;
+    padding: 32px;
     box-sizing: border-box;
 
-    /* DARK CARD */
-    background: rgba(8, 12, 18, 0.94);
+    background: var(--zev-bg-panel, #0f1217);
+    border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    border-radius: var(--zev-radius-md, 10px);
+    box-shadow: var(--zev-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.60)),
+                var(--zev-shadow-inner, inset 0 1px 1px rgba(255, 255, 255, 0.04));
 
-    border: 1px solid rgba(53, 180, 90, 0.22);
-    border-radius: 24px;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.50),
-        0 0 35px rgba(53, 180, 90, 0.05);
-
-    backdrop-filter: blur(18px);
-    -webkit-backdrop-filter: blur(18px);
-
-    color: #ffffff;
-    font-family: inherit;
+    color: var(--zev-text-primary, #f4f6f8);
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
 }
 
-
-/* =========================
-   FORM FIELDS
-   ========================= */
+.zevqyn-login-card * {
+    box-sizing: border-box;
+}
 
 .zevqyn-field {
-    margin-bottom: 24px;
+    margin-bottom: 20px;
 }
 
 .zevqyn-field label {
     display: block;
-    margin-bottom: 10px;
-
-    color: #f2f2f2;
-    font-size: 15px;
-    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--zev-text-secondary, #c0c7d2);
+    font-size: var(--zev-text-sm, 13px);
+    font-weight: 500;
 }
 
 .zevqyn-field input {
     width: 100%;
-    height: 58px;
-
-    padding: 0 16px;
-    box-sizing: border-box;
-
-    background: rgba(255, 255, 255, 0.045);
-    color: #ffffff;
-
-    border: 1px solid rgba(255, 255, 255, 0.14);
-    border-radius: 12px;
-
-    outline: none;
-
+    height: 42px;
+    padding: 0 14px;
+    background: var(--zev-bg-input, #0c0f14);
+    color: var(--zev-text-primary, #f4f6f8);
+    border: 1px solid var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    border-radius: var(--zev-radius-sm, 6px);
     font-family: inherit;
-    font-size: 15px;
-
-    transition:
-        border-color 0.2s ease,
-        background 0.2s ease,
-        box-shadow 0.2s ease;
+    font-size: var(--zev-text-base, 14px);
+    outline: none;
+    transition: border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease,
+                background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zevqyn-field input::placeholder {
-    color: #777f8c;
+    color: var(--zev-text-tertiary, #525a66);
 }
-
-
-/* INPUT FOCUS */
 
 .zevqyn-field input:focus {
-    border-color: #35b45a;
-
-    background: rgba(255, 255, 255, 0.065);
-
-    box-shadow:
-        0 0 0 3px rgba(53, 180, 90, 0.10),
-        0 0 20px rgba(53, 180, 90, 0.08);
+    border-color: var(--zev-green-primary, #2ebd68);
+    box-shadow: 0 0 0 1px var(--zev-green-primary, #2ebd68);
+    background: #0f131a;
 }
 
-
-/* =========================
-   REMEMBER + FORGOT PASSWORD
-   ========================= */
-
-.zevqyn-options {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 16px;
-
-    margin: 4px 0 26px;
-
-    color: #aeb4bd;
-    font-size: 13px;
-}
-
-.zevqyn-remember {
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    cursor: pointer;
-}
-
-.zevqyn-remember input {
-    accent-color: #35b45a;
-}
-
-.zevqyn-options a {
-    color: #35b45a;
-    text-decoration: none;
-
-    transition: color 0.2s ease;
-}
-
-.zevqyn-options a:hover {
-    color: #55ca73;
-}
-
-
-/* =========================
-   SIGN IN BUTTON
-   ========================= */
-
-#zevqyn-login-btn {
+.zevqyn-login-btn {
     width: 100%;
-    height: 58px;
-
+    height: 42px;
+    margin-top: 10px;
+    background: var(--zev-green-primary, #2ebd68);
+    color: var(--zev-text-inverse, #090b0e);
     border: none;
-    border-radius: 12px;
-
-    /* TEMPLATE GREEN */
-    background: #35b45a;
-
-    color: #ffffff;
-
+    border-radius: var(--zev-radius-sm, 6px);
     font-family: inherit;
-    font-size: 16px;
-    font-weight: 700;
-
+    font-size: var(--zev-text-base, 14px);
+    font-weight: 600;
     cursor: pointer;
-
-    box-shadow:
-        0 10px 30px rgba(53, 180, 90, 0.20);
-
-    transition:
-        background 0.2s ease,
-        transform 0.2s ease,
-        box-shadow 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                background var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
-#zevqyn-login-btn:hover {
-    background: #2fa750;
-
-    transform: translateY(-2px);
-
-    box-shadow:
-        0 14px 35px rgba(53, 180, 90, 0.30);
+.zevqyn-login-btn:hover {
+    background: var(--zev-green-hover, #26a75a);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(46, 189, 104, 0.25);
 }
 
-#zevqyn-login-btn:active {
-    transform: translateY(0);
+.zevqyn-login-btn:active {
+    transform: scale(0.985);
 }
 
+.zevqyn-login-btn:focus-visible {
+    outline: 2px solid var(--zev-green-primary, #2ebd68) !important;
+    outline-offset: 2px !important;
+}
 
-/* =========================
-   CREATE ACCOUNT
-   ========================= */
+.zevqyn-login-btn:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none !important;
+}
 
-.zevqyn-register {
-    margin: 26px 0 0;
-
+.zevqyn-auth-links {
+    margin-top: 20px;
     text-align: center;
-
-    color: #969da8;
-
-    font-size: 14px;
+    font-size: var(--zev-text-sm, 13px);
+    color: var(--zev-text-muted, #828c9a);
 }
 
-.zevqyn-register a {
-    color: #35b45a;
+.zevqyn-auth-links a {
+    color: var(--zev-green-text, #41cf7b);
     text-decoration: none;
     font-weight: 500;
-
-    transition: color 0.2s ease;
 }
 
-.zevqyn-register a:hover {
-    color: #55ca73;
+.zevqyn-auth-links a:hover {
+    text-decoration: underline;
 }
 
+.zevqyn-auth-links a:focus-visible {
+    outline: 2px solid var(--zev-green-primary, #2ebd68) !important;
+    outline-offset: 2px !important;
+}
 
-/* =========================
-   MOBILE
-   ========================= */
+#zevqyn-login-message {
+    border-radius: var(--zev-radius-sm, 6px);
+}
 
-@media (max-width: 768px) {
-
-    .zevqyn-login-card {
-        max-width: 100%;
-        padding: 32px 24px;
-        border-radius: 18px;
-    }
-
-    .zevqyn-options {
-        flex-wrap: wrap;
-    }
-
-    .zevqyn-field input,
-    #zevqyn-login-btn {
-        height: 54px;
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+    .zevqyn-login-btn {
+        transition: none !important;
+        transform: none !important;
     }
 }

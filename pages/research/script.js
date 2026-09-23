@@ -1,4 +1,4 @@
-﻿
+
 (function () {
 
     /* =========================================
@@ -310,6 +310,42 @@
     async function loadDocumentCounts() {
 
         documentCounts = {};
+
+        try {
+
+            const allDocs =
+                await apiRequest(
+                    "/api/v1/documents?limit=100",
+                    {
+                        method: "GET"
+                    }
+                );
+
+            if (Array.isArray(allDocs)) {
+
+                allDocs.forEach(function (doc) {
+
+                    if (doc.workspace_id) {
+
+                        const wsId =
+                            doc.workspace_id;
+
+                        documentCounts[wsId] =
+                            (documentCounts[wsId] || 0) + 1;
+
+                    }
+
+                });
+
+                return;
+
+            }
+
+        } catch (globalDocError) {
+
+            /* Fallback to per-workspace documents fetch if global query is not yet active */
+
+        }
 
         const requests =
             workspaces.map(async function (workspace) {

@@ -1,18 +1,16 @@
 ﻿<!-- wp:html -->
 <style data-wp-block-html="css">
-/* =========================================================
-   HIDE WORDPRESS PAGE TITLE
-   ========================================================= */
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED HOW IT WORKS STYLES
+   Scope: #zev-how-page
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
 
+/* Hide default Blocksy page titles */
 .hero-section,
 .entry-header {
     display: none !important;
 }
-
-
-/* =========================================================
-   BASE
-   ========================================================= */
 
 #zev-how-page,
 #zev-how-page * {
@@ -20,1956 +18,481 @@
 }
 
 #zev-how-page {
-    --green: #35dc78;
-    --green-bright: #8effb5;
-    --background: #020504;
-    --panel: #06100c;
-    --panel-2: #08140f;
-    --border: #173328;
-    --text: #f7faf8;
-    --muted: #81968d;
+    --green: var(--zev-green-primary, #2ebd68);
+    --green-text: var(--zev-green-text, #41cf7b);
+    --bg: var(--zev-bg-canvas, #090b0e);
+    --panel: var(--zev-bg-panel, #0f1217);
+    --surface: var(--zev-bg-surface, #151921);
+    --subtle: var(--zev-bg-subtle, #222834);
+    --border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --text: var(--zev-text-primary, #f4f6f8);
+    --text-sec: var(--zev-text-secondary, #c0c7d2);
+    --muted: var(--zev-text-muted, #828c9a);
 
     width: 100%;
     overflow: hidden;
-
-    background: var(--background);
+    background: var(--bg);
     color: var(--text);
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
 }
 
 .zhi-container {
-    width: min(1180px, calc(100% - 44px));
+    width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
 }
 
-.zhi-kicker {
-    margin-bottom: 13px;
-
-    color: var(--green);
-
-    font-size: 10px;
-    font-weight: 850;
-    letter-spacing: .16em;
+@media (max-width: 768px) {
+    .zhi-container {
+        width: calc(100% - 32px);
+    }
 }
 
-.zhi-btn {
-    min-height: 49px;
-    padding: 0 21px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    border-radius: 8px;
-
-    font-size: 12px;
-    font-weight: 800;
-
-    text-decoration: none !important;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
-}
-
-.zhi-btn:hover {
-    transform: translateY(-2px);
-}
-
-.zhi-btn-primary {
-    color: #03180b !important;
-    background: var(--green);
-
-    box-shadow:
-        0 12px 35px rgba(53, 220, 120, .13);
-}
-
-.zhi-btn-secondary {
-    color: #dbe8e2 !important;
-
-    border: 1px solid #294139;
-
-    background: #07100d;
-}
-
-
-/* =========================================================
-   HERO
-   ========================================================= */
-
+/* --------------------------------------------------------------------------
+   HERO SECTION
+   -------------------------------------------------------------------------- */
 .zhi-hero {
     position: relative;
-
-    min-height: 720px;
-    padding: 105px 0 100px;
-
-    display: flex;
-    align-items: center;
-
-    background:
-        radial-gradient(
-            circle at 75% 40%,
-            rgba(45, 211, 111, .12),
-            transparent 28%
-        ),
-        radial-gradient(
-            circle at 15% 20%,
-            rgba(71, 66, 255, .07),
-            transparent 28%
-        );
+    padding: 100px 0 80px;
+    background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(46, 189, 104, 0.08), transparent 70%);
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
 }
 
-.zhi-hero::before {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    opacity: .18;
-
-    background-image:
-        linear-gradient(
-            rgba(74, 123, 102, .09) 1px,
-            transparent 1px
-        ),
-        linear-gradient(
-            90deg,
-            rgba(74, 123, 102, .09) 1px,
-            transparent 1px
-        );
-
-    background-size: 65px 65px;
-
-    mask-image:
-        linear-gradient(
-            to bottom,
-            #000,
-            transparent 95%
-        );
-
-    pointer-events: none;
-}
-
-.zhi-hero > .zhi-container {
-    position: relative;
-    z-index: 2;
-
+.zhi-hero-grid {
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
-
-    gap: 70px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
 }
 
-.zhi-hero-content h1 {
-    margin: 0 0 24px;
-
-    font-size: clamp(54px, 6vw, 82px);
-    line-height: .96;
-
-    letter-spacing: -.055em;
-    font-weight: 850;
+.zhi-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
+    border: 1px solid var(--zev-green-border, rgba(46, 189, 104, 0.28));
+    border-radius: var(--zev-radius-full, 9999px);
+    font-size: var(--zev-text-xs, 12px);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    margin-bottom: 20px;
 }
 
-.zhi-hero-content h1 span {
-    color: var(--green);
+.zhi-hero h1 {
+    margin: 0 0 20px;
+    font-size: clamp(34px, 4.5vw, 54px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+    color: var(--text);
 }
 
-.zhi-hero-content > p {
-    max-width: 550px;
+.zhi-hero h1 span,
+.zhi-heading h2 span,
+.zhi-final-copy h2 span {
+    color: var(--green-text);
+}
 
-    margin: 0;
-
-    color: var(--muted);
-
+.zhi-lead {
+    margin: 0 0 32px;
     font-size: 16px;
-    line-height: 1.75;
+    line-height: 1.6;
+    color: var(--text-sec);
+    max-width: 520px;
 }
 
 .zhi-hero-actions {
-    margin-top: 30px;
-
     display: flex;
+    gap: 16px;
     flex-wrap: wrap;
-
-    gap: 10px;
+    align-items: center;
 }
 
-
-/* =========================================================
-   HERO MAP
-   ========================================================= */
-
-.zhi-hero-map {
-    position: relative;
-
-    width: 100%;
-    height: 520px;
+.zhi-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: var(--zev-radius-sm, 6px);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
-.zhi-orbit {
-    position: absolute;
-
-    width: 360px;
-    height: 360px;
-
-    left: 50%;
-    top: 50%;
-
-    transform:
-        translate(-50%, -50%)
-        rotate(-10deg);
-
-    border: 1px dashed rgba(53, 220, 120, .25);
-    border-radius: 50%;
-
-    animation:
-        zhiOrbitSpin 30s linear infinite;
+.zhi-btn:hover {
+    transform: translateY(-1px);
 }
 
-.zhi-core {
-    position: absolute;
+.zhi-btn:active {
+    transform: scale(0.985);
+}
 
-    width: 180px;
-    height: 180px;
+.zhi-btn-primary {
+    background: var(--green);
+    color: var(--zev-text-inverse, #090b0e) !important;
+    font-weight: 600;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
 
-    left: 50%;
-    top: 50%;
+.zhi-btn-primary:hover {
+    background: var(--zev-green-hover, #26a75a);
+    box-shadow: 0 4px 12px rgba(46, 189, 104, 0.25);
+}
 
-    transform: translate(-50%, -50%);
+.zhi-btn-secondary {
+    background: var(--subtle);
+    color: var(--text) !important;
+    border-color: var(--border);
+}
 
+.zhi-btn-secondary:hover {
+    background: var(--zev-bg-elevated, #1b202a);
+    border-color: var(--border-strong);
+}
+
+/* --------------------------------------------------------------------------
+   HERO PIPELINE SCHEMATIC (REPLACING SPINNING RADAR ORBIT)
+   -------------------------------------------------------------------------- */
+.zhi-radar-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-lg, 14px);
+    padding: 28px;
+    box-shadow: var(--zev-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.60)),
+                var(--zev-shadow-inner, inset 0 1px 1px rgba(255, 255, 255, 0.04));
+}
+
+.zhi-radar-wrap {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid #28533f;
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            rgba(53, 220, 120, .12),
-            #06100c 70%
-        );
-
-    box-shadow:
-        0 0 80px rgba(53, 220, 120, .09);
+    gap: 12px;
 }
 
-.zhi-core-logo {
-    width: 45px;
-    height: 45px;
-
-    margin-bottom: 9px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 12px;
-
-    background: var(--green);
-    color: #03170a;
-
-    font-weight: 900;
-}
-
-.zhi-core strong {
-    font-size: 16px;
-}
-
-.zhi-core span {
-    margin-top: 5px;
-
-    color: #688077;
-    font-size: 8px;
-}
-
-.zhi-node {
-    position: absolute;
-
-    min-width: 110px;
-    padding: 13px 15px;
-
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    border: 1px solid #1d4032;
-    border-radius: 9px;
-
-    background: rgba(5, 15, 11, .94);
-
-    box-shadow:
-        0 15px 35px rgba(0, 0, 0, .35);
-}
-
-.zhi-node i {
-    color: var(--green);
-
-    font-size: 7px;
-    font-style: normal;
-}
-
-.zhi-node strong {
-    font-size: 10px;
-}
-
-.zhi-node-1 {
-    left: 5%;
-    top: 16%;
-}
-
-.zhi-node-2 {
-    right: 5%;
-    top: 15%;
-}
-
-.zhi-node-3 {
-    right: 0;
-    top: 48%;
-}
-
-.zhi-node-4 {
-    right: 8%;
-    bottom: 10%;
-}
-
-.zhi-node-5 {
-    left: 7%;
-    bottom: 10%;
-}
-
-.zhi-node-6 {
-    left: 0;
-    top: 48%;
-}
-
-.zhi-map-label {
-    position: absolute;
-
-    right: 0;
-    top: 0;
-
-    color: #d6e0dc;
-
-    font-size: 15px;
-    font-style: italic;
-
-    transform: rotate(3deg);
-}
-
-.zhi-map-label span {
-    color: var(--green);
-}
-
-.zhi-floating-note {
-    position: absolute;
-
-    left: 50%;
-    bottom: 0;
-
-    transform:
-        translateX(-50%)
-        rotate(-2deg);
-
-    color: var(--green);
-
-    font-size: 12px;
-    font-style: italic;
-}
-
-
-/* =========================================================
-   GENERAL SECTIONS
-   ========================================================= */
-
-.zhi-section,
-.zhi-step-section {
-    padding: 110px 0;
-
-    border-top:
-        1px solid rgba(65, 111, 91, .12);
-}
-
-.zhi-section-heading {
-    max-width: 720px;
-
-    margin-bottom: 55px;
-}
-
-.zhi-center {
-    margin-left: auto;
-    margin-right: auto;
-
-    text-align: center;
-}
-
-.zhi-section-heading h2,
-.zhi-step-copy h2,
-.zhi-final-card h2 {
-    margin: 0 0 17px;
-
-    font-size: clamp(36px, 4.4vw, 55px);
-    line-height: 1.04;
-
-    letter-spacing: -.045em;
-}
-
-.zhi-section-heading h2 span,
-.zhi-step-copy h2 span,
-.zhi-final-card h2 span {
-    color: var(--green);
-}
-
-.zhi-section-heading p,
-.zhi-step-copy > p,
-.zhi-final-card > p {
-    margin: 0;
-
+.zhi-radar-title {
+    font-size: 13px;
+    font-weight: 600;
     color: var(--muted);
-
-    font-size: 14px;
-    line-height: 1.75;
-}
-
-
-/* =========================================================
-   FLOW STRIP
-   ========================================================= */
-
-.zhi-flow-strip {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 8px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+}
 
+.zhi-pipeline-node {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 12px 16px;
+}
+
+.zhi-node-tag {
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-text);
+    background: var(--subtle);
+    padding: 2px 6px;
+    border-radius: var(--zev-radius-xs, 4px);
+}
+
+.zhi-node-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text);
+    flex-grow: 1;
+}
+
+.zhi-node-status {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+/* --------------------------------------------------------------------------
+   FLOW STRIP SECTION
+   -------------------------------------------------------------------------- */
+.zhi-flow-strip {
+    padding: 50px 0;
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+    background: var(--panel);
+}
+
+.zhi-flow-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 12px;
 }
 
 .zhi-flow-item {
-    width: 155px;
-    min-height: 135px;
-
-    position: relative;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
+    background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 12px;
-
-    background: #07100d;
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 14px 12px;
+    text-align: center;
+    transition: transform var(--zev-duration-standard, 200ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
-.zhi-flow-item b {
-    position: absolute;
-
-    left: 12px;
-    top: 10px;
-
-    color: #48645a;
-
-    font-size: 7px;
+.zhi-flow-item:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
 }
 
-.zhi-flow-item i {
-    margin-bottom: 10px;
-
-    color: var(--green);
-
-    font-size: 22px;
-    font-style: normal;
+.zhi-flow-item span {
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--green-text);
+    display: block;
+    margin-bottom: 4px;
 }
 
-.zhi-flow-item strong {
-    font-size: 10px;
+.zhi-flow-item h4 {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text);
 }
 
-.zhi-flow-arrow {
-    color: #345348;
-
-    font-size: 20px;
+/* --------------------------------------------------------------------------
+   6-STEP CORE SHOWCASE
+   -------------------------------------------------------------------------- */
+.zhi-showcase-section {
+    padding: 90px 0;
 }
 
-
-/* =========================================================
-   STEP LAYOUT
-   ========================================================= */
-
-.zhi-alt {
-    background:
-        linear-gradient(
-            180deg,
-            rgba(6, 15, 11, .65),
-            rgba(2, 5, 4, 0)
-        );
-}
-
-.zhi-step-grid {
+.zhi-showcase-item {
     display: grid;
-    grid-template-columns: .9fr 1.1fr;
-
-    gap: 85px;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
     align-items: center;
+    padding: 60px 0;
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
 }
 
-.zhi-reverse {
-    grid-template-columns: 1.1fr .9fr;
+.zhi-showcase-item:last-child {
+    border-bottom: none;
 }
 
-.zhi-step-number {
-    margin-bottom: 17px;
-
-    color: rgba(53, 220, 120, .22);
-
-    font-size: 54px;
-    line-height: 1;
-
-    font-weight: 900;
-    letter-spacing: -.06em;
-}
-
-.zhi-points {
-    margin-top: 28px;
-
+.zhi-step-copy {
     display: flex;
     flex-direction: column;
-
-    gap: 11px;
+    align-items: flex-start;
 }
 
-.zhi-points div {
-    color: #a6b7b0;
-
-    font-size: 11px;
-}
-
-.zhi-points i {
-    width: 20px;
-    height: 20px;
-
-    margin-right: 8px;
-
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: rgba(53, 220, 120, .08);
-    color: var(--green);
-
-    font-size: 8px;
-    font-style: normal;
-}
-
-.zhi-hand-note {
+.zhi-step-pill {
     display: inline-block;
-
-    margin-top: 30px;
-
-    color: #cad6d1;
-
-    font-size: 13px;
-    font-style: italic;
-
-    transform: rotate(-2deg);
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--green-text);
+    background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
+    border: 1px solid var(--zev-green-border, rgba(46, 189, 104, 0.28));
+    border-radius: var(--zev-radius-xs, 4px);
+    padding: 3px 8px;
+    margin-bottom: 12px;
 }
 
-
-/* =========================================================
-   RUNNING BORDER VISUALS
-   ========================================================= */
-
-@property --zhi-angle {
-    syntax: "<angle>";
-    initial-value: 0deg;
-    inherits: false;
+.zhi-step-copy h3 {
+    margin: 0 0 12px;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+    line-height: 1.25;
+    color: var(--text);
 }
 
-.zhi-visual,
-.zhi-showcase,
-.zhi-final-card {
-    position: relative;
-
-    isolation: isolate;
-    overflow: hidden;
-
-    border: 1px solid transparent;
-
-    background:
-        linear-gradient(
-            #07100d,
-            #07100d
-        ) padding-box,
-
-        conic-gradient(
-            from var(--zhi-angle),
-            transparent 0deg,
-            transparent 302deg,
-            rgba(53, 220, 120, .08) 315deg,
-            rgba(53, 220, 120, .45) 330deg,
-            var(--green) 344deg,
-            var(--green-bright) 351deg,
-            var(--green) 357deg,
-            transparent 360deg
-        ) border-box;
-
-    animation:
-        zhiRunningBorder 4s linear infinite;
-
-    box-shadow:
-        0 25px 65px rgba(0, 0, 0, .32);
-}
-
-@keyframes zhiRunningBorder {
-    from {
-        --zhi-angle: 0deg;
-    }
-
-    to {
-        --zhi-angle: 360deg;
-    }
-}
-
-
-/* =========================================================
-   RESEARCH VISUAL
-   ========================================================= */
-
-.zhi-research-visual {
-    min-height: 440px;
-
-    border-radius: 17px;
-}
-
-.zhi-window-bar {
-    height: 45px;
-
-    padding: 0 15px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 6px;
-
-    border-bottom: 1px solid #173027;
-}
-
-.zhi-window-bar > span {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #284137;
-}
-
-.zhi-window-bar > span:first-child {
-    background: var(--green);
-}
-
-.zhi-window-bar small {
-    margin-left: 8px;
-
-    color: #667c73;
-
-    font-size: 8px;
-}
-
-.zhi-window-body {
-    min-height: 390px;
-
-    display: grid;
-    grid-template-columns: 65px 1fr;
-}
-
-.zhi-mini-sidebar {
-    padding: 22px 0;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    gap: 24px;
-
-    border-right: 1px solid #173027;
-}
-
-.zhi-mini-sidebar b {
-    width: 28px;
-    height: 28px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 7px;
-
-    background: var(--green);
-    color: #04170b;
-
-    font-size: 10px;
-}
-
-.zhi-mini-sidebar i {
-    color: #628076;
-
-    font-size: 11px;
-    font-style: normal;
-}
-
-.zhi-research-content {
-    padding: 38px;
-}
-
-.zhi-research-content > small {
-    color: var(--green);
-
-    font-size: 7px;
-    letter-spacing: .16em;
-}
-
-.zhi-research-content h3 {
-    margin: 10px 0 7px;
-
-    font-size: 23px;
-}
-
-.zhi-research-content > p {
-    margin: 0 0 28px;
-
-    color: #71877e;
-
-    font-size: 10px;
-}
-
-.zhi-document {
-    margin-top: 10px;
-    padding: 13px;
-
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-
-    gap: 12px;
-    align-items: center;
-
-    border: 1px solid #19362b;
-    border-radius: 8px;
-
-    background: #09130f;
-}
-
-.zhi-document > span {
-    padding: 6px;
-
-    border-radius: 5px;
-
-    background: rgba(53, 220, 120, .08);
-    color: var(--green);
-
-    font-size: 7px;
-    font-weight: 800;
-}
-
-.zhi-document div {
-    display: flex;
-    flex-direction: column;
-}
-
-.zhi-document strong {
-    font-size: 9px;
-}
-
-.zhi-document small {
-    margin-top: 3px;
-
-    color: #63786f;
-
-    font-size: 7px;
-}
-
-.zhi-document > b {
-    color: var(--green);
-
-    font-size: 10px;
-}
-
-.zhi-floating-chip {
-    position: absolute;
-
-    padding: 10px 13px;
-
-    border: 1px solid #28523f;
-    border-radius: 8px;
-
-    background: #06100c;
-
-    color: var(--green);
-
-    font-size: 9px;
-
-    box-shadow:
-        0 15px 30px rgba(0, 0, 0, .35);
-}
-
-.zhi-chip-one {
-    right: 18px;
-    bottom: 18px;
-}
-
-
-/* =========================================================
-   AI VISUAL
-   ========================================================= */
-
-.zhi-ai-visual {
-    min-height: 430px;
-
-    padding: 25px;
-
-    border-radius: 17px;
-}
-
-.zhi-ai-top {
-    padding-bottom: 17px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 9px;
-
-    border-bottom: 1px solid #173027;
-
-    font-size: 11px;
-    font-weight: 750;
-}
-
-.zhi-ai-top > span {
-    color: var(--green);
-}
-
-.zhi-ai-top i {
-    margin-left: auto;
-
-    color: var(--green);
-
-    font-size: 7px;
-    font-style: normal;
-}
-
-.zhi-chat {
-    padding: 30px 5px;
-}
-
-.zhi-user-message {
-    max-width: 75%;
-
-    margin-left: auto;
-    padding: 13px 15px;
-
-    border-radius: 12px 12px 3px 12px;
-
-    background: #112019;
-    color: #c8d6d0;
-
-    font-size: 9px;
+.zhi-step-copy p {
+    margin: 0 0 20px;
+    font-size: 14px;
+    color: var(--text-sec);
     line-height: 1.6;
 }
 
-.zhi-ai-message {
-    max-width: 88%;
-
-    margin-top: 20px;
-
-    display: flex;
-
-    gap: 11px;
-}
-
-.zhi-ai-avatar {
-    width: 30px;
-    height: 30px;
-
-    flex: 0 0 auto;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 8px;
-
-    background: rgba(53, 220, 120, .1);
-    color: var(--green);
-}
-
-.zhi-ai-message strong {
-    font-size: 9px;
-}
-
-.zhi-ai-message p {
-    margin: 6px 0 9px;
-
-    color: #82968e;
-
-    font-size: 9px;
-    line-height: 1.65;
-}
-
-.zhi-source {
-    display: inline-block;
-
-    padding: 6px 8px;
-
-    border-radius: 5px;
-
-    background: #0b1a14;
-    color: var(--green);
-
-    font-size: 6px;
-}
-
-.zhi-ai-tools {
-    position: absolute;
-
-    left: 25px;
-    right: 25px;
-    bottom: 25px;
-
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-
-    gap: 7px;
-}
-
-.zhi-ai-tools span {
-    padding: 10px 5px;
-
-    border: 1px solid #173328;
-    border-radius: 7px;
-
-    background: #08130f;
-
-    color: #80958c;
-
-    font-size: 7px;
-    text-align: center;
-}
-
-
-/* =========================================================
-   PROJECT VISUAL
-   ========================================================= */
-
-.zhi-project-visual {
-    min-height: 450px;
-
-    padding: 34px;
-
-    border-radius: 17px;
-}
-
-.zhi-project-top {
-    display: flex;
-    align-items: center;
-
-    gap: 8px;
-
-    color: var(--green);
-}
-
-.zhi-project-top small {
-    font-size: 7px;
-    letter-spacing: .14em;
-}
-
-.zhi-project-visual h3 {
-    margin: 30px 0 9px;
-
-    font-size: 29px;
-}
-
-.zhi-project-visual > p {
-    max-width: 420px;
-
-    color: #81958d;
-
-    font-size: 10px;
-    line-height: 1.65;
-}
-
-.zhi-project-label {
-    margin-top: 28px;
-
-    color: #60756c;
-
-    font-size: 7px;
-    letter-spacing: .13em;
-}
-
-.zhi-project-list {
-    margin-top: 10px;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 7px;
-}
-
-.zhi-project-list span {
-    padding: 8px 10px;
-
-    border: 1px solid #1c3c30;
-    border-radius: 6px;
-
-    color: #a6b7b0;
-
-    font-size: 7px;
-}
-
-.zhi-project-bottom {
-    position: absolute;
-
-    left: 34px;
-    right: 34px;
-    bottom: 30px;
-
-    padding-top: 18px;
-
-    display: flex;
-    align-items: center;
-
-    border-top: 1px solid #173027;
-}
-
-.zhi-project-bottom div {
-    display: flex;
-    flex-direction: column;
-}
-
-.zhi-project-bottom small {
-    color: #60756c;
-
-    font-size: 6px;
-}
-
-.zhi-project-bottom strong {
-    margin-top: 4px;
-
-    font-size: 8px;
-}
-
-.zhi-project-bottom button {
-    margin-left: auto;
-    padding: 10px 13px;
-
-    border: 0;
-    border-radius: 7px;
-
-    background: var(--green);
-    color: #04180b;
-
-    font-size: 8px;
-    font-weight: 850;
-}
-
-.zhi-sticker {
-    position: absolute;
-
-    right: 25px;
-    top: 28px;
-
-    color: #d7e0dc;
-
-    font-size: 11px;
-    font-style: italic;
-
-    text-align: right;
-
-    transform: rotate(4deg);
-}
-
-.zhi-sticker strong {
-    color: var(--green);
-}
-
-
-/* =========================================================
-   CAREER HUB VISUAL
-   ========================================================= */
-
-.zhi-career-visual {
-    min-height: 430px;
-
-    padding: 30px;
-
-    border-radius: 17px;
-}
-
-.zhi-profile-head {
-    display: flex;
-    align-items: center;
-
-    gap: 12px;
-}
-
-.zhi-profile-avatar {
-    width: 43px;
-    height: 43px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: var(--green);
-    color: #04170b;
-
-    font-size: 13px;
-    font-weight: 900;
-}
-
-.zhi-profile-head > div:nth-child(2) {
-    display: flex;
-    flex-direction: column;
-}
-
-.zhi-profile-head strong {
-    font-size: 11px;
-}
-
-.zhi-profile-head span {
-    margin-top: 3px;
-
-    color: #698077;
-
-    font-size: 8px;
-}
-
-.zhi-profile-head > b {
-    margin-left: auto;
-
-    color: var(--green);
-
-    font-size: 20px;
-}
-
-.zhi-profile-progress {
-    height: 5px;
-
-    margin: 20px 0 28px;
-
-    overflow: hidden;
-
-    border-radius: 20px;
-
-    background: #102019;
-}
-
-.zhi-profile-progress span {
-    display: block;
-
-    width: 72%;
-    height: 100%;
-
-    background: var(--green);
-}
-
-.zhi-career-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-
-    gap: 10px;
-}
-
-.zhi-career-grid > div {
-    min-height: 100px;
-
-    padding: 16px;
-
-    display: flex;
-    flex-direction: column;
-
-    border: 1px solid #18372b;
-    border-radius: 9px;
-
-    background: #08130f;
-}
-
-.zhi-career-grid i {
-    margin-bottom: 10px;
-
-    color: var(--green);
-
-    font-style: normal;
-}
-
-.zhi-career-grid strong {
-    font-size: 9px;
-}
-
-.zhi-career-grid span {
-    margin-top: 4px;
-
-    color: #61766d;
-
-    font-size: 7px;
-}
-
-.zhi-profile-footer {
-    margin-top: 17px;
-
-    color: #73877f;
-
-    font-size: 8px;
-    text-align: center;
-}
-
-
-/* =========================================================
-   RESUME + PORTFOLIO
-   ========================================================= */
-
-.zhi-showcase {
-    min-height: 510px;
-
-    border-radius: 17px;
-}
-
-.zhi-resume-paper {
-    position: absolute;
-
-    width: 250px;
-    height: 350px;
-
-    left: 55px;
-    top: 65px;
-
-    z-index: 3;
-
-    padding: 26px;
-
-    border-radius: 4px;
-
-    background: #f1f4f0;
-    color: #0c1511;
-
-    transform: rotate(-5deg);
-
-    box-shadow:
-        0 25px 50px rgba(0, 0, 0, .35);
-}
-
-.zhi-resume-name {
-    font-size: 17px;
-    font-weight: 900;
-}
-
-.zhi-resume-name span {
-    display: block;
-
-    margin-top: 4px;
-
-    color: #397556;
-
-    font-size: 7px;
-}
-
-.zhi-paper-line {
-    width: 70%;
-    height: 5px;
-
-    margin-top: 8px;
-
-    border-radius: 10px;
-
-    background: #c9d0cc;
-}
-
-.zhi-paper-line.zhi-long {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.zhi-resume-paper h5 {
-    margin: 24px 0 10px;
-
-    color: #237f4d;
-
-    font-size: 7px;
-}
-
-.zhi-paper-block {
-    height: 7px;
-
-    margin-top: 6px;
-
-    border-radius: 10px;
-
-    background: #c8d0cc;
-}
-
-.zhi-paper-block.zhi-short {
-    width: 70%;
-}
-
-.zhi-resume-tags {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 4px;
-}
-
-.zhi-resume-tags span {
-    padding: 4px 6px;
-
-    border-radius: 4px;
-
-    background: #d8e8df;
-
-    color: #27784d;
-
-    font-size: 5px;
-}
-
-.zhi-pdf-badge {
-    position: absolute;
-
-    right: 17px;
-    bottom: 17px;
-
-    padding: 6px;
-
-    border-radius: 4px;
-
-    background: #dce5e0;
-
-    font-size: 6px;
-    font-weight: 900;
-}
-
-.zhi-portfolio-screen {
-    position: absolute;
-
-    width: 330px;
-    height: 280px;
-
-    right: 40px;
-    bottom: 40px;
-
-    z-index: 2;
-
-    padding: 42px 25px 25px;
-
-    border: 1px solid #25483a;
-    border-radius: 11px;
-
-    background:
-        radial-gradient(
-            circle at 80% 20%,
-            rgba(53, 220, 120, .1),
-            transparent 35%
-        ),
-        #050b09;
-
-    transform: rotate(4deg);
-}
-
-.zhi-browser-bar {
-    position: absolute;
-
-    left: 0;
-    right: 0;
-    top: 0;
-
-    height: 30px;
-
-    padding: 0 10px;
-
-    display: flex;
-    align-items: center;
-
-    gap: 5px;
-
-    border-bottom: 1px solid #183128;
-}
-
-.zhi-browser-bar span {
-    width: 5px;
-    height: 5px;
-
-    border-radius: 50%;
-
-    background: #375047;
-}
-
-.zhi-portfolio-screen > small {
-    color: var(--green);
-
-    font-size: 6px;
-}
-
-.zhi-portfolio-screen h3 {
-    margin: 10px 0;
-
-    font-size: 24px;
-    line-height: 1;
-}
-
-.zhi-portfolio-screen p {
-    color: #72877e;
-
-    font-size: 8px;
-}
-
-.zhi-portfolio-project {
-    position: absolute;
-
-    left: 25px;
-    right: 25px;
-    bottom: 25px;
-
-    padding: 13px;
-
-    display: flex;
-    justify-content: space-between;
-
-    border: 1px solid #19392c;
-    border-radius: 7px;
-
-    font-size: 7px;
-}
-
-.zhi-portfolio-project span {
-    color: var(--green);
-}
-
-
-/* =========================================================
-   CAREER AI
-   ========================================================= */
-
-.zhi-copilot {
-    min-height: 470px;
-
-    padding: 27px;
-
-    border-radius: 17px;
-
-    background:
-        linear-gradient(
-            #07100d,
-            #07100d
-        ) padding-box,
-
-        conic-gradient(
-            from var(--zhi-angle),
-            transparent 0deg,
-            transparent 302deg,
-            rgba(81, 64, 255, .15) 320deg,
-            var(--green) 345deg,
-            #9effbd 353deg,
-            transparent 360deg
-        ) border-box;
-}
-
-.zhi-copilot-head {
-    padding-bottom: 17px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border-bottom: 1px solid #173027;
-}
-
-.zhi-copilot-head div {
-    display: flex;
-    gap: 8px;
-}
-
-.zhi-copilot-head div span {
-    color: var(--green);
-}
-
-.zhi-copilot-head strong {
-    font-size: 11px;
-}
-
-.zhi-copilot-head small {
-    color: #5e746b;
-
-    font-size: 7px;
-}
-
-.zhi-copilot-question {
-    max-width: 65%;
-
-    margin: 30px 0 22px auto;
-    padding: 13px 15px;
-
-    border-radius: 11px 11px 3px 11px;
-
-    background: #112019;
-    color: #c6d4ce;
-
-    font-size: 9px;
-}
-
-.zhi-copilot-answer {
-    display: flex;
-
-    gap: 12px;
-}
-
-.zhi-copilot-answer p {
+.zhi-step-points {
+    list-style: none;
+    padding: 0;
     margin: 0;
-
-    color: #879990;
-
-    font-size: 9px;
-    line-height: 1.7;
 }
 
-.zhi-next-actions {
-    margin-top: 12px;
-
-    display: flex;
-    gap: 5px;
-}
-
-.zhi-next-actions span {
-    padding: 6px 8px;
-
-    border-radius: 5px;
-
-    background: rgba(53, 220, 120, .07);
-    color: var(--green);
-
-    font-size: 6px;
-}
-
-.zhi-tool-pills {
-    position: absolute;
-
-    left: 27px;
-    right: 27px;
-    bottom: 27px;
-
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 7px;
-}
-
-.zhi-tool-pills span {
-    padding: 8px 10px;
-
-    border: 1px solid #18372b;
-    border-radius: 6px;
-
-    color: #81958d;
-
-    font-size: 7px;
-}
-
-
-/* =========================================================
-   LOOP
-   ========================================================= */
-
-.zhi-loop-section {
-    padding: 120px 0;
-
-    border-top:
-        1px solid rgba(65, 111, 91, .12);
-
-    background:
-        radial-gradient(
-            circle at 50% 65%,
-            rgba(53, 220, 120, .08),
-            transparent 30%
-        );
-}
-
-.zhi-loop {
-    max-width: 920px;
-
-    margin: 70px auto 0;
-
+.zhi-step-points li {
     display: flex;
     align-items: center;
-    justify-content: center;
-
-    gap: 18px;
-}
-
-.zhi-loop-item {
-    width: 125px;
-    height: 125px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    border: 1px solid #1d3c30;
-    border-radius: 50%;
-
-    background: #07100d;
-}
-
-.zhi-loop-item b {
-    color: #537067;
-
-    font-size: 8px;
-}
-
-.zhi-loop-item span {
-    margin-top: 7px;
-
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.zhi-loop-green {
-    border-color: var(--green);
-
-    box-shadow:
-        0 0 40px rgba(53, 220, 120, .1);
-}
-
-.zhi-loop-green b,
-.zhi-loop-green span {
-    color: var(--green);
-}
-
-.zhi-loop-arrow {
-    color: var(--green);
-
-    font-size: 20px;
-}
-
-.zhi-loop-note {
-    margin-top: 40px;
-
-    color: #9cb0a7;
-
+    gap: 8px;
     font-size: 13px;
-    font-style: italic;
-
-    text-align: center;
-
-    transform: rotate(-1deg);
+    color: var(--text-sec);
+    margin-bottom: 8px;
 }
 
-
-/* =========================================================
-   FINAL CTA
-   ========================================================= */
-
-.zhi-final {
-    padding: 25px 0 120px;
+.zhi-step-points li::before {
+    content: "âœ“";
+    color: var(--green-text);
+    font-weight: bold;
 }
 
-.zhi-final-card {
-    min-height: 420px;
+/* Step UI Visual Windows */
+.zhi-visual {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-md, 10px);
+    padding: 24px;
+    box-shadow: var(--zev-shadow-md, 0 4px 14px rgba(0, 0, 0, 0.45));
+    transition: transform var(--zev-duration-standard, 200ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
+}
 
-    padding: 65px;
+.zhi-visual:hover {
+    transform: translateY(-2px);
+    border-color: var(--border-strong);
+}
 
+.zhi-visual-top {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-
-    border-radius: 19px;
-
-    text-align: center;
-
-    background:
-        linear-gradient(
-            rgba(6, 16, 12, .94),
-            rgba(6, 16, 12, .94)
-        ) padding-box,
-
-        conic-gradient(
-            from var(--zhi-angle),
-            transparent 0deg,
-            transparent 302deg,
-            rgba(53, 220, 120, .1) 320deg,
-            var(--green) 346deg,
-            #9effbd 353deg,
-            transparent 360deg
-        ) border-box;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
 }
 
-.zhi-final-card > p {
-    max-width: 580px;
-}
-
-.zhi-final-card .zhi-btn {
-    margin-top: 28px;
-}
-
-.zhi-final-decoration {
-    margin-bottom: 18px;
-
-    color: var(--green);
-
-    font-size: 30px;
-}
-
-.zhi-final-note {
-    margin-top: 30px;
-
-    color: #9bafa6;
-
+.zhi-visual-title {
     font-size: 12px;
-    font-style: italic;
-
-    transform: rotate(-2deg);
+    font-weight: 600;
+    color: var(--text);
+    font-family: var(--zev-font-mono, monospace);
 }
 
+.zhi-visual-body {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 16px;
+    font-size: 12px;
+    color: var(--text-sec);
+    line-height: 1.5;
+}
 
-/* =========================================================
-   REVEAL ANIMATION
-   ========================================================= */
+/* --------------------------------------------------------------------------
+   FINAL CALL TO ACTION
+   -------------------------------------------------------------------------- */
+.zhi-final-cta {
+    padding: 100px 0;
+    text-align: center;
+    background: radial-gradient(ellipse 60% 50% at 50% 100%, rgba(46, 189, 104, 0.08), transparent 70%);
+}
 
+.zhi-final-copy h2 {
+    font-size: clamp(26px, 4vw, 42px);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+    margin: 0 0 16px;
+    color: var(--text);
+}
+
+.zhi-final-copy p {
+    font-size: 15px;
+    color: var(--text-sec);
+    max-width: 560px;
+    margin: 0 auto 32px auto;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   REVEAL TRANSITIONS (INTERSECTION OBSERVER)
+   -------------------------------------------------------------------------- */
 .zhi-reveal {
     opacity: 0;
-
-    transform: translateY(20px);
-
-    transition:
-        opacity .6s ease,
-        transform .6s ease;
+    transform: translateY(12px);
+    transition: opacity var(--zev-duration-macro, 320ms) ease,
+                transform var(--zev-duration-macro, 320ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
 }
 
-.zhi-reveal.zhi-visible {
+.zhi-visible {
     opacity: 1;
-
     transform: translateY(0);
 }
 
-
-/* =========================================================
-   KEYFRAMES
-   ========================================================= */
-
-@keyframes zhiOrbitSpin {
-    from {
-        transform:
-            translate(-50%, -50%)
-            rotate(0deg);
+/* --------------------------------------------------------------------------
+   RESPONSIVE DESIGN BREAKPOINTS
+   -------------------------------------------------------------------------- */
+@media (max-width: 1024px) {
+    .zhi-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
 
-    to {
-        transform:
-            translate(-50%, -50%)
-            rotate(360deg);
+    .zhi-flow-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .zhi-showcase-item {
+        grid-template-columns: 1fr;
+        gap: 36px;
+        padding: 40px 0;
     }
 }
 
-
-/* =========================================================
-   TABLET
-   ========================================================= */
-
-@media (max-width: 950px) {
-
-    .zhi-hero > .zhi-container,
-    .zhi-step-grid,
-    .zhi-reverse {
-        grid-template-columns: 1fr;
+@media (max-width: 640px) {
+    .zhi-hero {
+        padding: 60px 0 40px;
     }
 
-    .zhi-hero-content {
-        text-align: center;
-    }
-
-    .zhi-hero-content > p {
-        margin-left: auto;
-        margin-right: auto;
+    .zhi-flow-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .zhi-hero-actions {
-        justify-content: center;
-    }
-
-    .zhi-hero-map {
-        max-width: 650px;
-
-        margin: 30px auto 0;
-    }
-
-    .zhi-step-grid {
-        gap: 55px;
-    }
-
-    .zhi-reverse .zhi-visual {
-        order: 2;
-    }
-
-    .zhi-reverse .zhi-step-copy {
-        order: 1;
-    }
-
-    .zhi-flow-strip {
-        flex-wrap: wrap;
-    }
-
-    .zhi-flow-arrow {
-        display: none;
-    }
-
-    .zhi-loop {
-        flex-wrap: wrap;
-    }
-
-    .zhi-loop-arrow {
-        display: none;
-    }
-}
-
-
-/* =========================================================
-   MOBILE
-   ========================================================= */
-
-@media (max-width: 650px) {
-
-    .zhi-container {
-        width: calc(100% - 28px);
-    }
-
-    .zhi-hero {
-        min-height: auto;
-
-        padding: 75px 0;
-    }
-
-    .zhi-hero-content h1 {
-        font-size: 48px;
-    }
-
-    .zhi-hero-map {
-        height: 430px;
-
-        transform: scale(.9);
-    }
-
-    .zhi-orbit {
-        width: 275px;
-        height: 275px;
-    }
-
-    .zhi-core {
-        width: 145px;
-        height: 145px;
-    }
-
-    .zhi-node {
-        min-width: 90px;
-
-        padding: 10px;
-    }
-
-    .zhi-section,
-    .zhi-step-section {
-        padding: 75px 0;
-    }
-
-    .zhi-flow-strip {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .zhi-flow-item {
+        flex-direction: column;
         width: 100%;
     }
 
-    .zhi-ai-tools {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .zhi-project-visual {
-        padding: 25px;
-    }
-
-    .zhi-project-bottom {
-        left: 25px;
-        right: 25px;
-    }
-
-    .zhi-career-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .zhi-showcase {
-        min-height: 500px;
-    }
-
-    .zhi-resume-paper {
-        width: 205px;
-        height: 315px;
-
-        left: 20px;
-        top: 60px;
-    }
-
-    .zhi-portfolio-screen {
-        width: 250px;
-        height: 240px;
-
-        right: 15px;
-        bottom: 30px;
-    }
-
-    .zhi-loop-item {
-        width: 100px;
-        height: 100px;
-    }
-
-    .zhi-final-card {
-        min-height: 390px;
-
-        padding: 35px 22px;
+    .zhi-hero-actions .zhi-btn {
+        width: 100%;
     }
 }
 
+/* Accessibility Focus States */
+#zev-how-page a:focus-visible,
+#zev-how-page button:focus-visible {
+    outline: 2px solid var(--green) !important;
+    outline-offset: 2px !important;
+}
 
-/* =========================================================
-   REDUCED MOTION
-   ========================================================= */
-
+/* Reduced Motion Override */
 @media (prefers-reduced-motion: reduce) {
-
+    .zhi-reveal,
+    .zhi-visible,
+    .zhi-flow-item,
     .zhi-visual,
-    .zhi-showcase,
-    .zhi-final-card,
-    .zhi-orbit {
-        animation: none;
-    }
-
-    .zhi-reveal {
-        opacity: 1;
-        transform: none;
+    .zhi-btn {
+        transition: none !important;
+        transform: none !important;
+        animation: none !important;
+        opacity: 1 !important;
     }
 }
+
 </style>
 
 <script data-wp-block-html="js">
+
 function zevHowInitialize() {
 
     var smoothLinks =
@@ -2081,6 +604,7 @@ if (document.readyState === "loading") {
 
     zevHowInitialize();
 }
+
 </script>
 
 <div id="zev-how-page" class="zhi-page">

@@ -1,83 +1,100 @@
-﻿
-#zevqyn-portfolio-app {
-    --pf-bg: #070b12;
-    --pf-panel: #0d131d;
-    --pf-panel-2: #111925;
-    --pf-border: rgba(255,255,255,0.09);
-    --pf-text: #f5f7fa;
-    --pf-muted: #8e9aaa;
-    --pf-green: #67f5a2;
-    --pf-green-dark: #34d77a;
-    --pf-blue: #63a8ff;
-    --pf-violet: #9c82ff;
-    --pf-danger: #ff6b75;
+/* ==========================================================================
+   ZEVQYN V1.1 REFINED PORTFOLIO BUILDER STYLES
+   Scope: #zevqyn-portfolio-app / .zev-pf-app
+   Design System: docs/DESIGN_SYSTEM_V1_1.md
+   ========================================================================== */
 
-    width: 100%;
-    background:
-        radial-gradient(
-            circle at 15% 0%,
-            rgba(70, 111, 255, 0.10),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 85% 10%,
-            rgba(103, 245, 162, 0.07),
-            transparent 26%
-        ),
-        var(--pf-bg);
-
-    color: var(--pf-text);
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    padding: 50px 20px 80px;
-    box-sizing: border-box;
+/* Hide default Blocksy page titles */
+.hero-section,
+.page-title,
+.entry-header,
+header.entry-header,
+.ct-page-title,
+.entry-title {
+    display: none !important;
 }
 
+#zevqyn-portfolio-app,
 #zevqyn-portfolio-app * {
     box-sizing: border-box;
 }
 
+#zevqyn-portfolio-app {
+    --pf-bg: var(--zev-bg-canvas, #090b0e);
+    --pf-panel: var(--zev-bg-panel, #0f1217);
+    --pf-panel-2: var(--zev-bg-surface, #151921);
+    --pf-subtle: var(--zev-bg-subtle, #222834);
+    --pf-border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
+    --pf-border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
+    --pf-border-faint: var(--zev-border-faint, rgba(255, 255, 255, 0.06));
+
+    --pf-text: var(--zev-text-primary, #f4f6f8);
+    --pf-text-sec: var(--zev-text-secondary, #c0c7d2);
+    --pf-muted: var(--zev-text-muted, #828c9a);
+
+    --pf-green: var(--zev-green-primary, #2ebd68);
+    --pf-green-dark: var(--zev-green-hover, #269f58);
+    --pf-green-text: var(--zev-green-text, #41cf7b);
+    --pf-green-soft: var(--zev-green-soft, rgba(46, 189, 104, 0.08));
+    --pf-green-border: var(--zev-green-border, rgba(46, 189, 104, 0.22));
+
+    --pf-blue: #60a5fa;
+    --pf-danger: #ef4444;
+
+    width: 100%;
+    min-height: 100vh;
+    background: var(--pf-bg);
+    color: var(--pf-text);
+    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: 40px 24px 80px;
+}
+
 .zev-pf-shell {
     width: 100%;
-    max-width: 1500px;
+    max-width: 1440px;
     margin: 0 auto;
 }
+
+/* =========================================
+   HEADER
+   ========================================= */
 
 .zev-pf-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-    gap: 30px;
-    margin-bottom: 30px;
+    gap: 24px;
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--pf-border);
 }
 
 .zev-pf-eyebrow {
-    color: var(--pf-green);
+    color: var(--pf-green-text);
     font-size: 11px;
-    font-weight: 800;
-    letter-spacing: 0.16em;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
     margin-bottom: 8px;
 }
 
 .zev-pf-header h1 {
     margin: 0;
-    color: #fff;
-    font-size: clamp(30px, 4vw, 48px);
-    line-height: 1.08;
-    letter-spacing: -0.035em;
+    color: var(--pf-text);
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.15;
+    letter-spacing: -0.025em;
+    font-weight: 700;
 }
 
 .zev-pf-header p {
-    max-width: 650px;
-    margin: 12px 0 0;
+    max-width: 620px;
+    margin: 8px 0 0;
     color: var(--pf-muted);
-    font-size: 15px;
-    line-height: 1.65;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .zev-pf-header-actions {
@@ -86,38 +103,57 @@
     flex-shrink: 0;
 }
 
+/* =========================================
+   BUTTONS
+   ========================================= */
+
 .zev-pf-btn {
-    min-height: 44px;
-    border-radius: 10px;
-    padding: 0 18px;
+    min-height: 38px;
+    border-radius: var(--zev-radius-sm, 6px);
+    padding: 0 16px;
     border: 1px solid transparent;
     cursor: pointer;
     font-family: inherit;
     font-size: 13px;
-    font-weight: 750;
-    transition:
-        transform 0.18s ease,
-        border-color 0.18s ease,
-        background 0.18s ease;
-}
-
-.zev-pf-btn:hover {
-    transform: translateY(-1px);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pf-btn-primary {
-    color: #04110a;
-    background: linear-gradient(
-        135deg,
-        var(--pf-green),
-        var(--pf-green-dark)
-    );
+    color: #ffffff;
+    background: var(--pf-green);
+    border-color: var(--pf-green);
+}
+
+.zev-pf-btn-primary:hover {
+    background: var(--pf-green-dark);
+    border-color: var(--pf-green-dark);
 }
 
 .zev-pf-btn-secondary {
-    color: #fff;
-    background: rgba(255,255,255,0.045);
+    color: var(--pf-text);
+    background: var(--pf-panel-2);
     border-color: var(--pf-border);
+}
+
+.zev-pf-btn-secondary:hover {
+    background: var(--pf-subtle);
+    border-color: var(--pf-border-strong);
+}
+
+.zev-pf-btn-danger {
+    background: rgba(239, 68, 68, 0.10);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.28);
+}
+
+.zev-pf-btn-danger:hover {
+    background: rgba(239, 68, 68, 0.20);
+    border-color: rgba(239, 68, 68, 0.40);
 }
 
 .zev-pf-btn-full {
@@ -126,42 +162,50 @@
 }
 
 .zev-pf-btn:disabled {
-    opacity: 0.5;
+    opacity: 0.55;
     cursor: not-allowed;
-    transform: none;
 }
 
+/* =========================================
+   STATUS
+   ========================================= */
+
 .zev-pf-status {
-    margin-bottom: 18px;
-    padding: 12px 15px;
+    margin-bottom: 20px;
+    padding: 12px 16px;
     border: 1px solid var(--pf-border);
-    border-radius: 10px;
+    border-radius: var(--zev-radius-sm, 6px);
     background: var(--pf-panel);
     color: var(--pf-text);
     font-size: 13px;
 }
 
 .zev-pf-status.success {
-    border-color: rgba(103,245,162,0.35);
-    color: var(--pf-green);
+    border-color: var(--pf-green);
+    color: var(--pf-green-text);
+    background: var(--pf-green-soft);
 }
 
 .zev-pf-status.error {
-    border-color: rgba(255,107,117,0.35);
-    color: #ff8991;
+    border-color: rgba(239, 68, 68, 0.4);
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.1);
 }
+
+/* =========================================
+   TOOLBAR
+   ========================================= */
 
 .zev-pf-toolbar {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     gap: 20px;
-    margin-bottom: 24px;
-    padding: 16px 18px;
+    margin-bottom: 20px;
+    padding: 16px 20px;
     border: 1px solid var(--pf-border);
-    border-radius: 14px;
-    background: rgba(13,19,29,0.82);
-    backdrop-filter: blur(16px);
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--pf-panel);
 }
 
 .zev-pf-toolbar-field {
@@ -177,84 +221,91 @@
 .zev-pf-badge {
     display: inline-flex;
     align-items: center;
-    min-height: 28px;
+    min-height: 26px;
     padding: 0 10px;
-    border-radius: 999px;
+    border-radius: var(--zev-radius-xs, 4px);
     font-size: 11px;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: 0.04em;
+    text-transform: uppercase;
 }
 
 .zev-pf-badge-draft {
-    color: #c2cad5;
-    background: rgba(255,255,255,0.07);
+    color: var(--pf-muted);
+    background: var(--pf-subtle);
+    border: 1px solid var(--pf-border);
 }
 
 .zev-pf-badge-live {
-    color: var(--pf-green);
-    background: rgba(103,245,162,0.10);
-    border: 1px solid rgba(103,245,162,0.20);
+    color: var(--pf-green-text);
+    background: var(--pf-green-soft);
+    border: 1px solid var(--pf-green-border);
 }
 
 .zev-pf-text-btn {
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--pf-blue);
+    color: var(--pf-green-text);
     font-family: inherit;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
     cursor: pointer;
+    text-decoration: none;
 }
+
+.zev-pf-text-btn:hover {
+    text-decoration: underline;
+}
+
+/* =========================================
+   GRID LAYOUT
+   ========================================= */
 
 .zev-pf-grid {
     display: grid;
-    grid-template-columns:
-        minmax(0, 1.05fr)
-        minmax(380px, 0.95fr);
-    gap: 24px;
+    grid-template-columns: minmax(0, 1.05fr) minmax(380px, 0.95fr);
+    gap: 20px;
     align-items: start;
 }
 
 .zev-pf-editor {
     display: flex;
     flex-direction: column;
-    gap: 18px;
+    gap: 20px;
 }
+
+/* =========================================
+   CARD SECTIONS
+   ========================================= */
 
 .zev-pf-card {
     border: 1px solid var(--pf-border);
-    border-radius: 16px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.025),
-            transparent
-        ),
-        var(--pf-panel);
-    padding: 22px;
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--pf-panel);
+    padding: 24px;
 }
 
 .zev-pf-card-heading {
     display: flex;
     justify-content: space-between;
     gap: 20px;
-    margin-bottom: 22px;
-    padding-bottom: 16px;
-    border-bottom: 1px solid var(--pf-border);
+    margin-bottom: 20px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--pf-border-faint);
 }
 
 .zev-pf-card-heading > div {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .zev-pf-card-heading h2 {
     margin: 0;
-    color: #fff;
-    font-size: 17px;
-    font-weight: 750;
+    color: var(--pf-text);
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .zev-pf-card-heading p {
@@ -268,13 +319,15 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
-    color: var(--pf-green);
-    background: rgba(103,245,162,0.08);
-    font-size: 10px;
-    font-weight: 800;
+    width: 28px;
+    height: 28px;
+    border-radius: var(--zev-radius-xs, 4px);
+    color: var(--pf-green-text);
+    background: var(--pf-green-soft);
+    border: 1px solid var(--pf-green-border);
+    font-size: 11px;
+    font-family: var(--zev-font-mono, monospace);
+    font-weight: 700;
 }
 
 .zev-pf-form-grid {
@@ -286,7 +339,7 @@
 .zev-pf-field {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 6px;
 }
 
 .zev-pf-field-full {
@@ -294,14 +347,14 @@
 }
 
 .zev-pf-field label {
-    color: #d9e0e8;
+    color: var(--pf-text-sec);
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .zev-pf-field small {
-    color: #697586;
-    font-size: 10px;
+    color: var(--pf-muted);
+    font-size: 11px;
 }
 
 .zev-pf-field input,
@@ -310,52 +363,51 @@
 .zev-pf-toolbar select {
     width: 100%;
     border: 1px solid var(--pf-border);
-    border-radius: 10px;
+    border-radius: var(--zev-radius-sm, 6px);
     outline: none;
-    background: #090f17;
-    color: #fff;
+    background: var(--pf-panel-2);
+    color: var(--pf-text);
     font-family: inherit;
     font-size: 13px;
-    transition:
-        border-color 0.18s ease,
-        box-shadow 0.18s ease;
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pf-field input,
 .zev-pf-field select,
 .zev-pf-toolbar select {
-    height: 44px;
+    height: 40px;
     padding: 0 12px;
 }
 
 .zev-pf-field textarea {
-    min-height: 120px;
-    padding: 12px;
+    min-height: 100px;
+    padding: 10px 12px;
     resize: vertical;
-    line-height: 1.55;
+    line-height: 1.5;
 }
 
 .zev-pf-field input:focus,
 .zev-pf-field textarea:focus,
 .zev-pf-field select:focus,
 .zev-pf-toolbar select:focus {
-    border-color: rgba(103,245,162,0.45);
-    box-shadow: 0 0 0 3px rgba(103,245,162,0.07);
+    border-color: var(--pf-green);
+    box-shadow: 0 0 0 3px rgba(46, 189, 104, 0.15);
 }
 
 .zev-pf-slug-row {
     display: flex;
     align-items: center;
     border: 1px solid var(--pf-border);
-    border-radius: 10px;
+    border-radius: var(--zev-radius-sm, 6px);
     overflow: hidden;
-    background: #090f17;
+    background: var(--pf-panel-2);
 }
 
 .zev-pf-slug-row span {
     padding-left: 12px;
-    color: #687587;
+    color: var(--pf-muted);
     font-size: 12px;
+    font-family: var(--zev-font-mono, monospace);
     white-space: nowrap;
 }
 
@@ -365,30 +417,39 @@
     box-shadow: none !important;
 }
 
+/* =========================================
+   TABS & ATTACHABLE ITEMS
+   ========================================= */
+
 .zev-pf-tabs {
     display: flex;
-    gap: 7px;
+    gap: 6px;
     overflow-x: auto;
     margin-bottom: 16px;
-    padding-bottom: 2px;
 }
 
 .zev-pf-tab {
-    min-height: 36px;
-    padding: 0 13px;
+    min-height: 34px;
+    padding: 0 14px;
     border: 1px solid var(--pf-border);
-    border-radius: 9px;
-    background: transparent;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--pf-panel-2);
     color: var(--pf-muted);
     font-family: inherit;
-    font-size: 11px;
-    font-weight: 750;
+    font-size: 12px;
+    font-weight: 600;
     cursor: pointer;
     white-space: nowrap;
+    transition: background var(--zev-duration-standard, 200ms) ease,
+                color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-pf-tab:hover {
+    color: var(--pf-text);
 }
 
 .zev-pf-tab.active {
-    color: #06130b;
+    color: #ffffff;
     border-color: var(--pf-green);
     background: var(--pf-green);
 }
@@ -396,7 +457,7 @@
 .zev-pf-items {
     display: flex;
     flex-direction: column;
-    gap: 9px;
+    gap: 8px;
 }
 
 .zev-pf-item {
@@ -404,10 +465,15 @@
     justify-content: space-between;
     align-items: center;
     gap: 14px;
-    padding: 13px 14px;
+    padding: 12px 14px;
     border: 1px solid var(--pf-border);
-    border-radius: 11px;
-    background: rgba(255,255,255,0.018);
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--pf-panel-2);
+    transition: border-color var(--zev-duration-standard, 200ms) ease;
+}
+
+.zev-pf-item:hover {
+    border-color: var(--pf-border-strong);
 }
 
 .zev-pf-item-info {
@@ -416,45 +482,51 @@
 
 .zev-pf-item-info strong {
     display: block;
-    margin-bottom: 3px;
-    color: #f3f6f9;
-    font-size: 12px;
+    margin-bottom: 2px;
+    color: var(--pf-text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-pf-item-info span {
     display: block;
     color: var(--pf-muted);
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.4;
 }
 
 .zev-pf-item-action {
-    min-width: 74px;
-    height: 32px;
+    min-width: 70px;
+    height: 30px;
     border: 1px solid var(--pf-border);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.035);
-    color: #dce4ed;
+    border-radius: var(--zev-radius-xs, 4px);
+    background: var(--pf-subtle);
+    color: var(--pf-text);
     font-family: inherit;
-    font-size: 10px;
-    font-weight: 800;
+    font-size: 11px;
+    font-weight: 600;
     cursor: pointer;
+    transition: background var(--zev-duration-standard, 200ms) ease;
 }
 
 .zev-pf-item-action.attached {
-    color: #ff9299;
-    border-color: rgba(255,107,117,0.25);
-    background: rgba(255,107,117,0.06);
+    color: #fca5a5;
+    border-color: rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.1);
 }
 
 .zev-pf-empty {
     padding: 24px;
-    border: 1px dashed rgba(255,255,255,0.10);
-    border-radius: 10px;
-    color: #707c8d;
+    border: 1px dashed var(--pf-border);
+    border-radius: var(--zev-radius-sm, 6px);
+    color: var(--pf-muted);
     text-align: center;
     font-size: 12px;
 }
+
+/* =========================================
+   TOGGLES
+   ========================================= */
 
 .zev-pf-toggle-list {
     display: flex;
@@ -466,8 +538,8 @@
     justify-content: space-between;
     align-items: center;
     gap: 18px;
-    padding: 15px 0;
-    border-bottom: 1px solid var(--pf-border);
+    padding: 14px 0;
+    border-bottom: 1px solid var(--pf-border-faint);
     cursor: pointer;
 }
 
@@ -482,23 +554,28 @@
 
 .zev-pf-toggle-row strong {
     display: block;
-    margin-bottom: 3px;
-    color: #f3f6f9;
-    font-size: 12px;
+    margin-bottom: 2px;
+    color: var(--pf-text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-pf-toggle-row span {
     display: block;
     color: var(--pf-muted);
-    font-size: 10px;
+    font-size: 12px;
 }
 
 .zev-pf-toggle-row input {
-    width: 38px;
+    width: 20px;
     height: 20px;
     accent-color: var(--pf-green);
     cursor: pointer;
 }
+
+/* =========================================
+   PREVIEW COLUMN
+   ========================================= */
 
 .zev-pf-preview-column {
     position: sticky;
@@ -513,58 +590,49 @@
 }
 
 .zev-pf-preview-top h3 {
-    margin: 3px 0 0;
-    color: #fff;
-    font-size: 14px;
+    margin: 2px 0 0;
+    color: var(--pf-text);
+    font-size: 15px;
+    font-weight: 700;
 }
 
 .zev-pf-preview-label {
-    color: var(--pf-green);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.14em;
+    color: var(--pf-green-text);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .zev-pf-preview {
-    min-height: 720px;
+    min-height: 680px;
     overflow: hidden;
     border: 1px solid var(--pf-border);
-    border-radius: 18px;
-    background:
-        radial-gradient(
-            circle at 50% -10%,
-            rgba(99,168,255,0.16),
-            transparent 32%
-        ),
-        #090e16;
-    box-shadow: 0 24px 70px rgba(0,0,0,0.30);
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--pf-panel);
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
 }
 
 .zev-pf-preview-hero {
-    padding: 45px 34px 30px;
+    padding: 36px 28px 24px;
     text-align: center;
-    border-bottom: 1px solid var(--pf-border);
+    border-bottom: 1px solid var(--pf-border-faint);
 }
 
 .zev-pf-avatar {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 78px;
-    height: 78px;
-    margin: 0 auto 17px;
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 14px;
     overflow: hidden;
-    border: 1px solid rgba(103,245,162,0.30);
+    border: 2px solid var(--pf-green-border);
     border-radius: 50%;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(103,245,162,0.16),
-            rgba(99,168,255,0.12)
-        );
-    color: var(--pf-green);
-    font-size: 25px;
-    font-weight: 800;
+    background: var(--pf-green-soft);
+    color: var(--pf-green-text);
+    font-size: 22px;
+    font-weight: 700;
 }
 
 .zev-pf-avatar img {
@@ -575,14 +643,15 @@
 
 .zev-pf-preview-hero h2 {
     margin: 0;
-    color: #fff;
-    font-size: 26px;
-    letter-spacing: -0.025em;
+    color: var(--pf-text);
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
 .zev-pf-preview-headline {
-    margin: 7px 0 0;
-    color: #aab5c2;
+    margin: 4px 0 0;
+    color: var(--pf-muted);
     font-size: 13px;
 }
 
@@ -591,41 +660,43 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 14px;
 }
 
 .zev-pf-preview-links a {
-    padding: 6px 9px;
+    padding: 5px 10px;
     border: 1px solid var(--pf-border);
-    border-radius: 7px;
-    color: #cbd5df;
+    border-radius: var(--zev-radius-xs, 4px);
+    color: var(--pf-text-sec);
     text-decoration: none;
-    font-size: 9px;
+    font-size: 11px;
+    background: var(--pf-panel-2);
 }
 
 .zev-pf-preview-section {
-    padding: 25px 30px;
-    border-bottom: 1px solid var(--pf-border);
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--pf-border-faint);
 }
 
 .zev-pf-preview-kicker {
     display: block;
-    margin-bottom: 10px;
-    color: var(--pf-green);
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 0.13em;
+    margin-bottom: 8px;
+    color: var(--pf-green-text);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .zev-pf-preview-section p {
     margin: 0;
-    color: #a4afbc;
-    font-size: 11px;
-    line-height: 1.7;
+    color: var(--pf-text-sec);
+    font-size: 12px;
+    line-height: 1.5;
 }
 
 .zev-pf-preview-record {
-    margin-bottom: 13px;
+    margin-bottom: 12px;
 }
 
 .zev-pf-preview-record:last-child {
@@ -634,34 +705,40 @@
 
 .zev-pf-preview-record strong {
     display: block;
-    color: #eef2f6;
-    font-size: 11px;
+    color: var(--pf-text);
+    font-size: 13px;
+    font-weight: 600;
 }
 
 .zev-pf-preview-record span {
     display: block;
-    margin-top: 3px;
-    color: #788596;
-    font-size: 9px;
-    line-height: 1.5;
+    margin-top: 2px;
+    color: var(--pf-muted);
+    font-size: 11px;
 }
 
 .zev-pf-preview-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
+    gap: 6px;
 }
 
 .zev-pf-preview-tag {
-    padding: 5px 7px;
-    border-radius: 6px;
-    background: rgba(103,245,162,0.07);
-    color: #aaf8ca;
-    font-size: 9px;
+    padding: 4px 8px;
+    border-radius: var(--zev-radius-xs, 4px);
+    background: var(--pf-green-soft);
+    border: 1px solid var(--pf-green-border);
+    color: var(--pf-green-text);
+    font-family: var(--zev-font-mono, monospace);
+    font-size: 11px;
 }
 
+/* =========================================
+   MODAL
+   ========================================= */
+
 .zev-pf-modal[hidden] {
-    display: none;
+    display: none !important;
 }
 
 .zev-pf-modal {
@@ -677,8 +754,8 @@
 .zev-pf-modal-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.72);
-    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
 }
 
 .zev-pf-modal-card {
@@ -686,39 +763,52 @@
     z-index: 2;
     width: min(460px, 100%);
     padding: 24px;
-    border: 1px solid var(--pf-border);
-    border-radius: 17px;
-    background: #0d131d;
-    box-shadow: 0 30px 100px rgba(0,0,0,0.55);
+    border: 1px solid var(--pf-border-strong);
+    border-radius: var(--zev-radius-md, 10px);
+    background: var(--pf-panel);
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6);
 }
 
 .zev-pf-modal-heading {
     display: flex;
     justify-content: space-between;
-    gap: 20px;
-    margin-bottom: 22px;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: center;
 }
 
 .zev-pf-modal-heading h2 {
     margin: 0;
-    color: #fff;
-    font-size: 22px;
+    color: var(--pf-text);
+    font-size: 18px;
+    font-weight: 700;
 }
 
 .zev-pf-modal-close {
-    width: 34px;
-    height: 34px;
+    width: 32px;
+    height: 32px;
     border: 1px solid var(--pf-border);
-    border-radius: 8px;
-    background: transparent;
-    color: #fff;
-    font-size: 20px;
+    border-radius: var(--zev-radius-sm, 6px);
+    background: var(--pf-panel-2);
+    color: var(--pf-muted);
+    font-size: 18px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.zev-pf-modal-close:hover {
+    color: var(--pf-text);
 }
 
 .zev-pf-modal-card .zev-pf-field {
-    margin-bottom: 15px;
+    margin-bottom: 16px;
 }
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
 
 @media (max-width: 1050px) {
     .zev-pf-grid {
@@ -732,7 +822,7 @@
 
 @media (max-width: 720px) {
     #zevqyn-portfolio-app {
-        padding: 30px 12px 60px;
+        padding: 24px 16px 60px;
     }
 
     .zev-pf-header {
@@ -767,7 +857,7 @@
 
     .zev-pf-card-heading {
         flex-direction: column;
-        gap: 8px;
+        gap: 6px;
     }
 
     .zev-pf-card-heading p {
@@ -775,7 +865,7 @@
     }
 
     .zev-pf-preview {
-        min-height: 600px;
+        min-height: 560px;
     }
 }
 
@@ -789,33 +879,14 @@
     }
 
     .zev-pf-card {
-        padding: 17px;
-    }
-
-    .zev-pf-preview-hero {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .zev-pf-preview-section {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding: 16px;
     }
 }
 
-.zev-pf-btn-danger {
-    background: rgba(239, 68, 68, 0.08);
-    color: #ff6b6b;
-    border: 1px solid rgba(239, 68, 68, 0.35);
-}
-
-.zev-pf-btn-danger:hover {
-    background: rgba(239, 68, 68, 0.16);
-    border-color: rgba(239, 68, 68, 0.65);
-    color: #ff8585;
-}
-
-.zev-pf-btn-danger:disabled {
-    opacity: 0.45;
-    cursor: not-allowed;
+@media (prefers-reduced-motion: reduce) {
+    .zev-pf-btn,
+    .zev-pf-tab,
+    .zev-pf-item {
+        transition: none !important;
+    }
 }
