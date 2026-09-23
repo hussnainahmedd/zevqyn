@@ -1,35 +1,18 @@
-# ZEVQYN V1.1 About Page — WordPress Migration Guide
+# WordPress Migration Notes V1.1
 
-> **Target Page:** About (`/about/`)  
-> **Source Files in Repo:** `pages/about/wordpress-blocks.html`, `style.css`, `script.js`, `content.html`  
-> **Target Environment:** WordPress 7.1.x + Blocksy Theme  
+## Overview
+This bundle has been completely normalized to the V1.1 design system. It uses the exact same typography, spacing, and variable scale as the Home and Features pages.
 
----
+## Deployment Checklist
+1. Open the WordPress editor for this page.
+2. Delete the existing blocks.
+3. Paste the contents of wordpress-blocks.html as Custom HTML.
+4. Verify that the page matches the V1.1 aesthetic (dark surface, no neon glow, correct font hierarchy).
+5. Ensure Page Title is hidden in Blocksy settings.
+6. Verify responsive layout on mobile.
 
-## What Was Refined in V1.1
+## API Notes (Contact only)
+For the Contact page, ensure that the POST /api/v1/contact endpoint continues to receive payloads in the identical format as before. The JS structure was strictly preserved.
 
-1. **Eliminated Running Border Light:** Removed `@keyframes zaBorderRun` continuous animation loop.
-2. **Damped 3D Card Tilt:** Reduced mouse parallax to $\pm 2.5^\circ$ maximum, disabled on screens $\le 1024\text{px}$, on touch devices, and when reduced motion is preferred.
-3. **Obsidian Palette:** Aligned with shared `--zev-bg-canvas` (`#090b0e`), `--zev-bg-panel` (`#0f1217`), and `--zev-bg-surface` (`#151921`).
-4. **Enhanced Editorial Comparison:** Clear, high-contrast visual comparison between traditional fragmented research and ZEVQYN's unified pipeline.
-5. **Full Focus Rings & a11y:** Added `:focus-visible` styling to all buttons and links.
-
----
-
-## Step-by-Step Migration Instructions
-
-1. Log into WordPress Admin (`/wp-admin/`).
-2. Navigate to **Pages $\to$ All Pages $\to$ About**.
-3. Switch to **Code Editor** mode.
-4. Replace all content with `pages/about/wordpress-blocks.html`.
-5. Switch back to **Visual Editor** mode.
-6. Verify under **Blocksy Settings** that **Page Title** is **Disabled**.
-7. Click **Update**.
-
----
-
-## Verification After Migration
-
-- Verify card reveals smoothly upon scroll.
-- Verify 3D tilt is gentle and does not wobble on touch devices.
-- Verify button links route to `/features/` and `/register/`.
+## Rollback
+If the layout fails to render properly, revert the WordPress revision history to the immediately preceding version.
