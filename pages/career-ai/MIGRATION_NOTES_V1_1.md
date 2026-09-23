@@ -18,6 +18,14 @@
      - Tool Cards: `zev-cai-tool-role-fit`, `zev-cai-tool-skills`, `zev-cai-tool-interview`, `zev-cai-tool-star`, `zev-cai-tool-career-path`, `zev-cai-tool-learning-plan`
      - Chat Components: `zev-cai-chat-messages`, `zev-cai-clear-chat`, `zev-cai-welcome`, `zev-cai-typing`, `zev-cai-input`, `zev-cai-send`, `zev-cai-toast`
      - Tool Modals: `zev-cai-modal`, `zev-cai-modal-close`, `zev-cai-modal-backdrop`, `zev-cai-modal-kicker`, `zev-cai-modal-title`, `zev-cai-modal-form`, `zev-cai-modal-loading`, `zev-cai-modal-result`
+4. **Backend V1.1 API Alignment & Legacy Deprecation:**
+   - Active Endpoints: Strictly uses modern V1.1 API routes:
+     - `POST /api/v1/career/ai/chat` (Conversational chat)
+     - `GET /api/v1/career/ai/conversations` (History list)
+     - `GET /api/v1/career/ai/conversations/{id}` (Fetch thread)
+     - `DELETE /api/v1/career/ai/conversations/{id}` (Delete thread)
+     - Specialized tools (`/career/ai/analyze`, `/skill-gap`, `/projects`, `/resume`, `/portfolio`, `/plan`)
+   - Legacy Deprecation: Fully audited to ensure 0 references to deprecated `POST /api/v1/career/assistant`. The frontend cleanly adheres to V1.1 contracts.
 
 ---
 
