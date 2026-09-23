@@ -1,9 +1,8 @@
-﻿<!-- wp:html -->
+<!-- wp:html -->
 <style data-wp-block-html="css">
 /* ==========================================================================
    ZEVQYN V1.1 REFINED CONTACT STYLES
    Scope: #zev-contact-page
-   Design System: docs/DESIGN_SYSTEM_V1_1.md
    ========================================================================== */
 
 /* Hide default Blocksy page titles */
@@ -18,7 +17,7 @@
 }
 
 #zev-contact-page {
-    --green: var(--zev-green-primary, #2ebd68);
+        --green: var(--zev-green-primary, #2ebd68);
     --green-text: var(--zev-green-text, #41cf7b);
     --bg: var(--zev-bg-canvas, #090b0e);
     --panel: var(--zev-bg-panel, #0f1217);
@@ -30,7 +29,7 @@
     --text-sec: var(--zev-text-secondary, #c0c7d2);
     --muted: var(--zev-text-muted, #828c9a);
 
-    width: 100%;
+        width: 100%;
     overflow: hidden;
     background: var(--bg);
     color: var(--text);
@@ -44,365 +43,1892 @@
     margin: 0 auto;
 }
 
+.zct-page {
+    width: 100%;
+    position: relative;
+}
+
 @media (max-width: 768px) {
     .zct-container {
         width: calc(100% - 32px);
     }
 }
 
-/* --------------------------------------------------------------------------
-   HERO SECTION
-   -------------------------------------------------------------------------- */
-.zct-hero {
-    position: relative;
-    padding: 90px 0 60px;
-    text-align: center;
-    background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(46, 189, 104, 0.08), transparent 70%);
-    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
-}
-
-.zct-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 6px 14px;
-    background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
-    border: 1px solid var(--zev-green-border, rgba(46, 189, 104, 0.28));
-    border-radius: var(--zev-radius-full, 9999px);
+.zct-eyebrow {
+    display: inline-block;
     font-size: var(--zev-text-xs, 12px);
     font-weight: 600;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.06em;
     text-transform: uppercase;
     color: var(--green-text);
-    margin-bottom: 16px;
-}
-
-.zct-hero h1 {
-    margin: 0 0 16px;
-    font-size: clamp(32px, 4.5vw, 50px);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    font-weight: 700;
-    color: var(--text);
-}
-
-.zct-hero h1 span {
-    color: var(--green-text);
-}
-
-.zct-hero p {
-    font-size: 15px;
-    color: var(--text-sec);
-    max-width: 540px;
-    margin: 0 auto;
-    line-height: 1.6;
-}
-
-/* --------------------------------------------------------------------------
-   CATEGORY SELECTOR CARDS (COMPACT SEGMENTED PILLS)
-   -------------------------------------------------------------------------- */
-.zct-type-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 16px;
-    margin-bottom: 36px;
-}
-
-.zct-type-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--zev-radius-md, 10px);
-    padding: 16px;
-    cursor: pointer;
-    text-align: left;
-    transition: border-color var(--zev-duration-standard, 200ms) ease,
-                background var(--zev-duration-standard, 200ms) ease,
-                transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1));
-}
-
-.zct-type-card:hover {
-    border-color: var(--border-strong);
-    transform: translateY(-1px);
-}
-
-.zct-type-card.zct-selected {
-    background: var(--zev-green-faint, rgba(46, 189, 104, 0.08));
-    border-color: var(--green);
-    box-shadow: 0 0 0 1px var(--green);
-}
-
-.zct-type-card h4 {
-    margin: 0 0 4px;
-    font-size: 14px;
-    font-weight: 600;
-    color: var(--text);
-}
-
-.zct-type-card.zct-selected h4 {
-    color: var(--green-text);
-}
-
-.zct-type-card p {
-    margin: 0;
-    font-size: 12px;
-    color: var(--muted);
-    line-height: 1.4;
-}
-
-/* --------------------------------------------------------------------------
-   CONTACT FORM & INFO (2-COLUMN GRID)
-   -------------------------------------------------------------------------- */
-.zct-main-section {
-    padding: 70px 0 90px;
-    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
-}
-
-.zct-main-grid {
-    display: grid;
-    grid-template-columns: 1.2fr 0.8fr;
-    gap: 50px;
-    align-items: flex-start;
-}
-
-/* Form Container - Crisp 1px border, NO conic spin */
-.zct-form-card {
-    position: relative;
-    background: var(--panel);
-    border: 1px solid var(--border);
-    border-radius: var(--zev-radius-lg, 14px);
-    padding: 36px;
-    box-shadow: var(--zev-shadow-lg, 0 12px 32px rgba(0, 0, 0, 0.60)),
-                var(--zev-shadow-inner, inset 0 1px 1px rgba(255, 255, 255, 0.04));
-}
-
-.zct-form-card::before {
-    display: none !important; /* Eliminate @keyframes zctBorderRun */
-}
-
-.zct-form-group {
-    margin-bottom: 20px;
-}
-
-.zct-form-group label {
-    display: block;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--text-sec);
     margin-bottom: 8px;
 }
 
-.zct-input,
-.zct-textarea {
-    width: 100%;
-    height: 40px;
-    padding: 0 14px;
-    background: var(--zev-bg-input, #0c0f14);
-    color: var(--text);
-    font-family: inherit;
-    font-size: 14px;
+.zct-section-label > span {
+    width: 29px;
+    height: 29px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
     border: 1px solid var(--border);
-    border-radius: var(--zev-radius-sm, 6px);
-    outline: none;
-    box-sizing: border-box;
-    transition: border-color var(--zev-duration-standard, 200ms) ease,
-                box-shadow var(--zev-duration-standard, 200ms) ease;
+    border-radius: 50%;
+
+    font-size: 7px;
+    letter-spacing: 0;
 }
 
-.zct-textarea {
-    height: auto;
-    min-height: 120px;
-    padding: 12px 14px;
-    resize: vertical;
-    line-height: 1.5;
+.zct-eyebrow > span {
+    width: 28px;
+    height: 1px;
+
+    background: var(--green);
 }
 
-.zct-input:focus,
-.zct-textarea:focus {
-    border-color: var(--green);
-    box-shadow: 0 0 0 1px var(--green);
-    background: #0f131a;
+
+/* =========================================
+   HERO
+   ========================================= */
+
+.zct-hero {
+    min-height: 730px;
+
+    position: relative;
+
+    padding: 105px 0;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom:
+        1px solid rgba(71, 118, 97, .1);
 }
 
-.zct-meta-row {
+.zct-hero::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    opacity: .15;
+
+    background-image:
+        linear-gradient(
+            rgba(80, 137, 112, .08) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(80, 137, 112, .08) 1px,
+            transparent 1px
+        );
+
+    background-size: 70px 70px;
+
+    mask-image:
+        linear-gradient(
+            to bottom,
+            var(--bg),
+            transparent
+        );
+
+    pointer-events: none;
+}
+
+.zct-hero-grid {
+    position: relative;
+    z-index: 2;
+
+    display: grid;
+    grid-template-columns: .9fr 1.1fr;
+
+    gap: 75px;
+    align-items: center;
+}
+
+.zct-hero-copy h1 {
+    margin: 22px 0 22px;
+
+    font-size: clamp(56px, 6vw, 84px);
+    line-height: .96;
+
+    letter-spacing: -.055em;
+}
+
+.zct-hero-copy h1 span {
+    color: var(--green);
+}
+
+.zct-hero-copy > p {
+    max-width: 560px;
+
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.75;
+}
+
+.zct-hero-note {
+    margin-top: 32px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+}
+
+.zct-note-arrow {
+    color: var(--green);
+
+    font-size: 25px;
+
+    transform: rotate(10deg);
+}
+
+.zct-hero-note strong,
+.zct-hero-note span {
+    display: block;
+}
+
+.zct-hero-note strong {
+    color: #dbe9e2;
+
+    font-size: 11px;
+}
+
+.zct-hero-note span {
+    margin-top: 3px;
+
+    color: #61796e;
+
+    font-size: 9px;
+}
+
+
+/* =========================================
+   RUNNING GREEN BORDER
+   ========================================= */
+
+@property --zct-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+.zct-running-border { display: none !important; }
+
+
+
+
+/* =========================================
+   HERO VISUAL
+   ========================================= */
+
+.zct-hero-visual {
+    min-height: 500px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+
+    transform: rotate(1.5deg);
+}
+
+.zct-visual-inner {
+    min-height: 498px;
+
+    position: relative;
+
+    padding: 32px;
+
+    overflow: hidden;
+
+    border-radius: 19px;
+
+    background: var(--surface);
+}
+
+.zct-visual-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 6px;
-    font-size: 11px;
-    color: var(--muted);
+
+    color: #587267;
+
+    font-size: 7px;
+    letter-spacing: .15em;
 }
 
-.zct-submit-btn {
+.zct-online {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+}
+
+.zct-online i {
+    width: 6px;
+    height: 6px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.zct-message-window {
+    margin-top: 70px;
+}
+
+.zct-message-user {
+    width: 76%;
+
+    margin-left: auto;
+    padding: 18px;
+
+    border: 1px solid #1b392e;
+    border-radius: 15px 15px 3px 15px;
+
+    background: #0c1914;
+}
+
+.zct-message-user small,
+.zct-message-zev small {
+    color: #59766a;
+
+    font-size: 6px;
+    letter-spacing: .15em;
+}
+
+.zct-message-user p {
+    margin: 8px 0 0;
+
+    color: #b2c4bc;
+
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.zct-message-line {
+    width: 1px;
+    height: 45px;
+
+    margin: 8px 0 8px 65px;
+
+    background:
+        linear-gradient(
+            var(--green),
+            transparent
+        );
+}
+
+.zct-message-zev {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+}
+
+.zct-zev-avatar {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: var(--green);
+    color: #03180b;
+
+    font-weight: 900;
+}
+
+.zct-message-zev p {
+    margin: 4px 0 0;
+
+    font-size: 16px;
+    font-weight: 750;
+}
+
+.zct-floating-tag {
+    position: absolute;
+
+    padding: 9px 12px;
+
+    border: 1px solid #26503e;
+    border-radius: 8px;
+
+    background: #07110d;
+
+    color: var(--green);
+
+    font-size: 8px;
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.zct-tag-one {
+    left: 30px;
+    bottom: 75px;
+
+    transform: rotate(-4deg);
+}
+
+.zct-tag-two {
+    right: 35px;
+    top: 105px;
+
+    transform: rotate(4deg);
+}
+
+.zct-hand-note {
+    position: absolute;
+
+    right: 30px;
+    bottom: 27px;
+
+    color: #b4c9bf;
+
+    font-size: 11px;
+    font-style: italic;
+
+    text-align: right;
+
+    transform: rotate(-3deg);
+}
+
+
+/* =========================================
+   GLOWS
+   ========================================= */
+
+.zct-glow { display: none !important; }
+
+.zct-glow { display: none !important; }
+
+.zct-glow { display: none !important; }
+
+
+/* =========================================
+   GENERAL SECTION HEADINGS
+   ========================================= */
+
+.zct-types,
+.zct-contact,
+.zct-help,
+.zct-faq,
+.zct-final {
+    padding: 110px 0;
+}
+
+.zct-section-head {
+    max-width: 720px;
+
+    margin-bottom: 50px;
+}
+
+.zct-section-head h2,
+.zct-contact-copy h2,
+.zct-faq-copy h2,
+.zct-final h2 {
+    margin: 20px 0 13px;
+
+    font-size: clamp(38px, 4.5vw, 58px);
+    line-height: 1.03;
+
+    letter-spacing: -.045em;
+}
+
+.zct-section-head h2 span,
+.zct-contact-copy h2 span,
+.zct-faq-copy h2 span,
+.zct-final h2 span {
+    color: var(--green);
+}
+
+.zct-section-head > p,
+.zct-contact-copy > p,
+.zct-faq-copy > p {
+    color: var(--muted);
+
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+
+/* =========================================
+   CONTACT TYPES
+   ========================================= */
+
+.zct-type-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 12px;
+}
+
+.zct-type-card {
+    min-height: 170px;
+
+    padding: 22px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    position: relative;
+
+    cursor: pointer;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #08130f,
+            #050b08
+        );
+
+    color: var(--text);
+
+    text-align: left;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease,
+        background .25s ease;
+}
+
+.zct-type-card:hover,
+.zct-type-card.zct-selected {
+    transform: translateY(-5px);
+
+    border-color:
+        var(--border);
+
+    background:
+        linear-gradient(
+            145deg,
+            var(--border),
+            #050b08
+        );
+}
+
+.zct-type-icon {
+    width: 38px;
+    height: 38px;
+
+    margin-bottom: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 10px;
+
+    background:
+        var(--border);
+
+    color: var(--green);
+
+    font-size: 15px;
+}
+
+.zct-type-card strong,
+.zct-type-card span {
+    display: block;
+}
+
+.zct-type-card strong {
+    font-size: 12px;
+}
+
+.zct-type-card span {
+    margin-top: 5px;
+
+    color: var(--muted);
+
+    font-size: 8px;
+}
+
+.zct-type-card > i {
+    position: absolute;
+
+    right: 18px;
+    top: 18px;
+
+    color: #436256;
+
+    font-size: 11px;
+    font-style: normal;
+}
+
+
+/* =========================================
+   CONTACT FORM SECTION
+   ========================================= */
+
+.zct-contact {
+    border-top:
+        1px solid rgba(69, 115, 95, .1);
+
+    border-bottom:
+        1px solid rgba(69, 115, 95, .1);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(7, 17, 13, .5),
+            transparent
+        );
+}
+
+.zct-contact-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+    align-items: center;
+}
+
+.zct-contact-copy > p {
+    max-width: 460px;
+}
+
+.zct-contact-points {
+    margin-top: 38px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 22px;
+}
+
+.zct-contact-points > div {
+    display: grid;
+    grid-template-columns: 35px 1fr;
+
+    gap: 13px;
+}
+
+.zct-contact-points > div > span {
+    width: 30px;
+    height: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #1e4635;
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 7px;
+}
+
+.zct-contact-points strong {
+    display: block;
+
+    font-size: 10px;
+}
+
+.zct-contact-points p {
+    margin: 4px 0 0;
+
+    color: #6f857c;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.zct-side-note {
+    margin-top: 35px;
+
+    color: #a7bcb2;
+
+    font-size: 11px;
+    font-style: italic;
+
+    transform: rotate(-2deg);
+}
+
+.zct-side-note span {
+    margin-right: 8px;
+
+    color: var(--green);
+}
+
+
+/* =========================================
+   FORM
+   ========================================= */
+
+.zct-form-shell {
+    border-radius: 18px;
+}
+
+.zct-form-inner {
+    padding: 35px;
+
+    border-radius: 17px;
+
+    background: var(--surface);
+}
+
+.zct-form-heading {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 1px solid #173027;
+}
+
+.zct-form-heading small {
+    color: var(--green);
+
+    font-size: 6px;
+    letter-spacing: .16em;
+}
+
+.zct-form-heading h3 {
+    margin: 5px 0 0;
+
+    font-size: 24px;
+}
+
+.zct-form-status {
+    display: flex;
+    align-items: center;
+
+    gap: 7px;
+
+    color: #718a7e;
+
+    font-size: 7px;
+}
+
+.zct-form-status i {
+    width: 6px;
+    height: 6px;
+
+    display: block;
+
+    border-radius: 50%;
+
+    background: var(--green);
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.zct-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    gap: 12px;
+}
+
+.zct-field {
+    margin-bottom: 17px;
+}
+
+.zct-field label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #a7b9b1;
+
+    font-size: 8px;
+    font-weight: 700;
+}
+
+.zct-field input,
+.zct-field select,
+.zct-field textarea {
+    width: 100%;
+
+    outline: none;
+
+    border: 1px solid #1b382d;
+    border-radius: 8px;
+
+    background: #08130f;
+
+    color: #eef8f3;
+
+    font-family: inherit;
+    font-size: 10px;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+.zct-field input,
+.zct-field select {
+    height: 46px;
+
+    padding: 0 13px;
+}
+
+.zct-field textarea {
+    min-height: 150px;
+
+    padding: 13px;
+
+    resize: vertical;
+
+    line-height: 1.6;
+}
+
+.zct-field input::placeholder,
+.zct-field textarea::placeholder {
+    color: #435d52;
+}
+
+.zct-field input:focus,
+.zct-field select:focus,
+.zct-field textarea:focus {
+    border-color:
+        var(--border);
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.zct-field select {
+    color-scheme: dark;
+}
+
+.zct-error {
+    min-height: 13px;
+
+    display: block;
+
+    margin-top: 5px;
+
+    color: #ff7777;
+
+    font-size: 7px;
+}
+
+.zct-message-meta {
+    display: flex;
+    justify-content: space-between;
+
+    gap: 10px;
+}
+
+.zct-message-meta > span {
+    margin-top: 5px;
+
+    color: #536d61;
+
+    font-size: 7px;
+}
+
+.zct-submit {
+    width: 100%;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 15px;
+
+    cursor: pointer;
+
+    border: 0;
+    border-radius: 8px;
+
+    background: var(--green);
+    color: #03180b;
+
+    font-size: 10px;
+    font-weight: 850;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+}
+
+.zct-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+}
+
+.zct-submit i {
+    font-style: normal;
+}
+
+.zct-form-response {
+    display: none;
+
+    margin-top: 14px;
+    padding: 12px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+    line-height: 1.6;
+}
+
+.zct-form-response.zct-response-info {
+    display: block;
+
+    border: 1px solid var(--border);
+
+    background:
+        var(--border);
+
+    color: #aeeac4;
+}
+
+
+/* =========================================
+   QUICK HELP
+   ========================================= */
+
+.zct-help-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 12px;
+}
+
+.zct-help-card {
+    min-height: 190px;
+
+    padding: 25px;
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    border: 1px solid var(--border);
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #07110d,
+            var(--panel)
+        );
+
+    color: var(--text) !important;
+
+    text-decoration: none !important;
+
+    transition:
+        transform .25s ease,
+        border-color .25s ease;
+}
+
+.zct-help-card:hover {
+    transform: translateY(-5px);
+
+    border-color:
+        var(--border);
+}
+
+.zct-help-card > span {
+    color: #456155;
+
+    font-size: 7px;
+}
+
+.zct-help-card > div {
+    margin-top: auto;
+}
+
+.zct-help-card strong {
+    font-size: 14px;
+}
+
+.zct-help-card p {
+    max-width: 240px;
+
+    margin: 7px 0 0;
+
+    color: var(--muted);
+
+    font-size: 9px;
+    line-height: 1.6;
+}
+
+.zct-help-card i {
+    position: absolute;
+
+    right: 22px;
+    top: 20px;
+
+    color: var(--green);
+
+    font-style: normal;
+}
+
+
+/* =========================================
+   FAQ
+   ========================================= */
+
+.zct-faq {
+    border-top:
+        1px solid rgba(69, 115, 95, .1);
+}
+
+.zct-faq-grid {
+    display: grid;
+    grid-template-columns: .8fr 1.2fr;
+
+    gap: 90px;
+}
+
+.zct-faq-copy > p {
+    max-width: 390px;
+}
+
+.zct-faq-item {
+    border-bottom:
+        1px solid #173027;
+}
+
+.zct-faq-button {
+    width: 100%;
+
+    padding: 22px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: pointer;
+
+    border: 0;
+
+    background: transparent;
+    color: #dbe7e1;
+
+    text-align: left;
+}
+
+.zct-faq-button span {
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.zct-faq-button i {
+    width: 26px;
+    height: 26px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #234537;
+    border-radius: 50%;
+
+    color: var(--green);
+
+    font-size: 13px;
+    font-style: normal;
+
+    transition:
+        transform .25s ease;
+}
+
+.zct-faq-answer {
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition:
+        max-height .35s ease;
+}
+
+.zct-faq-answer p {
+    max-width: 600px;
+
+    margin: 0;
+    padding: 0 45px 22px 0;
+
+    color: #768d82;
+
+    font-size: 9px;
+    line-height: 1.75;
+}
+
+.zct-faq-item.zct-open .zct-faq-button i {
+    transform: rotate(45deg);
+}
+
+
+/* =========================================
+   FINAL CTA
+   ========================================= */
+
+.zct-final {
+    padding-top: 30px;
+    padding-bottom: 120px;
+}
+
+.zct-final-card {
+    border-radius: 19px;
+}
+
+.zct-final-inner {
+    min-height: 350px;
+
+    padding: 55px;
+
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+
+    gap: 30px;
+    align-items: center;
+
+    border-radius: 18px;
+
+    background: var(--surface);
+}
+
+.zct-final-icon {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #25503d;
+    border-radius: 15px;
+
+    background:
+        var(--border);
+
+    color: var(--green);
+
+    font-size: 20px;
+}
+
+.zct-final small {
+    color: var(--green);
+
+    font-size: 7px;
+    letter-spacing: .15em;
+}
+
+.zct-final h2 {
+    margin-top: 10px;
+
+    font-size: clamp(32px, 4vw, 50px);
+}
+
+.zct-final p {
+    max-width: 550px;
+
+    color: #7c9188;
+
+    font-size: 10px;
+    line-height: 1.65;
+}
+
+.zct-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    width: 100%;
-    height: 42px;
-    background: var(--green);
-    color: var(--zev-text-inverse, #090b0e);
-    border: none;
+    height: 40px;
+    padding: 0 20px;
     border-radius: var(--zev-radius-sm, 6px);
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
+    text-decoration: none !important;
     cursor: pointer;
-    margin-top: 10px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
     transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
                 background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease,
                 box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
-.zct-submit-btn:hover {
-    background: var(--zev-green-hover, #26a75a);
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(46, 189, 104, 0.25);
+.zct-btn-primary {
+    background: var(--green);
+
+    color: #03180b !important;
 }
 
-.zct-submit-btn:active {
-    transform: scale(0.985);
+.zct-final-btn {
+    white-space: nowrap;
 }
 
-.zct-response-box {
-    margin-top: 16px;
-    padding: 12px 16px;
-    border-radius: var(--zev-radius-sm, 6px);
-    font-size: 13px;
-    display: none;
-    line-height: 1.4;
+
+/* =========================================
+   REVEAL
+   ========================================= */
+
+.zct-reveal {
+    opacity: 0;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .6s ease,
+        transform .6s ease;
 }
 
-.zct-response-box.is-success {
-    display: block;
-    background: var(--zev-color-success-bg, rgba(16, 185, 129, 0.10));
-    color: var(--zev-color-success, #10b981);
-    border: 1px solid rgba(16, 185, 129, 0.25);
+.zct-reveal.zct-visible {
+    opacity: 1;
+
+    transform: translateY(0);
 }
 
-.zct-response-box.is-error {
-    display: block;
-    background: var(--zev-color-danger-bg, rgba(239, 68, 68, 0.10));
-    color: var(--zev-color-danger, #ef4444);
-    border: 1px solid rgba(239, 68, 68, 0.25);
-}
 
-/* --------------------------------------------------------------------------
-   SIDEBAR INFO & FAQ ACCORDION
-   -------------------------------------------------------------------------- */
-.zct-info-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--zev-radius-lg, 14px);
-    padding: 32px;
-    box-shadow: var(--zev-shadow-md, 0 4px 14px rgba(0, 0, 0, 0.45));
-}
+/* =========================================
+   TABLET
+   ========================================= */
 
-.zct-info-card h3 {
-    margin: 0 0 12px;
-    font-size: 18px;
+@media (max-width: 950px) {
+
+    .zct-hero-grid,
+    .zct-contact-grid,
+    .zct-faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-hero-copy {
+        text-align: center;
+    }
+
+    .zct-hero-copy > p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .zct-eyebrow {
+    display: inline-block;
+    font-size: var(--zev-text-xs, 12px);
     font-weight: 600;
-    color: var(--text);
-}
-
-.zct-info-card p {
-    font-size: 13px;
-    color: var(--text-sec);
-    line-height: 1.6;
-    margin: 0 0 24px;
-}
-
-.zct-faq-list {
-    margin-top: 24px;
-    border-top: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
-    padding-top: 20px;
-}
-
-.zct-faq-item {
-    border-bottom: 1px solid var(--zev-border-faint, rgba(255, 255, 255, 0.06));
-    padding: 14px 0;
-}
-
-.zct-faq-question {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: transparent;
-    border: none;
-    padding: 0;
-    color: var(--text);
-    font-size: 14px;
-    font-weight: 600;
-    text-align: left;
-    cursor: pointer;
-}
-
-.zct-faq-question:hover {
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
     color: var(--green-text);
+    margin-bottom: 8px;
 }
 
-.zct-faq-answer {
-    padding-top: 8px;
-    font-size: 13px;
-    color: var(--text-sec);
-    line-height: 1.5;
-    display: none;
-}
+    .zct-hero-note {
+        justify-content: center;
+    }
 
-.zct-faq-item.is-open .zct-faq-answer {
-    display: block;
-}
+    .zct-hero-visual {
+        max-width: 650px;
 
-/* --------------------------------------------------------------------------
-   RESPONSIVE DESIGN BREAKPOINTS
-   -------------------------------------------------------------------------- */
-@media (max-width: 1024px) {
-    .zct-main-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        margin: 20px auto 0;
+
+        transform: none;
     }
 
     .zct-type-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr 1fr;
     }
+
+    .zct-help-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .zct-contact-grid,
+    .zct-faq-grid {
+        gap: 55px;
+    }
+
+    .zct-final-inner {
+        grid-template-columns: auto 1fr;
+    }
+
+    .zct-final-btn {
+        grid-column: 1 / -1;
+    }
+
 }
 
-@media (max-width: 640px) {
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 650px) {
+
+    .zct-container {
+        width: calc(100% - 28px);
+    }
+
     .zct-hero {
-        padding: 60px 0 40px;
+        min-height: auto;
+
+        padding: 75px 0;
+    }
+
+    .zct-hero-copy h1 {
+        font-size: 48px;
+    }
+
+    .zct-hero-visual,
+    .zct-visual-inner {
+        min-height: 460px;
+    }
+
+    .zct-visual-inner {
+        padding: 22px;
+    }
+
+    .zct-message-user {
+        width: 90%;
+    }
+
+    .zct-types,
+    .zct-contact,
+    .zct-help,
+    .zct-faq {
+        padding: 75px 0;
     }
 
     .zct-type-grid {
         grid-template-columns: 1fr;
     }
 
-    .zct-form-card {
-        padding: 24px 20px;
+    .zct-type-card {
+        min-height: 140px;
     }
+
+    .zct-form-inner {
+        padding: 23px;
+    }
+
+    .zct-form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .zct-final {
+        padding-bottom: 80px;
+    }
+
+    .zct-final-inner {
+        min-height: 400px;
+
+        padding: 32px 23px;
+
+        grid-template-columns: 1fr;
+    }
+
+    .zct-final-icon {
+        width: 45px;
+        height: 45px;
+    }
+
 }
 
-/* Accessibility Focus States */
-#zev-contact-page a:focus-visible,
-#zev-contact-page button:focus-visible,
-#zev-contact-page input:focus-visible,
-#zev-contact-page textarea:focus-visible {
-    outline: 2px solid var(--green) !important;
-    outline-offset: 2px !important;
-}
 
-/* Reduced Motion Override */
+/* =========================================
+   REDUCED MOTION
+   ========================================= */
+
 @media (prefers-reduced-motion: reduce) {
-    .zct-type-card,
-    .zct-submit-btn {
-        transition: none !important;
-        transform: none !important;
+
+    .zct-running-border { display: none !important; }
+
+    .zct-reveal {
+        opacity: 1;
+        transform: none;
     }
+
 }
+
+.zct-accordion { margin-top: 20px; }
+.zct-glow-one, .zct-glow-two { display: none !important; }
 
 </style>
 
-<script data-wp-block-html="js">
+<div id="zev-contact-page" class="zct-page">
 
+    <!-- HERO -->
+    <section class="zct-hero">
+        <div class="zct-glow zct-glow-one"></div>
+        <div class="zct-glow zct-glow-two"></div>
+
+        <div class="zct-container zct-hero-grid">
+
+            <div class="zct-hero-copy zct-reveal">
+
+                <div class="zct-eyebrow">
+                    <span></span>
+                    CONTACT ZEVQYN
+                </div>
+
+                <h1>
+                    Got something<br>
+                    <span>on your mind?</span>
+                </h1>
+
+                <p>
+                    Need help, found something weird, have an idea,
+                    or just want to talk about ZEVQYN?
+                    You're in the right place.
+                </p>
+
+                <div class="zct-hero-note">
+                    <div class="zct-note-arrow">↘</div>
+
+                    <div>
+                        <strong>Real messages only.</strong>
+                        <span>No corporate maze. No 17-step ticket system.</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- HERO VISUAL -->
+            <div class="zct-hero-visual zct-running-border zct-reveal">
+
+                <div class="zct-visual-inner">
+
+                    <div class="zct-visual-top">
+                        <span>MESSAGE INCOMING</span>
+
+                        <div class="zct-online">
+                            <i></i>
+                            ZEVQYN
+                        </div>
+                    </div>
+
+                    <div class="zct-message-window">
+
+                        <div class="zct-message-user">
+                            <small>YOU</small>
+                            <p>
+                                Hey ZEVQYN, I have an idea that could
+                                make the platform even better...
+                            </p>
+                        </div>
+
+                        <div class="zct-message-line"></div>
+
+                        <div class="zct-message-zev">
+                            <div class="zct-zev-avatar">Z</div>
+
+                            <div>
+                                <small>ZEVQYN</small>
+                                <p>We're listening.</p>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="zct-floating-tag zct-tag-one">
+                        ✦ Feedback
+                    </div>
+
+                    <div class="zct-floating-tag zct-tag-two">
+                        Support ↗
+                    </div>
+
+                    <div class="zct-hand-note">
+                        good ideas start<br>
+                        with a message ↗
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT TYPES -->
+    <section class="zct-types">
+        <div class="zct-container">
+
+            <div class="zct-section-head zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>01</span>
+                    WHAT'S UP?
+                </div>
+
+                <h2>
+                    Pick your <span>reason.</span>
+                </h2>
+
+                <p>
+                    Whatever brought you here, point us in the right direction.
+                </p>
+
+            </div>
+
+
+            <div class="zct-type-grid">
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Support">
+                    <div class="zct-type-icon">?</div>
+
+                    <div>
+                        <strong>Need help</strong>
+                        <span>Something isn't working.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Feedback">
+                    <div class="zct-type-icon">✦</div>
+
+                    <div>
+                        <strong>Share feedback</strong>
+                        <span>Tell us what you think.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Partnership">
+                    <div class="zct-type-icon">◇</div>
+
+                    <div>
+                        <strong>Work together</strong>
+                        <span>Partnership or collaboration.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+
+                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Other">
+                    <div class="zct-type-icon">→</div>
+
+                    <div>
+                        <strong>Something else</strong>
+                        <span>We're still listening.</span>
+                    </div>
+
+                    <i>↗</i>
+                </button>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- CONTACT FORM -->
+    <section id="zct-form-section" class="zct-contact">
+        <div class="zct-container zct-contact-grid">
+
+            <div class="zct-contact-copy zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>02</span>
+                    SEND A MESSAGE
+                </div>
+
+                <h2>
+                    Tell us what's<br>
+                    <span>going on.</span>
+                </h2>
+
+                <p>
+                    Give us enough detail to understand what you need.
+                    Screenshots, error messages and dramatic backstories
+                    are all welcome.
+                </p>
+
+
+                <div class="zct-contact-points">
+
+                    <div>
+                        <span>01</span>
+
+                        <div>
+                            <strong>Keep it clear</strong>
+                            <p>Tell us what happened or what you're thinking.</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>02</span>
+
+                        <div>
+                            <strong>Add useful details</strong>
+                            <p>
+                                For bugs, mention what you were doing
+                                when it happened.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <span>03</span>
+
+                        <div>
+                            <strong>Hit send</strong>
+                            <p>That's it. No maze of support menus.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-side-note">
+                    <span>↳</span>
+                    humans appreciate context too.
+                </div>
+
+            </div>
+
+
+            <div class="zct-form-shell zct-running-border zct-reveal">
+
+                <div class="zct-form-inner">
+
+                    <div class="zct-form-heading">
+
+                        <div>
+                            <small>CONTACT FORM</small>
+                            <h3>Let's talk.</h3>
+                        </div>
+
+                        <div class="zct-form-status">
+                            <i></i>
+                            READY
+                        </div>
+
+                    </div>
+
+
+                    <form id="zct-contact-form" novalidate="">
+
+                        <div class="zct-form-row">
+
+                            <div class="zct-field">
+                                <label for="zct-name">
+                                    Your name
+                                </label>
+
+                                <input id="zct-name" name="name" type="text" placeholder="What should we call you?" autocomplete="name">
+
+                                <small class="zct-error"></small>
+                            </div>
+
+
+                            <div class="zct-field">
+                                <label for="zct-email">
+                                    Email
+                                </label>
+
+                                <input id="zct-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
+
+                                <small class="zct-error"></small>
+                            </div>
+
+                        </div>
+
+
+                        <div class="zct-field">
+
+                            <label for="zct-subject">
+                                What's this about?
+                            </label>
+
+                            <select id="zct-subject" name="subject">
+                                <option value="">
+                                    Choose a topic
+                                </option>
+
+                                <option value="Support">
+                                    I need help
+                                </option>
+
+                                <option value="Feedback">
+                                    Feedback / suggestion
+                                </option>
+
+                                <option value="Partnership">
+                                    Partnership / collaboration
+                                </option>
+
+                                <option value="Bug">
+                                    Report a bug
+                                </option>
+
+                                <option value="Other">
+                                    Something else
+                                </option>
+                            </select>
+
+                            <small class="zct-error"></small>
+
+                        </div>
+
+
+                        <div class="zct-field">
+
+                            <label for="zct-message">
+                                Message
+                            </label>
+
+                            <textarea id="zct-message" name="message" rows="7" maxlength="1500" placeholder="Tell us what's on your mind..."></textarea>
+
+                            <div class="zct-message-meta">
+                                <small class="zct-error"></small>
+
+                                <span>
+                                    <b id="zct-count">0</b>/1500
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <button type="submit" class="zct-submit" id="zct-submit">
+                            <span>Send message</span>
+                            <i>↗</i>
+                        </button>
+
+
+                        <div id="zct-form-response" class="zct-form-response" aria-live="polite"></div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- QUICK HELP -->
+    <section class="zct-help">
+        <div class="zct-container">
+
+            <div class="zct-section-head zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>03</span>
+                    BEFORE YOU SEND
+                </div>
+
+                <h2>
+                    Maybe the answer is<br>
+                    <span>already here.</span>
+                </h2>
+
+            </div>
+
+
+            <div class="zct-help-grid">
+
+                <a href="/features/" class="zct-help-card zct-reveal">
+                    <span>01</span>
+                    <div>
+                        <strong>Explore Features</strong>
+                        <p>
+                            See what you can actually do inside ZEVQYN.
+                        </p>
+                    </div>
+                    <i>↗</i>
+                </a>
+
+
+                <a href="/how-it-works/" class="zct-help-card zct-reveal">
+                    <span>02</span>
+                    <div>
+                        <strong>How It Works</strong>
+                        <p>
+                            Follow the full research-to-career workflow.
+                        </p>
+                    </div>
+                    <i>↗</i>
+                </a>
+
+
+                <a href="/about/" class="zct-help-card zct-reveal">
+                    <span>03</span>
+                    <div>
+                        <strong>About ZEVQYN</strong>
+                        <p>
+                            Find out why we're building this.
+                        </p>
+                    </div>
+                    <i>↗</i>
+                </a>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FAQ -->
+    <section class="zct-faq">
+        <div class="zct-container zct-faq-grid">
+
+            <div class="zct-faq-copy zct-reveal">
+
+                <div class="zct-section-label">
+                    <span>04</span>
+                    QUICK ANSWERS
+                </div>
+
+                <h2>
+                    Tiny FAQ.<br>
+                    <span>Big questions welcome.</span>
+                </h2>
+
+                <p>
+                    Didn't find what you needed?
+                    That's what the form above is for.
+                </p>
+
+            </div>
+
+
+            <div class="zct-accordion">
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>What is ZEVQYN?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            ZEVQYN is an AI-powered research and career
+                            workspace that connects research, projects,
+                            career information, resumes, portfolios and
+                            AI career guidance.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>Who is ZEVQYN built for?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            It's designed around students, developers,
+                            self-learners and people building toward
+                            internships or early career opportunities.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>Can I report a bug here?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            Yes. Choose “Report a bug” in the contact form
+                            and include what happened, what you expected,
+                            and any useful error details.
+                        </p>
+                    </div>
+
+                </div>
+
+
+                <div class="zct-faq-item zct-reveal">
+
+                    <button type="button" class="zct-faq-button">
+                        <span>Can I suggest a feature?</span>
+                        <i>+</i>
+                    </button>
+
+                    <div class="zct-faq-answer">
+                        <p>
+                            Absolutely. Choose the feedback option and
+                            explain the idea, why you'd use it, and what
+                            problem it would solve for you.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- FINAL CTA -->
+    <section class="zct-final">
+        <div class="zct-container">
+
+            <div class="zct-final-card zct-running-border zct-reveal">
+
+                <div class="zct-final-inner">
+
+                    <div class="zct-final-icon">✦</div>
+
+                    <div>
+                        <small>NOT HERE FOR SUPPORT?</small>
+
+                        <h2>
+                            Maybe you're ready to<br>
+                            <span>build something instead.</span>
+                        </h2>
+
+                        <p>
+                            Start your ZEVQYN workspace and turn
+                            what you're learning into work worth showing.
+                        </p>
+                    </div>
+
+                    <a href="/register/" class="zct-btn zct-btn-primary zct-final-btn">
+                        Start with ZEVQYN
+                        <span>↗</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+</div>
+
+<script>
+﻿
 function zevContactInitialize() {
 
     var contactForm =
@@ -1153,569 +2679,4 @@ if (
 }
 
 </script>
-
-<div id="zev-contact-page" class="zct-page">
-
-    <!-- HERO -->
-    <section class="zct-hero">
-        <div class="zct-glow zct-glow-one"></div>
-        <div class="zct-glow zct-glow-two"></div>
-
-        <div class="zct-container zct-hero-grid">
-
-            <div class="zct-hero-copy zct-reveal">
-
-                <div class="zct-eyebrow">
-                    <span></span>
-                    CONTACT ZEVQYN
-                </div>
-
-                <h1>
-                    Got something<br>
-                    <span>on your mind?</span>
-                </h1>
-
-                <p>
-                    Need help, found something weird, have an idea,
-                    or just want to talk about ZEVQYN?
-                    You're in the right place.
-                </p>
-
-                <div class="zct-hero-note">
-                    <div class="zct-note-arrow">↘</div>
-
-                    <div>
-                        <strong>Real messages only.</strong>
-                        <span>No corporate maze. No 17-step ticket system.</span>
-                    </div>
-                </div>
-
-            </div>
-
-
-            <!-- HERO VISUAL -->
-            <div class="zct-hero-visual zct-running-border zct-reveal">
-
-                <div class="zct-visual-inner">
-
-                    <div class="zct-visual-top">
-                        <span>MESSAGE INCOMING</span>
-
-                        <div class="zct-online">
-                            <i></i>
-                            ZEVQYN
-                        </div>
-                    </div>
-
-                    <div class="zct-message-window">
-
-                        <div class="zct-message-user">
-                            <small>YOU</small>
-                            <p>
-                                Hey ZEVQYN, I have an idea that could
-                                make the platform even better...
-                            </p>
-                        </div>
-
-                        <div class="zct-message-line"></div>
-
-                        <div class="zct-message-zev">
-                            <div class="zct-zev-avatar">Z</div>
-
-                            <div>
-                                <small>ZEVQYN</small>
-                                <p>We're listening.</p>
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div class="zct-floating-tag zct-tag-one">
-                        ✦ Feedback
-                    </div>
-
-                    <div class="zct-floating-tag zct-tag-two">
-                        Support ↗
-                    </div>
-
-                    <div class="zct-hand-note">
-                        good ideas start<br>
-                        with a message ↗
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- CONTACT TYPES -->
-    <section class="zct-types">
-        <div class="zct-container">
-
-            <div class="zct-section-head zct-reveal">
-
-                <div class="zct-section-label">
-                    <span>01</span>
-                    WHAT'S UP?
-                </div>
-
-                <h2>
-                    Pick your <span>reason.</span>
-                </h2>
-
-                <p>
-                    Whatever brought you here, point us in the right direction.
-                </p>
-
-            </div>
-
-
-            <div class="zct-type-grid">
-
-                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Support">
-                    <div class="zct-type-icon">?</div>
-
-                    <div>
-                        <strong>Need help</strong>
-                        <span>Something isn't working.</span>
-                    </div>
-
-                    <i>↗</i>
-                </button>
-
-
-                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Feedback">
-                    <div class="zct-type-icon">✦</div>
-
-                    <div>
-                        <strong>Share feedback</strong>
-                        <span>Tell us what you think.</span>
-                    </div>
-
-                    <i>↗</i>
-                </button>
-
-
-                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Partnership">
-                    <div class="zct-type-icon">◇</div>
-
-                    <div>
-                        <strong>Work together</strong>
-                        <span>Partnership or collaboration.</span>
-                    </div>
-
-                    <i>↗</i>
-                </button>
-
-
-                <button type="button" class="zct-type-card zct-reveal" data-contact-type="Other">
-                    <div class="zct-type-icon">→</div>
-
-                    <div>
-                        <strong>Something else</strong>
-                        <span>We're still listening.</span>
-                    </div>
-
-                    <i>↗</i>
-                </button>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- CONTACT FORM -->
-    <section id="zct-form-section" class="zct-contact">
-        <div class="zct-container zct-contact-grid">
-
-            <div class="zct-contact-copy zct-reveal">
-
-                <div class="zct-section-label">
-                    <span>02</span>
-                    SEND A MESSAGE
-                </div>
-
-                <h2>
-                    Tell us what's<br>
-                    <span>going on.</span>
-                </h2>
-
-                <p>
-                    Give us enough detail to understand what you need.
-                    Screenshots, error messages and dramatic backstories
-                    are all welcome.
-                </p>
-
-
-                <div class="zct-contact-points">
-
-                    <div>
-                        <span>01</span>
-
-                        <div>
-                            <strong>Keep it clear</strong>
-                            <p>Tell us what happened or what you're thinking.</p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span>02</span>
-
-                        <div>
-                            <strong>Add useful details</strong>
-                            <p>
-                                For bugs, mention what you were doing
-                                when it happened.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div>
-                        <span>03</span>
-
-                        <div>
-                            <strong>Hit send</strong>
-                            <p>That's it. No maze of support menus.</p>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <div class="zct-side-note">
-                    <span>↳</span>
-                    humans appreciate context too.
-                </div>
-
-            </div>
-
-
-            <div class="zct-form-shell zct-running-border zct-reveal">
-
-                <div class="zct-form-inner">
-
-                    <div class="zct-form-heading">
-
-                        <div>
-                            <small>CONTACT FORM</small>
-                            <h3>Let's talk.</h3>
-                        </div>
-
-                        <div class="zct-form-status">
-                            <i></i>
-                            READY
-                        </div>
-
-                    </div>
-
-
-                    <form id="zct-contact-form" novalidate="">
-
-                        <div class="zct-form-row">
-
-                            <div class="zct-field">
-                                <label for="zct-name">
-                                    Your name
-                                </label>
-
-                                <input id="zct-name" name="name" type="text" placeholder="What should we call you?" autocomplete="name">
-
-                                <small class="zct-error"></small>
-                            </div>
-
-
-                            <div class="zct-field">
-                                <label for="zct-email">
-                                    Email
-                                </label>
-
-                                <input id="zct-email" name="email" type="email" placeholder="you@example.com" autocomplete="email">
-
-                                <small class="zct-error"></small>
-                            </div>
-
-                        </div>
-
-
-                        <div class="zct-field">
-
-                            <label for="zct-subject">
-                                What's this about?
-                            </label>
-
-                            <select id="zct-subject" name="subject">
-                                <option value="">
-                                    Choose a topic
-                                </option>
-
-                                <option value="Support">
-                                    I need help
-                                </option>
-
-                                <option value="Feedback">
-                                    Feedback / suggestion
-                                </option>
-
-                                <option value="Partnership">
-                                    Partnership / collaboration
-                                </option>
-
-                                <option value="Bug">
-                                    Report a bug
-                                </option>
-
-                                <option value="Other">
-                                    Something else
-                                </option>
-                            </select>
-
-                            <small class="zct-error"></small>
-
-                        </div>
-
-
-                        <div class="zct-field">
-
-                            <label for="zct-message">
-                                Message
-                            </label>
-
-                            <textarea id="zct-message" name="message" rows="7" maxlength="1500" placeholder="Tell us what's on your mind..."></textarea>
-
-                            <div class="zct-message-meta">
-                                <small class="zct-error"></small>
-
-                                <span>
-                                    <b id="zct-count">0</b>/1500
-                                </span>
-                            </div>
-
-                        </div>
-
-
-                        <button type="submit" class="zct-submit" id="zct-submit">
-                            <span>Send message</span>
-                            <i>↗</i>
-                        </button>
-
-
-                        <div id="zct-form-response" class="zct-form-response" aria-live="polite"></div>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- QUICK HELP -->
-    <section class="zct-help">
-        <div class="zct-container">
-
-            <div class="zct-section-head zct-reveal">
-
-                <div class="zct-section-label">
-                    <span>03</span>
-                    BEFORE YOU SEND
-                </div>
-
-                <h2>
-                    Maybe the answer is<br>
-                    <span>already here.</span>
-                </h2>
-
-            </div>
-
-
-            <div class="zct-help-grid">
-
-                <a href="/features/" class="zct-help-card zct-reveal">
-                    <span>01</span>
-                    <div>
-                        <strong>Explore Features</strong>
-                        <p>
-                            See what you can actually do inside ZEVQYN.
-                        </p>
-                    </div>
-                    <i>↗</i>
-                </a>
-
-
-                <a href="/how-it-works/" class="zct-help-card zct-reveal">
-                    <span>02</span>
-                    <div>
-                        <strong>How It Works</strong>
-                        <p>
-                            Follow the full research-to-career workflow.
-                        </p>
-                    </div>
-                    <i>↗</i>
-                </a>
-
-
-                <a href="/about/" class="zct-help-card zct-reveal">
-                    <span>03</span>
-                    <div>
-                        <strong>About ZEVQYN</strong>
-                        <p>
-                            Find out why we're building this.
-                        </p>
-                    </div>
-                    <i>↗</i>
-                </a>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- FAQ -->
-    <section class="zct-faq">
-        <div class="zct-container zct-faq-grid">
-
-            <div class="zct-faq-copy zct-reveal">
-
-                <div class="zct-section-label">
-                    <span>04</span>
-                    QUICK ANSWERS
-                </div>
-
-                <h2>
-                    Tiny FAQ.<br>
-                    <span>Big questions welcome.</span>
-                </h2>
-
-                <p>
-                    Didn't find what you needed?
-                    That's what the form above is for.
-                </p>
-
-            </div>
-
-
-            <div class="zct-accordion">
-
-                <div class="zct-faq-item zct-reveal">
-
-                    <button type="button" class="zct-faq-button">
-                        <span>What is ZEVQYN?</span>
-                        <i>+</i>
-                    </button>
-
-                    <div class="zct-faq-answer">
-                        <p>
-                            ZEVQYN is an AI-powered research and career
-                            workspace that connects research, projects,
-                            career information, resumes, portfolios and
-                            AI career guidance.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="zct-faq-item zct-reveal">
-
-                    <button type="button" class="zct-faq-button">
-                        <span>Who is ZEVQYN built for?</span>
-                        <i>+</i>
-                    </button>
-
-                    <div class="zct-faq-answer">
-                        <p>
-                            It's designed around students, developers,
-                            self-learners and people building toward
-                            internships or early career opportunities.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="zct-faq-item zct-reveal">
-
-                    <button type="button" class="zct-faq-button">
-                        <span>Can I report a bug here?</span>
-                        <i>+</i>
-                    </button>
-
-                    <div class="zct-faq-answer">
-                        <p>
-                            Yes. Choose “Report a bug” in the contact form
-                            and include what happened, what you expected,
-                            and any useful error details.
-                        </p>
-                    </div>
-
-                </div>
-
-
-                <div class="zct-faq-item zct-reveal">
-
-                    <button type="button" class="zct-faq-button">
-                        <span>Can I suggest a feature?</span>
-                        <i>+</i>
-                    </button>
-
-                    <div class="zct-faq-answer">
-                        <p>
-                            Absolutely. Choose the feedback option and
-                            explain the idea, why you'd use it, and what
-                            problem it would solve for you.
-                        </p>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- FINAL CTA -->
-    <section class="zct-final">
-        <div class="zct-container">
-
-            <div class="zct-final-card zct-running-border zct-reveal">
-
-                <div class="zct-final-inner">
-
-                    <div class="zct-final-icon">✦</div>
-
-                    <div>
-                        <small>NOT HERE FOR SUPPORT?</small>
-
-                        <h2>
-                            Maybe you're ready to<br>
-                            <span>build something instead.</span>
-                        </h2>
-
-                        <p>
-                            Start your ZEVQYN workspace and turn
-                            what you're learning into work worth showing.
-                        </p>
-                    </div>
-
-                    <a href="/register/" class="zct-btn zct-btn-primary zct-final-btn">
-                        Start with ZEVQYN
-                        <span>↗</span>
-                    </a>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
-
-</div>
 <!-- /wp:html -->
