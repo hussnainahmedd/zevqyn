@@ -5,13 +5,15 @@
 > **Branch:** `v1.1-ui-refinement`  
 > **Production Target:** [https://zevqyn.free.je/](https://zevqyn.free.je/) (WordPress 7.1.x + Blocksy)  
 > **Backend API:** [https://zevqyn-backend.onrender.com](https://zevqyn-backend.onrender.com) (FastAPI + Supabase + Gemini)  
-> **Status:** **COMPLETE** across all 19 pages  
+> **Status:** **COMPLETE** across all 20 pages (including Backend V1.1 Integration)  
 
 ---
 
 ## 1. Executive Summary
 
 The ZEVQYN V1.1 frontend refinement successfully transforms the platform from an "obviously AI-generated SaaS prototype" into an institutional, engineering-grade AI workspace. Drawing visual inspiration from developer-focused products such as Linear, Cursor, Notion, and Stripe, the refinement eliminates gimmicky visual noise (conic border animations, pulsing radar orbits, heavy ambient blur orbs, neon dropshadows, and 8–9px micro-typography) while preserving **100% of working backend API contracts, Supabase authentication flows, and client-side application logic**.
+
+In addition to visual refinement, V1.1 integrates the newly released **Backend V1.1 features** (resume reordering, research conversation deletion, global document browsing, and legacy assistant deprecation alignment). See [`docs/V1_1_FRONTEND_BACKEND_INTEGRATION_REPORT.md`](V1_1_FRONTEND_BACKEND_INTEGRATION_REPORT.md) for exhaustive integration contracts and implementation details.
 
 ### Core Value Proposition & Flow
 $$\text{Research Documents} \longrightarrow \text{Project Extraction} \longrightarrow \text{ATS Resume} \longrightarrow \text{Public Portfolio} \longrightarrow \text{Career AI Growth}$$
@@ -117,18 +119,38 @@ The visual transformation is governed by [`docs/DESIGN_SYSTEM_V1_1.md`](DESIGN_S
     - Re-engineered master-detail inbox view into a clean, modern email client layout.
     - Preserved admin session token authorization, unread badge counters, search/filter controls, and message status updates (`PATCH /api/v1/contact/{id}`).
 
+### Phase 7: Backend V1.1 Feature Integrations & Global Documents
+20. **Global Documents (`/documents/`):** *(New Page in V1.1)*
+    - Implemented global document explorer for `GET /api/v1/documents`.
+    - Real-time search, file_type filter, status filter, and pagination (`limit=50`).
+    - Asynchronous client-side workspace name mapping via `GET /api/v1/workspaces`.
+    - Linked from Dashboard quick actions and Research Hub.
+    - Full 6-file suite generated.
+- **Resume Item Reordering (`/resume/`):**
+    - Added drag-and-drop handles and keyboard-accessible Up/Down reordering buttons.
+    - Enforced section boundary partitions (projects, education, skills).
+    - Integrated bulk update persistence via `PATCH /api/v1/resumes/{resume_id}/items/reorder` with error rollback.
+    - Kept `#zevqyn-resume-preview` 100% byte-identical.
+- **Research Conversation Deletion (`/research-workspace/`):**
+    - Added conversation list section with active thread indicators.
+    - Integrated thread deletion calling `DELETE /api/v1/workspaces/{w_id}/conversations/{c_id}` with confirmation modal.
+    - Automatically clears Studio chat state when active conversation is deleted.
+- **Career AI Alignment (`/career-ai/`):**
+    - Confirmed zero calls to deprecated legacy route `POST /api/v1/career/assistant`.
+    - Documented active usage of `POST /api/v1/career/ai/chat`.
+
 ---
 
 ## 4. Verification & Static Regression Analysis
 
-An automated static validation suite was executed across all 19 pages (`scratch/validate_all_pages.py` and `scratch/validate_links_and_security.py`).
+An automated static validation suite was executed across all 20 pages (`scratch/validate_all_pages.py` and `scratch/validate_links_and_security.py`).
 
 | Verification Item | Specification | Result |
 |---|---|---|
-| File Completeness | All 19 pages contain 6 standard files (`content.html`, `style.css`, `script.js`, `wordpress-blocks.html`, `README.md`, `MIGRATION_NOTES_V1_1.md`) | **100% Passed (114/114 files verified)** |
+| File Completeness | All 20 pages contain 6 standard files (`content.html`, `style.css`, `script.js`, `wordpress-blocks.html`, `README.md`, `MIGRATION_NOTES_V1_1.md`) | **100% Passed (120/120 files verified)** |
 | Forbidden AI Artifacts | Zero instances of `@property --zev-angle`, `zhiOrbitSpin`, `zaBorderRun`, or `border-animation` | **100% Clean** |
-| Link Integrity | All internal routes map to valid ZEVQYN slugs; zero broken or orphan links | **100% Passed** |
-| Security & Secrets | No leaked Supabase service role keys or private backend secrets | **100% Clean** |
+| Link Integrity | All internal routes map to valid ZEVQYN slugs; zero broken or orphan links | **100% Passed (0 dead links)** |
+| Security & Secrets | No leaked Supabase service role keys or private backend secrets | **100% Clean (0 leaks)** |
 | WordPress Compatibility | All new scripts avoid logical `&&` to prevent `&#038;&#038;` entity corruption | **100% Verified** |
 | ATS Resume Fidelity | `#zevqyn-resume-preview` and print stylesheet preserved verbatim | **100% Verified** |
 
@@ -136,8 +158,8 @@ An automated static validation suite was executed across all 19 pages (`scratch/
 
 ## 5. Summary Statistics
 
-- **Total Pages Refined:** 19 of 19 (100%)
-- **Total Files Created/Updated:** 114 core page files + design system & audit documents
+- **Total Pages Refined / Created:** 20 of 20 (100%)
+- **Total Files Created/Updated:** 120 core page files + design system, audit & integration documents
 - **Git Commits in Branch `v1.1-ui-refinement`:**
   - `7707f0c` — Initial UI/UX audit & Design System V1.1
   - `7889391` — Phase 1: Shared visual foundation (`custom-theme.css`)
@@ -147,4 +169,9 @@ An automated static validation suite was executed across all 19 pages (`scratch/
   - `28f8d94` — Phase 4: Core workspace (`dashboard`, `research`, `research-workspace`, `projects`, `project-workspace`)
   - `d58ffaa` — Phase 5: Career & publishing (`career`, `resume`, `portfolio`, `public-portfolio`, `career-ai`)
   - `3e211aa` — Phase 6: Settings & admin (`settings`, `admin-inbox`)
-- **Remote Status:** All commits pushed to `origin/v1.1-ui-refinement`. `main` branch and live WordPress production site remain untouched.
+  - `2fbaac0` — Test: validate ZEVQYN V1.1 frontend regression and finalize documentation
+  - `448c506` — Feat: integrate resume item reordering
+  - `bf9fb4a` — Feat: add research conversation deletion
+  - `8be0f55` — Feat: add global documents experience
+  - `f6c72ab` — Chore: align frontend with Career AI V1.1
+- **Remote Status:** Pushed to `origin/v1.1-ui-refinement`. `main` branch and live WordPress production site remain untouched.
