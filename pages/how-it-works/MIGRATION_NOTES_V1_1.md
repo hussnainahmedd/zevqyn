@@ -1,35 +1,18 @@
-# ZEVQYN V1.1 How It Works Page — WordPress Migration Guide
+# WordPress Migration Notes V1.1
 
-> **Target Page:** How It Works (`/how-it-works/`)  
-> **Source Files in Repo:** `pages/how-it-works/wordpress-blocks.html`, `style.css`, `script.js`, `content.html`  
-> **Target Environment:** WordPress 7.1.x + Blocksy Theme  
+## Overview
+This bundle has been completely normalized to the V1.1 design system. It uses the exact same typography, spacing, and variable scale as the Home and Features pages.
 
----
+## Deployment Checklist
+1. Open the WordPress editor for this page.
+2. Delete the existing blocks.
+3. Paste the contents of wordpress-blocks.html as Custom HTML.
+4. Verify that the page matches the V1.1 aesthetic (dark surface, no neon glow, correct font hierarchy).
+5. Ensure Page Title is hidden in Blocksy settings.
+6. Verify responsive layout on mobile.
 
-## What Was Refined in V1.1
+## API Notes (Contact only)
+For the Contact page, ensure that the POST /api/v1/contact endpoint continues to receive payloads in the identical format as before. The JS structure was strictly preserved.
 
-1. **Eliminated 30s Spinning Radar Orbit:** Removed `@keyframes zhiOrbitSpin` and `@keyframes zhiRunningBorder` continuous spinning loops.
-2. **Replaced with Architectural Pipeline:** Added a clean, structured schematic displaying the actual end-to-end data pipeline: Ingest $\to$ Parse $\to$ RAG $\to$ Project $\to$ ATS Resume $\to$ Career AI.
-3. **Structured 6-Step Showcase:** Refined the step cards with high-contrast typography, restrained 1px borders, and clear outcome points.
-4. **Accessible Motion:** Wrapped all reveals and transitions in `@media (prefers-reduced-motion: reduce)`.
-5. **Full Focus Rings:** Added `:focus-visible` styling on all action triggers and links.
-
----
-
-## Step-by-Step Migration Instructions
-
-1. Log into WordPress Admin (`/wp-admin/`).
-2. Navigate to **Pages $\to$ All Pages $\to$ How It Works**.
-3. Switch to **Code Editor** mode.
-4. Replace all content with `pages/how-it-works/wordpress-blocks.html`.
-5. Switch back to **Visual Editor** mode.
-6. Verify under **Blocksy Settings** that **Page Title** is **Disabled**.
-7. Click **Update**.
-
----
-
-## Verification After Migration
-
-- Click `#zhi-steps` in hero to verify smooth scrolling.
-- Click `Start Researching Free` to verify navigation to `/register/`.
-- Verify the 6 pipeline milestone nodes render with clean 1px borders.
+## Rollback
+If the layout fails to render properly, revert the WordPress revision history to the immediately preceding version.

@@ -15,7 +15,7 @@
 }
 
 #zev-how-page {
-    --green: var(--zev-green-primary, #2ebd68);
+            --green: var(--zev-green-primary, #2ebd68);
     --green-text: var(--zev-green-text, #41cf7b);
     --bg: var(--zev-bg-canvas, #090b0e);
     --panel: var(--zev-bg-panel, #0f1217);
@@ -27,7 +27,7 @@
     --text-sec: var(--zev-text-secondary, #c0c7d2);
     --muted: var(--zev-text-muted, #828c9a);
 
-    width: 100%;
+            width: 100%;
     overflow: hidden;
     background: var(--bg);
     color: var(--text);
@@ -53,34 +53,31 @@
 }
 
 .zhi-kicker {
-    margin-bottom: 13px;
-
-    color: var(--green);
-
-    font-size: 10px;
-    font-weight: 850;
-    letter-spacing: .16em;
+    display: inline-block;
+    font-size: var(--zev-text-xs, 12px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    margin-bottom: 8px;
 }
 
 .zhi-btn {
-    min-height: 49px;
-    padding: 0 21px;
-
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-
-    border-radius: 8px;
-
-    font-size: 12px;
-    font-weight: 800;
-
+    gap: 8px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: var(--zev-radius-sm, 6px);
+    font-size: 14px;
+    font-weight: 500;
     text-decoration: none !important;
-
-    transition:
-        transform .2s ease,
-        box-shadow .2s ease;
+    cursor: pointer;
+    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .zhi-btn:hover {
@@ -1663,7 +1660,21 @@
 }
 
 .zhi-final-card .zhi-btn {
-    margin-top: 28px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    height: 40px;
+    padding: 0 20px;
+    border-radius: var(--zev-radius-sm, 6px);
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none !important;
+    cursor: pointer;
+    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
+                background var(--zev-duration-standard, 200ms) ease,
+                border-color var(--zev-duration-standard, 200ms) ease,
+                box-shadow var(--zev-duration-standard, 200ms) ease;
 }
 
 .zhi-final-decoration {
