@@ -54,6 +54,13 @@
     }
 }
 
+
+.zct-container {
+    width: min(1180px, calc(100% - 44px));
+    margin: 0 auto;
+}
+
+.zct-section-label,
 .zct-eyebrow {
     display: inline-block;
     font-size: var(--zev-text-xs, 12px);
@@ -85,7 +92,6 @@
 
     background: var(--green);
 }
-
 
 /* =========================================
    HERO
@@ -207,7 +213,6 @@
     font-size: 9px;
 }
 
-
 /* =========================================
    RUNNING GREEN BORDER
    ========================================= */
@@ -218,10 +223,19 @@
     inherits: false;
 }
 
-.zct-running-border { display: none !important; }
+.zct-running-border {
+    position: relative;
 
+    isolation: isolate;
+    overflow: hidden;
 
+    border: 1px solid transparent;
 
+    background: var(--border-strong);
+
+    animation:
+        zctBorderRun 4s linear infinite;
+}
 
 /* =========================================
    HERO VISUAL
@@ -248,7 +262,13 @@
 
     border-radius: 19px;
 
-    background: var(--surface);
+    background:
+        radial-gradient(
+            circle at 80% 20%,
+            var(--border),
+            transparent 30%
+        ),
+        var(--panel);
 }
 
 .zct-visual-top {
@@ -405,17 +425,41 @@
     transform: rotate(-3deg);
 }
 
-
 /* =========================================
    GLOWS
    ========================================= */
 
-.zct-glow { display: none !important; }
+.zct-glow { display: none !important;
+    position: absolute;
 
-.zct-glow { display: none !important; }
+    border-radius: 50%;
 
-.zct-glow { display: none !important; }
+    filter: blur(100px);
 
+    pointer-events: none;
+}
+
+.zct-glow-one { display: none !important;
+    width: 400px;
+    height: 400px;
+
+    right: 4%;
+    top: 15%;
+
+    background:
+        rgba(53, 220, 120, .06);
+}
+
+.zct-glow-two { display: none !important;
+    width: 260px;
+    height: 260px;
+
+    left: 5%;
+    bottom: 0;
+
+    background:
+        rgba(74, 72, 255, .035);
+}
 
 /* =========================================
    GENERAL SECTION HEADINGS
@@ -462,7 +506,6 @@
     font-size: 13px;
     line-height: 1.7;
 }
-
 
 /* =========================================
    CONTACT TYPES
@@ -572,7 +615,6 @@
     font-style: normal;
 }
 
-
 /* =========================================
    CONTACT FORM SECTION
    ========================================= */
@@ -668,7 +710,6 @@
     color: var(--green);
 }
 
-
 /* =========================================
    FORM
    ========================================= */
@@ -682,7 +723,13 @@
 
     border-radius: 17px;
 
-    background: var(--surface);
+    background:
+        radial-gradient(
+            circle at 100% 0,
+            var(--border),
+            transparent 25%
+        ),
+        var(--panel);
 }
 
 .zct-form-heading {
@@ -898,7 +945,6 @@
     color: #aeeac4;
 }
 
-
 /* =========================================
    QUICK HELP
    ========================================= */
@@ -981,7 +1027,6 @@
 
     font-style: normal;
 }
-
 
 /* =========================================
    FAQ
@@ -1077,7 +1122,6 @@
     transform: rotate(45deg);
 }
 
-
 /* =========================================
    FINAL CTA
    ========================================= */
@@ -1104,7 +1148,13 @@
 
     border-radius: 18px;
 
-    background: var(--surface);
+    background:
+        radial-gradient(
+            circle at 80% 50%,
+            var(--border),
+            transparent 28%
+        ),
+        var(--panel);
 }
 
 .zct-final-icon {
@@ -1169,13 +1219,12 @@
 .zct-btn-primary {
     background: var(--green);
 
-    color: #03180b !important;
+    color: #090b0e !important;
 }
 
 .zct-final-btn {
     white-space: nowrap;
 }
-
 
 /* =========================================
    REVEAL
@@ -1196,7 +1245,6 @@
 
     transform: translateY(0);
 }
-
 
 /* =========================================
    TABLET
@@ -1263,7 +1311,6 @@
     }
 
 }
-
 
 /* =========================================
    MOBILE
@@ -1341,14 +1388,15 @@
 
 }
 
-
 /* =========================================
    REDUCED MOTION
    ========================================= */
 
 @media (prefers-reduced-motion: reduce) {
 
-    .zct-running-border { display: none !important; }
+    .zct-running-border {
+        animation: none;
+    }
 
     .zct-reveal {
         opacity: 1;
@@ -1356,9 +1404,7 @@
     }
 
 }
-
-.zct-accordion { margin-top: 20px; }
-.zct-glow-one, .zct-glow-two { display: none !important; }
+.zct-accordion { margin-top: 24px; }
 
 </style>
 
