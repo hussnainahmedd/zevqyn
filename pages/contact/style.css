@@ -14,23 +14,23 @@
 }
 
 #zev-contact-page {
-    --green: var(--zev-green-primary, #2ebd68);
-    --green-text: var(--zev-green-text, #41cf7b);
-    --bg: var(--zev-bg-canvas, #090b0e);
-    --panel: var(--zev-bg-panel, #0f1217);
-    --surface: var(--zev-bg-surface, #151921);
-    --subtle: var(--zev-bg-subtle, #222834);
-    --border: var(--zev-border-default, rgba(255, 255, 255, 0.10));
-    --border-strong: var(--zev-border-strong, rgba(255, 255, 255, 0.18));
-    --text: var(--zev-text-primary, #f4f6f8);
-    --text-sec: var(--zev-text-secondary, #c0c7d2);
-    --muted: var(--zev-text-muted, #828c9a);
+    --zct-green: #25e879;
+    --zct-green-soft: #75f6a6;
+    --zct-bg: #020604;
+    --zct-card: #06100b;
+    --zct-card-2: #08130e;
+    --zct-line: rgba(99, 255, 158, 0.17);
+    --zct-text: #f5fff8;
+    --zct-muted: #89a99a;
 
     width: 100%;
     overflow: hidden;
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--zev-font-sans, 'Inter', -apple-system, sans-serif);
+    background:
+        radial-gradient(circle at 80% 5%, rgba(26, 255, 113, 0.07), transparent 28%),
+        radial-gradient(circle at 15% 48%, rgba(26, 255, 113, 0.035), transparent 25%),
+        var(--zct-bg);
+    color: var(--zct-text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
 }
@@ -44,25 +44,25 @@
 #zev-contact-page h1 {
     margin: 0 0 20px;
     font-size: clamp(34px, 4.5vw, 54px);
-    line-height: 1.15;
+    line-height: 1.08;
     letter-spacing: -0.025em;
     font-weight: 700;
-    color: var(--text);
+    color: var(--zct-text);
 }
 #zev-contact-page h1 span,
 #zev-contact-page h2 span {
-    color: var(--green-text);
+    color: var(--zct-green-soft);
 }
 #zev-contact-page h2 {
     margin: 0 0 12px 0;
     font-size: clamp(24px, 3.5vw, 36px);
-    line-height: 1.25;
+    line-height: 1.15;
     letter-spacing: -0.02em;
     font-weight: 700;
-    color: var(--text);
+    color: var(--zct-text);
 }
 #zev-contact-page p {
-    color: var(--text-sec);
+    color: var(--zct-muted);
     margin: 0 0 16px;
     font-size: 16px;
 }
@@ -75,15 +75,15 @@
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    color: var(--green-text);
+    color: var(--zct-green-soft);
     margin-bottom: 12px;
 }
 .zct-section-label span {
     padding: 2px 6px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--zct-card-2);
+    border: 1px solid var(--zct-line);
     border-radius: 4px;
-    color: var(--muted);
+    color: var(--zct-muted);
     font-size: 10px;
 }
 
@@ -103,7 +103,7 @@
     cursor: pointer;
     transition: transform 120ms ease, background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
     color: #090b0e !important;
-    background: var(--green);
+    background: var(--zct-green);
     border: 1px solid transparent;
 }
 .zct-submit:hover,
@@ -112,11 +112,11 @@
 }
 .zct-submit:disabled,
 .zct-submit.zct-loading {
-    background: var(--surface);
-    color: var(--muted) !important;
+    background: var(--zct-card-2);
+    color: var(--zct-muted) !important;
     cursor: not-allowed;
     transform: none;
-    border-color: var(--border);
+    border-color: var(--zct-line);
 }
 
 /* ANIMATIONS (restricted) */
@@ -134,8 +134,8 @@
 .zct-running-border {
     position: relative;
     border-radius: 12px;
-    border: 1px solid var(--border-strong);
-    background: var(--panel);
+    border: 1px solid var(--zct-line);
+    background: var(--zct-card);
     overflow: hidden;
 }
 
@@ -143,8 +143,8 @@
 .zct-hero {
     position: relative;
     padding: 100px 0 80px;
-    border-bottom: 1px solid var(--border);
-    background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(46, 189, 104, 0.08), transparent 70%);
+    border-bottom: 1px solid var(--zct-line);
+    background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(37, 232, 121, 0.08), transparent 70%);
 }
 .zct-glow {
     display: none !important; /* Hide old neon */
@@ -169,18 +169,18 @@
     display: flex;
     gap: 16px;
     padding: 16px;
-    background: var(--surface);
+    background: var(--zct-card-2);
     border-radius: 8px;
-    border-left: 2px solid var(--green);
+    border-left: 2px solid var(--zct-green);
 }
 .zct-hero-note strong {
     display: block;
     font-size: 14px;
-    color: var(--text);
+    color: var(--zct-text);
 }
 .zct-hero-note span {
     font-size: 12px;
-    color: var(--muted);
+    color: var(--zct-muted);
 }
 .zct-note-arrow {
     display: none; /* Hide weird icon if it existed */
@@ -192,7 +192,7 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
-    background: var(--surface);
+    background: var(--zct-card-2);
 }
 .zct-visual-inner {
     display: flex;
@@ -205,20 +205,20 @@
     align-items: center;
     font-size: 11px;
     font-weight: 600;
-    color: var(--muted);
+    color: var(--zct-muted);
     letter-spacing: 0.04em;
 }
 .zct-online {
     display: flex;
     align-items: center;
     gap: 6px;
-    color: var(--green-text);
+    color: var(--zct-green-soft);
 }
 .zct-online i {
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: var(--green);
+    background: var(--zct-green);
 }
 .zct-message-window {
     display: flex;
@@ -229,27 +229,27 @@
 .zct-message-zev {
     padding: 16px;
     border-radius: 8px;
-    background: var(--panel);
-    border: 1px solid var(--border);
+    background: var(--zct-card);
+    border: 1px solid var(--zct-line);
 }
 .zct-message-user small {
     display: block;
     font-size: 10px;
-    color: var(--muted);
+    color: var(--zct-muted);
     margin-bottom: 8px;
 }
 .zct-message-zev {
     display: flex;
     gap: 12px;
     align-items: center;
-    background: rgba(46, 189, 104, 0.05);
-    border-color: var(--green);
+    background: rgba(37, 232, 121, 0.05);
+    border-color: var(--zct-green);
 }
 .zct-zev-avatar {
     width: 32px;
     height: 32px;
     border-radius: 6px;
-    background: var(--green);
+    background: var(--zct-green);
     color: #090b0e;
     display: flex;
     align-items: center;
@@ -260,33 +260,33 @@
 .zct-message-line {
     width: 1px;
     height: 16px;
-    background: var(--border);
+    background: var(--zct-line);
     margin: 0 auto;
 }
 .zct-message-zev p, .zct-message-user p {
     font-size: 13px;
     margin: 0;
-    color: var(--text);
+    color: var(--zct-text);
 }
 .zct-message-zev small {
     display: block;
     font-size: 10px;
-    color: var(--green-text);
+    color: var(--zct-green-soft);
 }
 .zct-floating-tag {
     display: inline-block;
     padding: 4px 10px;
     border-radius: 12px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--zct-card-2);
+    border: 1px solid var(--zct-line);
     font-size: 10px;
-    color: var(--muted);
+    color: var(--zct-muted);
     margin-top: 8px;
 }
 .zct-hand-note {
     text-align: right;
     font-size: 12px;
-    color: var(--green-text);
+    color: var(--zct-green-soft);
     font-style: italic;
     margin-top: 8px;
 }
@@ -294,7 +294,7 @@
 /* 2. CONTACT TYPES */
 .zct-types {
     padding: 90px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--zct-line);
 }
 .zct-section-head {
     margin-bottom: 40px;
@@ -309,37 +309,37 @@
     align-items: center;
     gap: 16px;
     padding: 24px;
-    background: var(--panel);
-    border: 1px solid var(--border);
+    background: var(--zct-card);
+    border: 1px solid var(--zct-line);
     border-radius: 12px;
     text-align: left;
     cursor: pointer;
     transition: all 0.2s ease;
-    color: var(--text);
+    color: var(--zct-text);
     width: 100%;
 }
 .zct-type-card:hover {
-    background: var(--surface);
-    border-color: var(--border-strong);
+    background: var(--zct-card-2);
+    border-color: var(--zct-line);
 }
 .zct-type-card.zct-selected {
-    border-color: var(--green);
-    background: rgba(46, 189, 104, 0.05);
+    border-color: var(--zct-green);
+    background: rgba(37, 232, 121, 0.05);
 }
 .zct-type-icon {
     width: 40px;
     height: 40px;
     border-radius: 8px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--zct-card-2);
+    border: 1px solid var(--zct-line);
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: 600;
-    color: var(--text);
+    color: var(--zct-text);
 }
 .zct-type-card.zct-selected .zct-type-icon {
-    background: var(--green);
+    background: var(--zct-green);
     color: #090b0e;
     border-color: transparent;
 }
@@ -350,14 +350,14 @@
 }
 .zct-type-card span {
     font-size: 13px;
-    color: var(--muted);
+    color: var(--zct-muted);
 }
 
 /* 3. CONTACT FORM */
 .zct-contact {
     padding: 90px 0;
-    border-bottom: 1px solid var(--border);
-    background: var(--surface);
+    border-bottom: 1px solid var(--zct-line);
+    background: var(--zct-card-2);
 }
 .zct-contact-grid {
     display: grid;
@@ -381,33 +381,33 @@
 .zct-contact-points span {
     font-size: 12px;
     font-weight: 600;
-    color: var(--green-text);
+    color: var(--zct-green-soft);
     width: 24px;
 }
 .zct-contact-points strong {
     display: block;
     font-size: 14px;
-    color: var(--text);
+    color: var(--zct-text);
     margin-bottom: 4px;
 }
 .zct-contact-points p {
     font-size: 13px;
     margin: 0;
-    color: var(--muted);
+    color: var(--zct-muted);
 }
 .zct-side-note {
     margin-top: 32px;
     font-size: 12px;
-    color: var(--muted);
+    color: var(--zct-muted);
     font-style: italic;
-    border-top: 1px solid var(--border);
+    border-top: 1px solid var(--zct-line);
     padding-top: 16px;
 }
 
 /* Form Styles */
 .zct-form-shell {
-    background: var(--panel);
-    border: 1px solid var(--border);
+    background: var(--zct-card);
+    border: 1px solid var(--zct-line);
     border-radius: 12px;
     padding: 40px;
 }
@@ -417,13 +417,13 @@
     align-items: flex-start;
     margin-bottom: 32px;
     padding-bottom: 24px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--zct-line);
 }
 .zct-form-heading small {
     display: block;
     font-size: 10px;
     font-weight: 600;
-    color: var(--muted);
+    color: var(--zct-muted);
     letter-spacing: 0.05em;
     margin-bottom: 4px;
 }
@@ -431,7 +431,7 @@
     font-size: 20px;
     font-weight: 600;
     margin: 0;
-    color: var(--text);
+    color: var(--zct-text);
 }
 .zct-form-status {
     display: flex;
@@ -439,16 +439,16 @@
     gap: 6px;
     font-size: 10px;
     font-weight: 600;
-    color: var(--green-text);
+    color: var(--zct-green-soft);
     padding: 4px 8px;
-    border: 1px solid var(--green);
+    border: 1px solid var(--zct-green);
     border-radius: 4px;
-    background: rgba(46, 189, 104, 0.05);
+    background: rgba(37, 232, 121, 0.05);
 }
 .zct-form-status i {
     width: 6px;
     height: 6px;
-    background: var(--green);
+    background: var(--zct-green);
     border-radius: 50%;
 }
 .zct-form-row {
@@ -463,7 +463,7 @@
     display: block;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text);
+    color: var(--zct-text);
     margin-bottom: 8px;
 }
 .zct-field input,
@@ -471,19 +471,19 @@
 .zct-field textarea {
     width: 100%;
     padding: 12px 16px;
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: var(--zct-card-2);
+    border: 1px solid var(--zct-line);
     border-radius: 6px;
     font-family: inherit;
     font-size: 14px;
-    color: var(--text);
+    color: var(--zct-text);
     outline: none;
     transition: border-color 0.2s ease;
 }
 .zct-field input:focus,
 .zct-field select:focus,
 .zct-field textarea:focus {
-    border-color: var(--green);
+    border-color: var(--zct-green);
 }
 .zct-error {
     display: block;
@@ -497,7 +497,7 @@
     justify-content: space-between;
     margin-top: 4px;
     font-size: 11px;
-    color: var(--muted);
+    color: var(--zct-muted);
 }
 .zct-form-response {
     margin-top: 16px;
@@ -509,15 +509,15 @@
 }
 .zct-form-response.zct-response-info {
     display: block;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    color: var(--text);
+    background: var(--zct-card-2);
+    border: 1px solid var(--zct-line);
+    color: var(--zct-text);
 }
 .zct-form-response.zct-response-success {
     display: block;
-    background: rgba(46, 189, 104, 0.05);
-    border: 1px solid var(--green);
-    color: var(--green-text);
+    background: rgba(37, 232, 121, 0.05);
+    border: 1px solid var(--zct-green);
+    color: var(--zct-green-soft);
 }
 .zct-form-response.zct-response-error {
     display: block;
@@ -529,7 +529,7 @@
 /* 4. HELP (Accordion) */
 .zct-help {
     padding: 90px 0;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--zct-line);
 }
 .zct-faq-grid {
     display: grid;
@@ -537,7 +537,7 @@
     gap: 60px;
 }
 .zct-faq-item {
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid var(--zct-line);
 }
 .zct-faq-button {
     width: 100%;
@@ -547,7 +547,7 @@
     padding: 24px 0;
     font-size: 16px;
     font-weight: 500;
-    color: var(--text);
+    color: var(--zct-text);
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -560,7 +560,7 @@
     align-items: center;
     justify-content: center;
     font-size: 18px;
-    color: var(--muted);
+    color: var(--zct-muted);
     transition: transform 0.3s ease;
 }
 .zct-faq-item.zct-open .zct-faq-icon {
@@ -576,7 +576,7 @@
     font-size: 14px;
     line-height: 1.6;
     margin: 0;
-    color: var(--text-sec);
+    color: var(--zct-muted);
 }
 
 /* 5. FINAL CARD */
@@ -584,8 +584,8 @@
     padding: 90px 0 120px;
 }
 .zct-final-inner {
-    background: var(--panel);
-    border: 1px solid var(--border);
+    background: var(--zct-card);
+    border: 1px solid var(--zct-line);
     border-radius: 16px;
     padding: 40px;
     text-align: center;
@@ -593,11 +593,11 @@
 .zct-final-inner h3 {
     font-size: 24px;
     margin: 0 0 12px;
-    color: var(--text);
+    color: var(--zct-text);
 }
 .zct-final-inner p {
     margin: 0 0 24px;
-    color: var(--muted);
+    color: var(--zct-muted);
 }
 
 /* RESPONSIVE */
@@ -636,15 +636,15 @@
 
 .zct-page { width: 100%; position: relative; }
 .zct-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 40px; padding: 0 20px; border-radius: 6px; font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s ease; text-decoration: none; }
-.zct-btn-primary { background: var(--green); color: #090b0e; border: 1px solid transparent; }
+.zct-btn-primary { background: var(--zct-green); color: #090b0e; border: 1px solid transparent; }
 .zct-btn-primary:hover { transform: translateY(-1px); }
-.zct-final-card { background: var(--panel); border: 1px solid var(--border); border-radius: 16px; padding: 40px; text-align: center; }
+.zct-final-card { background: var(--zct-card); border: 1px solid var(--zct-line); border-radius: 16px; padding: 40px; text-align: center; }
 .zct-final-icon { display: none; }
 .zct-form-inner { width: 100%; }
 .zct-glow-one, .zct-glow-two { display: none !important; }
 .zct-tag-one, .zct-tag-two { margin-top: 8px; }
 .zct-help-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 60px; }
-.zct-help-card { background: var(--surface); padding: 32px; border-radius: 12px; border: 1px solid var(--border); margin-bottom: 24px; }
+.zct-help-card { background: var(--zct-card-2); padding: 32px; border-radius: 12px; border: 1px solid var(--zct-line); margin-bottom: 24px; }
 .zct-faq, .zct-faq-copy { position: relative; }
 @media (max-width: 1024px) {
     .zct-help-grid { grid-template-columns: 1fr; gap: 40px; }
