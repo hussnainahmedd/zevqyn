@@ -5,7 +5,6 @@
    Scope: #zev-about-page
    ========================================================================== */
 
-/* Hide default Blocksy page titles */
 .hero-section,
 .entry-header {
     display: none !important;
@@ -17,7 +16,7 @@
 }
 
 #zev-about-page {
-        --green: var(--zev-green-primary, #2ebd68);
+    --green: var(--zev-green-primary, #2ebd68);
     --green-text: var(--zev-green-text, #41cf7b);
     --bg: var(--zev-bg-canvas, #090b0e);
     --panel: var(--zev-bg-panel, #0f1217);
@@ -29,7 +28,7 @@
     --text-sec: var(--zev-text-secondary, #c0c7d2);
     --muted: var(--zev-text-muted, #828c9a);
 
-        width: 100%;
+    width: 100%;
     overflow: hidden;
     background: var(--bg);
     color: var(--text);
@@ -38,52 +37,13 @@
     -webkit-font-smoothing: antialiased;
 }
 
-.za-container {
+.za-wrap {
     width: min(1200px, calc(100% - 48px));
     margin: 0 auto;
 }
 
-.za-page {
-    width: 100%;
-    position: relative;
-}
-
-@media (max-width: 768px) {
-    .za-container {
-        width: calc(100% - 32px);
-    }
-}
-
-
-.za-section-label {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    color: var(--za-green);
-    font-size: 11px;
-    letter-spacing: 2.6px;
-    font-weight: 700;
-}
-
-.za-eyebrow span {
-    width: 28px;
-    height: 1px;
-    background: var(--za-green);
-}
-
-.za-section-label span {
-    border: 1px solid var(--border);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    letter-spacing: 0;
-    font-size: 10px;
-}
-
-.za-hero h1 {
+/* TYPOGRAPHY */
+#zev-about-page h1 {
     margin: 0 0 20px;
     font-size: clamp(34px, 4.5vw, 54px);
     line-height: 1.15;
@@ -91,31 +51,44 @@
     font-weight: 700;
     color: var(--text);
 }
-
-.za-hero h1 span,
-.za-manifesto-title h2 span,
-.za-shift-head h2 span,
-.za-built-copy h2 span,
-.za-statement h2 span,
-.za-cta h2 span {
-    color: var(--za-green);
+#zev-about-page h1 span,
+#zev-about-page h2 span {
+    color: var(--green-text);
 }
-
-.za-lead {
-    max-width: 590px;
-    margin: 0;
-    color: var(--za-muted);
-    font-size: 18px;
-    line-height: 1.75;
+#zev-about-page h2 {
+    margin: 0 0 12px 0;
+    font-size: clamp(24px, 3.5vw, 36px);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    color: var(--text);
 }
-
-.za-hero-actions {
-    display: flex;
+#zev-about-page p {
+    color: var(--text-sec);
+    margin: 0 0 16px;
+}
+.za-eyebrow,
+.za-section-label {
+    display: inline-flex;
     align-items: center;
-    gap: 12px;
-    margin-top: 34px;
+    gap: 8px;
+    font-size: var(--zev-text-xs, 12px);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--green-text);
+    margin-bottom: 12px;
+}
+.za-section-label span {
+    padding: 2px 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--muted);
+    font-size: 10px;
 }
 
+/* BUTTONS */
 .za-btn {
     display: inline-flex;
     align-items: center;
@@ -128,1026 +101,552 @@
     font-weight: 500;
     text-decoration: none !important;
     cursor: pointer;
-    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
-                background var(--zev-duration-standard, 200ms) ease,
-                border-color var(--zev-duration-standard, 200ms) ease,
-                box-shadow var(--zev-duration-standard, 200ms) ease;
+    transition: transform 120ms ease, background 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
-
 .za-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-1px);
 }
-
 .za-btn-primary {
     color: #090b0e !important;
-    background: var(--za-green);
-    border: 1px solid var(--za-green);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
+    background: var(--green);
+    border: 1px solid transparent;
 }
-
-.za-btn-primary:hover {
-    background: #54f391;
-}
-
 .za-btn-secondary {
-    color: #eafff1 !important;
-    border: 1px solid rgba(184, 255, 209, 0.17);
-    background: rgba(255,255,255,0.025);
-}
-
-.za-mini-note {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-top: 29px;
-    color: #6e8c7e;
-    font-size: 12px;
-}
-
-.za-note-line {
-    display: block;
-    width: 35px;
-    height: 1px;
-    background: #345444;
-}
-
-/* MOVING BORDER */
-
-.za-running-border {
-    position: relative;
-    border-radius: 28px;
-    overflow: hidden;
-    padding: 1px;
-    isolation: isolate;
-    background: var(--border-strong);
-}
-
-.za-running-border::after {
-    content: "";
-    position: absolute;
-    inset: 1px;
-    z-index: -1;
-    border-radius: 27px;
-    background: var(--panel);
-}
-
-/* HERO VISUAL */
-
-.za-visual {
-    min-height: 550px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-    transform: rotate(-1.5deg);
-}
-
-.za-visual-inner {
-    min-height: 548px;
-    padding: 35px;
-    border-radius: 27px;
-    background:
-        linear-gradient(135deg, rgba(6,19,12,0.98), rgba(3,10,7,0.98));
-    position: relative;
-    overflow: hidden;
-}
-
-.za-visual-inner::before {
-    content: "";
-    width: 330px;
-    height: 330px;
-    border-radius: 50%;
-    position: absolute;
-    right: -130px;
-    bottom: -140px;
-    background: var(--border);
-    filter: blur(50px);
-}
-
-.za-visual-top {
-    display: flex;
-    justify-content: space-between;
-    color: #5e8973;
-    font-size: 10px;
-    letter-spacing: 2px;
-}
-
-.za-live-dot {
-    display: flex;
-    align-items: center;
-    gap: 7px;
-    color: #87ad99;
-}
-
-.za-live-dot i {
-    width: 6px;
-    height: 6px;
-    background: var(--za-green);
-    border-radius: 50%;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-}
-
-.za-visual-title {
-    margin: 52px 0 35px;
-}
-
-.za-visual-title small {
-    display: block;
-    color: #9bb3a6;
-    font-size: 19px;
-    margin-bottom: 5px;
-}
-
-.za-visual-title strong {
-    font-size: 34px;
-    letter-spacing: -1.4px;
-}
-
-.za-flow {
-    display: grid;
-    grid-template-columns: 1fr 20px 1fr;
-    gap: 10px;
-}
-
-.za-flow-card {
-    min-height: 105px;
-    border: 1px solid rgba(99,255,158,0.13);
-    background: rgba(255,255,255,0.02);
-    border-radius: 14px;
-    padding: 17px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.za-flow-card:nth-of-type(5),
-.za-flow-card:nth-of-type(7) {
-    margin-top: 5px;
-}
-
-.za-flow-icon {
-    width: 37px;
-    height: 37px;
-    border-radius: 10px;
-    background: var(--border);
-    color: var(--za-green);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex: 0 0 auto;
-}
-
-.za-flow-card small {
-    display: block;
-    color: #4f8067;
-    font-size: 9px;
-}
-
-.za-flow-card strong {
-    display: block;
-    margin: 2px 0;
-    font-size: 14px;
-}
-
-.za-flow-card p {
-    margin: 0;
-    color: #698576;
-    font-size: 10px;
-}
-
-.za-flow-line {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.za-flow-line span {
-    width: 100%;
-    height: 1px;
-    background: var(--border);
-}
-
-.za-flow-active {
-    border-color: var(--border);
-    background: var(--border);
-}
-
-.za-handwritten {
-    position: absolute;
-    right: 35px;
-    bottom: 30px;
-    transform: rotate(-3deg);
-    font-style: italic;
-    font-family: "Comic Sans MS", cursive;
-}
-
-.za-handwritten span,
-.za-handwritten strong {
-    display: block;
-}
-
-.za-handwritten span {
-    color: #d9f5e4;
-    font-size: 14px;
-}
-
-.za-handwritten strong {
-    color: var(--za-green);
-    font-size: 17px;
-}
-
-.za-handwritten i {
-    color: var(--za-green);
-    position: absolute;
-    left: -25px;
-    top: 18px;
-}
-
-/* BACKGROUND */
-
-.za-orb {
-    position: absolute;
-    border-radius: 50%;
-    pointer-events: none;
-    filter: blur(100px);
-}
-
-.za-orb-one {
-    width: 450px;
-    height: 450px;
-    background: var(--border);
-    right: 4%;
-    top: 18%;
-}
-
-.za-orb-two {
-    width: 250px;
-    height: 250px;
-    background: rgba(70,110,255,0.04);
-    left: 3%;
-    bottom: 0;
-}
-
-/* SECTIONS */
-
-.za-manifesto,
-.za-shift,
-.za-philosophy,
-.za-built,
-.za-statement,
-.za-cta {
-    padding: 120px 0;
-    position: relative;
-}
-
-.za-manifesto {
-    border-top: 1px solid rgba(122,255,169,0.08);
-}
-
-.za-manifesto-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 100px;
-    margin-top: 55px;
-}
-
-.za-manifesto-title h2,
-.za-shift-head h2,
-.za-built-copy h2,
-.za-cta h2 {
-    font-size: clamp(42px, 4vw, 64px);
-    line-height: 1.04;
-    letter-spacing: -2.8px;
-    margin: 0;
-}
-
-.za-manifesto-copy {
-    padding-top: 8px;
-}
-
-.za-manifesto-copy p {
-    color: #91ad9e;
-    font-size: 17px;
-    line-height: 1.8;
-    margin: 0 0 25px;
-}
-
-.za-highlight {
-    margin-top: 38px;
-    padding: 20px 22px;
-    border-left: 2px solid var(--za-green);
-    background: linear-gradient(
-        90deg,
-        var(--border),
-        transparent
-    );
-    color: #e8fff0;
-    font-size: 16px;
-}
-
-/* SHIFT */
-
-.za-shift {
-    background:
-        linear-gradient(
-            180deg,
-            transparent,
-            var(--border),
-            transparent
-        );
-}
-
-.za-shift-head {
-    display: flex;
-    justify-content: space-between;
-    gap: 80px;
-    align-items: flex-end;
-    margin-top: 50px;
-}
-
-.za-shift-head p {
-    width: 380px;
-    max-width: 100%;
-    color: var(--za-muted);
-    line-height: 1.7;
-    margin: 0;
-}
-
-.za-shift-grid {
-    display: grid;
-    grid-template-columns: 1fr 80px 1fr;
-    align-items: center;
-    gap: 20px;
-    margin-top: 70px;
-}
-
-.za-chaos-card {
-    min-height: 490px;
-    border: 1px solid rgba(255,255,255,0.08);
-    background: #070b09;
-    border-radius: 26px;
-    padding: 30px;
-    position: relative;
-    overflow: hidden;
-}
-
-.za-card-tag {
-    color: #557464;
-    letter-spacing: 2px;
-    font-size: 9px;
-    font-weight: 700;
-}
-
-.za-chaos-space {
-    height: 335px;
-    position: relative;
-}
-
-.za-chaos-item {
-    position: absolute;
-    padding: 13px 17px;
-    background: #0e1511;
-    border: 1px solid rgba(255,255,255,0.07);
-    color: #789286;
-    border-radius: 8px;
-    font-size: 11px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-}
-
-.ci-1 {
-    left: 6%;
-    top: 40px;
-    transform: rotate(-7deg);
-}
-
-.ci-2 {
-    right: 8%;
-    top: 68px;
-    transform: rotate(8deg);
-}
-
-.ci-3 {
-    left: 22%;
-    top: 145px;
-    transform: rotate(4deg);
-}
-
-.ci-4 {
-    right: 5%;
-    top: 215px;
-    transform: rotate(-5deg);
-}
-
-.ci-5 {
-    left: 4%;
-    top: 245px;
-    transform: rotate(7deg);
-}
-
-.ci-6 {
-    right: 29%;
-    top: 285px;
-    transform: rotate(-9deg);
-}
-
-.za-card-bottom {
-    border-top: 1px solid rgba(255,255,255,0.06);
-    padding-top: 20px;
-}
-
-.za-card-bottom strong,
-.za-card-bottom span {
-    display: block;
-}
-
-.za-card-bottom strong {
-    font-size: 18px;
-}
-
-.za-card-bottom span {
-    color: #62796d;
-    margin-top: 4px;
-    font-size: 13px;
-}
-
-.za-arrow-middle {
-    text-align: center;
-    color: var(--za-green);
-}
-
-.za-arrow-middle span {
-    display: block;
-    font-size: 35px;
-}
-
-.za-arrow-middle small {
-    color: #668174;
-    font-style: italic;
-}
-
-.za-system-card {
-    min-height: 490px;
-}
-
-.za-system-inner {
-    min-height: 488px;
-    border-radius: 27px;
-    padding: 30px;
-    background: #06100b;
-}
-
-.za-node-main {
-    margin-top: 35px;
-}
-
-.za-system-node {
-    border: 1px solid var(--border);
-    background: rgba(255,255,255,0.018);
-    border-radius: 13px;
-    padding: 17px;
-    display: flex;
-    align-items: center;
-    gap: 13px;
-}
-
-.za-node-logo {
-    width: 40px;
-    height: 40px;
-    border-radius: 11px;
-    background: var(--za-green);
-    color: #001a0b;
-    font-weight: 900;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.za-node-main small {
-    color: #5c8370;
-    display: block;
-    font-size: 9px;
-    letter-spacing: 1px;
-}
-
-.za-node-main strong {
-    font-size: 18px;
-}
-
-.za-node-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    margin-top: 10px;
-}
-
-.za-node-grid span {
-    color: var(--za-green);
-}
-
-.za-node-grid strong {
-    font-size: 12px;
-}
-
-.za-ai-bar {
-    margin-top: 12px;
-    border: 1px solid var(--border);
-    background: var(--border);
-    border-radius: 13px;
-    padding: 17px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 13px;
-    align-items: center;
-}
-
-.za-ai-bar > span,
-.za-ai-bar i {
-    color: var(--za-green);
-}
-
-.za-ai-bar strong,
-.za-ai-bar small {
-    display: block;
-}
-
-.za-ai-bar small {
-    color: #719181;
-    margin-top: 3px;
-}
-
-/* BELIEFS */
-
-.za-belief-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    margin-top: 60px;
-}
-
-.za-belief {
-    min-height: 330px;
-    padding: 30px;
-    border: 1px solid rgba(91,255,151,0.13);
-    border-radius: 20px;
-    background:
-        linear-gradient(
-            145deg,
-            rgba(8,20,13,0.8),
-            rgba(3,8,5,0.8)
-        );
-    position: relative;
-    transition:
-        transform 0.3s ease,
-        border-color 0.3s ease;
-}
-
-.za-belief:hover {
-    transform: translateY(-8px);
-    border-color: var(--border);
-}
-
-.za-belief-num {
-    position: absolute;
-    right: 25px;
-    top: 24px;
-    color: #254332;
-    font-size: 12px;
-}
-
-.za-belief-icon {
-    width: 48px;
-    height: 48px;
-    background: var(--border);
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    color: var(--za-green);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-}
-
-.za-belief h3 {
-    margin: 65px 0 14px;
-    font-size: 23px;
-    letter-spacing: -0.7px;
-}
-
-.za-belief p {
-    margin: 0;
-    color: #789587;
-    line-height: 1.7;
-    font-size: 14px;
-}
-
-/* BUILT FOR */
-
-.za-built-box {
-    min-height: 600px;
-}
-
-.za-built-inner {
-    min-height: 598px;
-    border-radius: 27px;
-    background:
-        radial-gradient(circle at 75% 50%, var(--border), transparent 30%),
-        #05100a;
-    display: grid;
-    grid-template-columns: 1fr 0.9fr;
-    align-items: center;
-    padding: 65px;
-    gap: 50px;
-}
-
-.za-built-copy h2 {
-    margin: 35px 0 25px;
-}
-
-.za-built-copy p {
-    color: #89a697;
-    line-height: 1.75;
-    max-width: 540px;
-}
-
-.za-built-copy blockquote {
-    margin: 28px 0 0;
-    padding: 18px 0 18px 20px;
-    border-left: 2px solid var(--za-green);
-    color: #dffff0;
-    font-size: 18px;
-    font-style: italic;
-}
-
-.za-built-graphic {
-    width: 400px;
-    height: 400px;
-    max-width: 100%;
-    position: relative;
-    margin: auto;
-}
-
-.za-orbit {
-    position: absolute;
-    border: 1px solid var(--border);
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.orbit-one {
-    width: 170px;
-    height: 170px;
-}
-
-.orbit-two {
-    width: 270px;
-    height: 270px;
-}
-
-.orbit-three {
-    width: 380px;
-    height: 380px;
-}
-
-.za-core {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background: #0a1c11;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 14px rgba(0,0,0,0.4);
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.za-core small {
-    font-size: 8px;
-    letter-spacing: 2px;
-    color: #668977;
-}
-
-.za-core strong {
-    font-size: 25px;
-    line-height: 1;
-}
-
-.za-core span {
-    color: var(--za-green);
-    font-weight: 800;
-}
-
-.za-orbit-label {
-    position: absolute;
+    color: var(--text) !important;
     background: var(--panel);
     border: 1px solid var(--border);
-    color: var(--muted);
-    font-size: 9px;
-    letter-spacing: 2px;
-    padding: 9px 13px;
-    border-radius: 20px;
 }
 
-.ol-one {
-    left: 5%;
-    top: 44%;
-}
-
-.ol-two {
-    right: 8%;
-    top: 16%;
-}
-
-.ol-three {
-    right: 2%;
-    bottom: 20%;
-}
-
-/* STATEMENT */
-
-.za-statement {
-    text-align: center;
-}
-
-.za-statement-inner {
-    max-width: 900px;
-    margin: auto;
-}
-
-.za-statement-small {
-    color: #527161;
-    font-size: 10px;
-    letter-spacing: 3px;
-    margin-bottom: 35px;
-}
-
-.za-statement h2 {
-    margin: 0;
-    font-size: clamp(55px, 7vw, 100px);
-    line-height: 0.98;
-    letter-spacing: -5px;
-}
-
-.za-scribble {
-    margin: 40px 0 0 45%;
-    color: #b6d9c4;
-    font-family: "Comic Sans MS", cursive;
-    font-style: italic;
-    font-size: 15px;
-    transform: rotate(-4deg);
-}
-
-/* CTA */
-
-.za-cta {
-    padding-bottom: 140px;
-}
-
-.za-cta-box {
-    min-height: 350px;
-}
-
-.za-cta-inner {
-    min-height: 348px;
-    border-radius: 27px;
-    background:
-        radial-gradient(circle at 85% 50%, var(--border), transparent 30%),
-        #06100b;
-    padding: 60px;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 50px;
-}
-
-.za-cta h2 {
-    margin: 25px 0 15px;
-}
-
-.za-cta p {
-    color: #7f9c8d;
-}
-
-.za-cta-right {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 14px;
-}
-
-.za-big-btn {
-    min-height: 58px;
-    padding: 0 30px;
-}
-
-.za-cta-right small {
-    color: #557363;
-}
-
-/* REVEAL */
-
+/* ANIMATIONS (restricted) */
 .za-reveal {
     opacity: 0;
-    transform: translateY(28px);
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
 }
-
 .za-reveal.za-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
+/* COMMON STRUCTURAL CARD */
+.za-running-border {
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid var(--border-strong);
+    background: var(--panel);
+    overflow: hidden;
+}
+
+/* 1. HERO */
+.za-hero {
+    position: relative;
+    padding: 100px 0 80px;
+    border-bottom: 1px solid var(--border);
+    background: radial-gradient(ellipse 70% 40% at 50% -10%, rgba(46, 189, 104, 0.08), transparent 70%);
+}
+.za-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.za-hero-copy {
+    position: relative;
+    z-index: 2;
+}
+.za-lead {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 32px !important;
+    max-width: 500px;
+}
+.za-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.za-mini-note {
+    font-size: 12px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.za-note-line {
+    width: 24px;
+    height: 1px;
+    background: var(--border);
+}
+
+/* HERO VISUAL (Restrained SaaS composition) */
+.za-visual {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    background: var(--surface);
+}
+.za-visual-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.za-visual-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+}
+.za-live-dot {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--green-text);
+}
+.za-live-dot i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+}
+.za-visual-title small {
+    display: block;
+    color: var(--muted);
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.za-visual-title strong {
+    font-size: 18px;
+    color: var(--text);
+}
+.za-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.za-flow-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+}
+.za-flow-active {
+    border-color: var(--green);
+    background: rgba(46, 189, 104, 0.05);
+}
+.za-flow-card small {
+    font-size: 10px;
+    color: var(--muted);
+    display: block;
+}
+.za-flow-card strong {
+    font-size: 14px;
+    color: var(--text);
+}
+.za-flow-card p {
+    font-size: 12px;
+    color: var(--muted);
+    margin: 0 !important;
+}
+.za-flow-line {
+    display: flex;
+    justify-content: center;
+    height: 16px;
+}
+.za-flow-line span {
+    width: 1px;
+    height: 100%;
+    background: var(--border);
+}
+.za-handwritten {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+}
+.za-handwritten strong {
+    color: var(--green-text);
+}
+
+/* 2. WHY WE EXIST (Manifesto) */
+.za-manifesto {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border);
+}
+.za-manifesto-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    margin-top: 24px;
+}
+.za-manifesto-copy p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+.za-highlight {
+    margin-top: 32px;
+    padding: 16px;
+    background: var(--surface);
+    border-left: 2px solid var(--green);
+    border-radius: 0 8px 8px 0;
+}
+.za-highlight span {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+}
+
+/* 3. THE SHIFT */
+.za-shift {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border);
+    background: var(--surface);
+}
+.za-shift-head {
+    margin-top: 24px;
+    margin-bottom: 60px;
+    max-width: 600px;
+}
+.za-shift-grid {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 32px;
+    align-items: center;
+}
+.za-chaos-card,
+.za-system-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+}
+.za-card-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    margin-bottom: 24px;
+}
+.za-chaos-space {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 32px;
+}
+.za-chaos-item {
+    padding: 8px 12px;
+    background: var(--surface);
+    border: 1px dashed var(--border-strong);
+    border-radius: 4px;
+    font-size: 12px;
+    color: var(--muted);
+}
+.za-card-bottom {
+    border-top: 1px solid var(--border);
+    padding-top: 16px;
+    font-size: 13px;
+    color: var(--muted);
+}
+.za-arrow-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--green-text);
+}
+.za-arrow-middle span {
+    width: 40px;
+    height: 1px;
+    background: var(--green);
+}
+.za-node-main {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+.za-node-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background: var(--green);
+    color: #090b0e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 18px;
+}
+.za-node-main small {
+    display: block;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.04em;
+}
+.za-node-main strong {
+    font-size: 16px;
+    color: var(--text);
+}
+.za-node-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+.za-system-node {
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.za-system-node span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+}
+.za-ai-bar {
+    padding: 12px 16px;
+    background: rgba(46, 189, 104, 0.05);
+    border: 1px solid var(--green);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.za-ai-bar strong {
+    display: block;
+    font-size: 13px;
+    color: var(--text);
+}
+.za-ai-bar small {
+    font-size: 11px;
+    color: var(--green-text);
+}
+
+/* 4. WHAT WE BELIEVE (Philosophy) */
+.za-philosophy {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border);
+}
+.za-belief-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+.za-belief {
+    padding: 32px 24px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    position: relative;
+}
+.za-belief-num {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+}
+.za-belief h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text);
+    margin: 0 0 12px;
+}
+.za-belief p {
+    font-size: 14px;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* 5. BUILT FOR (Still Becoming) */
+.za-built {
+    padding: 90px 0;
+    border-bottom: 1px solid var(--border);
+}
+.za-built-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    padding: 60px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+}
+.za-built-copy blockquote {
+    margin: 24px 0 0 0;
+    padding-left: 16px;
+    border-left: 2px solid var(--green);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--text);
+}
+/* Completely redesigned 'Still Becoming' graphic - no cyberpunk orbit */
+.za-built-graphic {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    text-align: center;
+}
+.za-built-graphic .za-orbit, 
+.za-built-graphic .za-orbit-label {
+    display: none; /* Removed the messy legacy elements */
+}
+.za-core {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.za-core small {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+}
+.za-core strong {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green-text);
+    line-height: 1.1;
+}
+.za-core span {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text);
+}
+
+/* 6. BRAND STATEMENT */
+.za-statement {
+    padding: 120px 0;
+    text-align: center;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+}
+.za-statement-inner {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.za-statement-small {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 24px;
+}
+.za-scribble {
+    margin-top: 24px;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--green-text);
+}
+
+/* 7. CTA */
+.za-cta {
+    padding: 90px 0 120px;
+}
+.za-cta-inner {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+}
+.za-cta-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.za-big-btn {
+    height: 48px;
+    padding: 0 32px;
+    font-size: 16px;
+    border-radius: 8px;
+}
+.za-cta-right small {
+    font-size: 12px;
+    color: var(--muted);
+}
+
 /* RESPONSIVE */
-
 @media (max-width: 1024px) {
-
     .za-hero-grid,
     .za-manifesto-grid,
+    .za-shift-grid,
     .za-built-inner {
         grid-template-columns: 1fr;
     }
-
-    .za-hero {
-        padding-top: 70px;
-    }
-
-    .za-visual {
-        max-width: 700px;
-    }
-
-    .za-manifesto-grid {
+    .za-shift-grid {
         gap: 40px;
     }
-
-    .za-shift-grid {
-        grid-template-columns: 1fr;
+    .za-arrow-middle span {
+        width: 1px;
+        height: 40px;
     }
-
-    .za-arrow-middle {
-        transform: rotate(90deg);
-        padding: 10px 0;
-    }
-
     .za-belief-grid {
         grid-template-columns: 1fr;
     }
-
-    .za-built-graphic {
-        margin-top: 20px;
+    .za-cta-inner {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 24px;
+    }
+    .za-built-inner {
+        padding: 40px 24px;
     }
 }
-
-@media (max-width: 700px) {
-
+@media (max-width: 768px) {
     .za-wrap {
-        width: min(100% - 28px, 1180px);
+        width: calc(100% - 32px);
     }
-
     .za-hero,
     .za-manifesto,
     .za-shift,
     .za-philosophy,
     .za-built,
-    .za-statement,
     .za-cta {
+        padding: 60px 0;
+    }
+    .za-statement {
         padding: 80px 0;
     }
-
-    .za-hero h1 {
-    margin: 0 0 20px;
-    font-size: clamp(34px, 4.5vw, 54px);
-    line-height: 1.15;
-    letter-spacing: -0.025em;
-    font-weight: 700;
-    color: var(--text);
-}
-
-    .za-lead {
-        font-size: 16px;
-    }
-
-    .za-hero-actions {
-        align-items: stretch;
-        flex-direction: column;
-    }
-
-    .za-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    height: 40px;
-    padding: 0 20px;
-    border-radius: var(--zev-radius-sm, 6px);
-    font-size: 14px;
-    font-weight: 500;
-    text-decoration: none !important;
-    cursor: pointer;
-    transition: transform var(--zev-duration-micro, 120ms) var(--zev-ease-spring, cubic-bezier(0.16, 1, 0.3, 1)),
-                background var(--zev-duration-standard, 200ms) ease,
-                border-color var(--zev-duration-standard, 200ms) ease,
-                box-shadow var(--zev-duration-standard, 200ms) ease;
-}
-
-    .za-visual {
-        min-height: auto;
-        transform: none;
-    }
-
-    .za-visual-inner {
-        min-height: 600px;
-        padding: 23px;
-    }
-
-    .za-flow {
+    .za-node-grid {
         grid-template-columns: 1fr;
     }
-
-    .za-flow-line {
-        display: none;
-    }
-
-    .za-handwritten {
-        position: relative;
-        right: auto;
-        bottom: auto;
-        margin-top: 30px;
-    }
-
-    .za-manifesto-title h2,
-    .za-shift-head h2,
-    .za-built-copy h2,
-    .za-cta h2 {
-        font-size: 42px;
-        letter-spacing: -2px;
-    }
-
-    .za-shift-head {
-        align-items: flex-start;
-        flex-direction: column;
-        gap: 25px;
-    }
-
-    .za-chaos-card,
-    .za-system-card,
-    .za-system-inner {
-        min-height: 460px;
-    }
-
-    .za-built-inner {
-        padding: 35px 24px;
-    }
-
-    .za-built-graphic {
-        width: 290px;
-        height: 290px;
-    }
-
-    .orbit-one {
-        width: 120px;
-        height: 120px;
-    }
-
-    .orbit-two {
-        width: 200px;
-        height: 200px;
-    }
-
-    .orbit-three {
-        width: 280px;
-        height: 280px;
-    }
-
-    .za-core {
-        width: 105px;
-        height: 105px;
-    }
-
-    .za-statement h2 {
-        font-size: 52px;
-        letter-spacing: -3px;
-    }
-
-    .za-scribble {
-        margin-left: 15%;
-    }
-
-    .za-cta-inner {
-        padding: 35px 24px;
-        grid-template-columns: 1fr;
-    }
-
-    .za-cta-right {
-        align-items: stretch;
-    }
 }
-.za-hero-copy { position: relative; z-index: 3; max-width: 540px; }
-.za-hero-copy p { margin: 0 0 32px; font-size: 16px; line-height: 1.6; color: var(--text-sec); }
+
+.za-orb, .za-orb-one, .za-orb-two { display: none !important; }
+.za-belief-icon, .za-flow-icon { width: 24px; height: 24px; border-radius: 4px; background: var(--surface); border: 1px solid var(--border); display: block; margin-bottom: 12px; }
+.za-built-box, .za-cta-box, .za-system-inner { width: 100%; position: relative; }
+.za-manifesto-title { position: relative; }
 
 </style>
 
