@@ -1,174 +1,40 @@
-<div align="center">
+# ZEVQYN - New Frontend
 
-# ZEVQYN
+AI Research + Career Workspace. Journey: **Research -> Project -> Resume -> Portfolio -> Career Growth**.
 
-### AI Research + Career Workspace — Frontend
+## Template direction chosen (and why)
+No proprietary template code was copied. Structural research covered Framer Marketplace (AI/SaaS), Webflow AI SaaS, Cruip (Open PRO / Mosaic / Relay / Cadence), Tailwind Plus, shadcn/ui, Untitled UI, Flowbite and ThemeWagon dashboards.
 
-*Upload your research, chat with your documents, generate study tools, and turn your work into projects, resumes, and portfolios — all powered by AI.*
+**Selected direction: Cruip Mosaic-style application shell + Relay-style restrained dark marketing, rebuilt with shadcn/ui component discipline and Untitled-UI spacing/typography calibration.**
 
-![WordPress](https://img.shields.io/badge/WordPress-21759B?logo=wordpress&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?logo=supabase&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google_Gemini-4285F4?logo=google&logoColor=white)
-![InfinityFree](https://img.shields.io/badge/InfinityFree-005B96)
-![License](https://img.shields.io/badge/license-proprietary-red)
+Why it won: Mosaic gives the calm, dense, table-friendly dashboard ZEVQYN Research/Documents/Resume editors need without admin-template clutter; Relay dark marketing is premium without glow cliches; shadcn primitives (owned source in src/components/ui/) keep forms/dialogs/tables consistent and accessible; Untitled 4px spacing and radius calibration prevents the random-cards look. Green (#25E879) is NOT forced - the system leads with neutral zinc/slate surfaces and an indigo primary action; ZEVQYN emerald is retained only as brand mark and positive/progress accent. Typography is Inertia/Momentum-led, not template-default.
 
-</div>
+## Inertia / Momentum typography
+- Display: **Space Grotesk** (600, tracking -0.04em to -0.02em, line-height ~1.0) for heroes and section statements - editorial, directional, numbered (01/02/03) sequencing mirrors the product journey.
+- UI/body: **Inter** (14-15px, line-height 1.55-1.6) for dense app tables, forms and editors. App titles capped at 24px; marketing display clamps 44-72px only where composition earns it.
+- Mono: **JetBrains Mono** for citations, metadata and eyebrows. Premium comes from type + spacing + layout - not blur, glow or gradients.
 
----
-
-## Preview
-
-<p align="center">
-  <img src="assets/hero.webp" alt="ZEVQYN — AI Research + Career Workspace" width="100%">
-</p>
-
----
-
-## What is ZEVQYN?
-
-ZEVQYN is an AI-powered workspace I built to connect the entire journey from academic research to career growth. Upload research documents, chat with them through AI (RAG), generate study tools, convert research into projects, build resumes and portfolios, and get AI-driven career guidance — all in one integrated platform.
-
-**Core workflow:**
-
-```
-Research → Project → Resume → Portfolio → Career Growth
-```
-
----
-
-## Features
-
-### Public pages
-- **Home** — landing page with the product value proposition
-- **Features** — detailed product showcase
-- **How It Works** — step-by-step walkthrough
-- **About** — brand story
-- **Contact** — contact form with FAQ
-
-### Authentication
-- **Register / Login** — email + password sign-in powered by Supabase Auth (Supabase JS SDK v2, client-side)
-
-### The workspace (authenticated)
-- **Dashboard** — aggregated metrics, recent workspaces, career workflow tracker
-- **Documents** — global document explorer with search, type/status filters, and workspace mapping
-- **Research Hub** — create and manage research workspaces
-- **Research Workspace** — document upload, RAG-powered AI chat, AI study tools (**summaries, key points, questions, flashcards**), and research-to-project conversion
-- **Projects** — project management with search, filtering, and sorting
-- **Project Workspace** — full project editor with tag managers and research traceability
-- **Career Hub** — central career data repository (profile, skills, education, certificates)
-- **Resume Builder** — manage multiple resumes with section reordering, live ATS preview, and PDF export
-- **Portfolio Builder** — portfolio creation with live preview and a shareable public URL
-- **Public Portfolio** — public portfolio viewer (no login required)
-- **Career AI** — AI copilot with chat plus tools for profile analysis, skill-gap analysis, project ideas, resume review, portfolio review, and action plans
-- **Settings** — account management, password change, sign out
-- **Admin Inbox** — admin-side management of contact messages
-
----
-
-## Tech stack
-
-| Layer | Technology |
-|-------|-----------|
-| CMS | WordPress |
-| Theme | Blocksy (from a Codespot starter template) |
-| Page builder | Greenshift blocks (marketing pages) |
-| App pages | Custom HTML / CSS / JavaScript embedded via `wp:html` blocks |
-| Client-side auth | Supabase JS SDK v2 |
-| AI backend | FastAPI + Google Gemini (separate repo — see below) |
-| Hosting | InfinityFree |
-
----
+## Stack
+Next.js (App Router) + TypeScript + Tailwind CSS v4. Data: @tanstack/react-query; forms: react-hook-form + zod; auth/data client: @supabase/supabase-js; icons: lucide-react.
 
 ## Architecture
+- src/lib/env.ts - public env only. src/lib/supabase.ts - single Supabase client (publishable key only; never service-role).
+- src/lib/api/client.ts - centralized authenticated fetch (Bearer injection, 401 redirect, error normalization). src/lib/api/services.ts - typed domain services for all backend paths. No scattered raw fetch in pages.
+- Backend: FastAPI at NEXT_PUBLIC_API_BASE_URL (default https://zevqyn-backend.onrender.com) with Supabase Auth JWT. Gemini runs only via the backend.
+- Routes: marketing / /features /how-it-works /about /contact, auth /login /register, app /app/* (dashboard, workspaces + research studio, documents, projects, career, resume, portfolio, career-ai, settings, admin inbox), public /p/[slug] (SSR).
 
-```
-┌──────────────────────────────────────┐
-│              Browser (user)          │
-└──────────────────┬───────────────────┘
-                   │
-┌──────────────────▼───────────────────┐
-│       WordPress frontend (this repo) │
-│   Blocksy theme + Greenshift blocks  │
-│      Custom HTML / CSS / JavaScript  │
-│          Hosted on InfinityFree      │
-└──────────────────┬───────────────────┘
-                   │  REST API
-┌──────────────────▼───────────────────┐
-│        FastAPI backend (Python)      │
-│         Google Gemini AI + RAG       │
-│           Supabase data layer        │
-│            Hosted on Render          │
-└──────────────────────────────────────┘
-```
+## Setup
+npm install, copy .env.example to .env.local and fill public values, npm run dev. Build: npm run build.
 
----
+Env names (values never committed):
+- NEXT_PUBLIC_API_BASE_URL
+- NEXT_PUBLIC_SUPABASE_URL
+- NEXT_PUBLIC_SUPABASE_ANON_KEY (publishable/anon only)
 
-## Repository structure
+## Deploy (Vercel + zevqyn.dev)
+Import this repo in Vercel, set the three env vars, deploy (push -> auto-deploy). Add zevqyn.dev + www.zevqyn.dev in Vercel Domains, add the shown DNS records (A @, CNAME www) at the registrar, set apex primary. Then update Render CORS_ORIGINS to include https://zevqyn.dev and Supabase Auth redirect URLs. Domain migration is a separate step - frontend code uses relative routes, so no hard-coded frontend domain.
 
-```
-zevqyn/
-├── assets/
-│   ├── hero.webp              ← preview banner
-│   ├── css/custom-theme.css    ← WordPress Customizer CSS
-│   └── images/                ← referenced media
-├── docs/
-│   ├── ARCHITECTURE.md
-│   ├── FRONTEND_STRUCTURE.md
-│   ├── WORDPRESS_SETUP.md     ← production deployment guide
-│   ├── DESIGN_SYSTEM_V1_1.md
-│   └── UI_UX_AUDIT_V1.md
-├── pages/
-│   └── <page>/                ← one folder per page
-│       ├── wordpress-blocks.html  ← block markup for WordPress
-│       ├── content.html           ← page content
-│       ├── style.css              ← page styles
-│       ├── script.js              ← page logic (API calls live here)
-│       └── README.md              ← per-page notes
-└── wordpress-export/
-    └── zevqyn.WordPress.2026-09-20.xml  ← WXR site export
-```
-
----
-
-## Setup (rebuilding the site)
-
-This repository is a **source archive of the frontend code** — it is not a standalone app you can `npm start`. The production site runs on WordPress. To reconstruct it, follow `docs/WORDPRESS_SETUP.md`; the short version:
-
-1. Install WordPress and activate the **Blocksy** theme.
-2. Install and activate the **Greenshift** block plugin.
-3. Import `wordpress-export/zevqyn.WordPress.2026-09-20.xml` via `Tools → Import → WordPress`.
-4. Apply the Customizer CSS from `assets/css/custom-theme.css`.
-5. Recreate each application page using that page's `wordpress-blocks.html` + `content.html`, and attach its `style.css` / `script.js`.
-
-Each page's folder is self-contained: `script.js` holds the Supabase-auth and backend-API logic, `style.css` holds the page styling.
-
----
-
-## Backend (companion repo)
-
-All AI and data logic lives in the separate backend repository:
-
-👉 **[hussnainahmedd/zevqyn-backend](https://github.com/hussnainahmedd/zevqyn-backend)** — Python + FastAPI RAG API (document upload, embeddings, pgvector retrieval, Gemini chat, study tools, resumes, portfolios, career AI). The frontend pages call it over REST.
-
-**Deployments (per project docs):**
-- Frontend: [zevqyn.free.je](https://zevqyn.free.je/) (InfinityFree)
-- Backend: [zevqyn-backend.onrender.com](https://zevqyn-backend.onrender.com) (Render)
-
----
 
 ## License
 
-© 2025–2026 ZEVQYN. All rights reserved.
-
-Proprietary — no license is granted for use, modification, or distribution unless explicitly authorized by the project owner. See `LICENSE`.
-
----
-
-<div align="center">
-
-Built by **Hussnain Ahmad** — [github.com/hussnainahmedd](https://github.com/hussnainahmedd)
-
-</div>
+Proprietary — © 2025–2026 ZEVQYN. All rights reserved. See [LICENSE](./LICENSE). No license is granted for use, modification, or distribution unless explicitly authorized in writing by the project owner.
