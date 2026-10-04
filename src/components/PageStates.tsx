@@ -1,0 +1,4 @@
+import { Skeleton } from "./ui/skeleton"; import { Button } from "./ui/button";
+export function LoadingState(){return <div className="space-y-3"><Skeleton className="h-8 w-56"/><Skeleton className="h-32 w-full"/><Skeleton className="h-32 w-full"/></div>;}
+export function EmptyState({title,desc,action}:{title:string;desc?:string;action?:React.ReactNode}){return <div className="rounded-lg border border-dashed border-white/10 bg-zinc-900/40 px-6 py-10 text-center"><h3 className="font-medium text-zinc-100">{title}</h3>{desc&&<p className="mt-1 text-sm text-zinc-400">{desc}</p>}{action&&<div className="mt-4">{action}</div>}</div>;}
+export function ErrorState({message,onRetry}:{message:string;onRetry?:()=>void}){return <div className="rounded-lg border border-red-500/20 bg-red-500/5 px-5 py-4"><p className="text-sm text-red-300">{message}</p>{onRetry&&<Button size="sm" variant="outline" className="mt-3" onClick={onRetry}>Try again</Button>}</div>;}
