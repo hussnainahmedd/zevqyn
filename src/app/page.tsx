@@ -109,7 +109,7 @@ const PILLARS = [
   },
   {
     n: "04 / Growth",
-    t: "Showcase & copilot",
+    t: "Showcase & Copilot",
     d: "Publish a portfolio and use Career AI to plan your next steps.",
     icon: Globe,
     c: "bg-sky-100 text-sky-700",

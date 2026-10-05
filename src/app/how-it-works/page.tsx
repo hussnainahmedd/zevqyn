@@ -49,7 +49,7 @@ const STEPS = [
   },
   {
     icon: TrendingUp,
-    title: "Export proof & grow",
+    title: "Export proof & Grow",
     copy: "Build an ATS resume, publish a public portfolio, and let Career AI find your gaps and plan your next moves.",
     tag: "Ongoing",
     badge: "bg-rose-500",
