@@ -46,6 +46,22 @@ export const api = {
   portfolio: (id:string) => apiFetch<Portfolio>(`/api/v1/portfolios/${id}`),
   createPortfolio: (b:Record<string,unknown>) => apiFetch<Portfolio>("/api/v1/portfolios",{method:"POST",body:JSON.stringify(b)}),
   updatePortfolio: (id:string,b:Record<string,unknown>) => apiFetch<Portfolio>(`/api/v1/portfolios/${id}`,{method:"PATCH",body:JSON.stringify(b)}),
+  uploadImage: async (file: File) => {
+    const { supabase } = await import("../supabase");
+    const { data } = await supabase.auth.getSession();
+    const headers: Record<string,string> = {};
+    if (data.session?.access_token) headers["Authorization"] = `Bearer ${data.session.access_token}`;
+    const fd = new FormData();
+    fd.append("file", file);
+    const { env } = await import("../env");
+    const res = await fetch(`${env.apiBase}/api/v1/uploads/image`, { method: "POST", headers, body: fd });
+    if (!res.ok) {
+      let msg = `Upload failed (${res.status})`;
+      try { const j = await res.json(); if (typeof j.detail === "string") msg = j.detail; } catch {}
+      throw new Error(msg);
+    }
+    return res.json() as Promise<{ url: string }>;
+  },
   pfProjects: (pid:string) => apiFetch<{id:string;project_id?:string}[]>(`/api/v1/portfolios/${pid}/projects`),
   pfAddProject: (pid:string,b:Record<string,unknown>) => apiFetch(`/api/v1/portfolios/${pid}/projects`,{method:"POST",body:JSON.stringify(b)}),
   pfRemoveProject: (pid:string,projId:string) => apiFetch(`/api/v1/portfolios/${pid}/projects/${projId}`,{method:"DELETE"}),

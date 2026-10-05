@@ -8,7 +8,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 import { useState, useEffect } from "react";
-import { ExternalLink, Eye, Settings2, Plus, Check } from "lucide-react";
+import { ExternalLink, Eye, Settings2, Plus, Check, Camera, Loader2, X } from "lucide-react";
 
 type AnyRec = Record<string, any>;
 const errMsg = (e: unknown) => e instanceof Error ? e.message : "Something went wrong. Try again.";
@@ -27,6 +27,8 @@ export default function PortfolioPage() {
   const skills = useQuery({ queryKey: ["skills"], queryFn: api.skills });
 
   const [settings, setSettings] = useState<AnyRec>({});
+  const [uploading, setUploading] = useState(false);
+  const [preview, setPreview] = useState<string | null>(null);
   useEffect(() => {
     if (portfolio) {
       setSettings({
@@ -37,9 +39,30 @@ export default function PortfolioPage() {
         linkedin_url: portfolio.linkedin_url || "",
         website_url: portfolio.website_url || "",
         is_published: portfolio.is_published ?? true,
+        profile_image_url: portfolio.profile_image_url || "",
       });
+      setPreview(null);
     }
   }, [sel]);
+
+  async function handleImagePick(e: React.ChangeEvent<HTMLInputElement>) {
+    const f = e.target.files?.[0];
+    if (!f) return;
+    setFormErr("");
+    setPreview(URL.createObjectURL(f));
+    setUploading(true);
+    try {
+      const { url } = await api.uploadImage(f);
+      setSettings(s => ({ ...s, profile_image_url: url }));
+      setPreview(null);
+    } catch (err) {
+      setFormErr(errMsg(err));
+      setPreview(null);
+    } finally {
+      setUploading(false);
+      e.target.value = "";
+    }
+  }
 
   const create = useMutation({
     mutationFn: () => api.createPortfolio({ display_name: title, slug }),
@@ -132,6 +155,39 @@ export default function PortfolioPage() {
             </div>
             {showSettings ? (
               <div className="mt-4 space-y-4">
+                {/* Profile picture */}
+                <div className="flex items-center gap-4">
+                  <div className="relative">
+                    {preview || settings.profile_image_url ? (
+                      <img src={preview || settings.profile_image_url} alt="Profile" className="h-20 w-20 rounded-full object-cover ring-2 ring-indigo-200" />
+                    ) : (
+                      <div className="flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-indigo-100 to-violet-100 text-2xl font-bold text-indigo-500">
+                        {(settings.display_name || "?").charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                    {uploading && (
+                      <div className="absolute inset-0 flex items-center justify-center rounded-full bg-white/70">
+                        <Loader2 className="h-6 w-6 animate-spin text-indigo-600" />
+                      </div>
+                    )}
+                  </div>
+                  <div className="flex-1">
+                    <Label>Profile picture</Label>
+                    <p className="mt-0.5 text-xs text-zinc-500">JPG, PNG, WebP or GIF · max 5 MB. Shows on your public page.</p>
+                    <div className="mt-2 flex gap-2">
+                      <label className="inline-flex cursor-pointer items-center gap-1.5 rounded-lg border border-zinc-200 bg-white px-3 py-1.5 text-sm font-medium text-zinc-700 shadow-sm transition hover:bg-zinc-50">
+                        <Camera className="h-4 w-4" />
+                        {settings.profile_image_url ? "Change photo" : "Upload photo"}
+                        <input type="file" accept="image/jpeg,image/png,image/webp,image/gif" className="hidden" onChange={handleImagePick} disabled={uploading} />
+                      </label>
+                      {settings.profile_image_url && (
+                        <button type="button" onClick={() => setSettings(s => ({ ...s, profile_image_url: "" }))} className="inline-flex items-center gap-1 rounded-lg px-2 py-1.5 text-sm text-zinc-500 transition hover:text-rose-600">
+                          <X className="h-4 w-4" /> Remove
+                        </button>
+                      )}
+                    </div>
+                  </div>
+                </div>
                 <div className="space-y-1.5"><Label>Display name</Label><Input value={settings.display_name || ""} onChange={e => setSettings({ ...settings, display_name: e.target.value })} /></div>
                 <div className="space-y-1.5"><Label>Headline</Label><Input value={settings.headline || ""} onChange={e => setSettings({ ...settings, headline: e.target.value })} placeholder="e.g. CS Student building AI products" /></div>
                 <div className="space-y-1.5"><Label>About</Label><Textarea value={settings.about || ""} onChange={e => setSettings({ ...settings, about: e.target.value })} rows={4} placeholder="A few lines about you…" /></div>
