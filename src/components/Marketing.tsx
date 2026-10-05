@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Logo } from "./Logo";
 
 export function MktShell({ children }: { children: React.ReactNode }) {
   return (
@@ -13,10 +14,7 @@ export function MarketingHeader() {
     <header className="sticky top-0 z-40 border-b border-zinc-900/[0.07] bg-[#FBFAF7]/85 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6">
         <Link href="/" className="flex items-center gap-2.5">
-          <span className="font-display flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 text-sm font-bold text-white shadow-[0_8px_16px_-6px_rgba(0,0,0,0.4)]">
-            Z
-          </span>
-          <span className="font-display text-lg font-semibold tracking-tight text-zinc-950">ZEVQYN</span>
+          <Logo />
         </Link>
         <nav className="hidden items-center gap-8 text-sm font-medium text-zinc-600 md:flex">
           <Link href="/features" className="transition hover:text-zinc-950">

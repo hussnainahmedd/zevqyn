@@ -13,6 +13,7 @@ import {
   X,
 } from "lucide-react";
 import { clearAdminToken, getAdminToken } from "@/lib/api/admin";
+import { LogoMark } from "@/components/Logo";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -56,9 +57,7 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const sidebar = (
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center gap-2 border-b border-zinc-900/[0.06] px-5">
-        <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-zinc-950 font-display text-sm font-bold text-white">
-          Z
-        </span>
+        <LogoMark />
         <span className="font-display font-semibold tracking-tight text-zinc-950">
           ZEVQYN
         </span>
