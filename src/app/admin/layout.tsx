@@ -29,12 +29,16 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
+    if (path === "/admin/login") {
+      setReady(true);
+      return;
+    }
     if (!getAdminToken()) {
       router.replace("/admin/login");
     } else {
       setReady(true);
     }
-  }, [router]);
+  }, [router, path]);
 
   if (!ready) {
     return (
