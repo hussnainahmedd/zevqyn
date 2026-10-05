@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { PasswordStrength, checkPassword } from "@/components/PasswordStrength";
+import { PasswordInput } from "@/components/PasswordInput";
 import { Dialog } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState, ErrorState, LoadingState } from "@/components/PageStates";
@@ -257,7 +258,7 @@ function AddUserForm({
       </div>
       <div className="space-y-2">
         <Label htmlFor="nu-pw">Password</Label>
-        <Input id="nu-pw" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+        <PasswordInput id="nu-pw" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
         <PasswordStrength password={password} />
       </div>
       {error && <p className="text-sm text-rose-600" role="alert">{error}</p>}
@@ -300,7 +301,7 @@ function EditUserForm({
       </div>
       <div className="space-y-2">
         <Label htmlFor="eu-pw">New password (leave blank to keep)</Label>
-        <Input id="eu-pw" type="password" minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+        <PasswordInput id="eu-pw" minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
       </div>
       {error && <p className="text-sm text-rose-600" role="alert">{error}</p>}
       <div className="flex justify-end gap-2">

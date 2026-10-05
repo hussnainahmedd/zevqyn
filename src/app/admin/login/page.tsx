@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/PasswordInput";
 import { AdminApiError, adminApi, setAdminToken } from "@/lib/api/admin";
 
 export default function AdminLogin() {
@@ -71,9 +72,8 @@ export default function AdminLogin() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="admin-pw">Password</Label>
-            <Input
+            <PasswordInput
               id="admin-pw"
-              type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

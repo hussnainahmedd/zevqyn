@@ -5,6 +5,7 @@ import { ShieldCheck, KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordInput } from "@/components/PasswordInput";
 import { AdminApiError, adminApi } from "@/lib/api/admin";
 
 export default function AdminSecurity() {
@@ -64,9 +65,8 @@ export default function AdminSecurity() {
         <form onSubmit={onSubmit} className="mt-6 space-y-4">
           <div className="space-y-2">
             <Label htmlFor="sec-current">Current password</Label>
-            <Input
+            <PasswordInput
               id="sec-current"
-              type="password"
               required
               value={current}
               onChange={(e) => setCurrent(e.target.value)}
@@ -76,9 +76,8 @@ export default function AdminSecurity() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="sec-new">New password (min 8 characters)</Label>
-            <Input
+            <PasswordInput
               id="sec-new"
-              type="password"
               required
               minLength={8}
               value={next}
@@ -89,9 +88,8 @@ export default function AdminSecurity() {
           </div>
           <div className="space-y-2">
             <Label htmlFor="sec-confirm">Confirm new password</Label>
-            <Input
+            <PasswordInput
               id="sec-confirm"
-              type="password"
               required
               value={confirm}
               onChange={(e) => setConfirm(e.target.value)}
