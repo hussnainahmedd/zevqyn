@@ -23,6 +23,9 @@ export function MarketingHeader() {
           <Link href="/how-it-works" className="transition hover:text-zinc-950">
             How it works
           </Link>
+          <Link href="/resources" className="transition hover:text-zinc-950">
+            Resources
+          </Link>
           <Link href="/about" className="transition hover:text-zinc-950">
             About
           </Link>
@@ -66,7 +69,7 @@ export function MarketingFooter() {
               professionals.
             </p>
           </div>
-          <div className="grid grid-cols-2 gap-12 text-sm">
+          <div className="grid grid-cols-2 gap-10 sm:gap-12 lg:grid-cols-4">
             <div>
               <p className="font-semibold text-zinc-950">Product</p>
               <ul className="mt-3 space-y-2.5 text-zinc-500">
@@ -88,7 +91,7 @@ export function MarketingFooter() {
               </ul>
             </div>
             <div>
-              <p className="font-semibold text-zinc-950">Explore</p>
+              <p className="font-semibold text-zinc-950">Company</p>
               <ul className="mt-3 space-y-2.5 text-zinc-500">
                 <li>
                   <Link href="/about" className="transition hover:text-zinc-950">
@@ -103,6 +106,46 @@ export function MarketingFooter() {
                 <li>
                   <Link href="/login" className="transition hover:text-zinc-950">
                     Sign in
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-zinc-950">Resources</p>
+              <ul className="mt-3 space-y-2.5 text-zinc-500">
+                <li>
+                  <Link href="/resources" className="transition hover:text-zinc-950">
+                    Resources
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/faq" className="transition hover:text-zinc-950">
+                    FAQ
+                  </Link>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="font-semibold text-zinc-950">Legal</p>
+              <ul className="mt-3 space-y-2.5 text-zinc-500">
+                <li>
+                  <Link href="/privacy-policy" className="transition hover:text-zinc-950">
+                    Privacy Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" className="transition hover:text-zinc-950">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/cookie-policy" className="transition hover:text-zinc-950">
+                    Cookie Policy
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/disclaimer" className="transition hover:text-zinc-950">
+                    Disclaimer
                   </Link>
                 </li>
               </ul>
