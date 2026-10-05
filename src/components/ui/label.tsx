@@ -1,1 +1,1 @@
-import { LabelHTMLAttributes } from "react"; export function Label({children,...p}:LabelHTMLAttributes<HTMLLabelElement>){return <label className="text-sm font-medium text-zinc-200" {...p}>{children}</label>;}
+import { LabelHTMLAttributes } from "react"; export function Label({children,...p}:LabelHTMLAttributes<HTMLLabelElement>){return <label className="text-sm font-medium text-zinc-700" {...p}>{children}</label>;}

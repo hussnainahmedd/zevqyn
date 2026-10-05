@@ -1,7 +1,16 @@
-"use client"; import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query"; import { api } from "@/lib/api/services"; import { LoadingState, EmptyState, ErrorState } from "@/components/PageStates"; import { Button } from "@/components/ui/button"; import { Input } from "@/components/ui/input"; import { Textarea } from "@/components/ui/textarea"; import { Label } from "@/components/ui/label"; import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; import Link from "next/link"; import { useState } from "react";
-export default function AdminInbox(){const qc=useQueryClient();const q=useQuery({queryKey:["admin-messages"],queryFn:api.adminMessages});const [search,setSearch]=useState("");
- const upd=useMutation({mutationFn:(v:{id:string;status:string})=>api.adminUpdateMessage(v.id,{status:v.status}),onSuccess:()=>qc.invalidateQueries({queryKey:["admin-messages"]})});
- if(q.isLoading) return <LoadingState/>; if(q.error) return <ErrorState message="Admin access required or failed to load inbox."/>;
- const list=(q.data||[]).filter(m=>(m.name||"").toLowerCase().includes(search.toLowerCase())||(m.subject||"").toLowerCase().includes(search.toLowerCase()));
- return <div><h1 className="text-2xl font-semibold tracking-tight">Admin Inbox</h1><p className="mt-1 text-sm text-zinc-400">Contact messages. Visible only to admins.</p><Input className="mt-5 max-w-sm" placeholder="Search messages…" value={search} onChange={e=>setSearch(e.target.value)}/>
- {!list.length?<div className="mt-5"><EmptyState title="No messages" desc="New contact submissions will appear here."/></div>:<ul className="mt-5 divide-y divide-white/[0.06] rounded-lg border border-white/[0.08] bg-[#0F1511]">{list.map(m=><li key={m.id} className="px-5 py-4"><div className="flex flex-wrap items-center justify-between gap-2"><p className="font-medium">{m.name} <span className="text-sm font-normal text-zinc-400">· {m.subject}</span></p><span className="text-xs text-zinc-500">{m.status}</span></div><p className="mt-1 text-sm text-zinc-400">{m.message}</p><div className="mt-3 flex gap-2">{["read","replied","archived"].map(s=><Button key={s} size="sm" variant="outline" onClick={()=>upd.mutate({id:m.id,status:s})}>{s}</Button>)}{m.email&&<a href={`mailto:${m.email}`}><Button size="sm">Reply</Button></a>}</div></li>)}</ul>}</div>;}
+"use client";
+
+import { InboxPanel } from "@/components/admin/InboxPanel";
+import { api } from "@/lib/api/services";
+
+/** Legacy inbox — gated by the Supabase app_metadata.role == "admin" token.
+ *  Kept working alongside the new /admin panel (see backend docs/ADMIN.md). */
+export default function AdminInbox() {
+  return (
+    <InboxPanel
+      queryKey={["admin-messages"]}
+      fetchMessages={api.adminMessages}
+      updateMessage={api.adminUpdateMessage}
+    />
+  );
+}
