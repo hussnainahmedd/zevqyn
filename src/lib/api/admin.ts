@@ -32,6 +32,32 @@ export class AdminApiError extends Error {
   }
 }
 
+/** Turn a FastAPI `detail` payload (string, 422 array, or object) into a readable message. */
+function detailToMessage(detail: unknown): string | null {
+  if (typeof detail === "string") {
+    const t = detail.trim();
+    return t ? t : null;
+  }
+  if (Array.isArray(detail)) {
+    const parts = detail
+      .map((d) =>
+        d && typeof d === "object" && "msg" in d
+          ? String((d as { msg: unknown }).msg)
+          : null
+      )
+      .filter((p): p is string => !!p);
+    if (parts.length) return parts.join("; ");
+  }
+  if (detail && typeof detail === "object") {
+    try {
+      return JSON.stringify(detail);
+    } catch {
+      return null;
+    }
+  }
+  return null;
+}
+
 export async function adminFetch<T = unknown>(
   path: string,
   opts: RequestInit = {}
@@ -46,8 +72,8 @@ export async function adminFetch<T = unknown>(
   if (!res.ok) {
     let msg = `Request failed (${res.status})`;
     try {
-      const j = (await res.json()) as { detail?: string };
-      msg = j.detail || msg;
+      const j = (await res.json()) as { detail?: unknown };
+      msg = detailToMessage(j.detail) || msg;
     } catch {
       try {
         msg = (await res.text()) || msg;
