@@ -103,7 +103,7 @@ const FEATURES: F[] = [
     visual: (
       <div className="rounded-xl border border-zinc-900/[0.07] bg-white p-3 shadow-sm">
         <div className="h-16 rounded-lg bg-gradient-to-br from-teal-100 via-white to-indigo-100" />
-        <p className="mt-2 text-[11px] font-semibold">zevqyn.vercel.app/p/yourname</p>
+        <p className="mt-2 text-[11px] font-semibold">zevqyn.dev/p/yourname</p>
         <p className="text-[10px] text-emerald-600">● live</p>
       </div>
     ),

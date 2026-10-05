@@ -117,7 +117,7 @@ export default function PortfolioPage() {
       {formErr && <p className="mt-2 text-sm text-rose-600" role="alert">{formErr}</p>}
 
       {!q.data?.length ? (
-        <div className="mt-6"><EmptyState title="No portfolios yet" desc="Create one above — it'll get a public link like zevqyn.vercel.app/p/yourname." /></div>
+        <div className="mt-6"><EmptyState title="No portfolios yet" desc="Create one above — it'll get a public link like zevqyn.dev/p/yourname." /></div>
       ) : (
         <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {(q.data as AnyRec[]).map(p => (
