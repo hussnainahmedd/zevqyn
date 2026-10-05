@@ -5,6 +5,7 @@ import { Tilt } from "@/components/mkt/Tilt";
 import { Reveal } from "@/components/mkt/Reveal";
 import { ChatMock, DocMock, ResumeMock } from "@/components/mkt/Mocks";
 import { SectionHead, CTABand } from "@/components/mkt/Kit";
+import { AuthCodeRedirect } from "@/components/AuthCodeRedirect";
 
 function Hero() {
   return (
@@ -119,6 +120,7 @@ const PILLARS = [
 export default function Home() {
   return (
     <MktShell>
+      <AuthCodeRedirect />
       <MarketingHeader />
       <main>
         <Hero />
