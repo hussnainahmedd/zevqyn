@@ -48,6 +48,11 @@ export default function AdminLayout({ children }: { children: ReactNode }) {
     );
   }
 
+  // Login page renders standalone — no admin sidebar chrome around it.
+  if (path === "/admin/login") {
+    return <>{children}</>;
+  }
+
   const sidebar = (
     <div className="flex h-full flex-col">
       <div className="flex h-16 items-center gap-2 border-b border-zinc-900/[0.06] px-5">
