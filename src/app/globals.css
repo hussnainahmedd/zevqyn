@@ -9,4 +9,38 @@ body { background:#050807; color:#F2F5F3; font-family: var(--font-inter), -apple
 .font-display { font-family: var(--font-space), var(--font-inter), sans-serif; }
 ::selection { background:#6366F1; color:white; }
 :focus-visible { outline:2px solid #818CF8; outline-offset:2px; }
+
+/* ---- Light marketing surface (pages wrapped in .mkt) ---- */
+.mkt { color-scheme: light; }
+.mkt ::selection { background:#4F46E5; color:#fff; }
+
+/* ---- 3D / motion utilities for marketing pages ---- */
+.perspective-1400 { perspective: 1400px; }
+.preserve-3d { transform-style: preserve-3d; }
+
+@keyframes mkt-float {
+  0%, 100% { transform: translateY(0) translateZ(0); }
+  50% { transform: translateY(-14px) translateZ(24px); }
+}
+@keyframes mkt-float-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+@keyframes mkt-drift {
+  0%, 100% { transform: translate3d(0,0,0) scale(1); }
+  50% { transform: translate3d(24px,-18px,0) scale(1.06); }
+}
+.animate-mkt-float { animation: mkt-float 7s ease-in-out infinite; }
+.animate-mkt-float-slow { animation: mkt-float-slow 9s ease-in-out infinite; }
+.animate-mkt-drift { animation: mkt-drift 14s ease-in-out infinite; }
+
+.mkt-dotgrid {
+  background-image: radial-gradient(rgba(24,24,27,0.10) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+.mkt-ring {
+  background: conic-gradient(from 180deg, rgba(99,102,241,0.14), rgba(52,211,153,0.10), rgba(99,102,241,0.14));
+  filter: blur(2px);
+}
+
 @media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:0.01ms !important; transition-duration:0.01ms !important; } }
