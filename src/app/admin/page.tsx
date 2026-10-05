@@ -10,9 +10,9 @@ import { useEffect } from "react";
 
 const CARDS = [
   { key: "users", label: "Total users", icon: Users, href: "/admin/users", tint: "bg-indigo-100 text-indigo-700" },
-  { key: "workspaces", label: "Workspaces", icon: FolderOpen, href: "/admin/users", tint: "bg-sky-100 text-sky-700" },
-  { key: "documents", label: "Documents", icon: FileText, href: "/admin/users", tint: "bg-amber-100 text-amber-700" },
-  { key: "projects", label: "Projects", icon: Briefcase, href: "/admin/users", tint: "bg-emerald-100 text-emerald-700" },
+  { key: "workspaces", label: "Workspaces", icon: FolderOpen, href: null, tint: "bg-sky-100 text-sky-700" },
+  { key: "documents", label: "Documents", icon: FileText, href: null, tint: "bg-amber-100 text-amber-700" },
+  { key: "projects", label: "Projects", icon: Briefcase, href: null, tint: "bg-emerald-100 text-emerald-700" },
   { key: "contact_messages", label: "Inbox messages", icon: Inbox, href: "/admin/inbox", tint: "bg-rose-100 text-rose-700" },
 ] as const;
 
@@ -45,24 +45,25 @@ export default function AdminOverview() {
       </p>
 
       <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {CARDS.map((c) => (
-          <Link key={c.key} href={c.href}>
-            <div className="motion-spring group rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_16px_40px_-20px_rgba(24,24,40,0.25)] backdrop-blur-2xl transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-20px_rgba(24,24,40,0.3)]">
+        {CARDS.map((c) => {
+          const inner = (
+            <div className={`motion-spring group rounded-3xl border border-white/60 bg-white/70 p-5 shadow-[0_16px_40px_-20px_rgba(24,24,40,0.25)] backdrop-blur-2xl transition-all duration-500 ${c.href ? "hover:-translate-y-1.5 hover:shadow-[0_28px_60px_-20px_rgba(24,24,40,0.3)]" : ""}`}>
               <div className="flex items-center justify-between">
                 <span
                   className={`flex h-10 w-10 items-center justify-center rounded-2xl ${c.tint}`}
                 >
                   <c.icon className="h-5 w-5" />
                 </span>
-                <ArrowUpRight className="h-4 w-4 text-zinc-300 transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-indigo-600" />
+                {c.href && <ArrowUpRight className="h-4 w-4 text-zinc-300 transition-all duration-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-indigo-600" />}
               </div>
               <p className="mt-4 font-display text-3xl font-semibold tracking-tight text-zinc-950">
                 {stats[c.key] ?? "—"}
               </p>
               <p className="mt-1 text-sm text-zinc-500">{c.label}</p>
             </div>
-          </Link>
-        ))}
+          );
+          return c.href ? <Link key={c.key} href={c.href}>{inner}</Link> : <div key={c.key}>{inner}</div>;
+        })}
       </div>
 
       <div className="motion-spring mt-8 rounded-3xl border border-white/60 bg-white/70 p-6 shadow-[0_16px_40px_-20px_rgba(24,24,40,0.25)] backdrop-blur-2xl transition-all duration-500">
