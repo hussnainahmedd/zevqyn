@@ -13,6 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { PasswordStrength, checkPassword } from "@/components/PasswordStrength";
 import { Dialog } from "@/components/ui/dialog";
 import { Badge } from "@/components/ui/badge";
 import { EmptyState, ErrorState, LoadingState } from "@/components/PageStates";
@@ -234,11 +235,15 @@ function AddUserForm({
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const [localErr, setLocalErr] = useState("");
   return (
     <form
       className="space-y-4"
       onSubmit={(e) => {
         e.preventDefault();
+        const c = checkPassword(password);
+        if (!c.valid) { setLocalErr("Password too weak: needs " + c.errors.join(", ") + "."); return; }
+        setLocalErr("");
         onSubmit({ email: email.trim(), password, full_name: fullName.trim() || undefined });
       }}
     >
@@ -251,10 +256,12 @@ function AddUserForm({
         <Input id="nu-name" value={fullName} onChange={(e) => setFullName(e.target.value)} placeholder="Jane Doe" />
       </div>
       <div className="space-y-2">
-        <Label htmlFor="nu-pw">Password (min 8 characters)</Label>
-        <Input id="nu-pw" type="password" required minLength={8} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+        <Label htmlFor="nu-pw">Password</Label>
+        <Input id="nu-pw" type="password" required value={password} onChange={(e) => setPassword(e.target.value)} placeholder="••••••••" />
+        <PasswordStrength password={password} />
       </div>
       {error && <p className="text-sm text-rose-600" role="alert">{error}</p>}
+      {localErr && <p className="text-sm text-rose-600" role="alert">{localErr}</p>}
       <div className="flex justify-end gap-2">
         <Button type="submit" disabled={pending}>{pending ? "Creating…" : "Create user"}</Button>
       </div>
