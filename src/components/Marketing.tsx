@@ -29,6 +29,9 @@ export function MarketingHeader() {
           <Link href="/about" className="transition hover:text-zinc-950">
             About
           </Link>
+          <Link href="/founder" className="transition hover:text-zinc-950">
+            Founder
+          </Link>
           <Link href="/contact" className="transition hover:text-zinc-950">
             Contact
           </Link>
@@ -96,6 +99,11 @@ export function MarketingFooter() {
                 <li>
                   <Link href="/about" className="transition hover:text-zinc-950">
                     About
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/founder" className="transition hover:text-zinc-950">
+                    Founder
                   </Link>
                 </li>
                 <li>

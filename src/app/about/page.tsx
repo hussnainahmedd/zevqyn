@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowRight, Puzzle, BadgeCheck, Sprout, Quote } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Puzzle, BadgeCheck, Sprout, Quote } from "lucide-react";
 import { MktShell, MarketingHeader, MarketingFooter } from "@/components/Marketing";
 import { JsonLd } from "@/components/JsonLd";
 import { Tilt } from "@/components/mkt/Tilt";
@@ -35,10 +35,11 @@ const PERSON_JSON_LD = {
   "@type": "Person",
   "@id": "https://zevqyn.dev/#hussnain-ahmad",
   name: "Hussnain Ahmad",
-  url: "https://hussnainportfolio.vercel.app/",
+  url: "https://zevqyn.dev/founder",
   image: "https://zevqyn.dev/founder/hussnain-ahmad-founder-zevqyn.jpg",
   jobTitle: "Founder of ZEVQYN",
   worksFor: { "@id": "https://zevqyn.dev/#organization" },
+  sameAs: ["https://hussnainportfolio.vercel.app/"],
 };
 
 const PRINCIPLES = [
@@ -159,17 +160,25 @@ export default function About() {
                     Founder of ZEVQYN
                   </p>
                   <p className="mt-4 leading-relaxed text-zinc-600">
-                    Hussnain Ahmad is a Computer Science student and developer focused on building AI-powered tools for
-                    research, productivity, and career growth.
+                    ZEVQYN was founded and built by Hussnain Ahmad, a Computer Science student and developer focused
+                    on AI-powered research, productivity, and career tools.
                   </p>
-                  <a
-                    href="https://hussnainportfolio.vercel.app/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_-12px_rgba(0,0,0,0.5)] transition hover:-translate-y-0.5 hover:bg-zinc-800"
-                  >
-                    View Founder Portfolio <ArrowRight className="h-4 w-4" />
-                  </a>
+                  <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:justify-start">
+                    <Link
+                      href="/founder"
+                      className="inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_-12px_rgba(0,0,0,0.5)] transition hover:-translate-y-0.5 hover:bg-zinc-800"
+                    >
+                      Meet the Founder <ArrowRight className="h-4 w-4" />
+                    </Link>
+                    <a
+                      href="https://hussnainportfolio.vercel.app/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 rounded-full border border-zinc-900/15 bg-white px-6 py-3 text-sm font-semibold text-zinc-900 transition hover:-translate-y-0.5 hover:border-zinc-900/30"
+                    >
+                      View Portfolio <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  </div>
                 </div>
               </div>
             </Reveal>
