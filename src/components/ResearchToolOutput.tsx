@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Markdown } from "@/components/ai/Markdown";
 
 type AnyRec = Record<string, any>;
 
@@ -21,7 +22,7 @@ function Citations({ items }: { items?: AnyRec[] }) {
 function SummaryView({ data }: { data: AnyRec }) {
   return (
     <div>
-      <p className="text-sm leading-relaxed text-zinc-700 whitespace-pre-wrap">{data.summary}</p>
+      {data.summary ? <Markdown text={data.summary} /> : <p className="text-sm text-zinc-500">No summary generated.</p>}
       <Citations items={data.citations} />
     </div>
   );

@@ -8,5 +8,5 @@ export type Certificate={id:string;name:string;title?:string;issuer?:string;issu
 export type Resume={id:string;title:string;name?:string;created_at?:string;updated_at?:string};
 export type ResumeItem={id:string;resume_id?:string;section_type?:string;title?:string;subtitle?:string;description?:string;sort_order?:number};
 export type Portfolio={id:string;title?:string;display_name?:string;slug?:string;is_public?:boolean;created_at?:string};
-export type Citation={document_id?:string;page_number?:number;source_label?:string;content?:string};
+export type Citation={document_id?:string;page_number?:number;source_label?:string;content?:string;source_type?:"document"|"web";url?:string;title?:string};
 export type ChatResponse={answer?:string;response?:string;citations?:Citation[];conversation_id?:string;[k:string]:unknown};
