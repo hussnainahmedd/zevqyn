@@ -6,6 +6,12 @@ import { AnswerCard, type AnswerCitation } from "@/components/ai/AnswerCard";
 import type { AiModelChoice } from "@/components/ai/models";
 import { SourceSelector } from "@/components/ai/SourceSelector";
 import { useSourceMode } from "@/components/ai/useSourceMode";
+import type { SourceMode } from "@/components/ai/sourceModes";
+const SOURCE_MODE_COPY: Record<SourceMode, { label: string; placeholder: string; empty: string }> = {
+  documents: { label: "Ask your documents", placeholder: "What does the literature say about\u2026?", empty: "Ask a question about your documents to get a cited answer." },
+  web: { label: "Ask the web", placeholder: "Ask anything \u2014 current events, explainers, code\u2026", empty: "Ask anything \u2014 answers are grounded in live web results with citations." },
+  both: { label: "Ask documents + web", placeholder: "Compare your documents with current web info\u2026", empty: "Ask a question to combine your documents with live web results." },
+};
 export default function WorkspaceDetail(){const {id}=useParams<{id:string}>();const qc=useQueryClient();const ws=useQuery({queryKey:["workspace",id],queryFn:()=>api.workspace(id)});const docs=useQuery({queryKey:["ws-docs",id],queryFn:()=>api.wsDocuments(id)});const convs=useQuery({queryKey:["convs",id],queryFn:()=>api.conversations(id)});
  const [question,setQuestion]=useState("");const [answer,setAnswer]=useState("");const [citations,setCitations]=useState<AnswerCitation[]>([]);const [toolOut,setToolOut]=useState("");const [toolData,setToolData]=useState<Record<string,any>|null>(null);const [aiModel,setAiModel]=useAiModel();const [sourceMode,setSourceMode]=useSourceMode();const [chatMeta,setChatMeta]=useState<{requested:AiModelChoice;providerUsed:string;fallbackUsed:boolean}|null>(null);const [toolMeta,setToolMeta]=useState<{requested:AiModelChoice;providerUsed:string;fallbackUsed:boolean}|null>(null);const fileRef=useRef<HTMLInputElement>(null);
  const upload=useMutation({mutationFn:(f:File)=>api.uploadDocument(id,f),onSuccess:(d)=>{qc.invalidateQueries({queryKey:["ws-docs",id]});const did=(d as {id?:string})?.id;if(did) indexM.mutate(did);}});
@@ -21,8 +27,8 @@ export default function WorkspaceDetail(){const {id}=useParams<{id:string}>();co
  {upload.error&&<p className="mt-2 text-sm text-rose-600">Upload failed. Check file type and size.</p>}
  <div className="mt-4">{!docs.data?.length?<EmptyState title="No documents yet" desc="Upload a paper, then index it for cited answers."/>:<ul className="divide-y divide-zinc-900/[0.06] rounded-lg border border-zinc-900/[0.08] bg-white">{docs.data.map(d=><li key={d.id} className="flex items-center justify-between gap-3 px-4 py-3"><div className="min-w-0"><p className="truncate text-sm font-medium">{d.original_filename||d.filename}</p><p className="text-xs text-zinc-500">{d.file_type} · {d.status}</p></div><Button size="sm" variant="outline" onClick={()=>indexM.mutate(d.id)} disabled={indexM.isPending}>Index</Button>{indexM.error&&<span className="max-w-xs text-xs text-rose-600">Indexing failed: {indexM.error instanceof Error ? indexM.error.message : "unknown error"} — retry.</span>}</li>)}</ul>}</div>
  <h2 className="mt-8 text-base font-semibold">Conversations</h2>{!convs.data?.length?<p className="mt-2 text-sm text-zinc-500">No conversations yet.</p>:<ul className="mt-3 space-y-2">{convs.data.map(c=><li key={c.id} className="flex items-center justify-between rounded-md border border-zinc-900/[0.08] px-3 py-2 text-sm"><span>{c.title||"Untitled"}</span><Button size="sm" variant="ghost" onClick={()=>{if(confirm("Delete this conversation?"))delConv.mutate(c.id);}}>Delete</Button></li>)}</ul>}</section>
- <section><h2 className="text-base font-semibold">Research studio</h2><div className="mt-3 space-y-3"><Label htmlFor="q">Ask your documents</Label><Textarea id="q" rows={4} value={question} onChange={e=>setQuestion(e.target.value)} placeholder="What does the literature say about…?"/><div className="flex flex-wrap items-end gap-x-4 gap-y-2"><div className="flex flex-col gap-1"><span className="text-[11px] font-medium text-zinc-500">Source</span><SourceSelector value={sourceMode} onChange={setSourceMode}/></div><div className="flex flex-col gap-1"><span className="text-[11px] font-medium text-zinc-500">AI</span><ModelSelector value={aiModel} onChange={setAiModel}/></div></div><div className="flex flex-wrap gap-2"><Button onClick={()=>chatM.mutate()} disabled={!question||chatM.isPending}>{chatM.isPending?"Thinking…":"Ask with citations"}</Button>{["summary","key-points","questions","flashcards"].map(t=><Button key={t} variant="outline" size="sm" onClick={()=>toolM.mutate(t)} disabled={toolM.isPending}>{t}</Button>)}</div>
- <div className="mt-1"><AnswerCard
+ <section className="lg:col-span-2"><h2 className="text-base font-semibold">Research studio</h2><div className="mx-auto mt-3 w-full max-w-[1024px] space-y-3"><Label htmlFor="q">{SOURCE_MODE_COPY[sourceMode].label}</Label><Textarea id="q" rows={4} value={question} onChange={e=>setQuestion(e.target.value)} placeholder={SOURCE_MODE_COPY[sourceMode].placeholder}/><div className="flex flex-wrap items-end gap-x-4 gap-y-2"><div className="flex flex-col gap-1"><span className="text-[11px] font-medium text-zinc-500">Source</span><SourceSelector value={sourceMode} onChange={setSourceMode}/></div><div className="flex flex-col gap-1"><span className="text-[11px] font-medium text-zinc-500">AI</span><ModelSelector value={aiModel} onChange={setAiModel}/></div></div><div className="flex flex-wrap gap-2"><Button onClick={()=>chatM.mutate()} disabled={!question||chatM.isPending}>{chatM.isPending?"Thinking…":"Ask ZEVQYN"}</Button>{["summary","key-points","questions","flashcards"].map(t=><Button key={t} variant="outline" size="sm" onClick={()=>toolM.mutate(t)} disabled={toolM.isPending}>{t}</Button>)}</div>
+ <div className="mx-auto mt-1 w-full max-w-[1024px]"><AnswerCard
    markdown={answer||undefined}
    citations={citations}
    providerUsed={chatMeta?.providerUsed}
@@ -32,8 +38,9 @@ export default function WorkspaceDetail(){const {id}=useParams<{id:string}>();co
    regenerating={chatM.isPending&&!!answer}
    isLoading={chatM.isPending&&!answer}
    error={chatM.error?"Couldn't answer that yet — try again.":null}
+   emptyText={SOURCE_MODE_COPY[sourceMode].empty}
  /></div>
- {toolOut&&toolData?<div className="mt-4"><AnswerCard
+ {toolOut&&toolData?<div className="mx-auto mt-4 w-full max-w-[1024px]"><AnswerCard
    title={toolTitle}
    providerUsed={toolMeta?.providerUsed}
    fallback={toolMeta?.fallbackUsed?{requested:toolMeta.requested,providerUsed:toolMeta.providerUsed}:null}
@@ -43,5 +50,5 @@ export default function WorkspaceDetail(){const {id}=useParams<{id:string}>();co
    isLoading={toolM.isPending&&!toolData}
    error={toolM.error?"Research failed. Try again in a moment.":null}
  ><ResearchToolOutput tool={toolOut} data={toolData}/></AnswerCard></div>
- :toolM.isPending?<div className="mt-4"><AnswerCard title="Research" isLoading/></div>
- :toolM.error?<div className="mt-4"><AnswerCard title="Research" error="Research failed. Try again in a moment."/></div>:null}</div></section></div></div>;}
+ :toolM.isPending?<div className="mx-auto mt-4 w-full max-w-[1024px]"><AnswerCard title="Research" isLoading/></div>
+ :toolM.error?<div className="mx-auto mt-4 w-full max-w-[1024px]"><AnswerCard title="Research" error="Research failed. Try again in a moment."/></div>:null}</div></section></div></div>;}

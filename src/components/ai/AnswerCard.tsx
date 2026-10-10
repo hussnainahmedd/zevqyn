@@ -169,6 +169,9 @@ export function AnswerCard({
   };
 
   const modeLabel = providerUsed ? aiDisplayName(providerUsed) : null;
+  // Fallback message must read naturally even if the backend omitted provider_used:
+  // never surface the raw "another AI" placeholder.
+  const fallbackActual = fallback?.providerUsed ? aiDisplayName(fallback.providerUsed) : aiDisplayName(fallback?.requested);
 
   return (
     <div className="overflow-hidden rounded-2xl border border-zinc-900/[0.08] bg-white shadow-sm">
@@ -188,8 +191,8 @@ export function AnswerCard({
       {fallback && (
         <p role="status" className="border-b border-amber-100 bg-amber-50/60 px-4 py-2 text-xs leading-relaxed text-amber-800">
           {fallback.requested === "auto"
-            ? `Primary AI was temporarily at capacity. Answered with ${aiDisplayName(fallback.providerUsed)}.`
-            : `${aiDisplayName(fallback.requested)} was temporarily unavailable. Answered with ${aiDisplayName(fallback.providerUsed)}.`}
+            ? `Primary AI was temporarily at capacity. Answered with ${fallbackActual}.`
+            : `${aiDisplayName(fallback.requested)} was temporarily unavailable. Answered with ${fallbackActual}.`}
         </p>
       )}
 
