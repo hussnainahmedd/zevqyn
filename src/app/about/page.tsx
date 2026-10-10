@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Puzzle, BadgeCheck, Sprout, Quote } from "lucide-react";
 import { MktShell, MarketingHeader, MarketingFooter } from "@/components/Marketing";
+import { JsonLd } from "@/components/JsonLd";
 import { Tilt } from "@/components/mkt/Tilt";
 import { Reveal } from "@/components/mkt/Reveal";
 import { SectionHead, CTABand } from "@/components/mkt/Kit";
@@ -29,6 +30,17 @@ const CARDS = [
   },
 ];
 
+const PERSON_JSON_LD = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://zevqyn.dev/#hussnain-ahmad",
+  name: "Hussnain Ahmad",
+  url: "https://hussnainportfolio.vercel.app/",
+  image: "https://zevqyn.dev/founder/hussnain-ahmad-founder-zevqyn.jpg",
+  jobTitle: "Founder of ZEVQYN",
+  worksFor: { "@id": "https://zevqyn.dev/#organization" },
+};
+
 const PRINCIPLES = [
   ["Grounded, not generated", "Every AI answer cites the document it came from. If it can't cite it, it doesn't say it."],
   ["Your data stays yours", "Workspaces are private by default. Public sharing is always an explicit choice, never a default."],
@@ -41,6 +53,7 @@ export default function About() {
     <MktShell>
       <MarketingHeader />
       <main>
+        <JsonLd data={PERSON_JSON_LD} />
         <section className="relative overflow-hidden">
           <div aria-hidden className="pointer-events-none absolute inset-0">
             <div className="mkt-dotgrid absolute inset-x-0 top-0 h-[480px] [mask-image:radial-gradient(70%_60%_at_50%_10%,black,transparent)]" />
@@ -121,6 +134,45 @@ export default function About() {
                 </div>
               </Reveal>
             ))}
+          </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-14 sm:px-6">
+          <SectionHead
+            eyebrow="Founder"
+            title="ZEVQYN was founded and built by Hussnain Ahmad."
+            sub="One builder, one through-line: from research to career."
+          />
+          <div className="mx-auto mt-12 max-w-4xl">
+            <Reveal>
+              <div className="flex flex-col items-center gap-8 rounded-3xl border border-zinc-900/[0.08] bg-white p-8 shadow-[0_2px_12px_-6px_rgba(15,18,45,0.1)] sm:flex-row sm:p-10">
+                <img
+                  src="/founder/hussnain-ahmad-founder-zevqyn.jpg"
+                  alt="Hussnain Ahmad, founder of ZEVQYN"
+                  width={320}
+                  height={320}
+                  className="h-40 w-40 shrink-0 rounded-3xl border border-zinc-900/[0.08] object-cover sm:h-48 sm:w-48"
+                />
+                <div className="text-center sm:text-left">
+                  <h3 className="font-display text-2xl font-semibold tracking-tight text-zinc-900">Hussnain Ahmad</h3>
+                  <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-indigo-600">
+                    Founder of ZEVQYN
+                  </p>
+                  <p className="mt-4 leading-relaxed text-zinc-600">
+                    Hussnain Ahmad is a Computer Science student and developer focused on building AI-powered tools for
+                    research, productivity, and career growth.
+                  </p>
+                  <a
+                    href="https://hussnainportfolio.vercel.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-6 inline-flex items-center gap-2 rounded-full bg-zinc-950 px-6 py-3 text-sm font-semibold text-white shadow-[0_18px_36px_-12px_rgba(0,0,0,0.5)] transition hover:-translate-y-0.5 hover:bg-zinc-800"
+                  >
+                    View Founder Portfolio <ArrowRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </Reveal>
           </div>
         </section>
 
