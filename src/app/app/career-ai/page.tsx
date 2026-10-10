@@ -1,4 +1,8 @@
 "use client"; import { useQuery } from "@tanstack/react-query"; import { api } from "@/lib/api/services"; import { LoadingState } from "@/components/PageStates"; import { Button } from "@/components/ui/button"; import { Input } from "@/components/ui/input"; import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card"; import { useState } from "react";
+import { ModelSelector } from "@/components/ai/ModelSelector";
+import { useAiModel } from "@/components/ai/useAiModel";
+import { FallbackNotice } from "@/components/ai/FallbackNotice";
+import type { AiModelChoice } from "@/components/ai/models";
 
 type AnyRec = Record<string, any>;
 const errMsg = (e: unknown) => e instanceof Error ? e.message : "Something went wrong. Try again.";
@@ -57,12 +61,15 @@ export default function CareerAI() {
   const [targetRole, setTargetRole] = useState("");
   const [busy, setBusy] = useState("");
   const [err, setErr] = useState("");
+  const [aiModel, setAiModel] = useAiModel();
+  const [fallback, setFallback] = useState<{ requested: AiModelChoice; providerUsed?: string } | null>(null);
 
   async function run(tool: string, body: Record<string, unknown> = {}) {
-    setBusy(tool); setOut(null); setErr("");
+    setBusy(tool); setOut(null); setErr(""); setFallback(null);
     try {
-      const d = await api.careerAi(tool, body) as AnyRec;
+      const d = await api.careerAi(tool, { ...body, model: aiModel }) as AnyRec;
       setOut({ tool, data: d });
+      if (d.fallback_used) setFallback({ requested: aiModel, providerUsed: d.provider_used as string | undefined });
     } catch (e) { setErr(errMsg(e)); }
     setBusy("");
   }
@@ -87,6 +94,7 @@ export default function CareerAI() {
   const tools: [string, string][] = [["analyze", "Analyze my profile"], ["skill-gap", "Skill-gap analysis"], ["suggest-projects", "Suggest projects"], ["review-resume", "Review resume"], ["review-portfolio", "Review portfolio"], ["action-plan", "30/60/90 action plan"]];
 
   return <div><h1 className="font-display text-2xl font-semibold tracking-tight">Career AI</h1><p className="mt-1 text-sm text-zinc-500">Distinct tools, not a generic chat box. Each runs against your real career data — profile, skills, education, projects, resumes and portfolios.</p>
+    <div className="mt-6 flex items-center gap-3"><ModelSelector value={aiModel} onChange={setAiModel} /><span className="text-xs text-zinc-500">Applies to all Career AI tools and chat below.</span></div>
     <div className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">{tools.map(([t, l]) => <Button key={t} variant="outline" className="h-auto justify-start py-4" onClick={() => runTool(t)} disabled={!!busy}>{busy === t ? "Running…" : l}</Button>)}</div>
     <div className="mt-4 flex max-w-md gap-2"><Input value={targetRole} onChange={e => setTargetRole(e.target.value)} placeholder="Target role for action plan (e.g. Frontend Developer)" aria-label="Target role" /><Button variant="outline" onClick={() => runTool("action-plan")} disabled={!!busy || !targetRole.trim()}>{busy === "action-plan" ? "Running…" : "Action plan"}</Button></div>
     <Card className="mt-8"><CardHeader><CardTitle>Career conversation</CardTitle></CardHeader><CardContent>
@@ -96,6 +104,7 @@ export default function CareerAI() {
       </form>
       {convs.data && convs.data.length > 0 && <div className="mt-4"><p className="text-xs text-zinc-500">Past conversations: {convs.data.length}</p></div>}
       {err && <p className="mt-4 text-sm text-rose-600" role="alert">{err}</p>}
+      {fallback && <div className="mt-4"><FallbackNotice requested={fallback.requested} providerUsed={fallback.providerUsed} onDismiss={() => setFallback(null)} /></div>}
       {out && <div className="mt-4 rounded-2xl border border-zinc-900/[0.08] bg-white p-5 shadow-sm"><RenderResult tool={out.tool} data={out.data} /></div>}
     </CardContent></Card></div>;
 }
